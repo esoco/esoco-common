@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="protected" additionalparam="-J-Xmx256m  " author="true" classpath="." destdir="S:\esoco-doc\esoco-common\javadoc" doctitle="- esoco-common -" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="de.esoco.lib.property,de.esoco.lib.model,de.esoco.lib.text" source="1.7" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="http://download.oracle.com/javase/7/docs/api/"/>
+        </javadoc>
+    </target>
+</project>
