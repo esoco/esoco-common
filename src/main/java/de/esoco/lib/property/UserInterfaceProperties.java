@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,9 @@
 // limitations under the License.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
+
+import java.util.Map;
+
 
 /********************************************************************
  * A collection of {@link PropertyName} constants for typical user interface
@@ -247,6 +250,10 @@ public class UserInterfaceProperties
 	/** String: an application-specific style string (e.g. a CSS class name). */
 	public static final PropertyName<String> STYLE =
 		PropertyName.newStringName("STYLE");
+
+	/** A map property that contains CSS styles and their values. */
+	public static final PropertyName<Map<String, String>> CSS_STYLES =
+		PropertyName.newMapName("CSS_STYLES", String.class, String.class);
 
 	/** String: a descriptive label string for the target object. */
 	public static final PropertyName<String> LABEL =
