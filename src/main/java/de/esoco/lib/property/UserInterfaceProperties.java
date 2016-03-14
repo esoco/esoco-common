@@ -97,6 +97,19 @@ public class UserInterfaceProperties
 	 */
 	public enum ListStyle { LIST, DROP_DOWN, EDITABLE, DISCRETE, IMMEDIATE }
 
+	/********************************************************************
+	 * An enumeration of the styles for displaying UI labels.
+	 *
+	 * <ul>
+	 *   <li>{@link #DEFAULT}: The default label style.</li>
+	 *   <li>{@link #INLINE}: A label that should explicitly be displayed
+	 *     in-line with other UI elements.</li>
+	 *   <li>{@link #TITLE}: A label that serves as the title for other UI
+	 *     elements.</li>
+	 * </ul>
+	 */
+	public enum LabelStyle { DEFAULT, INLINE, TITLE }
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: the number of rows to display. */
@@ -308,6 +321,13 @@ public class UserInterfaceProperties
 	 */
 	public static final PropertyName<ListStyle> LIST_STYLE =
 		PropertyName.newEnumName("LIST_STYLE", ListStyle.class);
+
+	/**
+	 * Enum: the type in which a list data element should be displayed (must
+	 * contain a value from {@link ListStyle}.
+	 */
+	public static final PropertyName<LabelStyle> LABEL_STYLE =
+		PropertyName.newEnumName("LABEL_STYLE", LabelStyle.class);
 
 	/** Enum: defines the type of an event notification. */
 	public static final PropertyName<NotificationType> NOTIFICATION_TYPE =
