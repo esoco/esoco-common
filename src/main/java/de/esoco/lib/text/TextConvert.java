@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -251,6 +251,114 @@ public class TextConvert
 	public static String lastElementOf(String sInput)
 	{
 		return sInput.substring(sInput.lastIndexOf('.') + 1);
+	}
+
+	/***************************************
+	 * Converts an integer value into a descriptive English string in lower case
+	 * (e.g. 1 = "one"). If a number cannot be mapped NULL will be returned. The
+	 * current implementation only supports the numbers from 0 (zero) to 20
+	 * (twenty).
+	 *
+	 * @param  nNumber The number to convert
+	 *
+	 * @return The resulting string or NULL if no conversion was possible
+	 */
+	public static String numberString(int nNumber)
+	{
+		String sNumber;
+
+		switch (nNumber)
+		{
+			case 0:
+				sNumber = "zero";
+				break;
+
+			case 1:
+				sNumber = "one";
+				break;
+
+			case 2:
+				sNumber = "two";
+				break;
+
+			case 3:
+				sNumber = "three";
+				break;
+
+			case 4:
+				sNumber = "four";
+				break;
+
+			case 5:
+				sNumber = "five";
+				break;
+
+			case 6:
+				sNumber = "six";
+				break;
+
+			case 7:
+				sNumber = "seven";
+				break;
+
+			case 8:
+				sNumber = "eight";
+				break;
+
+			case 9:
+				sNumber = "nine";
+				break;
+
+			case 10:
+				sNumber = "ten";
+				break;
+
+			case 11:
+				sNumber = "eleven";
+				break;
+
+			case 12:
+				sNumber = "twelve";
+				break;
+
+			case 13:
+				sNumber = "thirteen";
+				break;
+
+			case 14:
+				sNumber = "fourteen";
+				break;
+
+			case 15:
+				sNumber = "fifteen";
+				break;
+
+			case 16:
+				sNumber = "sixteen";
+				break;
+
+			case 17:
+				sNumber = "seventeen";
+				break;
+
+			case 18:
+				sNumber = "eighteen";
+				break;
+
+			case 19:
+				sNumber = "nineteen";
+				break;
+
+			case 20:
+				sNumber = "twenty";
+				break;
+
+			default:
+				sNumber = null;
+				break;
+		}
+
+		return sNumber;
 	}
 
 	/***************************************
