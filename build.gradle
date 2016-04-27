@@ -15,7 +15,8 @@ apply plugin: 'maven'
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: project.esocoMavenRepoUrl)
+        	if (project.hasProperty('esocoMavenRepoUrl'))
+            	repository(url: project.esocoMavenRepoUrl)
         }
     }
 }
