@@ -106,13 +106,14 @@ public class UserInterfaceProperties
 	 *     in-line with other UI elements.</li>
 	 *   <li>{@link #FORM}: A label that serves as a label for another UI
 	 *     element in a form panel.</li>
-	 *   <li>{@link #TITLE}: A label that serves as the title for other UI
-	 *     elements.</li>
+	 *   <li>{@link #TITLE}: A title for other UI elements.</li>
+	 *   <li>{@link #BRAND}: A brand description, typically in the main
+	 *     navigation menu</li>
 	 *   <li>{@link #ICON}: The label text will be mapped to a corresponding
 	 *     icon.</li>
 	 * </ul>
 	 */
-	public enum LabelStyle { DEFAULT, INLINE, FORM, TITLE, ICON }
+	public enum LabelStyle { DEFAULT, INLINE, FORM, TITLE, BRAND, ICON }
 
 	//~ Static fields/initializers ---------------------------------------------
 
