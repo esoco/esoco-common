@@ -147,12 +147,17 @@ public class UserInterfaceProperties
 	 *   <li>{@link #GROUP}: Arranges data elements in a distinctive group
 	 *     (HTML: fieldset).</li>
 	 *   <li>{@link #MENU}: A menu or navigation structure (HTML: nav).</li>
+	 *   <li>{@link #HEADER}: The header area of an application.</li>
+	 *   <li>{@link #CONTENT}: The main content area of an application.</li>
+	 *   <li>{@link #FOOTER}: The footer area of an application.</li>
+	 *   <li>{@link #INLINE}: Do not use a separate layout for this element but
+	 *     render it in-line with it's parent.</li>
 	 * </ul>
 	 */
 	public enum Layout
 	{
 		TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, GRID, FORM, GROUP,
-		MENU
+		MENU, HEADER, CONTENT, FOOTER, INLINE
 	}
 
 	/********************************************************************
