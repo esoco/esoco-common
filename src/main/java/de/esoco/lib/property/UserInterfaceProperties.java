@@ -115,6 +115,52 @@ public class UserInterfaceProperties
 	 */
 	public enum LabelStyle { DEFAULT, INLINE, FORM, TITLE, BRAND, ICON }
 
+	/********************************************************************
+	 * Enumeration of the display modes for data element lists that define how
+	 * data elements will be arranged in the generated user interface. The
+	 * possible values are:
+	 *
+	 * <ul>
+	 *   <li>{@link #TABLE}: Data elements are placed in the cells of a
+	 *     table-like structure (HTML: table).</li>
+	 *   <li>{@link #DOCK}: Elements are arranged arround the edges of a center
+	 *     element (HTML: divs with the center at 100% size). The size and
+	 *     orientation (horizontal or vertical) of the surrounding must be set
+	 *     as UI properties.</li>
+	 *   <li>{@link #SPLIT}: Like {@link #DOCK} but with resizable side areas.
+	 *   </li>
+	 *   <li>{@link #TABS}: A panel with selectable tabs for each contained data
+	 *     element (HTML: full size div).</li>
+	 *   <li>{@link #STACK}: Like {@link #TABS} but arranged as a vertical stack
+	 *     of collapsing stacks for each element child.</li>
+	 *   <li>{@link #DECK}: Like {@link #TABS} but without an UI for selecting
+	 *     child elements. Selection must occur programmatically.</li>
+	 *   <li>{@link #FILL}: A single UI elements fills the available area (HTML:
+	 *     div with 100% size).</li>
+	 *   <li>{@link #FLOW}: UI elements flow in the natural order defined by the
+	 *     UI context (HTML: div).</li>
+	 *   <li>{@link #GRID}: Like FLOW but elements are automatically arranged
+	 *     according to their properties like in a {@link #FORM} (HTML: div with
+	 *     a CSS grid layout).</li>
+	 *   <li>{@link #FORM}: Arranges data elements according to their properties
+	 *     in an input form (HTML: form).</li>
+	 *   <li>{@link #GROUP}: Arranges data elements in a distinctive group
+	 *     (HTML: fieldset).</li>
+	 *   <li>{@link #MENU}: A menu or navigation structure (HTML: nav).</li>
+	 * </ul>
+	 */
+	public enum Layout
+	{
+		TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, GRID, FORM, GROUP,
+		MENU
+	}
+
+	/********************************************************************
+	 * Enumeration of the style for displaying data element lists in separate
+	 * views.
+	 */
+	public enum ViewDisplayType { DIALOG, MODAL_DIALOG, VIEW, MODAL_VIEW }
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: the number of rows to display. */
@@ -389,6 +435,14 @@ public class UserInterfaceProperties
 	 * {@link #SELECTION_DEPENDENCY} for toggle buttons.
 	 */
 	public static final String SELECTION_DEPENDENCY_REVERSE_PREFIX = "!";
+
+	/** {@link Layout}: The layout of an elements. */
+	public static final PropertyName<Layout> LAYOUT =
+		PropertyName.newEnumName("LAYOUT", Layout.class);
+
+	/** {@link ViewDisplayType}: The display style of a view. */
+	public static final PropertyName<ViewDisplayType> VIEW_DISPLAY_TYPE =
+		PropertyName.newEnumName("VIEW_DISPLAY_TYPE", ViewDisplayType.class);
 
 	//~ Constructors -----------------------------------------------------------
 
