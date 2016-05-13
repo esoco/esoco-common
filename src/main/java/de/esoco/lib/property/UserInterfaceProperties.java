@@ -98,7 +98,9 @@ public class UserInterfaceProperties
 	public enum ListStyle { LIST, DROP_DOWN, EDITABLE, DISCRETE, IMMEDIATE }
 
 	/********************************************************************
-	 * An enumeration of the styles for displaying UI labels.
+	 * An enumeration of the styles for displaying UI labels. Not all styles may
+	 * be supported by an UI implementation in which case it should revert to a
+	 * reasonable default if possible.
 	 *
 	 * <ul>
 	 *   <li>{@link #DEFAULT}: The default label style.</li>
@@ -114,6 +116,21 @@ public class UserInterfaceProperties
 	 * </ul>
 	 */
 	public enum LabelStyle { DEFAULT, INLINE, FORM, TITLE, BRAND, ICON }
+
+	/********************************************************************
+	 * An enumeration of the possible styles for displaying UI buttons. Not all
+	 * styles may be supported by an UI implementation in which case it should
+	 * revert to a reasonable default if possible.
+	 *
+	 * <ul>
+	 *   <li>{@link #DEFAULT}: The default (push) button style.</li>
+	 *   <li>{@link #FLAT}: Display only the button outline.</li>
+	 *   <li>{@link #FLAT}: A flat display style.</li>
+	 *   <li>{@link #FLOAT}: Display button over other content.</li>
+	 *   <li>{@link #LINK}: Display buttons as (hyper-) links.</li>
+	 * </ul>
+	 */
+	public enum ButtonStyle { DEFAULT, OUTLINE, FLAT, FLOAT, LINK }
 
 	/********************************************************************
 	 * Enumeration of the layouts for UI element containers. The layout defines
@@ -378,18 +395,22 @@ public class UserInterfaceProperties
 		PropertyName.newBooleanName("VALUE_CHANGED");
 
 	/**
-	 * Enum: the type in which a list data element should be displayed (must
-	 * contain a value from {@link ListStyle}.
+	 * Enum: the type in which buttons created from a data element should be
+	 * displayed.
 	 */
-	public static final PropertyName<ListStyle> LIST_STYLE =
-		PropertyName.newEnumName("LIST_STYLE", ListStyle.class);
+	public static final PropertyName<ButtonStyle> BUTTON_STYLE =
+		PropertyName.newEnumName("BUTTON_STYLE", ButtonStyle.class);
 
 	/**
-	 * Enum: the type in which a list data element should be displayed (must
-	 * contain a value from {@link ListStyle}.
+	 * Enum: the style in which a readonly text data element should be
+	 * displayed.
 	 */
 	public static final PropertyName<LabelStyle> LABEL_STYLE =
 		PropertyName.newEnumName("LABEL_STYLE", LabelStyle.class);
+
+	/** Enum: the type in which a list data element should be displayed. */
+	public static final PropertyName<ListStyle> LIST_STYLE =
+		PropertyName.newEnumName("LIST_STYLE", ListStyle.class);
 
 	/** Enum: defines the type of an event notification. */
 	public static final PropertyName<NotificationType> NOTIFICATION_TYPE =
