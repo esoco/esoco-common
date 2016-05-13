@@ -158,6 +158,7 @@ public class UserInterfaceProperties
 	 *     UI context.</li>
 	 *   <li>{@link #GRID}: Like FLOW but elements are placed in a grid
 	 *     structure according to their properties.</li>
+	 *   <li>{@link #GRID_ROW}: A single row in a {@link #GRID} layout.</li>
 	 *   <li>{@link #LIST}: Places elements in a list.</li>
 	 *   <li>{@link #LIST_ITEM}: A single element in a {@link #LIST}
 	 *     layout.</li>
@@ -179,7 +180,7 @@ public class UserInterfaceProperties
 	 */
 	public enum Layout
 	{
-		TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, GRID, LIST,
+		TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, GRID, GRID_ROW, LIST,
 		LIST_ITEM, CARD, FORM, GROUP, MENU, HEADER, CONTENT, FOOTER, INLINE
 	}
 
