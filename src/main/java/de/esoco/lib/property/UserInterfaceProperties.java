@@ -192,6 +192,12 @@ public class UserInterfaceProperties
 	 */
 	public enum ViewDisplayType { DIALOG, MODAL_DIALOG, VIEW, MODAL_VIEW }
 
+	/********************************************************************
+	 * An enumeration of logical size constants that can be applied to UI
+	 * elements.
+	 */
+	public enum RelativeSize { FULL, HALF, THIRD, QUARTER, FIFTH, SIXTH }
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: the number of rows to display. */
@@ -478,6 +484,14 @@ public class UserInterfaceProperties
 	/** {@link ViewDisplayType}: The display style of a view. */
 	public static final PropertyName<ViewDisplayType> VIEW_DISPLAY_TYPE =
 		PropertyName.newEnumName("VIEW_DISPLAY_TYPE", ViewDisplayType.class);
+
+	/** Enum: a relative width constant. */
+	public static final PropertyName<RelativeSize> RELATIVE_WIDTH =
+		PropertyName.newEnumName("RELATIVE_WIDTH", RelativeSize.class);
+
+	/** Enum: a relative height constant. */
+	public static final PropertyName<RelativeSize> RELATIVE_HEIGHT =
+		PropertyName.newEnumName("RELATIVE_HEIGHT", RelativeSize.class);
 
 	//~ Constructors -----------------------------------------------------------
 
