@@ -187,16 +187,19 @@ public class UserInterfaceProperties
 	}
 
 	/********************************************************************
-	 * Enumeration of the style for displaying data element lists in separate
-	 * views.
+	 * Enumeration of the style for displaying views.
 	 */
 	public enum ViewDisplayType { DIALOG, MODAL_DIALOG, VIEW, MODAL_VIEW }
 
 	/********************************************************************
-	 * An enumeration of logical size constants that can be applied to UI
-	 * elements.
+	 * An enumeration of relative sizes that can be applied to UI elements.
 	 */
 	public enum RelativeSize { FULL, HALF, THIRD, QUARTER, FIFTH, SIXTH }
+
+	/********************************************************************
+	 * An enumeration of relative scales can be applied to UI elements.
+	 */
+	public enum RelativeScale { TINY, SMALL, MEDIUM, LARGE, XLARGE }
 
 	//~ Static fields/initializers ---------------------------------------------
 
@@ -343,6 +346,17 @@ public class UserInterfaceProperties
 	 */
 	public static final PropertyName<Boolean> HAS_IMAGES =
 		PropertyName.newBooleanName("HAS_IMAGES");
+
+	/**
+	 * String: The name of an icon that should be displayed for the target
+	 * object.
+	 */
+	public static final PropertyName<String> ICON =
+		PropertyName.newStringName("ICON");
+
+	/** Enum: The scaling of an {@link #ICON}. */
+	public static final PropertyName<RelativeScale> ICON_SIZE =
+		PropertyName.newEnumName("ICON_SIZE", RelativeScale.class);
 
 	/** String: a resource ID for the target object. */
 	public static final PropertyName<String> RESOURCE_ID =
