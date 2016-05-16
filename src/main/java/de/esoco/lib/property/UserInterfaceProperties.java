@@ -44,9 +44,10 @@ public class UserInterfaceProperties implements ContentProperties,
 	public static void init()
 	{
 		// necessary for GWT because otherwise the constants are not initialized
-		// correctly; the exact value seems to be of no importance but it needs
-		// to be from ContentProperties
+		// correctly; the exact values seems to be of no importance but it must
+		// be one from each implemented interface
 		@SuppressWarnings("unused")
-		PropertyName<?> rDummy = ALLOWED_VALUES;
+		PropertyName<?>[] rInitDummy =
+			new PropertyName<?>[] { RESOURCE, WIDTH, DISABLED, WRAP };
 	}
 }
