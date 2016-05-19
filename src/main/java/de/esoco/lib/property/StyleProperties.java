@@ -125,4 +125,16 @@ public interface StyleProperties
 	/** Integer: the RGB foreground color of an element. */
 	public static final PropertyName<Integer> FOREGROUND_COLOR =
 		PropertyName.newIntegerName("FOREGROUND_COLOR");
+
+	/** Enum: The scaling of an {@link ContentProperties#ICON}. */
+	PropertyName<RelativeScale> ICON_SIZE =
+		PropertyName.newEnumName("ICON_SIZE", RelativeScale.class);
+
+	/** Integer: the RGB icon color of an {@link ContentProperties#ICON}. */
+	PropertyName<Integer> ICON_COLOR =
+		PropertyName.newIntegerName("ICON_COLOR");
+
+	/** Integer: the alignment of an {@link ContentProperties#ICON} within it's container. */
+	PropertyName<Alignment> ICON_ALIGNMENT =
+		PropertyName.newEnumName("ICON_ALIGNMENT", Alignment.class);
 }

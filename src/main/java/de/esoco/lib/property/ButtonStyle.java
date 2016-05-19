@@ -22,12 +22,12 @@ package de.esoco.lib.property;
  * revert to a reasonable default if possible.
  *
  * <ul>
- *   <li>{@link #DEFAULT}: The default (push) button style.</li>
- *   <li>{@link #FLAT}: Display only the button outline.</li>
+ *   <li>{@link #DEFAULT}: The default button style.</li>
  *   <li>{@link #FLAT}: A flat display style.</li>
- *   <li>{@link #FLOAT}: Display button over other content.</li>
- *   <li>{@link #LINK}: Display buttons as (hyper-) links.</li>
- *   <li>{@link #LINK}: Display buttons as an icon (without text).</li>
+ *   <li>{@link #FLOAT}: Floating over other content.</li>
+ *   <li>{@link #LINK}: A (hyper-) link.</li>
+ *   <li>{@link #ICON}: Icon only.</li>
+ *   <li>{@link #OUTLINE}: A button outline without fill.</li>
  * </ul>
  */
-public enum ButtonStyle { DEFAULT, OUTLINE, FLAT, FLOAT, LINK, ICON }
+public enum ButtonStyle { DEFAULT, FLAT, FLOAT, LINK, ICON, OUTLINE }
