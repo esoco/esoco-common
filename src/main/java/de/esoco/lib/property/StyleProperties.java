@@ -1,6 +1,18 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// esoco-common source file
-// Copyright (c) 2016 by Elmar Sonnenschein / esoco GmbH
+// This file is a part of the 'esoco-common' project.
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//	  http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
@@ -126,6 +138,15 @@ public interface StyleProperties
 	public static final PropertyName<Integer> FOREGROUND_COLOR =
 		PropertyName.newIntegerName("FOREGROUND_COLOR");
 
+	//~ Instance fields --------------------------------------------------------
+
+	/**
+	 * {@link Alignment}: the alignment within an element. What exactly is
+	 * aligned depends on the context.
+	 */
+	PropertyName<Alignment> ALIGNMENT =
+		PropertyName.newEnumName("ALIGNMENT", Alignment.class);
+
 	/** Enum: The scaling of an {@link ContentProperties#ICON}. */
 	PropertyName<RelativeScale> ICON_SIZE =
 		PropertyName.newEnumName("ICON_SIZE", RelativeScale.class);
@@ -134,7 +155,10 @@ public interface StyleProperties
 	PropertyName<Integer> ICON_COLOR =
 		PropertyName.newIntegerName("ICON_COLOR");
 
-	/** Integer: the alignment of an {@link ContentProperties#ICON} within it's container. */
+	/**
+	 * {@link Alignment}: the alignment of an {@link ContentProperties#ICON}
+	 * within an element.
+	 */
 	PropertyName<Alignment> ICON_ALIGNMENT =
 		PropertyName.newEnumName("ICON_ALIGNMENT", Alignment.class);
 }
