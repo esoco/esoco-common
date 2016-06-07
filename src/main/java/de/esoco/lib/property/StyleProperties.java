@@ -93,6 +93,10 @@ public interface StyleProperties
 	public static final PropertyName<Boolean> EXECUTABLE =
 		PropertyName.newBooleanName("EXECUTABLE");
 
+	/** Boolean: allow the selection of multiple elements. */
+	public static final PropertyName<Boolean> MULTI_SELECTION =
+		PropertyName.newBooleanName("MULTI_SELECTION");
+
 	/** Boolean: indicates that the values of an element should be sorted. */
 	public static final PropertyName<Boolean> SORT =
 		PropertyName.newBooleanName("SORT");
@@ -130,6 +134,10 @@ public interface StyleProperties
 	public static final PropertyName<ListStyle> LIST_STYLE =
 		PropertyName.newEnumName("LIST_STYLE", ListStyle.class);
 
+	/** The style of a list layout. */
+	public static final PropertyName<ListLayoutStyle> LIST_LAYOUT_STYLE =
+		PropertyName.newName("LIST_LAYOUT_STYLE", ListLayoutStyle.class);
+
 	/** Integer: the RGB background color of an element. */
 	public static final PropertyName<Integer> BACKGROUND_COLOR =
 		PropertyName.newIntegerName("BACKGROUND_COLOR");
@@ -138,27 +146,7 @@ public interface StyleProperties
 	public static final PropertyName<Integer> FOREGROUND_COLOR =
 		PropertyName.newIntegerName("FOREGROUND_COLOR");
 
-	//~ Instance fields --------------------------------------------------------
-
-	/**
-	 * {@link Alignment}: the alignment within an element. What exactly is
-	 * aligned depends on the context.
-	 */
-	PropertyName<Alignment> ALIGNMENT =
-		PropertyName.newEnumName("ALIGNMENT", Alignment.class);
-
-	/** Enum: The scaling of an {@link ContentProperties#ICON}. */
-	PropertyName<RelativeScale> ICON_SIZE =
-		PropertyName.newEnumName("ICON_SIZE", RelativeScale.class);
-
 	/** Integer: the RGB icon color of an {@link ContentProperties#ICON}. */
-	PropertyName<Integer> ICON_COLOR =
+	public static final PropertyName<Integer> ICON_COLOR =
 		PropertyName.newIntegerName("ICON_COLOR");
-
-	/**
-	 * {@link Alignment}: the alignment of an {@link ContentProperties#ICON}
-	 * within an element.
-	 */
-	PropertyName<Alignment> ICON_ALIGNMENT =
-		PropertyName.newEnumName("ICON_ALIGNMENT", Alignment.class);
 }

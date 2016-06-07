@@ -81,4 +81,24 @@ public interface LayoutProperties
 	 */
 	public static final PropertyName<Boolean> SAME_ROW =
 		PropertyName.newBooleanName("SAME_ROW");
+
+	/** {@link Alignment}: the horizontal alignment of an element. */
+	public static final PropertyName<Alignment> HORIZONTAL_ALIGN =
+		PropertyName.newEnumName("HORIZONTAL_ALIGN", Alignment.class);
+
+	/** {@link Alignment}: the horizontal alignment of an element. */
+	public static final PropertyName<Alignment> VERTICAL_ALIGN =
+		PropertyName.newEnumName("VERTICAL_ALIGN", Alignment.class);
+
+	/** {@link Alignment}: the alignment of text within an element. */
+	public static final PropertyName<Alignment> TEXT_ALIGN =
+		PropertyName.newEnumName("TEXT_ALIGN", Alignment.class);
+
+	/** {@link Alignment}: the alignment of an icon within an element. */
+	public static final PropertyName<Alignment> ICON_ALIGN =
+		PropertyName.newEnumName("ICON_ALIGN", Alignment.class);
+
+	/** Enum: The relative scale of an {@link ContentProperties#ICON}. */
+	public static final PropertyName<RelativeScale> ICON_SIZE =
+		PropertyName.newEnumName("ICON_SIZE", RelativeScale.class);
 }
