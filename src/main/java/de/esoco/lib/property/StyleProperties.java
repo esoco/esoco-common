@@ -116,12 +116,13 @@ public interface StyleProperties
 	public static final PropertyName<Map<String, String>> CSS_STYLES =
 		PropertyName.newMapName("CSS_STYLES", String.class, String.class);
 
-	/**
-	 * Enum: the type in which buttons created from a data element should be
-	 * displayed.
-	 */
+	/** Enum: the display style for buttons. */
 	public static final PropertyName<ButtonStyle> BUTTON_STYLE =
 		PropertyName.newEnumName("BUTTON_STYLE", ButtonStyle.class);
+
+	/** Enum: the display style for check boxes. */
+	public static final PropertyName<CheckBoxStyle> CHECK_BOX_STYLE =
+		PropertyName.newEnumName("CHECK_BOX_STYLE", CheckBoxStyle.class);
 
 	/**
 	 * Enum: the style in which a readonly text data element should be
