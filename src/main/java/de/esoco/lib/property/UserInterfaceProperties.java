@@ -48,6 +48,10 @@ public class UserInterfaceProperties implements ContentProperties,
 		// be one from each implemented interface
 		@SuppressWarnings("unused")
 		PropertyName<?>[] rInitDummy =
-			new PropertyName<?>[] { RESOURCE, WIDTH, DISABLED, WRAP };
+			new PropertyName<?>[]
+			{
+				ContentProperties.RESOURCE, LayoutProperties.WIDTH,
+				StateProperties.DISABLED, StyleProperties.WRAP
+			};
 	}
 }
