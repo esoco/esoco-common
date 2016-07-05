@@ -82,6 +82,14 @@ public interface LayoutProperties
 	public static final PropertyName<Boolean> SAME_ROW =
 		PropertyName.newBooleanName("SAME_ROW");
 
+	/**
+	 * {@link Alignment}: defines that an element should float above other
+	 * content with the given alignment. Which alignments are supported depends
+	 * on the implementation.
+	 */
+	public static final PropertyName<Alignment> FLOAT =
+		PropertyName.newEnumName("FLOAT", Alignment.class);
+
 	/** {@link Alignment}: the horizontal alignment of an element. */
 	public static final PropertyName<Alignment> HORIZONTAL_ALIGN =
 		PropertyName.newEnumName("HORIZONTAL_ALIGN", Alignment.class);
