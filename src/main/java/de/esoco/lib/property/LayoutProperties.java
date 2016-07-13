@@ -109,4 +109,8 @@ public interface LayoutProperties
 	/** Enum: The relative scale of an {@link ContentProperties#ICON}. */
 	public static final PropertyName<RelativeScale> ICON_SIZE =
 		PropertyName.newEnumName("ICON_SIZE", RelativeScale.class);
+
+	/** Enum: The relative scale of an {@link ContentProperties#ICON}. */
+	public static final PropertyName<RelativeScale> BUTTON_SIZE =
+		PropertyName.newEnumName("BUTTON_SIZE", RelativeScale.class);
 }
