@@ -16,6 +16,9 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
+import java.util.Set;
+
+
 /********************************************************************
  * Defines typical state {@link PropertyName Properties}.
  *
@@ -60,14 +63,18 @@ public interface StateProperties
 	public static final PropertyName<Boolean> VALUE_CHANGED =
 		PropertyName.newBooleanName("VALUE_CHANGED");
 
-	/**
-	 * Enum: the input mode for interactive input elements. If supported by the
-	 * element and not NONE the input element will send input interactively to
-	 * the receiver as defined by the mode value.
-	 */
+	/** Enum: the input mode for interactive input elements. */
 	public static final PropertyName<InteractiveInputMode> INTERACTIVE_INPUT_MODE =
 		PropertyName.newEnumName("INTERACTIVE_INPUT_MODE",
 								 InteractiveInputMode.class);
+
+	/**
+	 * Set of enums: the event types to be listened to in interactive user
+	 * interfaces.
+	 */
+	public static final PropertyName<Set<InteractionEventType>> INTERACTION_EVENT_TYPES =
+		PropertyName.newSetName("INTERACTION_EVENT_TYPES",
+								InteractionEventType.class);
 
 	/**
 	 * String: a comma-separated list of the names of user interface elements

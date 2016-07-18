@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -213,9 +213,12 @@ public abstract class AbstractStringProperties implements HasProperties,
 			aResult.append(DEFAULT_COLLECTION_SEPARATOR);
 		}
 
-		// don't remove last separator to indicate that at least on element
-		// exist even if it is an empty string because empty collections won't
-		// have a separator at all
+		int nResultLength = aResult.length();
+
+		if (nResultLength > 0)
+		{
+			aResult.setLength(nResultLength - 1);
+		}
 
 		return aResult.toString();
 	}
@@ -358,9 +361,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 			rCollection = (C) new HashSet<T>();
 		}
 
-		// always omit the last element because it is used to distinguish
-		// empty collections
-		for (int i = 0; i < rElements.length - 1; i++)
+		for (int i = 0; i < rElements.length; i++)
 		{
 			String sValue =
 				unicodeDecode(rElements[i], DEFAULT_COLLECTION_SEPARATOR);

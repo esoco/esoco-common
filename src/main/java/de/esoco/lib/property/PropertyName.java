@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /********************************************************************
@@ -174,6 +175,21 @@ public class PropertyName<T> implements Serializable
 	public static <T> PropertyName<T> newName(String sName, Class<T> rDatatype)
 	{
 		return new PropertyName<T>(sName, rDatatype);
+	}
+
+	/***************************************
+	 * Factory method to create a new property name with a list datatype.
+	 *
+	 * @param  sName        The name
+	 * @param  rElementType The datatype of the list elements
+	 *
+	 * @return A new instance with the given name
+	 */
+	public static <E> PropertyName<Set<E>> newSetName(
+		String   sName,
+		Class<E> rElementType)
+	{
+		return new PropertyName<Set<E>>(sName, Set.class, rElementType);
 	}
 
 	/***************************************
