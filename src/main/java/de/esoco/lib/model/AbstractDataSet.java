@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -172,6 +172,15 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	{
 		aColumnLabels.remove(nColumn);
 		getDataRows().remove(nColumn);
+	}
+
+	/***************************************
+	 * @see de.esoco.lib.property.AbstractStringProperties#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return getClass().getSimpleName() + aRowLabels;
 	}
 
 	/***************************************
