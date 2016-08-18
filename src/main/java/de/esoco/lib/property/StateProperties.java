@@ -48,12 +48,12 @@ public interface StateProperties
 		PropertyName.newBooleanName("NO_INTERACTION_LOCK");
 
 	/**
-	 * Boolean: TRUE to mark the element that should receive the initial UI
-	 * focus. This flag should only occur once in a set of elements. The
+	 * Boolean: TRUE to mark the element that should receive the input focus.
+	 * This flag should only occur once in an user interface definition. The
 	 * behavior for multiple occurrences is undefined.
 	 */
-	public static final PropertyName<Boolean> INITIAL_FOCUS =
-		PropertyName.newBooleanName("INITIAL_FOCUS");
+	public static final PropertyName<Boolean> FOCUSED =
+		PropertyName.newBooleanName("FOCUSED");
 
 	/** Integer: the current selection index of a multiple-data element. */
 	public static final PropertyName<Integer> CURRENT_SELECTION =
