@@ -1,22 +1,51 @@
+buildscript {
+    repositories { jcenter() }
+    dependencies { classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7' }
+}
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven'
+
+
 apply plugin: 'wrapper'
 apply plugin: 'java'
 apply plugin: 'osgi'
 
-project.version = "1.0.0"
-project.group = "esoco"
+project.group   = 'de.esoco'
+project.version = '1.0.0'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
-jar { from sourceSets.main.allJava }
+task sourceJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
 
-apply plugin: 'maven'
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-        	if (project.hasProperty('esocoMavenRepoUrl'))
-            	repository(url: project.esocoMavenRepoUrl)
-        }
+artifacts {
+    archives sourceJar
+    archives javadocJar
+}
+
+bintray {
+	user = project.hasProperty('bintrayUser') ? 
+				project.property('bintrayUser') : 
+				System.getenv('BINTRAY_USER')
+	key = project.hasProperty('bintrayApiKey') ? 
+				project.property('bintrayApiKey') : 
+				System.getenv('BINTRAY_API_KEY')
+    configurations = ['archives']
+    publish = true
+
+	pkg {
+		repo = 'sdack'
+		name = project.name
+		version {
+			name = project.version
+	    }
     }
 }
