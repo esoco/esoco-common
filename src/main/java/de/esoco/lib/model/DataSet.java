@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ Value Axis            +-Column Axis-+
 10 |  % +  # %        |+ Column 2   |
    |# % +  # % +      +-------------+
  5 |# % +  # % + ...
-   +----------------> Row Axis
+   +----------------&gt; Row Axis
     Row 0  Row 1
  * </pre>
  *

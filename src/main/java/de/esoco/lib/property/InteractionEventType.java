@@ -21,9 +21,9 @@ package de.esoco.lib.property;
  * values are:
  *
  * <ul>
- *   <li><l>{@link #UPDATE}: The value of an element has been updated.</li>
- *   <li><l>{@link #ACTION}: An action has been triggered for an element.</li>
- *   <li><l>{@link #FOCUS_LOST}: An element has lost the input focus.</li>
+ *   <li>{@link #UPDATE}: The value of an element has been updated.</li>
+ *   <li>{@link #ACTION}: An action has been triggered for an element.</li>
+ *   <li>{@link #FOCUS_LOST}: An element has lost the input focus.</li>
  * </ul>
  */
 public enum InteractionEventType { UPDATE, ACTION, FOCUS_LOST }
