@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,6 +55,13 @@ public interface StateProperties
 	public static final PropertyName<Boolean> FOCUSED =
 		PropertyName.newBooleanName("FOCUSED");
 
+	/**
+	 * Boolean: indicates that the UI update of an element can be deferred
+	 * because it isn't visible initially.
+	 */
+	public static final PropertyName<Boolean> DEFERRED_UPDATE =
+		PropertyName.newBooleanName("DEFERRED_UPDATE");
+
 	/** Integer: the current selection index of a multiple-data element. */
 	public static final PropertyName<Integer> CURRENT_SELECTION =
 		PropertyName.newIntegerName("CURRENT_SELECTION");
@@ -67,6 +74,13 @@ public interface StateProperties
 	public static final PropertyName<InteractiveInputMode> INTERACTIVE_INPUT_MODE =
 		PropertyName.newEnumName("INTERACTIVE_INPUT_MODE",
 								 InteractiveInputMode.class);
+
+	/**
+	 * Integer: a delay in milliseconds to postpone the event handling for an
+	 * element with.
+	 */
+	public static final PropertyName<Integer> EVENT_HANDLING_DELAY =
+		PropertyName.newIntegerName("EVENT_HANDLING_DELAY");
 
 	/**
 	 * Set of enums: the event types to be listened to in interactive user
