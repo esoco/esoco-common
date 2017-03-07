@@ -55,13 +55,6 @@ public interface StateProperties
 	public static final PropertyName<Boolean> FOCUSED =
 		PropertyName.newBooleanName("FOCUSED");
 
-	/**
-	 * Boolean: indicates that the UI update of an element can be deferred
-	 * because it isn't visible initially.
-	 */
-	public static final PropertyName<Boolean> DEFERRED_UPDATE =
-		PropertyName.newBooleanName("DEFERRED_UPDATE");
-
 	/** Integer: the current selection index of a multiple-data element. */
 	public static final PropertyName<Integer> CURRENT_SELECTION =
 		PropertyName.newIntegerName("CURRENT_SELECTION");
