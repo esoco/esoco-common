@@ -69,6 +69,13 @@ public interface StateProperties
 								 InteractiveInputMode.class);
 
 	/**
+	 * Boolean: whether an element should be explicitly disabled if it causes an
+	 * interaction.
+	 */
+	public static final PropertyName<Boolean> DISABLE_ON_INTERACTION =
+		PropertyName.newBooleanName("DISABLE_ON_INTERACTION");
+
+	/**
 	 * Integer: a delay in milliseconds to postpone the event handling for an
 	 * element with.
 	 */
