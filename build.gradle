@@ -4,8 +4,7 @@ apply plugin: 'osgi'
 project.group   = 'de.esoco'
 project.version = '1.0.0'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
 
 // sources are needed for the GWT compiler
 jar { from sourceSets.main.allSource }
