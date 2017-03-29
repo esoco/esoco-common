@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'osgi'
+apply plugin: 'eclipse'
 
 project.group   = 'de.esoco'
 project.version = '1.0.0'
