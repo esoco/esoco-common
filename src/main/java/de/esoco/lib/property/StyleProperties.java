@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,6 +39,10 @@ public interface StyleProperties
 	/** Integer: the maximum number of characters to display. */
 	public static final PropertyName<Integer> MAX_CHARS =
 		PropertyName.newIntegerName("MAX_CHARS");
+
+	/** Integer: the duration of an UI animation. */
+	public static final PropertyName<Integer> ANIMATION_DURATION =
+		PropertyName.newIntegerName("ANIMATION_DURATION");
 
 	/**
 	 * String: a list of disabled elements, e.g. of buttons in a list with
@@ -138,6 +142,11 @@ public interface StyleProperties
 	/** The style of a list layout. */
 	public static final PropertyName<ListLayoutStyle> LIST_LAYOUT_STYLE =
 		PropertyName.newName("LIST_LAYOUT_STYLE", ListLayoutStyle.class);
+
+	/** The style of a navigation menu. */
+	public static final PropertyName<NavigationMenuStyle> NAVIGATION_MENU_STYLE =
+		PropertyName.newName("NAVIGATION_MENU_STYLE",
+							 NavigationMenuStyle.class);
 
 	/** Integer: the RGB background color of an element. */
 	public static final PropertyName<Integer> BACKGROUND_COLOR =
