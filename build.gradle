@@ -3,7 +3,7 @@ apply plugin: 'osgi'
 apply plugin: 'eclipse'
 
 project.group   = 'de.esoco'
-project.version = '1.0.0'
+project.version = '1.0.1'
 
 sourceCompatibility = 1.8
 
