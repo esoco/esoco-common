@@ -14,11 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-package de.esoco.lib;
-
-import de.esoco.lib.property.Gettable;
-import de.esoco.lib.property.Settable;
-
+package de.esoco.lib.property;
 
 /********************************************************************
  * A combined interface for objects that provide a mutable value.
