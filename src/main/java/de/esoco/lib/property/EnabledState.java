@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,6 +24,22 @@ package de.esoco.lib.property;
 public interface EnabledState
 {
 	//~ Methods ----------------------------------------------------------------
+
+	/***************************************
+	 * Sets the state of this object to disabled.
+	 */
+	default public void disable()
+	{
+		setEnabled(false);
+	}
+
+	/***************************************
+	 * Sets the state of this object to enabled.
+	 */
+	default public void enable()
+	{
+		setEnabled(true);
+	}
 
 	/***************************************
 	 * Returns the enabled state of the element.
