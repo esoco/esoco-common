@@ -29,7 +29,7 @@ public interface ButtonBuilder extends UiElement
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Returns a new button component. The label can be provided either as an
+	 * Adds a new check box component. The label can be provided either as an
 	 * enum value or as an arbitrary object that will be converted to a string
 	 * by means of {@link Object#toString()}.
 	 *
@@ -37,10 +37,21 @@ public interface ButtonBuilder extends UiElement
 	 *
 	 * @return The new component
 	 */
-	public UiPushButton checkBox(Object rButtonLabel);
+	public UiPushButton addCheckBox(Object rButtonLabel);
 
 	/***************************************
-	 * Returns a new button component. The label can be provided either as an
+	 * Adds a new button component. The label can be provided either as an enum
+	 * value or as an arbitrary object that will be converted to a string by
+	 * means of {@link Object#toString()}.
+	 *
+	 * @param  rButtonLabel The button label
+	 *
+	 * @return The new component
+	 */
+	public UiPushButton addPushButton(Object rButtonLabel);
+
+	/***************************************
+	 * Adds a new radio button component. The label can be provided either as an
 	 * enum value or as an arbitrary object that will be converted to a string
 	 * by means of {@link Object#toString()}.
 	 *
@@ -48,16 +59,5 @@ public interface ButtonBuilder extends UiElement
 	 *
 	 * @return The new component
 	 */
-	public UiPushButton pushButton(Object rButtonLabel);
-
-	/***************************************
-	 * Returns a new radio button component. The label can be provided either as
-	 * an enum value or as an arbitrary object that will be converted to a
-	 * string by means of {@link Object#toString()}.
-	 *
-	 * @param  rButtonLabel The button label
-	 *
-	 * @return The new component
-	 */
-	public UiPushButton radioButton(Object rButtonLabel);
+	public UiPushButton addRadioButton(Object rButtonLabel);
 }

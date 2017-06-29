@@ -17,10 +17,9 @@
 package de.esoco.lib.ui;
 
 import de.esoco.lib.ui.component.UiDateField;
+import de.esoco.lib.ui.component.UiLabel;
 import de.esoco.lib.ui.component.UiPanel;
 import de.esoco.lib.ui.component.UiTextField;
-
-import java.awt.Container;
 
 
 /********************************************************************
@@ -28,35 +27,44 @@ import java.awt.Container;
  *
  * @author eso
  */
-public interface UiBuilder<C extends Container> extends UiElement, ButtonBuilder
+public interface UiBuilder extends UiElement, ButtonBuilder
 {
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * A date input field.
+	 * Adds a date input field.
 	 *
 	 * @return The new component
 	 */
-	public UiDateField dateField();
+	public UiDateField addDateField();
 
 	/***************************************
-	 * Creates a new panel container.
+	 * Adds a text label.
+	 *
+	 * @param  sText The label text
 	 *
 	 * @return The new component
 	 */
-	public UiPanel panel();
+	public UiLabel addLabel(String sText);
 
 	/***************************************
-	 * A multi-line text input field.
+	 * Adds a panel container.
 	 *
 	 * @return The new component
 	 */
-	public UiTextField textArea();
+	public UiPanel addPanel();
 
 	/***************************************
-	 * A single-line text input field.
+	 * Adds a multi-line text input field.
 	 *
 	 * @return The new component
 	 */
-	public UiTextField textField();
+	public UiTextField addTextArea();
+
+	/***************************************
+	 * Adds a single-line text input field.
+	 *
+	 * @return The new component
+	 */
+	public UiTextField addTextField();
 }
