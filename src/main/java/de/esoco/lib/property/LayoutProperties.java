@@ -59,9 +59,9 @@ public interface LayoutProperties
 	public static final PropertyName<String> HTML_HEIGHT =
 		PropertyName.newStringName("HTML_HEIGHT");
 
-	/** {@link Layout}: The layout of an elements. */
-	public static final PropertyName<Layout> LAYOUT =
-		PropertyName.newEnumName("LAYOUT", Layout.class);
+	/** {@link LayoutType}: The layout of an elements. */
+	public static final PropertyName<LayoutType> LAYOUT =
+		PropertyName.newEnumName("LAYOUT", LayoutType.class);
 
 	/** {@link ViewDisplayType}: The display style of a view. */
 	public static final PropertyName<ViewDisplayType> VIEW_DISPLAY_TYPE =

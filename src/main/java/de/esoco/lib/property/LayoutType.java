@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 package de.esoco.lib.property;
 
 /********************************************************************
- * Enumeration of the layouts for UI element containers. The layout defines how
- * elements will be arranged in the generated user interface. Not all layouts
- * may be supported by an implementation but in that case it should fall back to
- * a reasonable default placement of elements. The possible values are:
+ * Enumeration of the layout types for UI element containers. The layout defines
+ * how elements will be arranged in the generated user interface. Not all
+ * layouts may be supported by an implementation but in that case it should fall
+ * back to a reasonable default placement of elements. The possible values are:
  *
  * <ul>
  *   <li>{@link #TABLE}: Data elements are placed in the cells of a table-like
@@ -42,6 +42,7 @@ package de.esoco.lib.property;
  *     according to their properties.</li>
  *   <li>{@link #GRID_ROW}: A row in a {@link #GRID} layout.</li>
  *   <li>{@link #GRID_COLUMN}: A column in a {@link #GRID_ROW}.</li>
+ *   <li>{@link #CSS_GRID}: A grid layout based on the CSS grid mechanism.</li>
  *   <li>{@link #LIST}: Places elements in a list.</li>
  *   <li>{@link #LIST_ITEM}: A single element in a {@link #LIST} layout.</li>
  *   <li>{@link #CARD}: A structured card with specific elements like title,
@@ -62,9 +63,9 @@ package de.esoco.lib.property;
  *     render it in-line with it's parent.</li>
  * </ul>
  */
-public enum Layout
+public enum LayoutType
 {
 	TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, GRID, GRID_ROW,
-	GRID_COLUMN, LIST, LIST_ITEM, CARD, FORM, GROUP, MENU, HEADER, CONTENT,
-	SECONDARY_CONTENT, FOOTER, INLINE
+	GRID_COLUMN, CSS_GRID, LIST, LIST_ITEM, CARD, FORM, GROUP, MENU, HEADER,
+	CONTENT, SECONDARY_CONTENT, FOOTER, INLINE
 }
