@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -54,9 +54,9 @@ public interface MutableProperties extends HasProperties
 	public void setFlag(PropertyName<Boolean> rName);
 
 	/***************************************
-	 * Sets all properties from another properties object in this instance. This
-	 * will replace all existing properties with the same names as in the copied
-	 * instance.
+	 * Sets all properties from another properties object in this instance. The
+	 * boolean parameter controls whether existing properties will be replaced
+	 * or ignored.
 	 *
 	 * <p>It depends on the actual implementations whether all properties from
 	 * the other instance can be copied correctly into the target instance. It
@@ -64,9 +64,11 @@ public interface MutableProperties extends HasProperties
 	 * of the same or a compatible type. Implementations should indicate
 	 * incompatible data formats by throwing a runtime exception.</p>
 	 *
-	 * @param rOther The instance to copy the properties from
+	 * @param rOther   The instance to copy the properties from
+	 * @param bReplace TRUE to replace existing value, FALSE to only add
+	 *                 non-existing values
 	 */
-	public void setProperties(HasProperties rOther);
+	public void setProperties(HasProperties rOther, boolean bReplace);
 
 	/***************************************
 	 * Sets a particular property. Setting a value of NULL will remove the

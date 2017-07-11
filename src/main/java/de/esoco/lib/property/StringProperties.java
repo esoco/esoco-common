@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,13 +49,13 @@ public class StringProperties extends AbstractStringProperties
 	 */
 	public StringProperties(HasProperties rOther)
 	{
-		setProperties(rOther);
+		setProperties(rOther, true);
 	}
 
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * @see MutableProperties#clearFlag(PropertyName)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public final void clearFlag(PropertyName<Boolean> rName)
@@ -64,7 +64,7 @@ public class StringProperties extends AbstractStringProperties
 	}
 
 	/***************************************
-	 * @see MutableProperties#clearProperties()
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void clearProperties()
@@ -95,10 +95,10 @@ public class StringProperties extends AbstractStringProperties
 	}
 
 	/***************************************
-	 * @see MutableProperties#setProperties(HasProperties)
+	 * {@inheritDoc}
 	 */
 	@Override
-	public void setProperties(HasProperties rOther)
+	public void setProperties(HasProperties rOther, boolean bReplace)
 	{
 		if (rOther.getPropertyCount() > 0)
 		{
@@ -106,18 +106,21 @@ public class StringProperties extends AbstractStringProperties
 
 			for (PropertyName<?> rName : rOther.getPropertyNames())
 			{
-				Object rValue = rOther.getProperty(rName, null);
-
-				if (rValue != null)
+				if (bReplace || !hasProperty(rName))
 				{
-					getPropertyMap().put(rName, convertValue(rValue));
+					Object rValue = rOther.getProperty(rName, null);
+
+					if (rValue != null)
+					{
+						getPropertyMap().put(rName, convertValue(rValue));
+					}
 				}
 			}
 		}
 	}
 
 	/***************************************
-	 * @see MutableProperties#setProperty(PropertyName, Object)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public <T> void setProperty(PropertyName<T> rName, T rValue)
@@ -126,7 +129,7 @@ public class StringProperties extends AbstractStringProperties
 	}
 
 	/***************************************
-	 * @see MutableProperties#setProperty(PropertyName, boolean)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public final void setProperty(PropertyName<Boolean> rName, boolean bValue)
@@ -135,7 +138,7 @@ public class StringProperties extends AbstractStringProperties
 	}
 
 	/***************************************
-	 * @see MutableProperties#setProperty(PropertyName, int)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public final void setProperty(PropertyName<Integer> rName, int nValue)
