@@ -148,15 +148,22 @@ public interface StyleProperties
 		PropertyName.newName("NAVIGATION_MENU_STYLE",
 							 NavigationMenuStyle.class);
 
-	/** Integer: the RGB background color of an element. */
-	public static final PropertyName<Integer> BACKGROUND_COLOR =
-		PropertyName.newIntegerName("BACKGROUND_COLOR");
+	/**
+	 * String: the background color of an element as a HTML color definition.
+	 */
+	public static final PropertyName<String> BACKGROUND_COLOR =
+		PropertyName.newStringName("BACKGROUND_COLOR");
 
-	/** Integer: the RGB foreground color of an element. */
-	public static final PropertyName<Integer> FOREGROUND_COLOR =
-		PropertyName.newIntegerName("FOREGROUND_COLOR");
+	/**
+	 * String: the foreground color of an element as a HTML color definition.
+	 */
+	public static final PropertyName<String> FOREGROUND_COLOR =
+		PropertyName.newStringName("FOREGROUND_COLOR");
 
-	/** Integer: the RGB icon color of an {@link ContentProperties#ICON}. */
-	public static final PropertyName<Integer> ICON_COLOR =
-		PropertyName.newIntegerName("ICON_COLOR");
+	/**
+	 * String: the icon color of an {@link ContentProperties#ICON} as a HTML
+	 * color definition.
+	 */
+	public static final PropertyName<String> ICON_COLOR =
+		PropertyName.newStringName("ICON_COLOR");
 }
