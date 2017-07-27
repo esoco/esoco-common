@@ -20,10 +20,10 @@ import de.esoco.lib.text.TextConvert;
 
 
 /********************************************************************
- * An immutable datatype that encapsules RGB color data and provides conversions
- * to other color data formats like HTML strings. Instances of this classes are
- * created through the different {@link #valueOf(int, int, int) valueOf()}
- * methods.
+ * An immutable datatype that encapsulates RGB color data and provides
+ * conversions to other color data formats like HTML strings. Instances of this
+ * classes are created through the different {@link #valueOf(int, int, int)
+ * valueOf()} methods.
  */
 public class Color
 {
@@ -190,7 +190,7 @@ public class Color
 
 	/***************************************
 	 * Returns a color value that is 10 percent brighter than this instance by
-	 * invoking the {@link #changeBrightness(int, int)} method.
+	 * invoking the {@link #changeBrightness(int)} method.
 	 *
 	 * @return The brighter color
 	 */
@@ -251,7 +251,7 @@ public class Color
 
 	/***************************************
 	 * Returns a color value that is 10 percent darker than this instance by
-	 * invoking the {@link #changeBrightness(int, int)} method.
+	 * invoking the {@link #changeBrightness(int)} method.
 	 *
 	 * @return The darker color
 	 */

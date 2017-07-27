@@ -43,7 +43,8 @@ public class StringProperties extends AbstractStringProperties
 
 	/***************************************
 	 * Copy constructor that creates a new instance from another properties
-	 * object. Invokes the {@link #setProperties(HasProperties)} method.
+	 * object. Invokes the {@link #setProperties(HasProperties, boolean)}
+	 * method.
 	 *
 	 * @param rOther The instance to copy the properties from
 	 */
