@@ -166,4 +166,8 @@ public interface StyleProperties
 	 */
 	public static final PropertyName<String> ICON_COLOR =
 		PropertyName.newStringName("ICON_COLOR");
+
+	/** Boolean: TRUE to use a standard UI component instead of some variant. */
+	public static final PropertyName<Boolean> USE_STANDARD_COMPONENT =
+		PropertyName.newBooleanName("USE_STANDARD_COMPONENT");
 }
