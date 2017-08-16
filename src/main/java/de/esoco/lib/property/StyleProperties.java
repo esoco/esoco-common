@@ -151,21 +151,21 @@ public interface StyleProperties
 	/**
 	 * String: the background color of an element as a HTML color definition.
 	 */
-	public static final PropertyName<String> BACKGROUND_COLOR =
-		PropertyName.newStringName("BACKGROUND_COLOR");
+	public static final PropertyName<Color> BACKGROUND_COLOR =
+		PropertyName.newName("BACKGROUND_COLOR", Color.class);
 
 	/**
 	 * String: the foreground color of an element as a HTML color definition.
 	 */
-	public static final PropertyName<String> FOREGROUND_COLOR =
-		PropertyName.newStringName("FOREGROUND_COLOR");
+	public static final PropertyName<Color> FOREGROUND_COLOR =
+		PropertyName.newName("FOREGROUND_COLOR", Color.class);
 
 	/**
 	 * String: the icon color of an {@link ContentProperties#ICON} as a HTML
 	 * color definition.
 	 */
-	public static final PropertyName<String> ICON_COLOR =
-		PropertyName.newStringName("ICON_COLOR");
+	public static final PropertyName<Color> ICON_COLOR =
+		PropertyName.newName("ICON_COLOR", Color.class);
 
 	/** Boolean: TRUE to use a standard UI component instead of some variant. */
 	public static final PropertyName<Boolean> USE_STANDARD_COMPONENT =

@@ -1,12 +1,12 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//		 http://www.apache.org/licenses/LICENSE-2.0
+//	  http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -92,7 +92,14 @@ public interface ContentProperties
 		PropertyName.newStringName("MIME_TYPE");
 
 	/**
-	 * String: The name of an icon that should be displayed for the target
+	 * String: The URI of an image that should be displayed in the target
+	 * object.
+	 */
+	public static final PropertyName<String> IMAGE =
+		PropertyName.newStringName("IMAGE");
+
+	/**
+	 * String: The name of an icon that should be displayed in the target
 	 * object.
 	 */
 	public static final PropertyName<String> ICON =
