@@ -66,6 +66,10 @@ public interface StyleProperties
 	public static final PropertyName<Boolean> HIDE_LABEL =
 		PropertyName.newBooleanName("HIDE_LABEL");
 
+	/** Boolean: TRUE to explicitly show the label of an element. */
+	public static final PropertyName<Boolean> SHOW_LABEL =
+		PropertyName.newBooleanName("SHOW_LABEL");
+
 	/**
 	 * Boolean: TRUE to display the label of an element as a header instead of a
 	 * prefix.
