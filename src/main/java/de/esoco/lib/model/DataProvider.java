@@ -32,7 +32,7 @@ public interface DataProvider<T>
 	 * Returns a new data provider that contains a certain collection of data
 	 * objects.
 	 *
-	 * @param  rData The data
+	 * @param  rData The collection of data objects
 	 *
 	 * @return The new data provider
 	 */
@@ -44,7 +44,9 @@ public interface DataProvider<T>
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Returns a subset of data objects from this provider.
+	 * Returns a subset of data objects from this provider. If less data then
+	 * requested is available the returned collection may contain less elements
+	 * then nCount. It may even be empty but it will never be NULL.
 	 *
 	 * @param  nStart The starting index of the first data object to return
 	 * @param  nCount The number of data objects to return

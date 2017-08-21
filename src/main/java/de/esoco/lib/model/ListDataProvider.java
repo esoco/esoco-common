@@ -19,29 +19,37 @@ package de.esoco.lib.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /********************************************************************
- * A {@link DataProvider} implementation that is backed by a {@link List}.
+ * A {@link DataProvider} implementation that is backed by a {@link List}. It
+ * also implements ordering and filtering on attributes of the contained data.
  *
  * @author eso
  */
-public class ListDataProvider<T> implements DataProvider<T>
+public class ListDataProvider<T> extends AbstractDataProvider<T>
 {
 	//~ Instance fields --------------------------------------------------------
 
-	private final List<T> aData;
+	private final List<T> aOriginalData;
+	private List<T>		  aVisibleData;
 
 	//~ Constructors -----------------------------------------------------------
 
 	/***************************************
-	 * Creates a new instance.
+	 * Creates a new instance with a copy of a collection of data objects.
 	 *
-	 * @param rData A collection containing the provider data
+	 * @param rData A collection containing the data objects
 	 */
 	public ListDataProvider(Collection<T> rData)
 	{
-		aData = new ArrayList<>(rData);
+		aOriginalData = new ArrayList<>(rData);
+
+		applyConstraints();
 	}
 
 	//~ Methods ----------------------------------------------------------------
@@ -52,19 +60,19 @@ public class ListDataProvider<T> implements DataProvider<T>
 	@Override
 	public Collection<T> getData(int nStart, int nCount)
 	{
-		if (nStart > aData.size())
+		if (nStart > aVisibleData.size())
 		{
-			nStart = aData.size();
+			nStart = aVisibleData.size();
 		}
 
 		int nEnd = nStart + nCount;
 
-		if (nEnd > aData.size())
+		if (nEnd > aVisibleData.size())
 		{
-			nEnd = aData.size();
+			nEnd = aVisibleData.size();
 		}
 
-		return aData.subList(nStart, nEnd);
+		return aVisibleData.subList(nStart, nEnd);
 	}
 
 	/***************************************
@@ -73,6 +81,95 @@ public class ListDataProvider<T> implements DataProvider<T>
 	@Override
 	public int size()
 	{
-		return aData.size();
+		return aVisibleData.size();
+	}
+
+	/***************************************
+	 * Resets the visible data to the original (full) data set.
+	 */
+	@Override
+	protected void applyConstraints()
+	{
+		Stream<T> aDataStream = aOriginalData.stream();
+
+		for (Entry<AttributeBinding<T, ?>, Predicate<?>> rFilter :
+			 getFilters().entrySet())
+		{
+			AttributeBinding<T, ?> rAttribute = rFilter.getKey();
+
+			@SuppressWarnings("unchecked")
+			Predicate<Object> pFilter = (Predicate<Object>) rFilter.getValue();
+
+			aDataStream =
+				aDataStream.filter(t ->
+			   					{
+			   						return pFilter.test(rAttribute.apply(t));
+								   });
+		}
+
+		if (!getOrderCriteria().isEmpty())
+		{
+			aDataStream = aDataStream.sorted(this::compareDataObjects);
+		}
+
+		aVisibleData = aDataStream.collect(Collectors.toList());
+	}
+
+	/***************************************
+	 * Compares the values of an attribute in two data objects according to the
+	 * specification of the {@link Comparable} interface.
+	 *
+	 * @param  t1         The first data object
+	 * @param  t2         The second data object
+	 * @param  rAttribute The attribute to compare
+	 * @param  eDirection The order direction
+	 *
+	 * @return The comparison value as defined by {@link Comparable}
+	 */
+	protected <V extends Comparable<V>> int compareAttributeValues(
+		T					   t1,
+		T					   t2,
+		AttributeBinding<T, V> rAttribute,
+		OrderDirection		   eDirection)
+	{
+		V v1 = rAttribute.apply(t1);
+		V v2 = rAttribute.apply(t2);
+
+		return eDirection == OrderDirection.ASCENDING ? v1.compareTo(v2)
+													  : v2.compareTo(v1);
+	}
+
+	/***************************************
+	 * Compares two data objects and returns a result that is compliant with the
+	 * {@link Comparable} interface.
+	 *
+	 * @param  t1 The first object to compare
+	 * @param  t2 The second object to compare
+	 *
+	 * @return The comparison result
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected int compareDataObjects(T t1, T t2)
+	{
+		int nComparison = -1;
+
+		for (Entry<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> rOrdering :
+			 getOrderCriteria().entrySet())
+		{
+			AttributeBinding<T, Comparable> rAttribute =
+				(AttributeBinding<T, Comparable>) rOrdering.getKey();
+
+			OrderDirection eDirection = rOrdering.getValue();
+
+			nComparison =
+				compareAttributeValues(t1, t2, rAttribute, eDirection);
+
+			if (nComparison != 0)
+			{
+				break;
+			}
+		}
+
+		return nComparison;
 	}
 }
