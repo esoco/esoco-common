@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-import de.esoco.lib.model.AttributeBinding;
+import java.util.function.Function;
 
 
 /********************************************************************
@@ -46,7 +46,7 @@ public interface HasAttributeOrdering<T>
 	 * @param eDirection The order direction or NULL to remove the ordering
 	 */
 	public <V extends Comparable<V>> void applyOrder(
-		AttributeBinding<T, V> rAttribute,
+		Function<? super T, V> rAttribute,
 		OrderDirection		   eDirection);
 
 	/***************************************
@@ -57,5 +57,5 @@ public interface HasAttributeOrdering<T>
 	 *
 	 * @return The attribute order direction or NULL for none
 	 */
-	public OrderDirection getOrder(AttributeBinding<T, ?> rAttribute);
+	public OrderDirection getOrder(Function<? super T, ?> rAttribute);
 }

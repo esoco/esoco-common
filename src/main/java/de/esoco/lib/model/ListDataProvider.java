@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -92,10 +93,10 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	{
 		Stream<T> aDataStream = aOriginalData.stream();
 
-		for (Entry<AttributeBinding<T, ?>, Predicate<?>> rFilter :
+		for (Entry<Function<? super T, ?>, Predicate<?>> rFilter :
 			 getAttributeFilters().entrySet())
 		{
-			AttributeBinding<T, ?> rAttribute = rFilter.getKey();
+			Function<? super T, ?> rAttribute = rFilter.getKey();
 
 			@SuppressWarnings("unchecked")
 			Predicate<Object> pFilter = (Predicate<Object>) rFilter.getValue();
@@ -129,7 +130,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	protected <V extends Comparable<V>> int compareAttributeValues(
 		T					   t1,
 		T					   t2,
-		AttributeBinding<T, V> rAttribute,
+		Function<? super T, V> rAttribute,
 		OrderDirection		   eDirection)
 	{
 		V v1 = rAttribute.apply(t1);
@@ -166,10 +167,10 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	{
 		int nComparison = -1;
 
-		for (Entry<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> rOrdering :
+		for (Entry<Function<? super T, ? extends Comparable<?>>, OrderDirection> rOrdering :
 			 getAttributeOrders().entrySet())
 		{
-			AttributeBinding<T, ? extends Comparable> rAttribute =
+			Function<? super T, ? extends Comparable> rAttribute =
 				rOrdering.getKey();
 
 			OrderDirection eDirection = rOrdering.getValue();

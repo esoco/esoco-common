@@ -21,6 +21,7 @@ import de.esoco.lib.property.HasAttributeOrdering;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 
@@ -36,10 +37,10 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 {
 	//~ Instance fields --------------------------------------------------------
 
-	private Map<AttributeBinding<T, ?>, Predicate<?>> aAttributeFilters =
+	private Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
 		new LinkedHashMap<>();
 
-	private Map<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> aAttributeOrders =
+	private Map<Function<? super T, ? extends Comparable<?>>, OrderDirection> aAttributeOrders =
 		new LinkedHashMap<>();
 
 	//~ Methods ----------------------------------------------------------------
@@ -49,7 +50,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 */
 	@Override
 	public <V> void applyFilter(
-		AttributeBinding<T, V> rAttribute,
+		Function<? super T, V> rAttribute,
 		Predicate<? super V>   pCriteria)
 	{
 		if (pCriteria == null)
@@ -69,7 +70,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 */
 	@Override
 	public <V extends Comparable<V>> void applyOrder(
-		AttributeBinding<T, V> rAttribute,
+		Function<? super T, V> rAttribute,
 		OrderDirection		   eDirection)
 	{
 		if (eDirection == null)
@@ -89,7 +90,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public <V> Predicate<? super V> getFilter(AttributeBinding<T, V> rAttribute)
+	public <V> Predicate<? super V> getFilter(Function<? super T, V> rAttribute)
 	{
 		return (Predicate<? super V>) aAttributeFilters.get(rAttribute);
 	}
@@ -98,7 +99,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public OrderDirection getOrder(AttributeBinding<T, ?> rAttribute)
+	public OrderDirection getOrder(Function<? super T, ?> rAttribute)
 	{
 		return aAttributeOrders.get(rAttribute);
 	}
@@ -114,7 +115,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 *
 	 * @return A mapping from attributes to filter predicates
 	 */
-	protected final Map<AttributeBinding<T, ?>, Predicate<?>> getAttributeFilters()
+	protected final Map<Function<? super T, ?>, Predicate<?>> getAttributeFilters()
 	{
 		return aAttributeFilters;
 	}
@@ -124,7 +125,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 *
 	 * @return A mapping from attributes to order directions
 	 */
-	protected final Map<AttributeBinding<T, ? extends Comparable<?>>,
+	protected final Map<Function<? super T, ? extends Comparable<?>>,
 						OrderDirection> getAttributeOrders()
 	{
 		return aAttributeOrders;

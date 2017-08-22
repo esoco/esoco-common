@@ -16,8 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-import de.esoco.lib.model.AttributeBinding;
-
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 
@@ -40,7 +39,7 @@ public interface HasAttributeFilter<T>
 	 *                   remove a filter
 	 */
 	public <V> void applyFilter(
-		AttributeBinding<T, V> rAttribute,
+		Function<? super T, V> rAttribute,
 		Predicate<? super V>   pCriteria);
 
 	/***************************************
@@ -52,5 +51,5 @@ public interface HasAttributeFilter<T>
 	 * @return The attribute filter predicate or NULL for none
 	 */
 	public <V> Predicate<? super V> getFilter(
-		AttributeBinding<T, V> rAttribute);
+		Function<? super T, V> rAttribute);
 }
