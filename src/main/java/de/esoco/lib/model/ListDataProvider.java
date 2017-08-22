@@ -156,8 +156,8 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		for (Entry<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> rOrdering :
 			 getOrderCriteria().entrySet())
 		{
-			AttributeBinding<T, Comparable> rAttribute =
-				(AttributeBinding<T, Comparable>) rOrdering.getKey();
+			AttributeBinding<T, ? extends Comparable> rAttribute =
+				rOrdering.getKey();
 
 			OrderDirection eDirection = rOrdering.getValue();
 
