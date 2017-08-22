@@ -25,23 +25,22 @@ import de.esoco.lib.model.AttributeBinding;
  *
  * @author eso
  */
-@FunctionalInterface
 public interface HasAttributeOrdering<T>
 {
 	//~ Enums ------------------------------------------------------------------
 
 	/********************************************************************
-	 * Enumeration of the possible sort modes. May be extended in future
-	 * versions with additional sort options.
+	 * Enumeration of the possible order directions.
 	 */
 	public enum OrderDirection { ASCENDING, DESCENDING }
 
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Applies or removes the ordering of a certain attribute. The order in
-	 * which orderings are applied defines their precedence, with the first
-	 * ordering having the highest.
+	 * Sets or removes the ordering of a certain attribute and then applies the
+	 * resulting ordering to this instance. The order in which orderings are
+	 * applied defines their precedence, with the first ordering having the
+	 * highest.
 	 *
 	 * @param rAttribute The binding describing the attribute
 	 * @param eDirection The order direction or NULL to remove the ordering
@@ -49,4 +48,14 @@ public interface HasAttributeOrdering<T>
 	public <V extends Comparable<V>> void applyOrder(
 		AttributeBinding<T, V> rAttribute,
 		OrderDirection		   eDirection);
+
+	/***************************************
+	 * Returns the order for a particular attribute. If no order has been set
+	 * for the given attribute NULL will be returned.
+	 *
+	 * @param  rAttribute The attribute to query the order of
+	 *
+	 * @return The attribute order direction or NULL for none
+	 */
+	public OrderDirection getOrder(AttributeBinding<T, ?> rAttribute);
 }

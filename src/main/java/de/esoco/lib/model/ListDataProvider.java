@@ -93,7 +93,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		Stream<T> aDataStream = aOriginalData.stream();
 
 		for (Entry<AttributeBinding<T, ?>, Predicate<?>> rFilter :
-			 getFilters().entrySet())
+			 getAttributeFilters().entrySet())
 		{
 			AttributeBinding<T, ?> rAttribute = rFilter.getKey();
 
@@ -107,7 +107,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 								   });
 		}
 
-		if (!getOrderCriteria().isEmpty())
+		if (!getAttributeOrders().isEmpty())
 		{
 			aDataStream = aDataStream.sorted(this::compareDataObjects);
 		}
@@ -135,8 +135,21 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		V v1 = rAttribute.apply(t1);
 		V v2 = rAttribute.apply(t2);
 
-		return eDirection == OrderDirection.ASCENDING ? v1.compareTo(v2)
-													  : v2.compareTo(v1);
+		int nComparison;
+
+		if (v1 == null || v2 == null)
+		{
+			nComparison =
+				(v1 == null ? (v2 == null ? 0 : 1) : (v2 == null ? 0 : -1));
+		}
+		else
+		{
+			nComparison =
+				(eDirection == OrderDirection.ASCENDING ? v1.compareTo(v2)
+														: v2.compareTo(v1));
+		}
+
+		return nComparison;
 	}
 
 	/***************************************
@@ -154,7 +167,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		int nComparison = -1;
 
 		for (Entry<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> rOrdering :
-			 getOrderCriteria().entrySet())
+			 getAttributeOrders().entrySet())
 		{
 			AttributeBinding<T, ? extends Comparable> rAttribute =
 				rOrdering.getKey();

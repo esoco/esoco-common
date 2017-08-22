@@ -30,15 +30,16 @@ import java.util.function.Predicate;
  *
  * @author eso
  */
-public abstract class AbstractDataProvider<T>
-	implements DataProvider<T>, HasAttributeOrdering<T>, HasAttributeFilter<T>
+public abstract class AbstractDataProvider<T> implements DataProvider<T>,
+														 HasAttributeFilter<T>,
+														 HasAttributeOrdering<T>
 {
 	//~ Instance fields --------------------------------------------------------
 
-	private Map<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> aOrderCriteria =
+	private Map<AttributeBinding<T, ?>, Predicate<?>> aAttributeFilters =
 		new LinkedHashMap<>();
 
-	private Map<AttributeBinding<T, ?>, Predicate<?>> aFilters =
+	private Map<AttributeBinding<T, ? extends Comparable<?>>, OrderDirection> aAttributeOrders =
 		new LinkedHashMap<>();
 
 	//~ Methods ----------------------------------------------------------------
@@ -53,11 +54,11 @@ public abstract class AbstractDataProvider<T>
 	{
 		if (pCriteria == null)
 		{
-			aFilters.remove(rAttribute);
+			aAttributeFilters.remove(rAttribute);
 		}
 		else
 		{
-			aFilters.put(rAttribute, pCriteria);
+			aAttributeFilters.put(rAttribute, pCriteria);
 		}
 
 		applyConstraints();
@@ -73,14 +74,33 @@ public abstract class AbstractDataProvider<T>
 	{
 		if (eDirection == null)
 		{
-			aOrderCriteria.remove(rAttribute);
+			aAttributeOrders.remove(rAttribute);
 		}
 		else
 		{
-			aOrderCriteria.put(rAttribute, eDirection);
+			aAttributeOrders.put(rAttribute, eDirection);
 		}
 
 		applyConstraints();
+	}
+
+	/***************************************
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public <V> Predicate<? super V> getFilter(AttributeBinding<T, V> rAttribute)
+	{
+		return (Predicate<? super V>) aAttributeFilters.get(rAttribute);
+	}
+
+	/***************************************
+	 * {@inheritDoc}
+	 */
+	@Override
+	public OrderDirection getOrder(AttributeBinding<T, ?> rAttribute)
+	{
+		return aAttributeOrders.get(rAttribute);
 	}
 
 	/***************************************
@@ -94,9 +114,9 @@ public abstract class AbstractDataProvider<T>
 	 *
 	 * @return A mapping from attributes to filter predicates
 	 */
-	protected final Map<AttributeBinding<T, ?>, Predicate<?>> getFilters()
+	protected final Map<AttributeBinding<T, ?>, Predicate<?>> getAttributeFilters()
 	{
-		return aFilters;
+		return aAttributeFilters;
 	}
 
 	/***************************************
@@ -105,8 +125,8 @@ public abstract class AbstractDataProvider<T>
 	 * @return A mapping from attributes to order directions
 	 */
 	protected final Map<AttributeBinding<T, ? extends Comparable<?>>,
-						OrderDirection> getOrderCriteria()
+						OrderDirection> getAttributeOrders()
 	{
-		return aOrderCriteria;
+		return aAttributeOrders;
 	}
 }

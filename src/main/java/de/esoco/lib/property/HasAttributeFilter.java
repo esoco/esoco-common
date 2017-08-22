@@ -27,13 +27,13 @@ import java.util.function.Predicate;
  *
  * @author eso
  */
-@FunctionalInterface
 public interface HasAttributeFilter<T>
 {
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Applies or removes a filter for a certain attribute.
+	 * Sets or removes a filter for a certain attribute and then applies the
+	 * resulting filter to this instance.
 	 *
 	 * @param rAttribute The binding describing the attribute
 	 * @param pCriteria  A predicate containing the filter criteria or NULL to
@@ -42,4 +42,15 @@ public interface HasAttributeFilter<T>
 	public <V> void applyFilter(
 		AttributeBinding<T, V> rAttribute,
 		Predicate<? super V>   pCriteria);
+
+	/***************************************
+	 * Returns the filter for a particular attribute. If no filter has been set
+	 * for the given attribute NULL will be returned.
+	 *
+	 * @param  rAttribute The attribute to query the filter predicate for
+	 *
+	 * @return The attribute filter predicate or NULL for none
+	 */
+	public <V> Predicate<? super V> getFilter(
+		AttributeBinding<T, V> rAttribute);
 }
