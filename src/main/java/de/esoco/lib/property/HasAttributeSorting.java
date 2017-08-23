@@ -20,42 +20,41 @@ import java.util.function.Function;
 
 
 /********************************************************************
- * Indicates that the implementing object allows to order it's content by
- * certain attributes of the underlying data objects.
+ * Indicates that the implementing object allows to sort it's content by certain
+ * attributes of the underlying data objects.
  *
  * @author eso
  */
-public interface HasAttributeOrdering<T>
+public interface HasAttributeSorting<T>
 {
 	//~ Enums ------------------------------------------------------------------
 
 	/********************************************************************
 	 * Enumeration of the possible order directions.
 	 */
-	public enum OrderDirection { ASCENDING, DESCENDING }
+	public enum SortDirection { ASCENDING, DESCENDING }
 
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Sets or removes the ordering of a certain attribute and then applies the
-	 * resulting ordering to this instance. The order in which orderings are
-	 * applied defines their precedence, with the first ordering having the
-	 * highest.
+	 * Sets or removes the sorting of a certain attribute and then applies it to
+	 * this instance. The order in which sortings are applied defines their
+	 * precedence, with the first sorting having the highest.
 	 *
 	 * @param rAttribute The binding describing the attribute
-	 * @param eDirection The order direction or NULL to remove the ordering
+	 * @param eDirection The sort direction or NULL to remove sorting
 	 */
-	public <V extends Comparable<V>> void applyOrder(
+	public <V extends Comparable<V>> void applySorting(
 		Function<? super T, V> rAttribute,
-		OrderDirection		   eDirection);
+		SortDirection		   eDirection);
 
 	/***************************************
-	 * Returns the order for a particular attribute. If no order has been set
-	 * for the given attribute NULL will be returned.
+	 * Returns the sort direction for a particular attribute. If no sorting has
+	 * been set for the given attribute NULL will be returned.
 	 *
 	 * @param  rAttribute The attribute to query the order of
 	 *
-	 * @return The attribute order direction or NULL for none
+	 * @return The attribute sort direction or NULL for none
 	 */
-	public OrderDirection getOrder(Function<? super T, ?> rAttribute);
+	public SortDirection getSortDirection(Function<? super T, ?> rAttribute);
 }

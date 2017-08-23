@@ -17,7 +17,7 @@
 package de.esoco.lib.model;
 
 import de.esoco.lib.property.HasAttributeFilter;
-import de.esoco.lib.property.HasAttributeOrdering;
+import de.esoco.lib.property.HasAttributeSorting;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -27,20 +27,20 @@ import java.util.function.Predicate;
 
 /********************************************************************
  * A base class for {@link DataProvider} implementations that handles the
- * management of filter and order constraints.
+ * management of filter and sort constraints.
  *
  * @author eso
  */
 public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 														 HasAttributeFilter<T>,
-														 HasAttributeOrdering<T>
+														 HasAttributeSorting<T>
 {
 	//~ Instance fields --------------------------------------------------------
 
 	private Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
 		new LinkedHashMap<>();
 
-	private Map<Function<? super T, ? extends Comparable<?>>, OrderDirection> aAttributeOrders =
+	private Map<Function<? super T, ? extends Comparable<?>>, SortDirection> aAttributeOrders =
 		new LinkedHashMap<>();
 
 	//~ Methods ----------------------------------------------------------------
@@ -69,9 +69,9 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <V extends Comparable<V>> void applyOrder(
+	public <V extends Comparable<V>> void applySorting(
 		Function<? super T, V> rAttribute,
-		OrderDirection		   eDirection)
+		SortDirection		   eDirection)
 	{
 		if (eDirection == null)
 		{
@@ -99,7 +99,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public OrderDirection getOrder(Function<? super T, ?> rAttribute)
+	public SortDirection getSortDirection(Function<? super T, ?> rAttribute)
 	{
 		return aAttributeOrders.get(rAttribute);
 	}
@@ -126,7 +126,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * @return A mapping from attributes to order directions
 	 */
 	protected final Map<Function<? super T, ? extends Comparable<?>>,
-						OrderDirection> getAttributeOrders()
+						SortDirection> getAttributeOrders()
 	{
 		return aAttributeOrders;
 	}

@@ -131,7 +131,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		T					   t1,
 		T					   t2,
 		Function<? super T, V> rAttribute,
-		OrderDirection		   eDirection)
+		SortDirection		   eDirection)
 	{
 		V v1 = rAttribute.apply(t1);
 		V v2 = rAttribute.apply(t2);
@@ -146,7 +146,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		else
 		{
 			nComparison =
-				(eDirection == OrderDirection.ASCENDING ? v1.compareTo(v2)
+				(eDirection == SortDirection.ASCENDING ? v1.compareTo(v2)
 														: v2.compareTo(v1));
 		}
 
@@ -167,13 +167,13 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	{
 		int nComparison = -1;
 
-		for (Entry<Function<? super T, ? extends Comparable<?>>, OrderDirection> rOrdering :
+		for (Entry<Function<? super T, ? extends Comparable<?>>, SortDirection> rOrdering :
 			 getAttributeOrders().entrySet())
 		{
 			Function<? super T, ? extends Comparable> rAttribute =
 				rOrdering.getKey();
 
-			OrderDirection eDirection = rOrdering.getValue();
+			SortDirection eDirection = rOrdering.getValue();
 
 			nComparison =
 				compareAttributeValues(t1, t2, rAttribute, eDirection);
