@@ -451,6 +451,10 @@ public abstract class AbstractStringProperties implements HasProperties,
 		{
 			rValue = (T) Boolean.valueOf(sRawValue);
 		}
+		else if (rDatatype == Color.class)
+		{
+			rValue = (T) Color.valueOf(sRawValue);
+		}
 		else if (rDatatype == List.class || rDatatype == Set.class)
 		{
 			Class<E> rElementType = (Class<E>) rElementTypes[0];

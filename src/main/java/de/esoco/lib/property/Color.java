@@ -148,9 +148,9 @@ public class Color
 	 */
 	public static Color valueOf(int nRgbColor)
 	{
-		int r = ((nRgbColor & 0x00FF0000) >> 8) + 0x100;
-		int g = (nRgbColor & 0x0000FF00) + 0x100;
-		int b = ((nRgbColor & 0x000000FF) << 8) + 0x100;
+		int r = (nRgbColor & 0x00FF0000) >> 16;
+		int g = (nRgbColor & 0x0000FF00) >> 8;
+		int b = (nRgbColor & 0x000000FF);
 
 		return valueOf(r, g, b);
 	}
@@ -312,12 +312,13 @@ public class Color
 	}
 
 	/***************************************
-	 * @see java.lang.Object#toString()
+	 * Returns the same as {@link #toHtml()}.
+	 *
+	 * @return TODO: DOCUMENT ME!
 	 */
 	@Override
 	public String toString()
 	{
-		return getClass().getSimpleName() + "[" + nRed + "," + nGreen + "," +
-			   nBlue + "]";
+		return toHtml();
 	}
 }
