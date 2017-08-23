@@ -40,7 +40,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	private Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
 		new LinkedHashMap<>();
 
-	private Map<Function<? super T, ? extends Comparable<?>>, SortDirection> aAttributeOrders =
+	private Map<Function<? super T, ? extends Comparable<?>>, SortDirection> aAttributeSortings =
 		new LinkedHashMap<>();
 
 	//~ Methods ----------------------------------------------------------------
@@ -75,11 +75,11 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	{
 		if (eDirection == null)
 		{
-			aAttributeOrders.remove(rAttribute);
+			aAttributeSortings.remove(rAttribute);
 		}
 		else
 		{
-			aAttributeOrders.put(rAttribute, eDirection);
+			aAttributeSortings.put(rAttribute, eDirection);
 		}
 
 		applyConstraints();
@@ -101,7 +101,25 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	@Override
 	public SortDirection getSortDirection(Function<? super T, ?> rAttribute)
 	{
-		return aAttributeOrders.get(rAttribute);
+		return aAttributeSortings.get(rAttribute);
+	}
+
+	/***************************************
+	 * Removes all attribute filters.
+	 */
+	public void removeAllFilters()
+	{
+		aAttributeFilters.clear();
+		applyConstraints();
+	}
+
+	/***************************************
+	 * Removes all attribute sortings.
+	 */
+	public void removeAllSortings()
+	{
+		aAttributeSortings.clear();
+		applyConstraints();
 	}
 
 	/***************************************
@@ -128,6 +146,6 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	protected final Map<Function<? super T, ? extends Comparable<?>>,
 						SortDirection> getAttributeOrders()
 	{
-		return aAttributeOrders;
+		return aAttributeSortings;
 	}
 }
