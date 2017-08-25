@@ -62,7 +62,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 			aAttributeFilters.put(rAttribute, pCriteria);
 		}
 
-		applyConstraints();
+		updateFilter(aAttributeFilters);
 	}
 
 	/***************************************
@@ -82,7 +82,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 			aAttributeSortings.put(rAttribute, eDirection);
 		}
 
-		applyConstraints();
+		updateSorting(aAttributeSortings);
 	}
 
 	/***************************************
@@ -110,7 +110,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	public void removeAllFilters()
 	{
 		aAttributeFilters.clear();
-		applyConstraints();
+		updateFilter(aAttributeFilters);
 	}
 
 	/***************************************
@@ -119,14 +119,26 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	public void removeAllSortings()
 	{
 		aAttributeSortings.clear();
-		applyConstraints();
+		updateSorting(aAttributeSortings);
 	}
 
 	/***************************************
-	 * Must be implemented by subclasses to apply (or reset) the filter and
-	 * order constraints that have been set on this instance.
+	 * Will be called when the filter has changed and needs to be updated by the
+	 * implementation.
+	 *
+	 * @param rFilters The updated filters
 	 */
-	protected abstract void applyConstraints();
+	protected abstract void updateFilter(
+		Map<Function<? super T, ?>, Predicate<?>> rFilters);
+
+	/***************************************
+	 * Will be called when the sorting has changed and needs to be updated by
+	 * the implementation.
+	 *
+	 * @param rSortings rAttributeFilters The updated sortings
+	 */
+	protected abstract void updateSorting(
+		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> rSortings);
 
 	/***************************************
 	 * Returns the attribute filters.
@@ -144,7 +156,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * @return A mapping from attributes to order directions
 	 */
 	protected final Map<Function<? super T, ? extends Comparable<?>>,
-						SortDirection> getAttributeOrders()
+						SortDirection> getAttributeSortings()
 	{
 		return aAttributeSortings;
 	}

@@ -19,6 +19,7 @@ package de.esoco.lib.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -50,7 +51,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	{
 		aOriginalData = new ArrayList<>(rData);
 
-		applyConstraints();
+		updateVisibleData();
 	}
 
 	//~ Methods ----------------------------------------------------------------
@@ -86,37 +87,6 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	}
 
 	/***************************************
-	 * Resets the visible data to the original (full) data set.
-	 */
-	@Override
-	protected void applyConstraints()
-	{
-		Stream<T> aDataStream = aOriginalData.stream();
-
-		for (Entry<Function<? super T, ?>, Predicate<?>> rFilter :
-			 getAttributeFilters().entrySet())
-		{
-			Function<? super T, ?> rAttribute = rFilter.getKey();
-
-			@SuppressWarnings("unchecked")
-			Predicate<Object> pFilter = (Predicate<Object>) rFilter.getValue();
-
-			aDataStream =
-				aDataStream.filter(t ->
-			   					{
-			   						return pFilter.test(rAttribute.apply(t));
-								   });
-		}
-
-		if (!getAttributeOrders().isEmpty())
-		{
-			aDataStream = aDataStream.sorted(this::compareDataObjects);
-		}
-
-		aVisibleData = aDataStream.collect(Collectors.toList());
-	}
-
-	/***************************************
 	 * Compares the values of an attribute in two data objects according to the
 	 * specification of the {@link Comparable} interface.
 	 *
@@ -147,7 +117,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		{
 			nComparison =
 				(eDirection == SortDirection.ASCENDING ? v1.compareTo(v2)
-														: v2.compareTo(v1));
+													   : v2.compareTo(v1));
 		}
 
 		return nComparison;
@@ -168,7 +138,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		int nComparison = -1;
 
 		for (Entry<Function<? super T, ? extends Comparable<?>>, SortDirection> rOrdering :
-			 getAttributeOrders().entrySet())
+			 getAttributeSortings().entrySet())
 		{
 			Function<? super T, ? extends Comparable> rAttribute =
 				rOrdering.getKey();
@@ -185,5 +155,55 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		}
 
 		return nComparison;
+	}
+
+	/***************************************
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void updateFilter(
+		Map<Function<? super T, ?>, Predicate<?>> rFilters)
+	{
+		updateVisibleData();
+	}
+
+	/***************************************
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void updateSorting(
+		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> rSortings)
+	{
+		updateVisibleData();
+	}
+
+	/***************************************
+	 * Resets the visible data to the original (full) data set.
+	 */
+	protected void updateVisibleData()
+	{
+		Stream<T> aDataStream = aOriginalData.stream();
+
+		for (Entry<Function<? super T, ?>, Predicate<?>> rFilter :
+			 getAttributeFilters().entrySet())
+		{
+			Function<? super T, ?> rAttribute = rFilter.getKey();
+
+			@SuppressWarnings("unchecked")
+			Predicate<Object> pFilter = (Predicate<Object>) rFilter.getValue();
+
+			aDataStream =
+				aDataStream.filter(t ->
+			   					{
+			   						return pFilter.test(rAttribute.apply(t));
+								   });
+		}
+
+		if (!getAttributeSortings().isEmpty())
+		{
+			aDataStream = aDataStream.sorted(this::compareDataObjects);
+		}
+
+		aVisibleData = aDataStream.collect(Collectors.toList());
 	}
 }
