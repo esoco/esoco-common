@@ -57,4 +57,11 @@ public interface HasAttributeSorting<T>
 	 * @return The attribute sort direction or NULL for none
 	 */
 	public SortDirection getSortDirection(Function<? super T, ?> rAttribute);
+
+	/***************************************
+	 * Checks if one or more attribute sort orders are active.
+	 *
+	 * @return TRUE if at least one attribute is sorted
+	 */
+	public boolean hasActiveSorting();
 }

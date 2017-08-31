@@ -52,4 +52,11 @@ public interface HasAttributeFilter<T>
 	 */
 	public <V> Predicate<? super V> getFilter(
 		Function<? super T, V> rAttribute);
+
+	/***************************************
+	 * Checks if one or more attribute filters are active.
+	 *
+	 * @return TRUE if at least one filter criterion has been set
+	 */
+	public boolean hasActiveFilter();
 }

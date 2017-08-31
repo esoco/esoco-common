@@ -105,6 +105,24 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	}
 
 	/***************************************
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean hasActiveFilter()
+	{
+		return !aAttributeFilters.isEmpty();
+	}
+
+	/***************************************
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean hasActiveSorting()
+	{
+		return !aAttributeSortings.isEmpty();
+	}
+
+	/***************************************
 	 * Removes all attribute filters.
 	 */
 	public void removeAllFilters()
