@@ -70,6 +70,10 @@ public interface StyleProperties
 	public static final PropertyName<Boolean> SHOW_LABEL =
 		PropertyName.newBooleanName("SHOW_LABEL");
 
+	/** Boolean: TRUE if an element should be hidden automatically. */
+	public static final PropertyName<Boolean> AUTO_HIDE =
+		PropertyName.newBooleanName("AUTO_HIDE");
+
 	/**
 	 * Boolean: TRUE to display the label of an element as a header instead of a
 	 * prefix.
