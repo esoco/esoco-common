@@ -16,6 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
+import java.util.Map;
 import java.util.Set;
 
 
@@ -58,6 +59,13 @@ public interface StateProperties
 	/** Integer: the current selection index of a multiple-data element. */
 	public static final PropertyName<Integer> CURRENT_SELECTION =
 		PropertyName.newIntegerName("CURRENT_SELECTION");
+
+	/**
+	 * String map: filter criteria of an element (e.g. a table). The key denotes
+	 * the filtered attribute and the value the criterion.
+	 */
+	public static final PropertyName<Map<String, String>> FILTER_CRITERIA =
+		PropertyName.newMapName("FILTER_CRITERIA", String.class, String.class);
 
 	/** Boolean: indicates that the value of an element has changed. */
 	public static final PropertyName<Boolean> VALUE_CHANGED =
