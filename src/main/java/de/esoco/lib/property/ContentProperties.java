@@ -16,6 +16,9 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
+import java.util.List;
+
+
 /********************************************************************
  * Defines typical content {@link PropertyName Properties}.
  *
@@ -58,6 +61,13 @@ public interface ContentProperties
 	 */
 	public static final PropertyName<String> FORMAT =
 		PropertyName.newStringName("FORMAT");
+
+	/**
+	 * String list: the arguments to be handed to a format string, similar to
+	 * <code>String.format()</code>, but limited to string values.
+	 */
+	public static final PropertyName<List<String>> FORMAT_ARGUMENTS =
+		PropertyName.newListName("FORMAT_ARGUMENTS", String.class);
 
 	/** String: an input constraint, typically a regular expression. */
 	public static final PropertyName<String> INPUT_CONSTRAINT =
