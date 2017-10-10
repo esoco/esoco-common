@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@
 // limitations under the License.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.text;
+
+import java.util.Arrays;
+import java.util.Collection;
+
 
 /********************************************************************
  * A utility class that contains static methods for text conversions.
@@ -163,6 +167,53 @@ public class TextConvert
 		}
 
 		return sWord;
+	}
+
+	/***************************************
+	 * A varargs variant of {@link #format(String, Collection)}.
+	 *
+	 * @see #format(String, Collection)
+	 */
+	public static String format(String sFormat, Object... rArgs)
+	{
+		return format(sFormat, Arrays.asList(rArgs));
+	}
+
+	/***************************************
+	 * A simplified version of {@link String#format(String, Object...)} that is
+	 * also available in constrained environments like GWT but only supports
+	 * string values. It replaces all occurrences of placeholders (%s) with the
+	 * toString() representations of the argument objects. Placeholders may be
+	 * indexed (e.g. %1$s) in which case they can also occur multiple times. If
+	 * not enough placeholders occur in the text string any surplus values will
+	 * be ignored.
+	 *
+	 * @param  sFormat The format string
+	 * @param  rArgs   The values to place in the format string
+	 *
+	 * @return The formatted result string
+	 */
+	public static String format(String sFormat, Collection<Object> rArgs)
+	{
+		int nIndex = 0;
+
+		for (Object rArg : rArgs)
+		{
+			String sIndexedPlaceholder = "%" + nIndex++ + "$s";
+			String sValue			   =
+				(rArg != null ? rArg.toString() : "null");
+
+			if (sFormat.contains(sIndexedPlaceholder))
+			{
+				sFormat = sFormat.replace(sIndexedPlaceholder, sValue);
+			}
+			else
+			{
+				sFormat = sFormat.replaceFirst("%s", sValue);
+			}
+		}
+
+		return sFormat;
 	}
 
 	/***************************************
