@@ -49,6 +49,13 @@ public interface StateProperties
 		PropertyName.newBooleanName("NO_INTERACTION_LOCK");
 
 	/**
+	 * Boolean: TRUE to prevent the propagation of component events to it's
+	 * parent hierarchy.
+	 */
+	public static final PropertyName<Boolean> NO_EVENT_PROPAGATION =
+		PropertyName.newBooleanName("NO_EVENT_PROPAGATION");
+
+	/**
 	 * Boolean: TRUE to mark the element that should receive the input focus.
 	 * This flag should only occur once in an user interface definition. The
 	 * behavior for multiple occurrences is undefined.
