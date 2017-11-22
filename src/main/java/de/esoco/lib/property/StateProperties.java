@@ -56,6 +56,13 @@ public interface StateProperties
 		PropertyName.newBooleanName("NO_EVENT_PROPAGATION");
 
 	/**
+	 * Boolean: fire action events only if a component that implements {@link
+	 * ActiveState} has been activated, but not if deactivated.
+	 */
+	public static final PropertyName<Boolean> ACTION_EVENT_ON_ACTIVATION_ONLY =
+		PropertyName.newBooleanName("ACTION_EVENT_ON_ACTIVATION_ONLY");
+
+	/**
 	 * Boolean: TRUE to mark the element that should receive the input focus.
 	 * This flag should only occur once in an user interface definition. The
 	 * behavior for multiple occurrences is undefined.
