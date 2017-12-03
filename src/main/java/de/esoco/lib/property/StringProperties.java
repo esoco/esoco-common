@@ -61,7 +61,10 @@ public class StringProperties extends AbstractStringProperties
 	@Override
 	public final void clearFlag(PropertyName<Boolean> rName)
 	{
-		setProperty(rName, false);
+		if (hasProperty(rName))
+		{
+			removeProperty(rName);
+		}
 	}
 
 	/***************************************
