@@ -29,10 +29,7 @@ public interface HasAttributeSorting<T>
 {
 	//~ Enums ------------------------------------------------------------------
 
-	/********************************************************************
-	 * Enumeration of the possible order directions.
-	 */
-	public enum SortDirection { ASCENDING, DESCENDING }
+	
 
 	//~ Methods ----------------------------------------------------------------
 

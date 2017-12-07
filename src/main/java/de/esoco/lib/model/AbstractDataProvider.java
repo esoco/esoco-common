@@ -18,6 +18,7 @@ package de.esoco.lib.model;
 
 import de.esoco.lib.property.HasAttributeFilter;
 import de.esoco.lib.property.HasAttributeSorting;
+import de.esoco.lib.property.SortDirection;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

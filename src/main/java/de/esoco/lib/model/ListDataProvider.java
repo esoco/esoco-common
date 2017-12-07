@@ -16,6 +16,8 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
+import de.esoco.lib.property.SortDirection;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
