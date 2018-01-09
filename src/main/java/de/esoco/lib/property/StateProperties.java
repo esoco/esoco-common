@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -84,6 +84,10 @@ public interface StateProperties
 	/** Boolean: indicates that the value of an element has changed. */
 	public static final PropertyName<Boolean> VALUE_CHANGED =
 		PropertyName.newBooleanName("VALUE_CHANGED");
+
+	/** Boolean: indicates that the structure of an element has changed. */
+	public static final PropertyName<Boolean> STRUCTURE_CHANGED =
+		PropertyName.newBooleanName("STRUCTURE_CHANGED");
 
 	/** Enum: the input mode for interactive input elements. */
 	public static final PropertyName<InteractiveInputMode> INTERACTIVE_INPUT_MODE =
