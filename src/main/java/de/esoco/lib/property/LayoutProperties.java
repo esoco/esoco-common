@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -59,9 +59,16 @@ public interface LayoutProperties
 	public static final PropertyName<String> HTML_HEIGHT =
 		PropertyName.newStringName("HTML_HEIGHT");
 
-	/** {@link LayoutType}: The layout of an elements. */
+	/** {@link LayoutType}: The layout of an element. */
 	public static final PropertyName<LayoutType> LAYOUT =
 		PropertyName.newEnumName("LAYOUT", LayoutType.class);
+
+	/**
+	 * {@link LayoutVisibility}: The visibility of an element in the responsive
+	 * rendering of layouts.
+	 */
+	public static final PropertyName<LayoutVisibility> LAYOUT_VISIBILITY =
+		PropertyName.newEnumName("LAYOUT_VISIBILITY", LayoutVisibility.class);
 
 	/** {@link ViewDisplayType}: The display style of a view. */
 	public static final PropertyName<ViewDisplayType> VIEW_DISPLAY_TYPE =
