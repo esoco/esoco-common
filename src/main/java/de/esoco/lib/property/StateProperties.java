@@ -117,12 +117,19 @@ public interface StateProperties
 								InteractionEventType.class);
 
 	/**
-	 * An optional data value for interaction events. If this value is available
-	 * in an event it's string representation will be transferred to the server
-	 * in this property.
+	 * String: an optional data value for interaction events. If this value is
+	 * available in an event it's string representation will be transferred to
+	 * the server in this property.
 	 */
 	public static final PropertyName<String> INTERACTION_EVENT_DATA =
 		PropertyName.newStringName("INTERACTION_EVENT_DATA");
+
+	/**
+	 * String: the identifier of a target element to be activated or modified by
+	 * the element it is set upon.
+	 */
+	public static final PropertyName<String> TARGET_ID =
+		PropertyName.newStringName("TARGET_ID");
 
 	/**
 	 * String: a comma-separated list of the names of user interface elements

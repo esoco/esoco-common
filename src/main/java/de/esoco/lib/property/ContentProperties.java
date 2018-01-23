@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,6 +27,12 @@ import java.util.List;
 public interface ContentProperties
 {
 	//~ Static fields/initializers ---------------------------------------------
+
+	/**
+	 * String: an identifier for the target object (e.g. an HTML element ID).
+	 */
+	public static final PropertyName<String> ELEMENT_ID =
+		PropertyName.newStringName("ELEMENT_ID");
 
 	/**
 	 * Boolean: TRUE to indicate that an element contains a resource. This
