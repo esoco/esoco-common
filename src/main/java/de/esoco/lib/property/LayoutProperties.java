@@ -33,15 +33,29 @@ public interface LayoutProperties
 	public static final PropertyName<Integer> COLUMNS =
 		PropertyName.newIntegerName("COLUMNS");
 
-	/** Integer: the number of rows that an element spans in a grid or table. */
+	/** Integer: the number of rows that an element spans in a layout. */
 	public static final PropertyName<Integer> ROW_SPAN =
 		PropertyName.newIntegerName("ROW_SPAN");
 
-	/**
-	 * Integer: the number of columns that an element spans in a grid or table.
-	 */
+	/** Integer: the number of columns that an element spans in a layout. */
 	public static final PropertyName<Integer> COLUMN_SPAN =
 		PropertyName.newIntegerName("COLUMN_SPAN");
+
+	/**
+	 * Integer: the number of columns that an element spans in a responsive
+	 * layout with reduced (medium) layout space. This complements {@link
+	 * #COLUMN_SPAN} which defines the maximum layout size.
+	 */
+	public static final PropertyName<Integer> MEDIUM_COLUMN_SPAN =
+		PropertyName.newIntegerName("MEDIUM_COLUMN_SPAN");
+
+	/**
+	 * Integer: the number of columns that an element spans in a responsive
+	 * layout with minimal (= small) layout space. This complements {@link
+	 * #COLUMN_SPAN} which defines the maximum layout size.
+	 */
+	public static final PropertyName<Integer> SMALL_COLUMN_SPAN =
+		PropertyName.newIntegerName("SMALL_COLUMN_SPAN");
 
 	/** Integer: the display width in pixels. */
 	public static final PropertyName<Integer> WIDTH =
