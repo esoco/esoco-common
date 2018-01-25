@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,17 +23,16 @@ package de.esoco.lib.model;
  * asynchronous communication. This allows the calling code to continue with
  * other tasks like UI updates without being blocked by the data model query.
  * This is achieved by providing a window into the remote data that can be
- * accessed through the methods of this interface. This window normally only
+ * accessed through the methods of this interface. This window typically only
  * contains a subset of the full data in the remote model.
  *
- * <p>First the size of the remote data window must be set with the method
- * {@link #setWindowSize(int)}. Then {@link #setWindow(int, Callback)} can be
- * used to request remote data. The callback given to this method will be called
- * as soon as the data has been retrieved from the remote system. Only the
- * requested range of data can then be read from the model. Therefore
- * application code must always prepare the model data before accessing it.
- * Furthermore iterators returned by a remote model only iterate over the
- * prepared data of the model.</p>
+ * <p>The method {@link #setWindow(int, int, Callback)} must be invoked to
+ * request remote data. The callback given to this method will be called as soon
+ * as the data has been retrieved from the remote system. Only the requested
+ * range of data can then be read from the model. Therefore application code
+ * must always prepare the model data before accessing it. Furthermore iterators
+ * returned by a remote model only iterate over the prepared data of the
+ * model.</p>
  *
  * <p>The result of the method {@link #getElementCount()} should only be
  * expected to be available after the model window has been prepared once.
@@ -89,18 +88,11 @@ public interface RemoteDataModel<T> extends DataModel<T>
 	 * returned by {@link DataModel#getElementCount()} or else an error will
 	 * occur.
 	 *
-	 * @param nStart    The starting index of the first data element to retrieve
+	 * @param nStart    The starting index of the first element to retrieve
+	 * @param nSize     nStart The number of elements to be retrieved
 	 * @param rCallback The callback to be notified if the data is available
 	 */
-	public void setWindow(int nStart, Callback<RemoteDataModel<T>> rCallback);
-
-	/***************************************
-	 * Sets the size of the window to the remote data to be read by a call to
-	 * {@link #setWindow(int, Callback)}. Implementations of this method should
-	 * not block but instead simply store the window size internally for
-	 * processing by the preparing method.
-	 *
-	 * @param nSize The new window size
-	 */
-	public void setWindowSize(int nSize);
+	public void setWindow(int						   nStart,
+						  int						   nSize,
+						  Callback<RemoteDataModel<T>> rCallback);
 }
