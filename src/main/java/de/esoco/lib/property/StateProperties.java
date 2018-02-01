@@ -81,6 +81,10 @@ public interface StateProperties
 	public static final PropertyName<Map<String, String>> FILTER_CRITERIA =
 		PropertyName.newMapName("FILTER_CRITERIA", String.class, String.class);
 
+	/** Enum: if present, defines the sort direction for ordered data. */
+	public static final PropertyName<SortDirection> SORT_DIRECTION =
+		PropertyName.newEnumName("SORT_DIRECTION", SortDirection.class);
+
 	/** Boolean: indicates that the value of an element has changed. */
 	public static final PropertyName<Boolean> VALUE_CHANGED =
 		PropertyName.newBooleanName("VALUE_CHANGED");
