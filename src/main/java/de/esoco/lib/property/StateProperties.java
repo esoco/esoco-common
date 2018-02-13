@@ -85,6 +85,13 @@ public interface StateProperties
 	public static final PropertyName<Boolean> VALUE_CHANGED =
 		PropertyName.newBooleanName("VALUE_CHANGED");
 
+	/**
+	 * Boolean: indicates that one or more properties of an element have
+	 * changed.
+	 */
+	public static final PropertyName<Boolean> PROPERTIES_CHANGED =
+		PropertyName.newBooleanName("PROPERTIES_CHANGED");
+
 	/** Boolean: indicates that the structure of an element has changed. */
 	public static final PropertyName<Boolean> STRUCTURE_CHANGED =
 		PropertyName.newBooleanName("STRUCTURE_CHANGED");
