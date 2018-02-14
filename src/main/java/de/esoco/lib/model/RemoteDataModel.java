@@ -42,10 +42,10 @@ package de.esoco.lib.model;
  * Therefore an application must not rely on this value and consequently also
  * not on the expected number of prepared data records. Instead it must
  * explicitly check the actual amount of records that have been prepared by the
- * last call to the method {@link #setWindow(int, Callback)}, either by invoking
- * {@link #getAvailableElementCount()} or by iterating through the model. The
- * actual number of prepared records may even be 0, e.g. if data has been
- * deleted on the remote side.</p>
+ * last call to the method {@link #setWindow(int, int, Callback)}, either by
+ * invoking {@link #getAvailableElementCount()} or by iterating through the
+ * model. The actual number of prepared records may even be 0, e.g. if data has
+ * been deleted on the remote side.</p>
  *
  * @author eso
  */
@@ -55,9 +55,9 @@ public interface RemoteDataModel<T> extends DataModel<T>
 
 	/***************************************
 	 * Returns the number of elements that are effectively available after a
-	 * previous call to the method {@link #setWindow(int, Callback)}. The number
-	 * returned may be lower than the window size of this model if the remote
-	 * model contains less elements after the starting index.
+	 * previous call to the method {@link #setWindow(int, int, Callback)}. The
+	 * number returned may be lower than the window size of this model if the
+	 * remote model contains less elements after the starting index.
 	 *
 	 * @return The number of prepared data elements
 	 */
@@ -65,7 +65,7 @@ public interface RemoteDataModel<T> extends DataModel<T>
 
 	/***************************************
 	 * Returns the size of the window to the remote data that is read by a call
-	 * to {@link #setWindow(int, Callback)}.
+	 * to {@link #setWindow(int, int, Callback)}.
 	 *
 	 * @return The size of the remote data window
 	 */
@@ -73,7 +73,7 @@ public interface RemoteDataModel<T> extends DataModel<T>
 
 	/***************************************
 	 * Returns the starting index of the window to the remote data that is read
-	 * by a call to {@link #setWindow(int, Callback)}.
+	 * by a call to {@link #setWindow(int, int, Callback)}.
 	 *
 	 * @return The starting index of the remote data window
 	 */
