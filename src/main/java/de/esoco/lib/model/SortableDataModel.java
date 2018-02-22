@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
+import de.esoco.lib.property.SortDirection;
+
+
 /********************************************************************
  * An extended data model that allows to sort the contained data elements by
  * their fields.
@@ -24,24 +27,16 @@ package de.esoco.lib.model;
  */
 public interface SortableDataModel<T> extends DataModel<T>
 {
-	//~ Enums ------------------------------------------------------------------
-
-	/********************************************************************
-	 * Enumeration of the possible sort modes. May be extended in future
-	 * versions with additional sort options.
-	 */
-	public enum SortMode { ASCENDING, DESCENDING }
-
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Returns the sort mode for a certain field of the data in this model.
+	 * Returns the sort direction for a certain field of the data in this model.
 	 *
 	 * @param  sFieldId The ID of the field to return the sort mode for
 	 *
 	 * @return The sort mode for the given field or NULL for none
 	 */
-	public SortMode getSortMode(String sFieldId);
+	public SortDirection getSortDirection(String sFieldId);
 
 	/***************************************
 	 * Removes all sort criteria from this model.
@@ -49,11 +44,11 @@ public interface SortableDataModel<T> extends DataModel<T>
 	public void removeSorting();
 
 	/***************************************
-	 * Sets the sort mode for a certain field of the data in this model.
+	 * Sets the sort direction for a certain field of the data in this model.
 	 *
 	 * @param sFieldId The ID of the field to set the sort mode for
 	 * @param rMode    The sort mode or NULL to disable the sort criterion for
 	 *                 the given field
 	 */
-	public void setSortMode(String sFieldId, SortMode rMode);
+	public void setSortDirection(String sFieldId, SortDirection rMode);
 }

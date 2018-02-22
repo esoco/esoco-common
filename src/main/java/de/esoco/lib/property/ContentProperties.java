@@ -18,6 +18,8 @@ package de.esoco.lib.property;
 
 import java.util.List;
 
+import static de.esoco.lib.property.PropertyName.newStringName;
+
 
 /********************************************************************
  * Defines typical content {@link PropertyName Properties}.
@@ -60,6 +62,10 @@ public interface ContentProperties
 	/** String: a URL that affects the appearance or function of an element. */
 	public static final PropertyName<String> URL =
 		PropertyName.newStringName("URL");
+
+	/** String: a file name. */
+	public static final PropertyName<String> FILE_NAME =
+		newStringName("FILE_NAME");
 
 	/**
 	 * String: an format definition. The value depends on the target value to
