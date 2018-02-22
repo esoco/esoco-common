@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,12 +20,12 @@ import java.util.Map;
 
 
 /********************************************************************
- * An extended data model that allows to sort the contained data elements by
- * setting constraint values for certain fields.
+ * An extended data model that allows to filter the contained data elements by
+ * setting filter constraints for element fields.
  *
  * @author eso
  */
-public interface SearchableDataModel<T> extends DataModel<T>
+public interface FilterableDataModel<T> extends DataModel<T>
 {
 	//~ Static fields/initializers ---------------------------------------------
 
@@ -73,48 +73,48 @@ public interface SearchableDataModel<T> extends DataModel<T>
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Returns the search constraint for a certain field of the data in this
-	 * model.
+	 * Returns the filter for a certain field of the data in this model.
 	 *
-	 * @param  sFieldId The ID of the data field to get the constraint for
+	 * @param  sFieldId The ID of the field to get the filter for
 	 *
-	 * @return The search constraint string for the given field or NULL for none
+	 * @return The filter string for the given field or NULL for none
 	 */
-	public String getConstraint(String sFieldId);
+	public String getFilter(String sFieldId);
 
 	/***************************************
-	 * Returns all search constraint that are set in this data model as a
-	 * mapping from field IDs to constraints. A caller should assume that it is
-	 * not allowed to modify the returned map unless stated otherwise by the
+	 * Returns all filters that are set in this data model as a mapping from
+	 * field IDs to filter strings. A caller should assume that it is not
+	 * allowed to modify the returned map unless stated otherwise by the
 	 * implementation.
 	 *
-	 * @return A mapping from field ID strings to search constraint strings
+	 * @return A mapping from field ID strings to filter strings
 	 */
-	public Map<String, String> getConstraints();
+	public Map<String, String> getFilters();
 
 	/***************************************
-	 * Removes all search constraints from this model.
+	 * Removes all filters from this model.
 	 */
-	public void removeConstraints();
+	public void removeAllFilters();
 
 	/***************************************
-	 * Sets the search constraint for a certain field. If the constraint
-	 * parameter is NULL an existing constraint for the given field will be
-	 * removed. The constraint will be concatenated with a logical AND
-	 * expression if the first character is {@link #CONSTRAINT_AND_PREFIX} and
-	 * with a logical OR if it is {@link #CONSTRAINT_OR_PREFIX}.
+	 * Sets the filter for a certain field. If the filter value is NULL an
+	 * existing constraint for the given field will be removed. The filter will
+	 * be concatenated with a logical AND expression if the first character is
+	 * {@link #CONSTRAINT_AND_PREFIX} and with a logical OR if it is {@link
+	 * #CONSTRAINT_OR_PREFIX}.
 	 *
-	 * <p>It is possible to set multiple constraints on a field by concatenating
-	 * them with a {@link #CONSTRAINT_SEPARATOR} in between. Any occurrences of
-	 * the separator string in a constraint must therefore be escaped by
-	 * replacing them with the {@link #CONSTRAINT_SEPARATOR_ESCAPE}.</p>
+	 * <p>It is possible to set multiple filter constraints on a field by
+	 * concatenating them with a {@link #CONSTRAINT_SEPARATOR} in between. Any
+	 * occurrences of the separator string in a constraint must therefore be
+	 * escaped by replacing them with the {@link
+	 * #CONSTRAINT_SEPARATOR_ESCAPE}.</p>
 	 *
-	 * <p>If the first character of the constraint is one of the characters in
-	 * the constant {@link #CONSTRAINT_COMPARISON_CHARS} the corresponding
-	 * comparison will be applied to the constraint value that follows after the
+	 * <p>If the first character of the filter is one of the characters in the
+	 * constant {@link #CONSTRAINT_COMPARISON_CHARS} the corresponding
+	 * comparison will be applied to the filter value that follows after the
 	 * character. If omitted an equals comparison will be used.</p>
 	 *
-	 * <p>Besides simple text the constraint value may contain expressions,
+	 * <p>Besides simple text the filter value may contain expressions,
 	 * placeholders, and wildcards to allow searches that cover a range of
 	 * values as shown below. The wildcard characters '*' and '?' can be
 	 * combined. Attention: not all implementations may support value
@@ -134,17 +134,15 @@ public interface SearchableDataModel<T> extends DataModel<T>
 	 *     The value may contain wildcard characters.</li>
 	 * </ul>
 	 *
-	 * @param sFieldId    The ID of the data field to set the constraint for
-	 * @param sConstraint The constraint value or NULL to remove a constraint
+	 * @param sFieldId The ID of the data field to set the filter for
+	 * @param sFilter  The filter value or NULL to remove a filter
 	 */
-	public void setConstraint(String sFieldId, String sConstraint);
+	public void setFilter(String sFieldId, String sFilter);
 
 	/***************************************
-	 * Sets the search constraints of this model. This will remove any existing
-	 * constraints.
+	 * Sets the filters of this model. This will remove any existing filters.
 	 *
-	 * @param rConstraints A mapping from field ID strings to search constraint
-	 *                     strings
+	 * @param rFilters A mapping from field ID strings to filter strings
 	 */
-	public void setConstraints(Map<String, String> rConstraints);
+	public void setFilters(Map<String, String> rFilters);
 }
