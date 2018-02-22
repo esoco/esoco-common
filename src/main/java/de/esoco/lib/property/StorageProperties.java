@@ -64,6 +64,5 @@ public interface StorageProperties
 	 */
 	public static void init()
 	{
-		PropertyName<?> rInitDummy = QUERY_START;
 	}
 }
