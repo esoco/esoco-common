@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -601,9 +601,9 @@ public class TextConvert
 		for (int nPos = 0; nPos <= nMax; nPos++)
 		{
 			char    c	   = s.charAt(nPos);
-			boolean bSplit = Character.isUpperCase(c);
+			boolean bUpper = Character.isUpperCase(c);
 
-			if (bSplit && (nPos - nStart) > 0)
+			if (bUpper && (nPos - nStart) > 0)
 			{
 				if (!bSkip ||
 					(nPos < nMax && Character.isLowerCase(s.charAt(nPos + 1))))
@@ -621,7 +621,7 @@ public class TextConvert
 
 			// do not split at sequences of uppercase letters and also skip
 			// underscores or digits in such sequences
-			bSkip = (bSplit || (bSkip && (c == '_' || Character.isDigit(c))));
+			bSkip = (bUpper || (bSkip && (c == '_' || Character.isDigit(c))));
 		}
 
 		sb.append(s.substring(nStart));
