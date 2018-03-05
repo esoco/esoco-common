@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -146,6 +146,10 @@ public interface StyleProperties
 	/** Enum: the type in which a list data element should be displayed. */
 	public static final PropertyName<ListStyle> LIST_STYLE =
 		PropertyName.newEnumName("LIST_STYLE", ListStyle.class);
+
+	/** Enum: the type in which a list data element should be displayed. */
+	public static final PropertyName<TableStyle> TABLE_STYLE =
+		PropertyName.newEnumName("TABLE_STYLE", TableStyle.class);
 
 	/** The style of a list layout. */
 	public static final PropertyName<ListLayoutStyle> LIST_LAYOUT_STYLE =
