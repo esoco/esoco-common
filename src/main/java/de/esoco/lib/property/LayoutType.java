@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -38,11 +38,14 @@ package de.esoco.lib.property;
  *   <li>{@link #FILL}: A single UI elements fills the available area.</li>
  *   <li>{@link #FLOW}: UI elements flow in the natural order defined by the UI
  *     context.</li>
- *   <li>{@link #GRID}: Like FLOW but elements are placed in a grid structure
- *     according to their properties.</li>
+ *   <li>{@link #FLEX}: A directional and controllable flow of elements based on
+ *     the CSS Flexbox rendering.</li>
+ *   <li>{@link #GRID}: Places elements in a horizontal, column-oriented grid
+ *     structure according to their properties.</li>
  *   <li>{@link #GRID_ROW}: A row in a {@link #GRID} layout.</li>
  *   <li>{@link #GRID_COLUMN}: A column in a {@link #GRID_ROW}.</li>
- *   <li>{@link #CSS_GRID}: A grid layout based on the CSS grid mechanism.</li>
+ *   <li>{@link #CSS_GRID}: A two-dimensional arrangement of elements based on
+ *     the CSS grid rendering.</li>
  *   <li>{@link #LIST}: Places elements in a list.</li>
  *   <li>{@link #LIST_ITEM}: A single element in a {@link #LIST} layout.</li>
  *   <li>{@link #CARD}: A structured card with specific elements like title,
@@ -65,7 +68,7 @@ package de.esoco.lib.property;
  */
 public enum LayoutType
 {
-	TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, GRID, GRID_ROW,
+	TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, FLEX, GRID, GRID_ROW,
 	GRID_COLUMN, CSS_GRID, LIST, LIST_ITEM, CARD, FORM, GROUP, MENU, HEADER,
 	CONTENT, SECONDARY_CONTENT, FOOTER, INLINE
 }
