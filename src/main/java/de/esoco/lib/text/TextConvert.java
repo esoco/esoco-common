@@ -27,6 +27,13 @@ import java.util.Collection;
  */
 public class TextConvert
 {
+	//~ Enums ------------------------------------------------------------------
+
+	/********************************************************************
+	 * Enumeration of the styles for the conversion of identifiers.
+	 */
+	public enum IdentifierStyle { CAMELCASE, LOWER_CAMELCASE, UPPERCASE }
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** A default separator string between collection elements (','). */
@@ -167,6 +174,35 @@ public class TextConvert
 		}
 
 		return sWord;
+	}
+
+	/***************************************
+	 * Converts an identifier into a different naming style.
+	 *
+	 * @param  eStyle      The style to convert to
+	 * @param  sIdentifier The identifier to convert
+	 *
+	 * @return The converted identifier
+	 */
+	public static String convertTo(IdentifierStyle eStyle, String sIdentifier)
+	{
+		switch (eStyle)
+		{
+			case CAMELCASE:
+				return capitalizedIdentifier(sIdentifier);
+
+			case LOWER_CAMELCASE:
+				sIdentifier = capitalizedIdentifier(sIdentifier);
+
+				return Character.toLowerCase(sIdentifier.charAt(0)) +
+					   sIdentifier.substring(1);
+
+			case UPPERCASE:
+				return uppercaseIdentifier(sIdentifier);
+
+			default:
+				return sIdentifier;
+		}
 	}
 
 	/***************************************
