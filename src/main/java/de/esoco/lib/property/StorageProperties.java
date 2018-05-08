@@ -45,13 +45,15 @@ public interface StorageProperties
 		newIntegerName("QUERY_DEPTH");
 
 	/**
-	 * Map<String, String>: a mapping from storage fields to filter criteria.
+	 * Map&lt;String, String&gt;: a mapping from storage fields to filter
+	 * criteria.
 	 */
 	public static final PropertyName<Map<String, String>> QUERY_SEARCH =
 		newMapName("QUERY_SEARCH", String.class, String.class);
 
 	/**
-	 * Map<String, String>: a mapping from storage fields to sort directions.
+	 * Map&lt;String, String&gt;: a mapping from storage fields to sort
+	 * directions.
 	 */
 	public static final PropertyName<Map<String, SortDirection>> QUERY_SORT =
 		newMapName("QUERY_SORT", String.class, SortDirection.class);
