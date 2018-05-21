@@ -449,12 +449,48 @@ public class TextConvert
 	}
 
 	/***************************************
-	 * To return a right-aligned string with a certain maximum length. If the
-	 * string's length is less than the target length it will be aligned to the
-	 * right of the resulting string and the left will be filled with the given
-	 * fill character.
+	 * Returns a string that is centered within a certain maximum length. If the
+	 * input string's length is less than the target length it will be aligned
+	 * at the center of the resulting string and the left and right will be
+	 * padded with the given fill character. If the length of the string to pad
+	 * is uneven padding on the right side takes precedence so that the string
+	 * will be aligned one character farther to the left.
 	 *
-	 * @param  sString The string to be converted
+	 * @param  sString The string to be padded
+	 * @param  nWidth  The length of the result string
+	 * @param  cFill   The fill character
+	 *
+	 * @return The resulting string
+	 */
+	public static String padCenter(String sString, int nWidth, char cFill)
+	{
+		if (nWidth > sString.length())
+		{
+			StringBuilder sb = new StringBuilder(sString);
+
+			for (int i = sString.length(); i < nWidth; i += 2)
+			{
+				sb.append(cFill);
+
+				if (sb.length() < nWidth)
+				{
+					sb.insert(0, cFill);
+				}
+			}
+
+			sString = sb.toString();
+		}
+
+		return sString;
+	}
+
+	/***************************************
+	 * Returns a right-aligned string with a certain maximum length. If the
+	 * input string's length is less than the target length it will be aligned
+	 * to the right of the resulting string and the left will be filled with the
+	 * given fill character.
+	 *
+	 * @param  sString The string to be padded
 	 * @param  nWidth  The length of the result string
 	 * @param  cFill   The fill character
 	 *
@@ -474,21 +510,19 @@ public class TextConvert
 			sb.append(sString);
 			sb.setLength(nWidth);
 
-			return sb.toString();
+			sString = sb.toString();
 		}
-		else
-		{
-			return sString;
-		}
+
+		return sString;
 	}
 
 	/***************************************
-	 * To return a left-aligned string with a certain maximum length. If the
+	 * Returns a left-aligned string with a certain maximum length. If the input
 	 * string's length is less than the target length it will be aligned to the
 	 * left of the resulting string and the right will be filled with the given
 	 * fill character.
 	 *
-	 * @param  sString The string to be converted
+	 * @param  sString The string to be padded
 	 * @param  nWidth  The length of the result string
 	 * @param  cFill   The fill character
 	 *
@@ -507,12 +541,10 @@ public class TextConvert
 				sb.append(cFill);
 			}
 
-			return sb.toString();
+			sString = sb.toString();
 		}
-		else
-		{
-			return sString;
-		}
+
+		return sString;
 	}
 
 	/***************************************
