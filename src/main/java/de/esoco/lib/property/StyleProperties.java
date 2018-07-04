@@ -151,6 +151,10 @@ public interface StyleProperties
 	public static final PropertyName<TableStyle> TABLE_STYLE =
 		PropertyName.newEnumName("TABLE_STYLE", TableStyle.class);
 
+	/** Enum: the type in which a text input box should be displayed. */
+	public static final PropertyName<TextFieldStyle> TEXT_FIELD_STYLE =
+		PropertyName.newEnumName("TEXT_BOX_STYLE", TextFieldStyle.class);
+
 	/** The style of a list layout. */
 	public static final PropertyName<ListLayoutStyle> LIST_LAYOUT_STYLE =
 		PropertyName.newName("LIST_LAYOUT_STYLE", ListLayoutStyle.class);

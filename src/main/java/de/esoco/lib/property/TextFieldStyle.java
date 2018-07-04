@@ -17,19 +17,15 @@
 package de.esoco.lib.property;
 
 /********************************************************************
- * The style in which list elements should be displayed. The following values
- * are available:
+ * An enumeration of the possible styles for UI text input boxes. Not all styles
+ * may be supported by an UI implementation in which case it should revert to a
+ * reasonable default if possible.
  *
  * <ul>
- *   <li>{@link #LIST}: a (scrollable) list with selectable elements.</li>
- *   <li>{@link #DROP_DOWN}: a drop-down box of all values that displays the
- *     currently selected element.</li>
- *   <li>{@link #EDITABLE}: an editable input field that can display a list of
- *     suggested values.</li>
- *   <li>{@link #DISCRETE}: separate controls for each element (e.g. radio
- *     buttons or checkboxes)</li>
- *   <li>{@link #IMMEDIATE}: separate controls for each element that immediately
- *     cause an action when selected (e.g. buttons or hyperlinks).</li>
+ *   <li>{@link #DEFAULT}: The default style.</li>
+ *   <li>{@link #PASSWORD}: Hidden input for sensitive data like passwords.</li>
+ *   <li>{@link #SEARCH}: Text input with an indicator and/or button to execute
+ *     the search.</li>
  * </ul>
  */
-public enum ListStyle { LIST, DROP_DOWN, EDITABLE, DISCRETE, IMMEDIATE }
+public enum TextFieldStyle { DEFAULT, PASSWORD, SEARCH }

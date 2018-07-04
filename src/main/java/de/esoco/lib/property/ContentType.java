@@ -25,8 +25,6 @@ package de.esoco.lib.property;
  * <ul>
  *   <li>{@link #HTML}: HTML code that should be rendered as such.</li>
  *   <li>{@link #PHONE_NUMBER}: a phone number.</li>
- *   <li>{@link #PASSWORD}: a password or other sensitive information which
- *     should not be visible.</li>
  *   <li>{@link #PROGRESS}: a value that indicates the progress of an
  *     operation.</li>
  *   <li>{@link #DATE_TIME}: a date value of which the time should also be
@@ -43,6 +41,6 @@ package de.esoco.lib.property;
  */
 public enum ContentType
 {
-	HTML, PHONE_NUMBER, PASSWORD, PROGRESS, DATE_TIME, WEBSITE, HYPERLINK,
-	RELATIVE_URL, ABSOLUTE_URL, FILE_UPLOAD
+	HTML, PHONE_NUMBER, PROGRESS, DATE_TIME, WEBSITE, HYPERLINK, RELATIVE_URL,
+	ABSOLUTE_URL, FILE_UPLOAD
 }
