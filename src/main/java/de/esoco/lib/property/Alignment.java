@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// This file is a part of the 'gewt' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// This file is a part of the 'esoco-common' project.
+// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ package de.esoco.lib.property;
  *
  * @author eso
  */
-public enum Alignment
+public enum Alignment implements HasCssName
 {
-	BEGIN
+	BEGIN("start")
 	{
 		@Override
 		public int calcAlignedPosition(int	   nStart,
@@ -33,7 +33,7 @@ public enum Alignment
 			return nStart + (bLeftToRight ? 0 : nFreeSpace);
 		}
 	},
-	CENTER
+	CENTER("center")
 	{
 		@Override
 		public int calcAlignedPosition(int	   nStart,
@@ -43,7 +43,7 @@ public enum Alignment
 			return nStart + nFreeSpace / 2;
 		}
 	},
-	END
+	END("end")
 	{
 		@Override
 		public int calcAlignedPosition(int	   nStart,
@@ -53,7 +53,7 @@ public enum Alignment
 			return nStart + (bLeftToRight ? nFreeSpace : 0);
 		}
 	},
-	FILL
+	FILL("stretch")
 	{
 		@Override
 		public int calcAlignedPosition(int	   nStart,
@@ -64,20 +64,23 @@ public enum Alignment
 		}
 	};
 
+	//~ Instance fields --------------------------------------------------------
+
+	private final String sCssName;
+
+	//~ Constructors -----------------------------------------------------------
+
 	/***************************************
-	 * Calculates and returns a coordinate aligned according to this alignment
-	 * based on the starting position and the remaining free space of the area
-	 * to align in.
+	 * Creates a new instance.
 	 *
-	 * @param  nStart       The starting coordinate of the area to align in
-	 * @param  nFreeSpace   The free space available for alignment
-	 * @param  bLeftToRight TRUE for left-to-right display
-	 *
-	 * @return The calculated aligned coordinate
+	 * @param sCssName The CSS name of this instance
 	 */
-	public abstract int calcAlignedPosition(int		nStart,
-											int		nFreeSpace,
-											boolean bLeftToRight);
+	private Alignment(String sCssName)
+	{
+		this.sCssName = sCssName;
+	}
+
+	//~ Static methods ---------------------------------------------------------
 
 	/***************************************
 	 * Returns the alignment instance that is identified by a certain character.
@@ -103,6 +106,23 @@ public enum Alignment
 		throw new IllegalArgumentException("No valid Alignment char: " + cChar);
 	}
 
+	//~ Methods ----------------------------------------------------------------
+
+	/***************************************
+	 * Calculates and returns a coordinate aligned according to this alignment
+	 * based on the starting position and the remaining free space of the area
+	 * to align in.
+	 *
+	 * @param  nStart       The starting coordinate of the area to align in
+	 * @param  nFreeSpace   The free space available for alignment
+	 * @param  bLeftToRight TRUE for left-to-right display
+	 *
+	 * @return The calculated aligned coordinate
+	 */
+	public abstract int calcAlignedPosition(int		nStart,
+											int		nFreeSpace,
+											boolean bLeftToRight);
+
 	/***************************************
 	 * Calculates and returns a coordinate aligned according to this alignment
 	 * based on the starting position, the size of the element to align, and the
@@ -127,5 +147,18 @@ public enum Alignment
 	public final char getCharacter()
 	{
 		return name().charAt(0);
+	}
+
+	/***************************************
+	 * Returns the CSS name of this alignment. This is the standard name that is
+	 * used in modern CSS mechanisms like grid layout for alignment and
+	 * justification.
+	 *
+	 * @return The CSS name
+	 */
+	@Override
+	public String getCssName()
+	{
+		return sCssName;
 	}
 }

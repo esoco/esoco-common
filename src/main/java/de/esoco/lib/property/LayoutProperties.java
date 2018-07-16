@@ -25,11 +25,19 @@ public interface LayoutProperties
 {
 	//~ Static fields/initializers ---------------------------------------------
 
-	/** Integer: the number of rows to display. */
+	/** Integer: the layout row to place an element at. */
+	public static final PropertyName<Integer> ROW =
+		PropertyName.newIntegerName("ROW");
+
+	/** Integer: the layout column to place an element at. */
+	public static final PropertyName<Integer> COLUMN =
+		PropertyName.newIntegerName("COLUMN");
+
+	/** Integer: the number of rows an element shall display. */
 	public static final PropertyName<Integer> ROWS =
 		PropertyName.newIntegerName("ROWS");
 
-	/** Integer: the number of columns to display. */
+	/** Integer: the number of columns and element shall display. */
 	public static final PropertyName<Integer> COLUMNS =
 		PropertyName.newIntegerName("COLUMNS");
 
@@ -76,6 +84,13 @@ public interface LayoutProperties
 	/** {@link LayoutType}: The layout of an element. */
 	public static final PropertyName<LayoutType> LAYOUT =
 		PropertyName.newEnumName("LAYOUT", LayoutType.class);
+
+	/**
+	 * String: The name of the layout are an element should be placed in (e.g.
+	 * in a CSS grid layout).
+	 */
+	public static final PropertyName<String> LAYOUT_AREA =
+		PropertyName.newStringName("LAYOUT_AREA");
 
 	/**
 	 * {@link LayoutVisibility}: The visibility of an element in the responsive
