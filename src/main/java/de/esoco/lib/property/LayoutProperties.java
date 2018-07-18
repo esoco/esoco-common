@@ -25,6 +25,10 @@ public interface LayoutProperties
 {
 	//~ Static fields/initializers ---------------------------------------------
 
+	/** Integer: override the default ordering of elements in a layout. */
+	public static final PropertyName<Integer> ORDER =
+		PropertyName.newIntegerName("ORDER");
+
 	/** Integer: the layout row to place an element at. */
 	public static final PropertyName<Integer> ROW =
 		PropertyName.newIntegerName("ROW");
