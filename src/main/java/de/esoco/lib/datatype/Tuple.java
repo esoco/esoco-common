@@ -1,5 +1,5 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// This file is a part of the 'objectrelations' project.
+// This file is a part of the 'esoco-common' project.
 // Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,6 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Stream;
 
 
@@ -95,15 +94,7 @@ public class Tuple implements Iterable<Object>, Serializable
 			return false;
 		}
 
-		for (int i = aValues.size() - 1; i >= 0; i--)
-		{
-			if (!Objects.equals(aValues.get(i), rOther.aValues.get(i)))
-			{
-				return false;
-			}
-		}
-
-		return true;
+		return aValues.equals(rOther.aValues);
 	}
 
 	/***************************************

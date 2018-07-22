@@ -65,7 +65,8 @@ public interface StateProperties
 	/**
 	 * Boolean: TRUE to mark the element that should receive the input focus.
 	 * This flag should only occur once in an user interface definition. The
-	 * behavior for multiple occurrences is undefined.
+	 * behavior for occurrences on multiple elements depends on the underlying
+	 * platform.
 	 */
 	public static final PropertyName<Boolean> FOCUSED =
 		PropertyName.newBooleanName("FOCUSED");
