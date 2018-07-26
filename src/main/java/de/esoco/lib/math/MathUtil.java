@@ -53,7 +53,7 @@ public class MathUtil
 
 	/***************************************
 	 * Calculates the square root of a {@link BigDecimal} value with a maximum
-	 * scale of 10.
+	 * scale of 16 digits.
 	 *
 	 * @param  dValue The value to calculate the square root of
 	 *
@@ -61,7 +61,7 @@ public class MathUtil
 	 */
 	public static BigDecimal sqrt(BigDecimal dValue)
 	{
-		return sqrt(dValue, 10);
+		return sqrt(dValue, 16);
 	}
 
 	/***************************************
