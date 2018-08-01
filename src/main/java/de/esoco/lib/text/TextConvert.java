@@ -328,6 +328,40 @@ public class TextConvert
 	}
 
 	/***************************************
+	 * Interleaves a string with a fill string in certain intervals.
+	 *
+	 * @param  sValue     The value to interleave with the fill string
+	 * @param  sFill      The string to insert between the value chunks
+	 * @param  nChunkSize The size of the chunks between the fill string shall
+	 *                    be inserted (negative to start from the string end)
+	 *
+	 * @return The resulting string
+	 */
+	public static String interleave(String sValue, String sFill, int nChunkSize)
+	{
+		if (sValue.length() > nChunkSize)
+		{
+			StringBuilder aResult = new StringBuilder(sValue);
+			int			  nLength = sValue.length();
+
+			if (nChunkSize > 0)
+			{
+				nLength    += nChunkSize - (nLength % nChunkSize);
+				nChunkSize = -nChunkSize;
+			}
+
+			for (int i = nLength + nChunkSize; i > 0; i += nChunkSize)
+			{
+				aResult.insert(i, sFill);
+			}
+
+			sValue = aResult.toString();
+		}
+
+		return sValue;
+	}
+
+	/***************************************
 	 * Extracts the last element of a string that is separated by dots ('.'). If
 	 * the input string does not contain dots it is returned unchanged.
 	 *
