@@ -37,9 +37,19 @@ public interface StateProperties
 	public static final PropertyName<Boolean> DISABLED =
 		PropertyName.newBooleanName("DISABLED");
 
-	/** Boolean: TRUE to hide an element. */
+	/**
+	 * Boolean: TRUE to hide an element from rendering completely. To only make
+	 * it invisible use {@link #INVISIBLE}.
+	 */
 	public static final PropertyName<Boolean> HIDDEN =
 		PropertyName.newBooleanName("HIDDEN");
+
+	/**
+	 * Boolean: TRUE to make an element invisible but keep it in the layout. To
+	 * hide it completely use {@link #HIDDEN}.
+	 */
+	public static final PropertyName<Boolean> INVISIBLE =
+		PropertyName.newBooleanName("INVISIBLE");
 
 	/**
 	 * Boolean: TRUE to prevent the locking of an element during interactions
