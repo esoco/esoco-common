@@ -153,4 +153,8 @@ public interface LayoutProperties
 	/** Enum: The relative scale of an {@link ContentProperties#ICON}. */
 	public static final PropertyName<RelativeScale> BUTTON_SIZE =
 		PropertyName.newEnumName("BUTTON_SIZE", RelativeScale.class);
+
+	/** Enum: The layout direction of an element. */
+	public static final PropertyName<Orientation> DIRECTION =
+		PropertyName.newEnumName("DIRECTION", Orientation.class);
 }

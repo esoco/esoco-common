@@ -51,12 +51,9 @@ public interface StyleProperties
 	public static final PropertyName<String> DISABLED_ELEMENTS =
 		PropertyName.newStringName("DISABLED_ELEMENTS");
 
-	/**
-	 * Boolean: TRUE for an element that has a vertical orientation instead of
-	 * horizontal.
-	 */
-	public static final PropertyName<Boolean> VERTICAL =
-		PropertyName.newBooleanName("VERTICAL");
+	/** Enum: The visual orientation of an element. */
+	public static final PropertyName<Orientation> ORIENTATION =
+		PropertyName.newEnumName("ORIENTATION", Orientation.class);
 
 	/** Boolean: TRUE for the hierarchical display of data. */
 	public static final PropertyName<Boolean> HIERARCHICAL =
