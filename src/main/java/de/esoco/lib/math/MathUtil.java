@@ -74,7 +74,7 @@ public class MathUtil
 	 * @param  dValue The value to calculate the square root of
 	 * @param  nScale The maximum scale of the result
 	 *
-	 * @return
+	 * @return A big decimal containing the square root value
 	 */
 	public static BigDecimal sqrt(BigDecimal dValue, int nScale)
 	{
