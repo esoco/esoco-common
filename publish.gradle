@@ -1,4 +1,7 @@
-// must be in build.gradle: plugins { id "com.jfrog.bintray" version "1.8.4" } 
+buildscript {
+    repositories { jcenter() }
+    dependencies { classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.+' }
+}
 apply plugin: 'maven-publish'
 
 // ----------- Bintray Release -----------
