@@ -1,6 +1,46 @@
 // must be in build.gradle: plugins { id "com.jfrog.bintray" version "1.8.4" } 
 apply plugin: 'maven-publish'
 
+// ----------- Bintray Release -----------
+
+bintray {
+	user = project.hasProperty('bintrayUser') ?	
+			   project.property('bintrayUser') :
+			   System.getenv('BINTRAY_USER')
+	key = project.hasProperty('bintrayApiKey') ? 
+			  project.property('bintrayApiKey') :
+			  System.getenv('BINTRAY_API_KEY')
+    
+    publish = true
+    configurations = ['archives']
+	
+	// Maven Central sync currently disabled, as registration for OSS Sonatype  
+	// needs some bureaucracy 
+    // publications = ['MavenCentral'] 
+
+	pkg {
+		repo = 'sdack'
+		name = project.name
+		version {
+			name = project.version
+            vcsTag = project.version
+            gpg {
+                sign = false
+            }
+            mavenCentralSync {
+                sync = false 
+                user = project.hasProperty('ossUser') ?	
+                		   project.property('ossUser') : 
+                		   System.getenv('OSS_USER')
+                password = project.hasProperty('ossPassword') ?	
+                		       project.property('ossPassword') : 
+                		       System.getenv('OSS_PASSWORD')
+            }            
+        }
+	    
+    }
+}
+
 // -------------- Maven POM --------------
 
 def pomConfig = {
@@ -42,42 +82,5 @@ publishing {
 	            }
             }
         }
-    }
-}
-
-// ----------- Bintray Release -----------
-
-bintray {
-	user = project.hasProperty('bintrayUser') ?	
-			   project.property('bintrayUser') :
-			   System.getenv('BINTRAY_USER')
-	key = project.hasProperty('bintrayApiKey') ? 
-			  project.property('bintrayApiKey') :
-			  System.getenv('BINTRAY_API_KEY')
-    
-    configurations = ['archives']
-    publications = ['MavenCentral'] 
-    publish = true
-
-	pkg {
-		repo = 'sdack'
-		name = project.name
-		version {
-			name = project.version
-            vcsTag = project.version
-            gpg {
-                sign = true
-            }
-            mavenCentralSync {
-                sync = true
-                user = project.hasProperty('ossUser') ?	
-                		   project.property('ossUser') : 
-                		   System.getenv('OSS_USER')
-                password = project.hasProperty('ossPassword') ?	
-                		       project.property('ossPassword') : 
-                		       System.getenv('OSS_PASSWORD')
-            }            
-        }
-	    
     }
 }
