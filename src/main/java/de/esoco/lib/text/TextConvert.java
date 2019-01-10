@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -579,6 +579,45 @@ public class TextConvert
 		}
 
 		return sString;
+	}
+
+	/***************************************
+	 * Converts a string of hexadecimal digits into a byte array of half the
+	 * length.
+	 *
+	 * @param  sHexValue The hexadecimal string to convert
+	 *
+	 * @return The resulting byte array
+	 *
+	 * @throws IllegalArgumentException If the argument string is NULL or has an
+	 *                                  uneven length
+	 * @throws NumberFormatException    If the string contains characters that
+	 *                                  cannot be parsed into bytes
+	 */
+	public static byte[] toBytes(String sHexValue)
+	{
+		int nLength = sHexValue.length();
+
+		if (sHexValue == null || (nLength & 0x1) == 1)
+		{
+			throw new IllegalArgumentException(
+				"Even number of hex digits required: " + sHexValue);
+		}
+
+		byte[] aResult = new byte[nLength / 2];
+
+		for (int i = 0; i < nLength; i += 2)
+		{
+			int nUpper = Character.digit(sHexValue.charAt(i), 16);
+			int nLower = Character.digit(sHexValue.charAt(i + 1), 16);
+
+			if (nUpper >= 0 && nLower >= 0)
+			{
+				aResult[i / 2] = (byte) ((nUpper << 4) + nLower);
+			}
+		}
+
+		return aResult;
 	}
 
 	/***************************************
