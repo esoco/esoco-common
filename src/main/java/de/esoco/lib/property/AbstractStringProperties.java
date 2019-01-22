@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -60,15 +60,6 @@ public abstract class AbstractStringProperties implements HasProperties,
 
 	private Map<PropertyName<?>, String> aPropertyMap = null;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
-	 * Creates a new instance.
-	 */
-	public AbstractStringProperties()
-	{
-	}
-
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
@@ -127,9 +118,10 @@ public abstract class AbstractStringProperties implements HasProperties,
 		if (sRawValue != null)
 		{
 			rValue =
-				parseValue(sRawValue,
-						   rName.getDatatype(),
-						   rName.getElementDatatypes());
+				parseValue(
+					sRawValue,
+					rName.getDatatype(),
+					rName.getElementDatatypes());
 		}
 
 		return rValue;
@@ -208,8 +200,8 @@ public abstract class AbstractStringProperties implements HasProperties,
 		{
 			String sElement = convertValue(rElement);
 
-			aResult.append(unicodeEncode(sElement,
-										 DEFAULT_COLLECTION_SEPARATOR));
+			aResult.append(
+				unicodeEncode(sElement, DEFAULT_COLLECTION_SEPARATOR));
 			aResult.append(DEFAULT_COLLECTION_SEPARATOR);
 		}
 
@@ -246,13 +238,13 @@ public abstract class AbstractStringProperties implements HasProperties,
 
 				aResult.append(sKey);
 				aResult.append(DEFAULT_KEY_VALUE_SEPARATOR);
-				aResult.append(unicodeEncode(sValue,
-											 DEFAULT_COLLECTION_SEPARATOR));
+				aResult.append(
+					unicodeEncode(sValue, DEFAULT_COLLECTION_SEPARATOR));
 				aResult.append(DEFAULT_COLLECTION_SEPARATOR);
 			}
 
-			aResult.setLength(aResult.length() -
-							  DEFAULT_COLLECTION_SEPARATOR.length());
+			aResult.setLength(
+				aResult.length() - DEFAULT_COLLECTION_SEPARATOR.length());
 		}
 
 		return aResult.toString();
@@ -397,13 +389,14 @@ public abstract class AbstractStringProperties implements HasProperties,
 				String sKey = sEntry.substring(0, nKeyEnd);
 
 				String sValue =
-					sEntry.substring(nKeyEnd +
-									 DEFAULT_KEY_VALUE_SEPARATOR.length());
+					sEntry.substring(
+						nKeyEnd + DEFAULT_KEY_VALUE_SEPARATOR.length());
 
 				sValue = unicodeDecode(sValue, DEFAULT_COLLECTION_SEPARATOR);
 
-				aMap.put(parseValue(sKey, rKeyType, null),
-						 parseValue(sValue, rValueType, null));
+				aMap.put(
+					parseValue(sKey, rKeyType, null),
+					parseValue(sValue, rValueType, null));
 			}
 		}
 
@@ -460,9 +453,10 @@ public abstract class AbstractStringProperties implements HasProperties,
 			Class<E> rElementType = (Class<E>) rElementTypes[0];
 
 			rValue =
-				(T) parseCollection((Class<? extends Collection<E>>) rDatatype,
-									sRawValue,
-									rElementType);
+				(T) parseCollection(
+					(Class<? extends Collection<E>>) rDatatype,
+					sRawValue,
+					rElementType);
 		}
 		else if (rDatatype == Map.class)
 		{

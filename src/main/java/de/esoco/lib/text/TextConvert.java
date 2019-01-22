@@ -744,20 +744,19 @@ public class TextConvert
 			char    c	   = s.charAt(nPos);
 			boolean bUpper = Character.isUpperCase(c);
 
-			if (bUpper && (nPos - nStart) > 0)
+			if (bUpper &&
+				(nPos - nStart) > 0 &&
+				(!bSkip ||
+				 (nPos < nMax && Character.isLowerCase(s.charAt(nPos + 1)))))
 			{
-				if (!bSkip ||
-					(nPos < nMax && Character.isLowerCase(s.charAt(nPos + 1))))
+				sb.append(s.substring(nStart, nPos));
+
+				if (sb.charAt(sb.length() - 1) != '_')
 				{
-					sb.append(s.substring(nStart, nPos));
-
-					if (sb.charAt(sb.length() - 1) != '_')
-					{
-						sb.append('_');
-					}
-
-					nStart = nPos;
+					sb.append('_');
 				}
+
+				nStart = nPos;
 			}
 
 			// do not split at sequences of uppercase letters and also skip
