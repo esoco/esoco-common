@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@ package de.esoco.lib.model;
 
 import de.esoco.lib.property.StringProperties;
 import de.esoco.lib.property.UserInterfaceProperties;
+
+import java.util.Objects;
 
 
 /********************************************************************
@@ -114,7 +116,13 @@ public class SimpleColumnDefinition extends StringProperties
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * TODO: DOCUMENT ME!
+	 *
+	 * @param      rObj TODO: DOCUMENT ME!
+	 *
+	 * @return     TODO: DOCUMENT ME!
+	 *
+	 * @inheritDoc }
 	 */
 	@Override
 	public boolean equals(Object rObj)
@@ -124,54 +132,20 @@ public class SimpleColumnDefinition extends StringProperties
 			return true;
 		}
 
-		if (!super.equals(rObj) || getClass() != rObj.getClass())
+		if (getClass() != rObj.getClass())
 		{
 			return false;
 		}
 
 		SimpleColumnDefinition rOther = (SimpleColumnDefinition) rObj;
 
-		if (sDatatype == null)
-		{
-			if (rOther.sDatatype != null)
-			{
-				return false;
-			}
-		}
-		else if (!sDatatype.equals(rOther.sDatatype))
-		{
-			return false;
-		}
-
-		if (sId == null)
-		{
-			if (rOther.sId != null)
-			{
-				return false;
-			}
-		}
-		else if (!sId.equals(rOther.sId))
-		{
-			return false;
-		}
-
-		if (sTitle == null)
-		{
-			if (rOther.sTitle != null)
-			{
-				return false;
-			}
-		}
-		else if (!sTitle.equals(rOther.sTitle))
-		{
-			return false;
-		}
-
-		return true;
+		return hasEqualProperties(rOther) && Objects.equals(sId, rOther.sId) &&
+			   Objects.equals(sTitle, rOther.sTitle) &&
+			   Objects.equals(sDatatype, rOther.sDatatype);
 	}
 
 	/***************************************
-	 * @see ColumnDefinition#getDatatype()
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String getDatatype()

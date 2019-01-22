@@ -27,6 +27,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import static de.esoco.lib.text.TextConvert.DEFAULT_COLLECTION_SEPARATOR;
@@ -63,7 +64,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * @see Object#equals(Object)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public boolean equals(Object rObj)
@@ -73,30 +74,12 @@ public abstract class AbstractStringProperties implements HasProperties,
 			return true;
 		}
 
-		if (rObj == null || getClass() != rObj.getClass())
-		{
-			return false;
-		}
-
-		AbstractStringProperties rOther = (StringProperties) rObj;
-
-		if (aPropertyMap == null)
-		{
-			if (rOther.aPropertyMap != null)
-			{
-				return false;
-			}
-		}
-		else if (!aPropertyMap.equals(rOther.aPropertyMap))
-		{
-			return false;
-		}
-
-		return true;
+		return rObj != null && getClass() == rObj.getClass() &&
+			   hasEqualProperties((AbstractStringProperties) rObj);
 	}
 
 	/***************************************
-	 * @see MutableProperties#getIntProperty(PropertyName, int)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int getIntProperty(PropertyName<Integer> rName, int nDefault)
@@ -107,7 +90,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	}
 
 	/***************************************
-	 * @see MutableProperties#getProperty(PropertyName, Object)
+	 * {@inheritDoc}
 	 */
 	@Override
 	public <T> T getProperty(PropertyName<T> rName, T rDefault)
@@ -144,6 +127,18 @@ public abstract class AbstractStringProperties implements HasProperties,
 	{
 		return aPropertyMap != null ? aPropertyMap.keySet()
 									: Collections.<PropertyName<?>>emptySet();
+	}
+
+	/***************************************
+	 * Checks whether this instance has equal properties as another instance.
+	 *
+	 * @param  rOther The other properties object
+	 *
+	 * @return TRUE if the properties are equal
+	 */
+	public boolean hasEqualProperties(AbstractStringProperties rOther)
+	{
+		return Objects.equals(aPropertyMap, rOther.aPropertyMap);
 	}
 
 	/***************************************
