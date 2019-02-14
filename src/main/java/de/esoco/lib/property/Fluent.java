@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,14 +27,17 @@ public interface Fluent<T extends Fluent<T>>
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * Returns this instance after applying an action. This method is intended
-	 * to be implemented by subclasses only, but because interface methods are
-	 * always public it has been named with a leading underscore to emphasize
-	 * this usage. Invoking this method externally won't harm but doesn't make
+	 * A helper method for implementations that handles the repetitive task of
+	 * returning this instance after applying some action to it. This method is
+	 * intended to be used by subclasses for more specific method
+	 * implementations only, but because interface methods are always public it
+	 * has been named with a leading underscore to emphasize this usage.
+	 *
+	 * <p>Invoking this method externally won't harm but typically doesn't make
 	 * sense because the action is provided as a runnable which can only have
 	 * access to the invoked instance if it is created in it's context (or
 	 * captures it). Using this method for other purposes is therefore
-	 * discouraged as it may harm code readability.
+	 * discouraged as it may harm code readability.</p>
 	 *
 	 * @param  fUpdate The function that performs the fluent action
 	 *

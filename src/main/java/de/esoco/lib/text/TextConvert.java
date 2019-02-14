@@ -30,7 +30,16 @@ public class TextConvert
 	//~ Enums ------------------------------------------------------------------
 
 	/********************************************************************
-	 * Enumeration of the styles for the conversion of identifiers.
+	 * Enumeration of the styles for the conversion of identifier strings.
+	 *
+	 * <ul>
+	 *   <li>{@link #CAMELCASE}: Concatenated words, all starting with an
+	 *     uppercase letter.</li>
+	 *   <li>{@link #LOWER_CAMELCASE}: Like camel case but with a lowercase
+	 *     first letter of the first word.</li>
+	 *   <li>{@link #UPPERCASE}: All letters uppercase, words separated by
+	 *     underscores.</li>
+	 * </ul>
 	 */
 	public enum IdentifierStyle { CAMELCASE, LOWER_CAMELCASE, UPPERCASE }
 
