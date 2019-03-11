@@ -83,7 +83,7 @@ public class MathUtil
 		/***************************************
 		 * Returns the decimal exponent of this prefix.
 		 *
-		 * @return
+		 * @return The decimal exponent
 		 */
 		public int exponent()
 		{
