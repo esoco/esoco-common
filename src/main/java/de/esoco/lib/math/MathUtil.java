@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,6 +29,68 @@ import java.util.Objects;
  */
 public class MathUtil
 {
+	//~ Enums ------------------------------------------------------------------
+
+	/********************************************************************
+	 * Enumeration of metric prefixes.
+	 */
+	public enum MetricPrefix
+	{
+		YOTTA(24), ZETTA(21), EXA(18), PETA(15), TERA(12), GIGA(9), MEGA(6),
+		KILO(3), HECTO(2), DECA(1), DECI(-1), CENTI(-2), MILLI(-3), MICRO(-6),
+		NANO(-9), PICO(-12), FEMTO(-15), ATTO(-18), ZEPTO(-21), YOCTO(-24);
+
+		//~ Instance fields ----------------------------------------------------
+
+		private final int		 nExponent;
+		private final BigDecimal aDecimalValue;
+
+		//~ Constructors -------------------------------------------------------
+
+		/***************************************
+		 * Creates a new instance.
+		 *
+		 * @param nExponent the value of the exponent
+		 */
+		private MetricPrefix(int nExponent)
+		{
+			this.nExponent = nExponent;
+
+			if (nExponent > 0)
+			{
+				aDecimalValue = BigDecimal.TEN.pow(nExponent);
+			}
+			else
+			{
+				aDecimalValue =
+					BigDecimal.ONE.divide(BigDecimal.TEN.pow(-nExponent));
+			}
+		}
+
+		//~ Methods ------------------------------------------------------------
+
+		/***************************************
+		 * Returns the decimal representation of this prefix, i.e. the value
+		 * 10<sup>exponent</sup>.
+		 *
+		 * @return The decimal value of this prefix
+		 */
+		public BigDecimal decimal()
+		{
+			return aDecimalValue;
+		}
+
+		/***************************************
+		 * Returns the decimal exponent of this prefix.
+		 *
+		 * @return
+		 */
+		public int exponent()
+		{
+			return nExponent;
+		}
+	}
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** {@link BigDecimal} constant for the value 2 without scale. */
