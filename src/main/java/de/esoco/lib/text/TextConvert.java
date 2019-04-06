@@ -640,14 +640,16 @@ public class TextConvert
 	{
 		sName = sName.substring(sName.lastIndexOf('.') + 1);
 
-		if (sName.endsWith("y"))
+		if (sName.endsWith("s"))
+		{
+			sName += "es";
+		}
+		else if (sName.endsWith("y") &&
+				 !(sName.endsWith("ay") || sName.endsWith("ey") ||
+				   sName.endsWith("oy") || sName.endsWith("uy")))
 		{
 			sName =  sName.substring(0, sName.length() - 1);
 			sName += "ies";
-		}
-		else if (sName.endsWith("s"))
-		{
-			sName += "es";
 		}
 		else
 		{
