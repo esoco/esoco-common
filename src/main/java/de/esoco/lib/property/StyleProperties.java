@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,6 +39,10 @@ public interface StyleProperties
 	/** Integer: the maximum number of characters to display. */
 	public static final PropertyName<Integer> MAX_CHARS =
 		PropertyName.newIntegerName("MAX_CHARS");
+
+	/** Integer: the size of a splitter in a split layout. */
+	public static final PropertyName<Integer> SPLITTER_SIZE =
+		PropertyName.newIntegerName("SPLITTER_SIZE");
 
 	/** Integer: the duration of an UI animation. */
 	public static final PropertyName<Integer> ANIMATION_DURATION =
@@ -158,8 +162,9 @@ public interface StyleProperties
 
 	/** The style of a navigation menu. */
 	public static final PropertyName<NavigationMenuStyle> NAVIGATION_MENU_STYLE =
-		PropertyName.newName("NAVIGATION_MENU_STYLE",
-							 NavigationMenuStyle.class);
+		PropertyName.newName(
+			"NAVIGATION_MENU_STYLE",
+			NavigationMenuStyle.class);
 
 	/**
 	 * String: the background color of an element as a HTML color definition.
