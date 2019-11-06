@@ -3,13 +3,22 @@ buildscript {
     dependencies { classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+' }
 }
 
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'eclipse'
+
+repositories {
+	jcenter()
+}
 
 project.group = 'de.esoco'
 project.description = 'Common functionality for SDACK'
 
 sourceCompatibility = 1.8
+
+dependencies {
+	testImplementation platform('org.junit:junit-bom:5.5.2')	
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+}
 
 // sources are needed for the GWT compiler
 jar { from sourceSets.main.allSource }
