@@ -43,8 +43,17 @@ bintray {
     }
 }
 
+// -------------- Maven Local ------------
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+}
+
 // -------------- Maven POM --------------
-/*
+/* 
 def pomConfig = {
     licenses {
         license {

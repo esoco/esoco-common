@@ -1,12 +1,8 @@
-buildscript {
-    repositories { jcenter() }
-    dependencies { classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+' }
-}
-
 apply plugin: 'java-library'
 apply plugin: 'eclipse'
 
 repositories {
+	mavenLocal()
 	jcenter()
 }
 
@@ -47,4 +43,8 @@ tasks.withType(Javadoc) {
     }
 }
 
+buildscript {
+    repositories { jcenter() }
+    dependencies { classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+' }
+}
 apply from: 'publish.gradle'
