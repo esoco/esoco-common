@@ -53,7 +53,7 @@ public interface ThrowingFunction<I, O> extends Function<I, O>
 	 * implementation in {@link #tryApply(Object)} and to convert occurring
 	 * exceptions into {@link FunctionException}.
 	 *
-	 * @see Function#evaluate(Object)
+	 * @see Function#apply(Object)
 	 */
 	@Override
 	default public O apply(I rInput)
@@ -73,7 +73,7 @@ public interface ThrowingFunction<I, O> extends Function<I, O>
 	}
 
 	/***************************************
-	 * Replaces {@link #evaluate(Object)} and allows implementations to throw an
+	 * Replaces {@link #apply(Object)} and allows implementations to throw an
 	 * exception.
 	 *
 	 * @param  rInput The input value

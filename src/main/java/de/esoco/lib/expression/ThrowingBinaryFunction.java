@@ -50,8 +50,8 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O>
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
-	 * A variant of {@link #evaluate(Object)} that allows implementations to
-	 * throw an exception.
+	 * The version of {@link #apply(Object, Object)} that allows implementations
+	 * to throw an exception.
 	 *
 	 * @param  rLeft  The left argument
 	 * @param  rRight The right argument
@@ -69,7 +69,7 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O>
 	 * implementation in {@link #tryApply(Object, Object)} and to convert
 	 * occurring exceptions into {@link FunctionException}.
 	 *
-	 * @see BinaryFunction#evaluate(Object, Object)
+	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
 	default O apply(L rLeft, R rRight)
