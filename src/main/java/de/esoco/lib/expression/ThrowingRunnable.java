@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// This file is a part of the 'objectrelations' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// This file is a part of the 'esoco-common' project.
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,9 +16,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.expression;
 
-import de.esoco.lib.expression.FunctionException;
-
-
 /********************************************************************
  * A {@link Runnable} extension that maps any occurring exception to a runtime
  * {@link FunctionException}.
@@ -26,8 +23,8 @@ import de.esoco.lib.expression.FunctionException;
  * @author eso
  */
 @FunctionalInterface
-public interface ThrowingRunnable extends Runnable
-{
+public interface ThrowingRunnable extends Runnable {
+
 	//~ Static methods ---------------------------------------------------------
 
 	/***************************************
@@ -40,8 +37,7 @@ public interface ThrowingRunnable extends Runnable
 	 *
 	 * @return The resulting function
 	 */
-	public static Runnable of(ThrowingRunnable fThrowing)
-	{
+	public static Runnable of(ThrowingRunnable fThrowing) {
 		return fThrowing;
 	}
 
@@ -55,20 +51,13 @@ public interface ThrowingRunnable extends Runnable
 	 * @see Runnable#run()
 	 */
 	@Override
-	default public void run()
-	{
-		try
-		{
+	default public void run() {
+		try {
 			tryRun();
-		}
-		catch (Throwable e)
-		{
-			if (e instanceof RuntimeException)
-			{
+		} catch (Throwable e) {
+			if (e instanceof RuntimeException) {
 				throw (RuntimeException) e;
-			}
-			else
-			{
+			} else {
 				throw new FunctionException(this, e);
 			}
 		}

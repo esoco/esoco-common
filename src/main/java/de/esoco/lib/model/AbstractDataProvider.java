@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,10 +32,9 @@ import java.util.function.Predicate;
  *
  * @author eso
  */
-public abstract class AbstractDataProvider<T> implements DataProvider<T>,
-														 HasAttributeFilter<T>,
-														 HasAttributeSorting<T>
-{
+public abstract class AbstractDataProvider<T>
+	implements DataProvider<T>, HasAttributeFilter<T>, HasAttributeSorting<T> {
+
 	//~ Instance fields --------------------------------------------------------
 
 	private Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
@@ -52,14 +51,10 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	@Override
 	public <V> void applyFilter(
 		Function<? super T, V> rAttribute,
-		Predicate<? super V>   pCriteria)
-	{
-		if (pCriteria == null)
-		{
+		Predicate<? super V>   pCriteria) {
+		if (pCriteria == null) {
 			aAttributeFilters.remove(rAttribute);
-		}
-		else
-		{
+		} else {
 			aAttributeFilters.put(rAttribute, pCriteria);
 		}
 
@@ -72,14 +67,10 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	@Override
 	public <V extends Comparable<V>> void applySorting(
 		Function<? super T, V> rAttribute,
-		SortDirection		   eDirection)
-	{
-		if (eDirection == null)
-		{
+		SortDirection		   eDirection) {
+		if (eDirection == null) {
 			aAttributeSortings.remove(rAttribute);
-		}
-		else
-		{
+		} else {
 			aAttributeSortings.put(rAttribute, eDirection);
 		}
 
@@ -91,8 +82,8 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public <V> Predicate<? super V> getFilter(Function<? super T, V> rAttribute)
-	{
+	public <V> Predicate<? super V> getFilter(
+		Function<? super T, V> rAttribute) {
 		return (Predicate<? super V>) aAttributeFilters.get(rAttribute);
 	}
 
@@ -100,8 +91,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public SortDirection getSortDirection(Function<? super T, ?> rAttribute)
-	{
+	public SortDirection getSortDirection(Function<? super T, ?> rAttribute) {
 		return aAttributeSortings.get(rAttribute);
 	}
 
@@ -109,8 +99,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean hasActiveFilter()
-	{
+	public boolean hasActiveFilter() {
 		return !aAttributeFilters.isEmpty();
 	}
 
@@ -118,16 +107,14 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean hasActiveSorting()
-	{
+	public boolean hasActiveSorting() {
 		return !aAttributeSortings.isEmpty();
 	}
 
 	/***************************************
 	 * Removes all attribute filters.
 	 */
-	public void removeAllFilters()
-	{
+	public void removeAllFilters() {
 		aAttributeFilters.clear();
 		updateFilter(aAttributeFilters);
 	}
@@ -135,8 +122,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	/***************************************
 	 * Removes all attribute sortings.
 	 */
-	public void removeAllSortings()
-	{
+	public void removeAllSortings() {
 		aAttributeSortings.clear();
 		updateSorting(aAttributeSortings);
 	}
@@ -164,8 +150,8 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 *
 	 * @return A mapping from attributes to filter predicates
 	 */
-	protected final Map<Function<? super T, ?>, Predicate<?>> getAttributeFilters()
-	{
+	protected final Map<Function<? super T, ?>, Predicate<?>>
+	getAttributeFilters() {
 		return aAttributeFilters;
 	}
 
@@ -175,8 +161,7 @@ public abstract class AbstractDataProvider<T> implements DataProvider<T>,
 	 * @return A mapping from attributes to order directions
 	 */
 	protected final Map<Function<? super T, ? extends Comparable<?>>,
-						SortDirection> getAttributeSortings()
-	{
+						SortDirection> getAttributeSortings() {
 		return aAttributeSortings;
 	}
 }

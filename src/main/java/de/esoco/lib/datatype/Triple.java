@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// This file is a part of the 'objectrelations' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// This file is a part of the 'esoco-common' project.
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ package de.esoco.lib.datatype;
  *
  * @author eso
  */
-public class Triple<F, S, T> extends Tuple
-{
+public class Triple<F, S, T> extends Tuple {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -36,8 +36,7 @@ public class Triple<F, S, T> extends Tuple
 	 * @param rSecond The second value
 	 * @param rThird  The third value
 	 */
-	public Triple(F rFirst, S rSecond, T rThird)
-	{
+	public Triple(F rFirst, S rSecond, T rThird) {
 		super(rFirst, rSecond, rThird);
 	}
 
@@ -54,8 +53,7 @@ public class Triple<F, S, T> extends Tuple
 	 *
 	 * @return A new pair instance
 	 */
-	public static <F, S, T> Triple<F, S, T> of(F rFirst, S rSecond, T rThird)
-	{
+	public static <F, S, T> Triple<F, S, T> of(F rFirst, S rSecond, T rThird) {
 		return new Triple<>(rFirst, rSecond, rThird);
 	}
 
@@ -70,8 +68,7 @@ public class Triple<F, S, T> extends Tuple
 	 *
 	 * @return A new pair instance
 	 */
-	public static <F, S, T> Triple<F, S, T> t(F rFirst, S rSecond, T rThird)
-	{
+	public static <F, S, T> Triple<F, S, T> t(F rFirst, S rSecond, T rThird) {
 		return Triple.of(rFirst, rSecond, rThird);
 	}
 
@@ -83,8 +80,7 @@ public class Triple<F, S, T> extends Tuple
 	 * @return The first value
 	 */
 	@SuppressWarnings("unchecked")
-	public final F first()
-	{
+	public final F first() {
 		return (F) get(0);
 	}
 
@@ -94,8 +90,7 @@ public class Triple<F, S, T> extends Tuple
 	 * @return The second value
 	 */
 	@SuppressWarnings("unchecked")
-	public final S second()
-	{
+	public final S second() {
 		return (S) get(1);
 	}
 
@@ -105,8 +100,7 @@ public class Triple<F, S, T> extends Tuple
 	 * @return The third value
 	 */
 	@SuppressWarnings("unchecked")
-	public final T third()
-	{
+	public final T third() {
 		return (T) get(2);
 	}
 }

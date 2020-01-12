@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -66,8 +66,7 @@ package de.esoco.lib.property;
  *     render it in-line with it's parent.</li>
  * </ul>
  */
-public enum LayoutType
-{
+public enum LayoutType {
 	TABLE, DOCK, SPLIT, TABS, STACK, DECK, FILL, FLOW, FLEX, GRID, GRID_ROW,
 	GRID_COLUMN, CSS_GRID, LIST, LIST_ITEM, CARD, FORM, GROUP, MENU, HEADER,
 	CONTENT, SECONDARY_CONTENT, FOOTER, INLINE

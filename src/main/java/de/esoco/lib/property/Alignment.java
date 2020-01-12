@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,45 +21,36 @@ package de.esoco.lib.property;
  *
  * @author eso
  */
-public enum Alignment implements HasCssName
-{
-	BEGIN("start")
-	{
+public enum Alignment implements HasCssName {
+	BEGIN("start") {
 		@Override
 		public int calcAlignedPosition(int	   nStart,
 									   int	   nFreeSpace,
-									   boolean bLeftToRight)
-		{
+									   boolean bLeftToRight) {
 			return nStart + (bLeftToRight ? 0 : nFreeSpace);
 		}
 	},
-	CENTER("center")
-	{
+	CENTER("center") {
 		@Override
 		public int calcAlignedPosition(int	   nStart,
 									   int	   nFreeSpace,
-									   boolean bLeftToRight)
-		{
+									   boolean bLeftToRight) {
 			return nStart + nFreeSpace / 2;
 		}
 	},
-	END("end")
-	{
+	END("end") {
 		@Override
 		public int calcAlignedPosition(int	   nStart,
 									   int	   nFreeSpace,
-									   boolean bLeftToRight)
-		{
+									   boolean bLeftToRight) {
 			return nStart + (bLeftToRight ? nFreeSpace : 0);
 		}
 	},
-	FILL("stretch")
-	{
+	FILL("stretch") {
 		@Override
 		public int calcAlignedPosition(int	   nStart,
 									   int	   nFreeSpace,
-									   boolean bLeftToRight)
-		{
+									   boolean bLeftToRight) {
 			return nStart + (bLeftToRight ? 0 : nFreeSpace);
 		}
 	};
@@ -75,8 +66,7 @@ public enum Alignment implements HasCssName
 	 *
 	 * @param sCssName The CSS name of this instance
 	 */
-	private Alignment(String sCssName)
-	{
+	private Alignment(String sCssName) {
 		this.sCssName = sCssName;
 	}
 
@@ -93,12 +83,9 @@ public enum Alignment implements HasCssName
 	 * @throws IllegalArgumentException If the character doesn't represent an
 	 *                                  alignment instance
 	 */
-	public static Alignment valueOf(char cChar)
-	{
-		for (Alignment a : values())
-		{
-			if (a.getCharacter() == cChar)
-			{
+	public static Alignment valueOf(char cChar) {
+		for (Alignment a : values()) {
+			if (a.getCharacter() == cChar) {
 				return a;
 			}
 		}
@@ -134,8 +121,7 @@ public enum Alignment implements HasCssName
 	 *
 	 * @return The calculated aligned coordinate
 	 */
-	public int calcAlignedPosition(int nStart, int nFullSize, int nAlignSize)
-	{
+	public int calcAlignedPosition(int nStart, int nFullSize, int nAlignSize) {
 		return calcAlignedPosition(nStart, nFullSize - nAlignSize, true);
 	}
 
@@ -144,8 +130,7 @@ public enum Alignment implements HasCssName
 	 *
 	 * @return The character describing this instance
 	 */
-	public final char getCharacter()
-	{
+	public final char getCharacter() {
 		return name().charAt(0);
 	}
 
@@ -157,8 +142,7 @@ public enum Alignment implements HasCssName
 	 * @return The CSS name
 	 */
 	@Override
-	public String getCssName()
-	{
+	public String getCssName() {
 		return sCssName;
 	}
 }

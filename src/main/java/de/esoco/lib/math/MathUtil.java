@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,15 +27,14 @@ import java.util.Objects;
  *
  * @author eso
  */
-public class MathUtil
-{
+public class MathUtil {
+
 	//~ Enums ------------------------------------------------------------------
 
 	/********************************************************************
 	 * Enumeration of metric prefixes.
 	 */
-	public enum MetricPrefix
-	{
+	public enum MetricPrefix {
 		YOTTA(24), ZETTA(21), EXA(18), PETA(15), TERA(12), GIGA(9), MEGA(6),
 		KILO(3), HECTO(2), DECA(1), DECI(-1), CENTI(-2), MILLI(-3), MICRO(-6),
 		NANO(-9), PICO(-12), FEMTO(-15), ATTO(-18), ZEPTO(-21), YOCTO(-24);
@@ -52,16 +51,12 @@ public class MathUtil
 		 *
 		 * @param nExponent the value of the exponent
 		 */
-		private MetricPrefix(int nExponent)
-		{
+		private MetricPrefix(int nExponent) {
 			this.nExponent = nExponent;
 
-			if (nExponent > 0)
-			{
+			if (nExponent > 0) {
 				aDecimalValue = BigDecimal.TEN.pow(nExponent);
-			}
-			else
-			{
+			} else {
 				aDecimalValue =
 					BigDecimal.ONE.divide(BigDecimal.TEN.pow(-nExponent));
 			}
@@ -75,8 +70,7 @@ public class MathUtil
 		 *
 		 * @return The decimal value of this prefix
 		 */
-		public BigDecimal decimal()
-		{
+		public BigDecimal decimal() {
 			return aDecimalValue;
 		}
 
@@ -85,8 +79,7 @@ public class MathUtil
 		 *
 		 * @return The decimal exponent
 		 */
-		public int exponent()
-		{
+		public int exponent() {
 			return nExponent;
 		}
 	}
@@ -107,8 +100,7 @@ public class MathUtil
 	/***************************************
 	 * Private, only static use.
 	 */
-	private MathUtil()
-	{
+	private MathUtil() {
 	}
 
 	//~ Static methods ---------------------------------------------------------
@@ -121,8 +113,7 @@ public class MathUtil
 	 *
 	 * @return A big decimal containing the square root value
 	 */
-	public static BigDecimal sqrt(BigDecimal dValue)
-	{
+	public static BigDecimal sqrt(BigDecimal dValue) {
 		return sqrt(dValue, 16);
 	}
 
@@ -138,12 +129,10 @@ public class MathUtil
 	 *
 	 * @return A big decimal containing the square root value
 	 */
-	public static BigDecimal sqrt(BigDecimal dValue, int nScale)
-	{
+	public static BigDecimal sqrt(BigDecimal dValue, int nScale) {
 		Objects.requireNonNull(dValue);
 
-		if (dValue.signum() == -1)
-		{
+		if (dValue.signum() == -1) {
 			throw new IllegalArgumentException("Value must not be negative");
 		}
 
@@ -153,8 +142,7 @@ public class MathUtil
 		BigDecimal x0 = BigDecimal.ZERO;
 		BigDecimal x1 = dValue.divide(TWO, nScale, RoundingMode.FLOOR);
 
-		while (x0.compareTo(x1) != 0)
-		{
+		while (x0.compareTo(x1) != 0) {
 			x0 = x1;
 			x1 = dValue.divide(x0, nScale, RoundingMode.HALF_UP);
 			x1 = x1.add(x0);

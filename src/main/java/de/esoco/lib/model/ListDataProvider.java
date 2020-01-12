@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,8 +35,8 @@ import java.util.stream.Stream;
  *
  * @author eso
  */
-public class ListDataProvider<T> extends AbstractDataProvider<T>
-{
+public class ListDataProvider<T> extends AbstractDataProvider<T> {
+
 	//~ Instance fields --------------------------------------------------------
 
 	private final List<T> aOriginalData;
@@ -49,8 +49,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	 *
 	 * @param rData A collection containing the data objects
 	 */
-	public ListDataProvider(Collection<T> rData)
-	{
+	public ListDataProvider(Collection<T> rData) {
 		aOriginalData = new ArrayList<>(rData);
 
 		updateVisibleData();
@@ -62,17 +61,14 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Collection<T> getData(int nStart, int nCount)
-	{
-		if (nStart > aVisibleData.size())
-		{
+	public Collection<T> getData(int nStart, int nCount) {
+		if (nStart > aVisibleData.size()) {
 			nStart = aVisibleData.size();
 		}
 
 		int nEnd = nStart + nCount;
 
-		if (nEnd > aVisibleData.size())
-		{
+		if (nEnd > aVisibleData.size()) {
 			nEnd = aVisibleData.size();
 		}
 
@@ -83,8 +79,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int size()
-	{
+	public int size() {
 		return aVisibleData.size();
 	}
 
@@ -103,20 +98,16 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 		T					   t1,
 		T					   t2,
 		Function<? super T, V> rAttribute,
-		SortDirection		   eDirection)
-	{
+		SortDirection		   eDirection) {
 		V v1 = rAttribute.apply(t1);
 		V v2 = rAttribute.apply(t2);
 
 		int nComparison;
 
-		if (v1 == null || v2 == null)
-		{
+		if (v1 == null || v2 == null) {
 			nComparison =
 				(v1 == null ? (v2 == null ? 0 : 1) : (v2 == null ? 0 : -1));
-		}
-		else
-		{
+		} else {
 			nComparison =
 				(eDirection == SortDirection.ASCENDING ? v1.compareTo(v2)
 													   : v2.compareTo(v1));
@@ -135,13 +126,11 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	 * @return The comparison result
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected int compareDataObjects(T t1, T t2)
-	{
+	protected int compareDataObjects(T t1, T t2) {
 		int nComparison = -1;
 
 		for (Entry<Function<? super T, ? extends Comparable<?>>, SortDirection> rOrdering :
-			 getAttributeSortings().entrySet())
-		{
+			 getAttributeSortings().entrySet()) {
 			Function<? super T, ? extends Comparable> rAttribute =
 				rOrdering.getKey();
 
@@ -150,8 +139,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 			nComparison =
 				compareAttributeValues(t1, t2, rAttribute, eDirection);
 
-			if (nComparison != 0)
-			{
+			if (nComparison != 0) {
 				break;
 			}
 		}
@@ -164,8 +152,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	 */
 	@Override
 	protected void updateFilter(
-		Map<Function<? super T, ?>, Predicate<?>> rFilters)
-	{
+		Map<Function<? super T, ?>, Predicate<?>> rFilters) {
 		updateVisibleData();
 	}
 
@@ -174,35 +161,29 @@ public class ListDataProvider<T> extends AbstractDataProvider<T>
 	 */
 	@Override
 	protected void updateSorting(
-		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> rSortings)
-	{
+		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> rSortings) {
 		updateVisibleData();
 	}
 
 	/***************************************
 	 * Resets the visible data to the original (full) data set.
 	 */
-	protected void updateVisibleData()
-	{
+	protected void updateVisibleData() {
 		Stream<T> aDataStream = aOriginalData.stream();
 
 		for (Entry<Function<? super T, ?>, Predicate<?>> rFilter :
-			 getAttributeFilters().entrySet())
-		{
+			 getAttributeFilters().entrySet()) {
 			Function<? super T, ?> rAttribute = rFilter.getKey();
 
 			@SuppressWarnings("unchecked")
 			Predicate<Object> pFilter = (Predicate<Object>) rFilter.getValue();
 
 			aDataStream =
-				aDataStream.filter(t ->
-			   					{
-			   						return pFilter.test(rAttribute.apply(t));
-								   });
+				aDataStream.filter(
+					t -> { return pFilter.test(rAttribute.apply(t)); });
 		}
 
-		if (!getAttributeSortings().isEmpty())
-		{
+		if (!getAttributeSortings().isEmpty()) {
 			aDataStream = aDataStream.sorted(this::compareDataObjects);
 		}
 

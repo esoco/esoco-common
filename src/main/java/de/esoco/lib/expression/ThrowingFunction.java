@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@ import java.util.function.Function;
  * @author eso
  */
 @FunctionalInterface
-public interface ThrowingFunction<I, O> extends Function<I, O>
-{
+public interface ThrowingFunction<I, O> extends Function<I, O> {
+
 	//~ Static methods ---------------------------------------------------------
 
 	/***************************************
@@ -41,8 +41,7 @@ public interface ThrowingFunction<I, O> extends Function<I, O>
 	 *
 	 * @return The resulting function
 	 */
-	public static <I, O> Function<I, O> of(ThrowingFunction<I, O> fThrowing)
-	{
+	public static <I, O> Function<I, O> of(ThrowingFunction<I, O> fThrowing) {
 		return fThrowing;
 	}
 
@@ -56,18 +55,12 @@ public interface ThrowingFunction<I, O> extends Function<I, O>
 	 * @see Function#apply(Object)
 	 */
 	@Override
-	default public O apply(I rInput)
-	{
-		try
-		{
+	default public O apply(I rInput) {
+		try {
 			return tryApply(rInput);
-		}
-		catch (RuntimeException e)
-		{
+		} catch (RuntimeException e) {
 			throw e;
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			throw new FunctionException(this, e);
 		}
 	}

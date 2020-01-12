@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ import java.util.function.Supplier;
  * @author eso
  */
 @FunctionalInterface
-public interface ThrowingSupplier<T> extends Supplier<T>
-{
+public interface ThrowingSupplier<T> extends Supplier<T> {
+
 	//~ Static methods ---------------------------------------------------------
 
 	/***************************************
@@ -40,8 +40,7 @@ public interface ThrowingSupplier<T> extends Supplier<T>
 	 *
 	 * @return The resulting function
 	 */
-	public static <T> Supplier<T> of(ThrowingSupplier<T> fThrowing)
-	{
+	public static <T> Supplier<T> of(ThrowingSupplier<T> fThrowing) {
 		return fThrowing;
 	}
 
@@ -64,18 +63,12 @@ public interface ThrowingSupplier<T> extends Supplier<T>
 	 * @see Supplier#get()
 	 */
 	@Override
-	default T get()
-	{
-		try
-		{
+	default T get() {
+		try {
 			return tryGet();
-		}
-		catch (RuntimeException e)
-		{
+		} catch (RuntimeException e) {
 			throw e;
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			throw new FunctionException(this, e);
 		}
 	}

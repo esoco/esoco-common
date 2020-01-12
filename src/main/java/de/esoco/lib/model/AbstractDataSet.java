@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,8 +30,8 @@ import java.util.List;
  * @author eso
  */
 public abstract class AbstractDataSet<T> extends StringProperties
-	implements DataSet<T>, Serializable
-{
+	implements DataSet<T>, Serializable {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -49,8 +49,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	/***************************************
 	 * Default constructor for GWT serialization.
 	 */
-	protected AbstractDataSet()
-	{
+	protected AbstractDataSet() {
 	}
 
 	/***************************************
@@ -67,8 +66,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 							  List<String> rColumnLabels,
 							  String	   sRowAxisLabel,
 							  String	   sValueAxisLabel,
-							  String	   sColumnAxisLabel)
-	{
+							  String	   sColumnAxisLabel) {
 		this.aRowLabels		  = rRowLabels;
 		this.aColumnLabels    = rColumnLabels;
 		this.sRowAxisLabel    = sRowAxisLabel;
@@ -85,8 +83,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @param rRowData The row data values
 	 */
 	@SuppressWarnings("unchecked")
-	public void addRow(String sLabel, T... rRowData)
-	{
+	public void addRow(String sLabel, T... rRowData) {
 		addRow(getRowCount(), sLabel, rRowData);
 	}
 
@@ -101,8 +98,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @throws IndexOutOfBoundsException If the given column doesn't exist
 	 */
 	@SuppressWarnings("unchecked")
-	public void addRow(int nBeforeRow, String sLabel, T... rRowData)
-	{
+	public void addRow(int nBeforeRow, String sLabel, T... rRowData) {
 		aRowLabels.add(nBeforeRow, sLabel);
 		add(nBeforeRow, rRowData);
 	}
@@ -111,8 +107,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getColumnAxisLabel()
 	 */
 	@Override
-	public final String getColumnAxisLabel()
-	{
+	public final String getColumnAxisLabel() {
 		return sColumnAxisLabel;
 	}
 
@@ -120,8 +115,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getColumnLabel(int)
 	 */
 	@Override
-	public final String getColumnLabel(int nColumn)
-	{
+	public final String getColumnLabel(int nColumn) {
 		return getLabel(nColumn, getColumnCount(), aColumnLabels);
 	}
 
@@ -129,8 +123,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getRowAxisLabel()
 	 */
 	@Override
-	public final String getRowAxisLabel()
-	{
+	public final String getRowAxisLabel() {
 		return sRowAxisLabel;
 	}
 
@@ -138,8 +131,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getRowCount()
 	 */
 	@Override
-	public final int getRowCount()
-	{
+	public final int getRowCount() {
 		return getDataRows().size();
 	}
 
@@ -147,8 +139,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getRowLabel(int)
 	 */
 	@Override
-	public final String getRowLabel(int nRow)
-	{
+	public final String getRowLabel(int nRow) {
 		return getLabel(nRow, getRowCount(), aRowLabels);
 	}
 
@@ -156,8 +147,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getValueAxisLabel()
 	 */
 	@Override
-	public final String getValueAxisLabel()
-	{
+	public final String getValueAxisLabel() {
 		return sValueAxisLabel;
 	}
 
@@ -168,8 +158,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 *
 	 * @throws IndexOutOfBoundsException If the given column doesn't exist
 	 */
-	public void removeRow(int nColumn)
-	{
+	public void removeRow(int nColumn) {
 		aColumnLabels.remove(nColumn);
 		getDataRows().remove(nColumn);
 	}
@@ -178,8 +167,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see de.esoco.lib.property.AbstractStringProperties#toString()
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return getClass().getSimpleName() + aRowLabels;
 	}
 
@@ -211,18 +199,16 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 *
 	 * @throws IndexOutOfBoundsException If the index is invalid
 	 */
-	private final String getLabel(int nIndex, int nMax, List<String> rLabels)
-	{
+	private final String getLabel(int nIndex, int nMax, List<String> rLabels) {
 		String sLabel = null;
 
-		if (nIndex > nMax)
-		{
-			throw new IndexOutOfBoundsException("Invalid index: " + nIndex +
-												" > " + nMax);
+		if (nIndex > nMax) {
+			throw new IndexOutOfBoundsException(
+				"Invalid index: " + nIndex +
+				" > " + nMax);
 		}
 
-		if (rLabels != null && nIndex < rLabels.size())
-		{
+		if (rLabels != null && nIndex < rLabels.size()) {
 			sLabel = rLabels.get(nIndex);
 		}
 

@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,8 +25,8 @@ import java.util.List;
  *
  * @author eso
  */
-public class StringDataSet extends AbstractDataSet<String>
-{
+public class StringDataSet extends AbstractDataSet<String> {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -48,14 +48,14 @@ public class StringDataSet extends AbstractDataSet<String>
 	public StringDataSet(List<String> rColumnLabels,
 						 String		  sRowAxisLabel,
 						 String		  sValueAxisLabel,
-						 String		  sColumnAxisLabel)
-	{
-		this(new ArrayList<String[]>(),
-			 new ArrayList<String>(),
-			 rColumnLabels,
-			 sRowAxisLabel,
-			 sValueAxisLabel,
-			 sColumnAxisLabel);
+						 String		  sColumnAxisLabel) {
+		this(
+			new ArrayList<String[]>(),
+			new ArrayList<String>(),
+			rColumnLabels,
+			sRowAxisLabel,
+			sValueAxisLabel,
+			sColumnAxisLabel);
 	}
 
 	/***************************************
@@ -74,13 +74,13 @@ public class StringDataSet extends AbstractDataSet<String>
 						 List<String>   rColumnLabels,
 						 String			sRowAxisLabel,
 						 String			sValueAxisLabel,
-						 String			sColumnAxisLabel)
-	{
-		super(rRowLabels,
-			  rColumnLabels,
-			  sRowAxisLabel,
-			  sValueAxisLabel,
-			  sColumnAxisLabel);
+						 String			sColumnAxisLabel) {
+		super(
+			rRowLabels,
+			rColumnLabels,
+			sRowAxisLabel,
+			sValueAxisLabel,
+			sColumnAxisLabel);
 
 		aData = rData;
 	}
@@ -88,8 +88,7 @@ public class StringDataSet extends AbstractDataSet<String>
 	/***************************************
 	 * Default constructor for GWT serialization.
 	 */
-	StringDataSet()
-	{
+	StringDataSet() {
 	}
 
 	//~ Methods ----------------------------------------------------------------
@@ -98,8 +97,7 @@ public class StringDataSet extends AbstractDataSet<String>
 	 * @see DataSet#getColumnCount()
 	 */
 	@Override
-	public final int getColumnCount()
-	{
+	public final int getColumnCount() {
 		return aData.size() > 0 ? aData.get(0).length : 0;
 	}
 
@@ -107,8 +105,7 @@ public class StringDataSet extends AbstractDataSet<String>
 	 * @see DataSet#getValue(int, int)
 	 */
 	@Override
-	public final String getValue(int nRow, int nColumn)
-	{
+	public final String getValue(int nRow, int nColumn) {
 		return aData.get(nRow)[nColumn];
 	}
 
@@ -116,8 +113,7 @@ public class StringDataSet extends AbstractDataSet<String>
 	 * @see AbstractDataSet#add(int, Object[])
 	 */
 	@Override
-	protected void add(int nBeforeRow, String[] rRowData)
-	{
+	protected void add(int nBeforeRow, String[] rRowData) {
 		aData.add(nBeforeRow, rRowData);
 	}
 
@@ -125,8 +121,7 @@ public class StringDataSet extends AbstractDataSet<String>
 	 * @see AbstractDataSet#getDataRows()
 	 */
 	@Override
-	protected List<?> getDataRows()
-	{
+	protected List<?> getDataRows() {
 		return aData;
 	}
 }

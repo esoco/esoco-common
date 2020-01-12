@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@ import java.util.function.Supplier;
  * @author eso
  */
 @FunctionalInterface
-public interface ThrowingConsumer<T> extends Consumer<T>
-{
+public interface ThrowingConsumer<T> extends Consumer<T> {
+
 	//~ Static methods ---------------------------------------------------------
 
 	/***************************************
@@ -41,8 +41,7 @@ public interface ThrowingConsumer<T> extends Consumer<T>
 	 *
 	 * @return The resulting function
 	 */
-	public static <T> Consumer<T> of(ThrowingConsumer<T> fThrowing)
-	{
+	public static <T> Consumer<T> of(ThrowingConsumer<T> fThrowing) {
 		return fThrowing;
 	}
 
@@ -56,18 +55,12 @@ public interface ThrowingConsumer<T> extends Consumer<T>
 	 * @see Consumer#accept(Object)
 	 */
 	@Override
-	default public void accept(T rValue)
-	{
-		try
-		{
+	default public void accept(T rValue) {
+		try {
 			tryAccept(rValue);
-		}
-		catch (RuntimeException e)
-		{
+		} catch (RuntimeException e) {
 			throw e;
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			throw new FunctionException(this, e);
 		}
 	}

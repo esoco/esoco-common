@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2017 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,8 +25,8 @@ import de.esoco.lib.text.TextConvert;
  * classes are created through the different {@link #valueOf(int, int, int)
  * valueOf()} methods.
  */
-public class Color
-{
+public class Color {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** black */
@@ -128,8 +128,7 @@ public class Color
 	 * @param nGreen The green part
 	 * @param nBlue  The blue part
 	 */
-	private Color(int nRed, int nGreen, int nBlue)
-	{
+	private Color(int nRed, int nGreen, int nBlue) {
 		this.nRed   = nRed;
 		this.nGreen = nGreen;
 		this.nBlue  = nBlue;
@@ -146,8 +145,7 @@ public class Color
 	 *
 	 * @return The color instance
 	 */
-	public static Color valueOf(int nRgbColor)
-	{
+	public static Color valueOf(int nRgbColor) {
 		int r = (nRgbColor & 0x00FF0000) >> 16;
 		int g = (nRgbColor & 0x0000FF00) >> 8;
 		int b = (nRgbColor & 0x000000FF);
@@ -162,10 +160,8 @@ public class Color
 	 *
 	 * @return The color instance
 	 */
-	public static Color valueOf(String sHtmlColor)
-	{
-		if (sHtmlColor.charAt(0) == '#')
-		{
+	public static Color valueOf(String sHtmlColor) {
+		if (sHtmlColor.charAt(0) == '#') {
 			sHtmlColor = sHtmlColor.substring(1);
 		}
 
@@ -181,8 +177,7 @@ public class Color
 	 *
 	 * @return A new color instance
 	 */
-	public static Color valueOf(int nRed, int nGreen, int nBlue)
-	{
+	public static Color valueOf(int nRed, int nGreen, int nBlue) {
 		return new Color(nRed, nGreen, nBlue);
 	}
 
@@ -194,8 +189,7 @@ public class Color
 	 *
 	 * @return The brighter color
 	 */
-	public Color brighter()
-	{
+	public Color brighter() {
 		return changeBrightness(10);
 	}
 
@@ -207,8 +201,7 @@ public class Color
 	 *
 	 * @return The resulting color
 	 */
-	public Color brightest()
-	{
+	public Color brightest() {
 		// normalize components to color value * 256 and add 256 to get the
 		// range 1 to 256 to prevent division by zero
 		int r = (nRed << 8) + 256;
@@ -234,8 +227,7 @@ public class Color
 	 *
 	 * @return The resulting color
 	 */
-	public Color changeBrightness(int nPercent)
-	{
+	public Color changeBrightness(int nPercent) {
 		int nChange = 255 * nPercent / 100;
 
 		int r = nRed + nChange;
@@ -255,8 +247,7 @@ public class Color
 	 *
 	 * @return The darker color
 	 */
-	public Color darker()
-	{
+	public Color darker() {
 		return changeBrightness(-10);
 	}
 
@@ -265,8 +256,7 @@ public class Color
 	 *
 	 * @return The blue part
 	 */
-	public final int getBlue()
-	{
+	public final int getBlue() {
 		return nBlue;
 	}
 
@@ -275,8 +265,7 @@ public class Color
 	 *
 	 * @return The green part
 	 */
-	public final int getGreen()
-	{
+	public final int getGreen() {
 		return nGreen;
 	}
 
@@ -285,8 +274,7 @@ public class Color
 	 *
 	 * @return The red part
 	 */
-	public final int getRed()
-	{
+	public final int getRed() {
 		return nRed;
 	}
 
@@ -296,8 +284,7 @@ public class Color
 	 *
 	 * @return The HTML color string
 	 */
-	public String toHtml()
-	{
+	public String toHtml() {
 		return "#" + TextConvert.padLeft(Integer.toHexString(toRGB()), 6, '0');
 	}
 
@@ -306,8 +293,7 @@ public class Color
 	 *
 	 * @return An RGB integer value
 	 */
-	public int toRGB()
-	{
+	public int toRGB() {
 		return (nRed << 16) + (nGreen << 8) + nBlue;
 	}
 
@@ -317,8 +303,7 @@ public class Color
 	 * @return TODO: DOCUMENT ME!
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return toHtml();
 	}
 }

@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,15 +24,15 @@ package de.esoco.lib.property;
  */
 public class UserInterfaceProperties implements ContentProperties,
 												LayoutProperties,
-												StateProperties, StyleProperties
-{
+												StateProperties,
+												StyleProperties {
+
 	//~ Constructors -----------------------------------------------------------
 
 	/***************************************
 	 * Private, only static use.
 	 */
-	private UserInterfaceProperties()
-	{
+	private UserInterfaceProperties() {
 	}
 
 	//~ Static methods ---------------------------------------------------------
@@ -41,15 +41,13 @@ public class UserInterfaceProperties implements ContentProperties,
 	 * This method should be invoked to initialize the property name constants
 	 * for de-serialization.
 	 */
-	public static void init()
-	{
+	public static void init() {
 		// necessary for GWT because otherwise the constants are not initialized
 		// correctly; the exact values seems to be of no importance but it must
 		// be one from each implemented interface
 		@SuppressWarnings("unused")
 		PropertyName<?>[] rInitDummy =
-			new PropertyName<?>[]
-			{
+			new PropertyName<?>[] {
 				ContentProperties.RESOURCE, LayoutProperties.WIDTH,
 				StateProperties.DISABLED, StyleProperties.WRAP
 			};

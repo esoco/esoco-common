@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ import java.util.List;
  *
  * @author eso
  */
-public class IntDataSet extends AbstractDataSet<Integer>
-{
+public class IntDataSet extends AbstractDataSet<Integer> {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -48,14 +48,14 @@ public class IntDataSet extends AbstractDataSet<Integer>
 	public IntDataSet(List<String> rColumnLabels,
 					  String	   sRowAxisLabel,
 					  String	   sValueAxisLabel,
-					  String	   sColumnAxisLabel)
-	{
-		this(new ArrayList<int[]>(),
-			 new ArrayList<String>(),
-			 rColumnLabels,
-			 sRowAxisLabel,
-			 sValueAxisLabel,
-			 sColumnAxisLabel);
+					  String	   sColumnAxisLabel) {
+		this(
+			new ArrayList<int[]>(),
+			new ArrayList<String>(),
+			rColumnLabels,
+			sRowAxisLabel,
+			sValueAxisLabel,
+			sColumnAxisLabel);
 	}
 
 	/***************************************
@@ -74,13 +74,13 @@ public class IntDataSet extends AbstractDataSet<Integer>
 					  List<String> rColumnLabels,
 					  String	   sRowAxisLabel,
 					  String	   sValueAxisLabel,
-					  String	   sColumnAxisLabel)
-	{
-		super(rRowLabels,
-			  rColumnLabels,
-			  sRowAxisLabel,
-			  sValueAxisLabel,
-			  sColumnAxisLabel);
+					  String	   sColumnAxisLabel) {
+		super(
+			rRowLabels,
+			rColumnLabels,
+			sRowAxisLabel,
+			sValueAxisLabel,
+			sColumnAxisLabel);
 
 		aData = rData;
 	}
@@ -88,8 +88,7 @@ public class IntDataSet extends AbstractDataSet<Integer>
 	/***************************************
 	 * Default constructor for GWT serialization.
 	 */
-	IntDataSet()
-	{
+	IntDataSet() {
 	}
 
 	//~ Methods ----------------------------------------------------------------
@@ -98,8 +97,7 @@ public class IntDataSet extends AbstractDataSet<Integer>
 	 * @see DataSet#getColumnCount()
 	 */
 	@Override
-	public final int getColumnCount()
-	{
+	public final int getColumnCount() {
 		return aData.size() > 0 ? aData.get(0).length : 0;
 	}
 
@@ -108,8 +106,7 @@ public class IntDataSet extends AbstractDataSet<Integer>
 	 */
 	@Override
 	@SuppressWarnings("boxing")
-	public final Integer getValue(int nRow, int nColumn)
-	{
+	public final Integer getValue(int nRow, int nColumn) {
 		return aData.get(nRow)[nColumn];
 	}
 
@@ -117,13 +114,11 @@ public class IntDataSet extends AbstractDataSet<Integer>
 	 * @see AbstractDataSet#add(int, Object[])
 	 */
 	@Override
-	protected void add(int nBeforeRow, Integer[] rRowData)
-	{
+	protected void add(int nBeforeRow, Integer[] rRowData) {
 		int[] aNewRow = new int[rRowData.length];
 		int   nColumn = 0;
 
-		for (Integer rValue : rRowData)
-		{
+		for (Integer rValue : rRowData) {
 			aNewRow[nColumn++] = rValue.intValue();
 		}
 
@@ -134,8 +129,7 @@ public class IntDataSet extends AbstractDataSet<Integer>
 	 * @see AbstractDataSet#getDataRows()
 	 */
 	@Override
-	protected List<?> getDataRows()
-	{
+	protected List<?> getDataRows() {
 		return aData;
 	}
 }

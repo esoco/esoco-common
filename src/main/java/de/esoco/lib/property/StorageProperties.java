@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import static de.esoco.lib.property.PropertyName.newMapName;
  *
  * @author eso
  */
-public interface StorageProperties
-{
+public interface StorageProperties {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: the starting index of a storage query. */
@@ -64,7 +64,6 @@ public interface StorageProperties
 	 * This method should be invoked to initialize the property name constants
 	 * for de-serialization.
 	 */
-	public static void init()
-	{
+	public static void init() {
 	}
 }

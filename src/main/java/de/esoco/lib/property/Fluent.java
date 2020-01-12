@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ package de.esoco.lib.property;
  *
  * @author eso
  */
-public interface Fluent<T extends Fluent<T>>
-{
+public interface Fluent<T extends Fluent<T>> {
+
 	//~ Methods ----------------------------------------------------------------
 
 	/***************************************
@@ -44,8 +44,7 @@ public interface Fluent<T extends Fluent<T>>
 	 * @return This instance for fluent invocation
 	 */
 	@SuppressWarnings("unchecked")
-	default T _with(Runnable fUpdate)
-	{
+	default T _with(Runnable fUpdate) {
 		fUpdate.run();
 
 		return (T) this;

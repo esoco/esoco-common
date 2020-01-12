@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,8 +30,8 @@ import java.util.stream.Stream;
  *
  * @author eso
  */
-public class Tuple implements Iterable<Object>, Serializable
-{
+public class Tuple implements Iterable<Object>, Serializable {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -47,8 +47,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 *
 	 * @param rValues The tuple values
 	 */
-	protected Tuple(Object... rValues)
-	{
+	protected Tuple(Object... rValues) {
 		aValues = Arrays.asList(rValues);
 	}
 
@@ -64,8 +63,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 *
 	 * @return A new tuple instance
 	 */
-	public static Tuple t(Object... rValues)
-	{
+	public static Tuple t(Object... rValues) {
 		return new Tuple(rValues);
 	}
 
@@ -75,22 +73,18 @@ public class Tuple implements Iterable<Object>, Serializable
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean equals(Object rObj)
-	{
-		if (rObj == this)
-		{
+	public boolean equals(Object rObj) {
+		if (rObj == this) {
 			return true;
 		}
 
-		if (!(rObj instanceof Tuple))
-		{
+		if (!(rObj instanceof Tuple)) {
 			return false;
 		}
 
 		Tuple rOther = (Tuple) rObj;
 
-		if (rOther.size() != size())
-		{
+		if (rOther.size() != size()) {
 			return false;
 		}
 
@@ -104,8 +98,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 *
 	 * @return The value at the given index
 	 */
-	public Object get(int i)
-	{
+	public Object get(int i) {
 		return aValues.get(i);
 	}
 
@@ -113,12 +106,10 @@ public class Tuple implements Iterable<Object>, Serializable
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int nHashCode = 37;
 
-		for (Object rValue : aValues)
-		{
+		for (Object rValue : aValues) {
 			nHashCode =
 				nHashCode * (rValue != null ? rValue.hashCode() : 0) + 17;
 		}
@@ -130,8 +121,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Iterator<Object> iterator()
-	{
+	public Iterator<Object> iterator() {
 		return aValues.iterator();
 	}
 
@@ -140,8 +130,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 *
 	 * @return The tuple size
 	 */
-	public int size()
-	{
+	public int size() {
 		return aValues.size();
 	}
 
@@ -150,8 +139,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 *
 	 * @return The value stream
 	 */
-	public Stream<Object> stream()
-	{
+	public Stream<Object> stream() {
 		return aValues.stream();
 	}
 
@@ -159,8 +147,7 @@ public class Tuple implements Iterable<Object>, Serializable
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return aValues.toString();
 	}
 }

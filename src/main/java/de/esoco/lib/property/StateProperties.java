@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,8 +32,8 @@ import static de.esoco.lib.property.PropertyName.newStringName;
  *
  * @author eso
  */
-public interface StateProperties
-{
+public interface StateProperties {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: The increment for an automatic update of a value. */

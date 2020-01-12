@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -31,8 +31,8 @@ import java.util.List;
  *
  * @author eso
  */
-public class ListDataModel<T> implements DataModel<T>, Serializable
-{
+public class ListDataModel<T> implements DataModel<T>, Serializable {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -56,8 +56,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @param sName The name of this model
 	 * @param rData The model's data
 	 */
-	public ListDataModel(String sName, List<T> rData)
-	{
+	public ListDataModel(String sName, List<T> rData) {
 		this.sName = sName;
 		this.rData = rData;
 	}
@@ -69,16 +68,14 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @param rElements The elements this data model shall contain
 	 */
 	@SafeVarargs
-	public ListDataModel(String sName, T... rElements)
-	{
+	public ListDataModel(String sName, T... rElements) {
 		this(sName, Arrays.asList(rElements));
 	}
 
 	/***************************************
 	 * Default constructor for serialization.
 	 */
-	ListDataModel()
-	{
+	ListDataModel() {
 	}
 
 	//~ Static methods ---------------------------------------------------------
@@ -89,8 +86,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @return An empty singleton instance
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> ListDataModel<T> emptyModel()
-	{
+	public static <T> ListDataModel<T> emptyModel() {
 		return (ListDataModel<T>) EMPTY_MODEL;
 	}
 
@@ -100,41 +96,30 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @see Object#equals(Object)
 	 */
 	@Override
-	public boolean equals(Object rObj)
-	{
-		if (this == rObj)
-		{
+	public boolean equals(Object rObj) {
+		if (this == rObj) {
 			return true;
 		}
 
-		if (rObj == null || getClass() != rObj.getClass())
-		{
+		if (rObj == null || getClass() != rObj.getClass()) {
 			return false;
 		}
 
 		ListDataModel<?> rOther = (ListDataModel<?>) rObj;
 
-		if (sName == null)
-		{
-			if (rOther.sName != null)
-			{
+		if (sName == null) {
+			if (rOther.sName != null) {
 				return false;
 			}
-		}
-		else if (!sName.equals(rOther.sName))
-		{
+		} else if (!sName.equals(rOther.sName)) {
 			return false;
 		}
 
-		if (rData == null)
-		{
-			if (rOther.rData != null)
-			{
+		if (rData == null) {
+			if (rOther.rData != null) {
 				return false;
 			}
-		}
-		else if (!rData.equals(rOther.rData))
-		{
+		} else if (!rData.equals(rOther.rData)) {
 			return false;
 		}
 
@@ -145,8 +130,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @see DataModel#getElement(int)
 	 */
 	@Override
-	public T getElement(int nIndex)
-	{
+	public T getElement(int nIndex) {
 		return rData.get(nIndex);
 	}
 
@@ -154,8 +138,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @see DataModel#getElementCount()
 	 */
 	@Override
-	public int getElementCount()
-	{
+	public int getElementCount() {
 		return rData.size();
 	}
 
@@ -163,8 +146,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @see Object#hashCode()
 	 */
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int nHashCode = 1;
 
 		nHashCode = 37 * nHashCode + ((rData == null) ? 0 : rData.hashCode());
@@ -177,8 +159,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @see Iterable#iterator()
 	 */
 	@Override
-	public Iterator<T> iterator()
-	{
+	public Iterator<T> iterator() {
 		return rData.iterator();
 	}
 
@@ -188,8 +169,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 * @return The model name
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return sName;
 	}
 
@@ -200,8 +180,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable
 	 *
 	 * @param rData The model data
 	 */
-	protected void setData(List<T> rData)
-	{
+	protected void setData(List<T> rData) {
 		this.rData = rData;
 	}
 }

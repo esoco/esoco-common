@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,8 +19,7 @@ package de.esoco.lib.property;
 /********************************************************************
  * An enumeration of relative sizes that can be applied to UI elements.
  */
-public enum RelativeSize
-{
+public enum RelativeSize {
 	FULL, HALF, THIRD, QUARTER, FIFTH, SIXTH, SEVENTH, EIGHTH, NINETH, TENTH,
 	TWO_THIRDS(2, 3), THREE_QUARTERS(3, 4), TWO_FIFTH(2, 5), THREE_FIFTHS(3, 5),
 	FOUR_FIFTH(4, 5), FIVE_SIXTH(5, 6);
@@ -35,8 +34,7 @@ public enum RelativeSize
 	/***************************************
 	 * Creates a new instance.
 	 */
-	private RelativeSize()
-	{
+	private RelativeSize() {
 		nMultiplier = 1;
 		nDivider    = ordinal() + 1;
 	}
@@ -47,8 +45,7 @@ public enum RelativeSize
 	 * @param nMultiplier The multiplier for size calculations
 	 * @param nDivider    The divider for size calculations
 	 */
-	private RelativeSize(int nMultiplier, int nDivider)
-	{
+	private RelativeSize(int nMultiplier, int nDivider) {
 		this.nMultiplier = nMultiplier;
 		this.nDivider    = nDivider;
 	}
@@ -62,8 +59,7 @@ public enum RelativeSize
 	 *
 	 * @return The calculated absolute size value
 	 */
-	public int calcSize(int nFullSize)
-	{
+	public int calcSize(int nFullSize) {
 		return nFullSize * nMultiplier / nDivider;
 	}
 }

@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,8 +27,8 @@ import java.util.function.BiFunction;
  * @author eso
  */
 @FunctionalInterface
-public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O>
-{
+public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
+
 	//~ Static methods ---------------------------------------------------------
 
 	/***************************************
@@ -42,8 +42,7 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O>
 	 * @return The resulting function
 	 */
 	public static <L, R, O> BiFunction<L, R, O> of(
-		ThrowingBinaryFunction<L, R, O> fThrowing)
-	{
+		ThrowingBinaryFunction<L, R, O> fThrowing) {
 		return fThrowing;
 	}
 
@@ -72,18 +71,12 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O>
 	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
-	default O apply(L rLeft, R rRight)
-	{
-		try
-		{
+	default O apply(L rLeft, R rRight) {
+		try {
 			return tryApply(rLeft, rRight);
-		}
-		catch (RuntimeException e)
-		{
+		} catch (RuntimeException e) {
 			throw e;
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			throw new FunctionException(this, e);
 		}
 	}

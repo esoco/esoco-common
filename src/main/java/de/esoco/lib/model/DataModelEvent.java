@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,8 +29,8 @@ package de.esoco.lib.model;
  * @author eso
  * @see    de.esoco.lib.model.DataModelListener
  */
-public class DataModelEvent
-{
+public class DataModelEvent {
+
 	//~ Enums ------------------------------------------------------------------
 
 	/********************************************************************
@@ -54,8 +54,7 @@ public class DataModelEvent
 	 * @param nElementIndex The index of the changed model element or -1 if it
 	 *                      could not be detected
 	 */
-	public DataModelEvent(DataModel<?> rSource, Type eType, int nElementIndex)
-	{
+	public DataModelEvent(DataModel<?> rSource, Type eType, int nElementIndex) {
 		this.rSource	   = rSource;
 		this.eType		   = eType;
 		this.nElementIndex = nElementIndex;
@@ -68,8 +67,7 @@ public class DataModelEvent
 	 *
 	 * @return The element index
 	 */
-	public final int getElementIndex()
-	{
+	public final int getElementIndex() {
 		return nElementIndex;
 	}
 
@@ -78,8 +76,7 @@ public class DataModelEvent
 	 *
 	 * @return The event type
 	 */
-	public final Type getType()
-	{
+	public final Type getType() {
 		return eType;
 	}
 
@@ -88,8 +85,7 @@ public class DataModelEvent
 	 *
 	 * @return The source data model
 	 */
-	final DataModel<?> getSource()
-	{
+	final DataModel<?> getSource() {
 		return rSource;
 	}
 }

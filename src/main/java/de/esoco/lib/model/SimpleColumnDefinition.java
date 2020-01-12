@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import java.util.Objects;
  * @author eso
  */
 public class SimpleColumnDefinition extends StringProperties
-	implements ColumnDefinition
-{
+	implements ColumnDefinition {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -50,8 +50,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @param sId       The column identifier
 	 * @param sDatatype The column datatype
 	 */
-	public SimpleColumnDefinition(String sId, String sDatatype)
-	{
+	public SimpleColumnDefinition(String sId, String sDatatype) {
 		this(sId, null, sDatatype);
 	}
 
@@ -63,8 +62,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @param sTitle    The column title
 	 * @param sDatatype The column datatype
 	 */
-	public SimpleColumnDefinition(String sId, String sTitle, String sDatatype)
-	{
+	public SimpleColumnDefinition(String sId, String sTitle, String sDatatype) {
 		this(sId, sTitle, sDatatype, true, true, true);
 	}
 
@@ -84,24 +82,20 @@ public class SimpleColumnDefinition extends StringProperties
 								  String  sDatatype,
 								  boolean bSortable,
 								  boolean bSearchable,
-								  boolean bEditable)
-	{
+								  boolean bEditable) {
 		this.sId	   = sId;
 		this.sTitle    = sTitle != null ? sTitle : STD_COLUMN_PREFIX + sId;
 		this.sDatatype = sDatatype;
 
-		if (bSearchable)
-		{
+		if (bSearchable) {
 			setProperty(UserInterfaceProperties.SEARCHABLE, bSearchable);
 		}
 
-		if (bSortable)
-		{
+		if (bSortable) {
 			setProperty(UserInterfaceProperties.SORTABLE, bSortable);
 		}
 
-		if (bEditable)
-		{
+		if (bEditable) {
 			setProperty(UserInterfaceProperties.EDITABLE, bEditable);
 		}
 	}
@@ -109,8 +103,7 @@ public class SimpleColumnDefinition extends StringProperties
 	/***************************************
 	 * Default constructor for serialization.
 	 */
-	protected SimpleColumnDefinition()
-	{
+	protected SimpleColumnDefinition() {
 	}
 
 	//~ Methods ----------------------------------------------------------------
@@ -125,15 +118,12 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @inheritDoc }
 	 */
 	@Override
-	public boolean equals(Object rObj)
-	{
-		if (this == rObj)
-		{
+	public boolean equals(Object rObj) {
+		if (this == rObj) {
 			return true;
 		}
 
-		if (getClass() != rObj.getClass())
-		{
+		if (getClass() != rObj.getClass()) {
 			return false;
 		}
 
@@ -148,8 +138,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getDatatype()
-	{
+	public String getDatatype() {
 		return sDatatype;
 	}
 
@@ -157,8 +146,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @see ColumnDefinition#getId()
 	 */
 	@Override
-	public String getId()
-	{
+	public String getId() {
 		return sId;
 	}
 
@@ -166,8 +154,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @see ColumnDefinition#getTitle()
 	 */
 	@Override
-	public String getTitle()
-	{
+	public String getTitle() {
 		return sTitle;
 	}
 
@@ -175,8 +162,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @see Object#hashCode()
 	 */
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int nHashCode = super.hashCode();
 
 		nHashCode =
@@ -194,8 +180,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 * @see Object#toString()
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return sTitle;
 	}
 }

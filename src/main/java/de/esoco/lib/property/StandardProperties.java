@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2015 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ import java.util.Date;
  *
  * @author eso
  */
-public class StandardProperties
-{
+public class StandardProperties {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: a unique integer identifier of an element. */
@@ -93,8 +93,7 @@ public class StandardProperties
 	/***************************************
 	 * Private, only static use.
 	 */
-	private StandardProperties()
-	{
+	private StandardProperties() {
 	}
 
 	//~ Static methods ---------------------------------------------------------
@@ -103,7 +102,6 @@ public class StandardProperties
 	 * This method should be invoked to initialize the property name constants
 	 * for de-serialization.
 	 */
-	public static void init()
-	{
+	public static void init() {
 	}
 }

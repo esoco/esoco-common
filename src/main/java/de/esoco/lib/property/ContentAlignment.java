@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,8 +20,7 @@ package de.esoco.lib.property;
  * An extended enumeration of alignment constants (see also {@link Alignment})
  * as used in layout mechanisms like CSS grid.
  */
-public enum ContentAlignment implements HasCssName
-{
+public enum ContentAlignment implements HasCssName {
 	START("start"), CENTER("center"), END("end"), STRETCH("stretch"),
 	SPACE_AROUND("space-around"), SPACE_BETWEEN("space-between"),
 	SPACE_EVENLY("space-evenly");
@@ -37,8 +36,7 @@ public enum ContentAlignment implements HasCssName
 	 *
 	 * @param sCssName The CSS name of this instance
 	 */
-	private ContentAlignment(String sCssName)
-	{
+	private ContentAlignment(String sCssName) {
 		this.sCssName = sCssName;
 	}
 
@@ -48,8 +46,7 @@ public enum ContentAlignment implements HasCssName
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getCssName()
-	{
+	public String getCssName() {
 		return sCssName;
 	}
 }

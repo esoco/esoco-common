@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// This file is a part of the 'objectrelations' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// This file is a part of the 'esoco-common' project.
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ package de.esoco.lib.expression;
  *
  * @author eso
  */
-public class FunctionException extends RuntimeException
-{
+public class FunctionException extends RuntimeException {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -48,8 +48,7 @@ public class FunctionException extends RuntimeException
 	 * @param eCause           The checked exception that caused this function
 	 *                         exception
 	 */
-	public FunctionException(Object fCausingFunction, Throwable eCause)
-	{
+	public FunctionException(Object fCausingFunction, Throwable eCause) {
 		super(eCause.getMessage(), eCause);
 
 		this.fCausingFunction = fCausingFunction;
@@ -62,8 +61,7 @@ public class FunctionException extends RuntimeException
 	 *
 	 * @return The causing function
 	 */
-	public final Object getCausingFunction()
-	{
+	public final Object getCausingFunction() {
 		return fCausingFunction;
 	}
 }

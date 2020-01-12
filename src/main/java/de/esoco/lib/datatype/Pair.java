@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// This file is a part of the 'objectrelations' project.
-// Copyright 2018 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// This file is a part of the 'esoco-common' project.
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ package de.esoco.lib.datatype;
  *
  * @author eso
  */
-public class Pair<F, S> extends Tuple
-{
+public class Pair<F, S> extends Tuple {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -35,8 +35,7 @@ public class Pair<F, S> extends Tuple
 	 * @param rFirst  The first object
 	 * @param rSecond The second object
 	 */
-	public Pair(F rFirst, S rSecond)
-	{
+	public Pair(F rFirst, S rSecond) {
 		super(rFirst, rSecond);
 	}
 
@@ -51,8 +50,7 @@ public class Pair<F, S> extends Tuple
 	 *
 	 * @return A new pair instance
 	 */
-	public static <F, S> Pair<F, S> of(F rFirst, S rSecond)
-	{
+	public static <F, S> Pair<F, S> of(F rFirst, S rSecond) {
 		return new Pair<>(rFirst, rSecond);
 	}
 
@@ -66,8 +64,7 @@ public class Pair<F, S> extends Tuple
 	 *
 	 * @return A new pair instance
 	 */
-	public static <F, S> Pair<F, S> t(F rFirst, S rSecond)
-	{
+	public static <F, S> Pair<F, S> t(F rFirst, S rSecond) {
 		return Pair.of(rFirst, rSecond);
 	}
 
@@ -79,8 +76,7 @@ public class Pair<F, S> extends Tuple
 	 * @return The first value
 	 */
 	@SuppressWarnings("unchecked")
-	public final F first()
-	{
+	public final F first() {
 		return (F) get(0);
 	}
 
@@ -90,8 +86,7 @@ public class Pair<F, S> extends Tuple
 	 * @return The second value
 	 */
 	@SuppressWarnings("unchecked")
-	public final S second()
-	{
+	public final S second() {
 		return (S) get(1);
 	}
 }

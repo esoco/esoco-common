@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2019 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -51,8 +51,8 @@ import static de.esoco.lib.text.TextConvert.unicodeEncode;
  * @author eso
  */
 public abstract class AbstractStringProperties implements HasProperties,
-														  Serializable
-{
+														  Serializable {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -67,10 +67,8 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean equals(Object rObj)
-	{
-		if (this == rObj)
-		{
+	public boolean equals(Object rObj) {
+		if (this == rObj) {
 			return true;
 		}
 
@@ -82,8 +80,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getIntProperty(PropertyName<Integer> rName, int nDefault)
-	{
+	public int getIntProperty(PropertyName<Integer> rName, int nDefault) {
 		String sProperty = getRawProperty(rName);
 
 		return sProperty != null ? Integer.parseInt(sProperty) : nDefault;
@@ -93,13 +90,11 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> T getProperty(PropertyName<T> rName, T rDefault)
-	{
+	public <T> T getProperty(PropertyName<T> rName, T rDefault) {
 		String sRawValue = getRawProperty(rName);
 		T	   rValue    = rDefault;
 
-		if (sRawValue != null)
-		{
+		if (sRawValue != null) {
 			rValue =
 				parseValue(
 					sRawValue,
@@ -114,8 +109,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @see MutableProperties#getPropertyCount()
 	 */
 	@Override
-	public int getPropertyCount()
-	{
+	public int getPropertyCount() {
 		return aPropertyMap != null ? aPropertyMap.size() : 0;
 	}
 
@@ -123,8 +117,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @see MutableProperties#getPropertyNames()
 	 */
 	@Override
-	public Collection<PropertyName<?>> getPropertyNames()
-	{
+	public Collection<PropertyName<?>> getPropertyNames() {
 		return aPropertyMap != null ? aPropertyMap.keySet()
 									: Collections.<PropertyName<?>>emptySet();
 	}
@@ -136,8 +129,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return TRUE if the properties are equal
 	 */
-	public boolean hasEqualProperties(AbstractStringProperties rOther)
-	{
+	public boolean hasEqualProperties(AbstractStringProperties rOther) {
 		return Objects.equals(aPropertyMap, rOther.aPropertyMap);
 	}
 
@@ -145,8 +137,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @see MutableProperties#hasFlag(PropertyName)
 	 */
 	@Override
-	public boolean hasFlag(PropertyName<Boolean> rName)
-	{
+	public boolean hasFlag(PropertyName<Boolean> rName) {
 		String sProperty = getRawProperty(rName);
 
 		return sProperty != null ? Boolean.parseBoolean(sProperty) : false;
@@ -156,8 +147,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		return 37 + ((aPropertyMap == null) ? 0 : aPropertyMap.hashCode());
 	}
 
@@ -165,8 +155,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @see MutableProperties#hasProperty(PropertyName)
 	 */
 	@Override
-	public boolean hasProperty(PropertyName<?> rName)
-	{
+	public boolean hasProperty(PropertyName<?> rName) {
 		return aPropertyMap != null && aPropertyMap.containsKey(rName);
 	}
 
@@ -174,8 +163,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @see Object#toString()
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return getClass().getSimpleName() +
 			   (aPropertyMap != null ? aPropertyMap : "[]");
 	}
@@ -187,12 +175,10 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return The resulting string
 	 */
-	protected String convertCollection(Collection<?> rCollection)
-	{
+	protected String convertCollection(Collection<?> rCollection) {
 		StringBuilder aResult = new StringBuilder();
 
-		for (Object rElement : rCollection)
-		{
+		for (Object rElement : rCollection) {
 			String sElement = convertValue(rElement);
 
 			aResult.append(
@@ -202,8 +188,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 
 		int nResultLength = aResult.length();
 
-		if (nResultLength > 0)
-		{
+		if (nResultLength > 0) {
 			aResult.setLength(nResultLength - 1);
 		}
 
@@ -217,14 +202,11 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return The resulting string
 	 */
-	protected String convertMap(Map<?, ?> rMap)
-	{
+	protected String convertMap(Map<?, ?> rMap) {
 		StringBuilder aResult = new StringBuilder();
 
-		if (rMap.size() > 0)
-		{
-			for (Entry<?, ?> rEntry : rMap.entrySet())
-			{
+		if (rMap.size() > 0) {
+			for (Entry<?, ?> rEntry : rMap.entrySet()) {
 				String sKey   = convertValue(rEntry.getKey());
 				String sValue = convertValue(rEntry.getValue());
 
@@ -252,24 +234,16 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return The resulting string
 	 */
-	protected String convertValue(Object rValue)
-	{
+	protected String convertValue(Object rValue) {
 		String sValue;
 
-		if (rValue instanceof Date)
-		{
+		if (rValue instanceof Date) {
 			sValue = Long.toString(((Date) rValue).getTime());
-		}
-		else if (rValue instanceof Collection)
-		{
+		} else if (rValue instanceof Collection) {
 			sValue = convertCollection(((Collection<?>) rValue));
-		}
-		else if (rValue instanceof Map)
-		{
+		} else if (rValue instanceof Map) {
 			sValue = convertMap(((Map<?, ?>) rValue));
-		}
-		else
-		{
+		} else {
 			sValue = rValue.toString();
 		}
 
@@ -279,10 +253,8 @@ public abstract class AbstractStringProperties implements HasProperties,
 	/***************************************
 	 * Creates the property map if it doesn't exist yet.
 	 */
-	protected final void ensurePropertyMapExists()
-	{
-		if (aPropertyMap == null)
-		{
+	protected final void ensurePropertyMapExists() {
+		if (aPropertyMap == null) {
 			aPropertyMap = new HashMap<PropertyName<?>, String>();
 		}
 	}
@@ -296,12 +268,9 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return The matching value or NULL if not found
 	 */
-	protected <T> T findValue(T[] rValues, String sName)
-	{
-		for (T rValue : rValues)
-		{
-			if (rValue.toString().equals(sName))
-			{
+	protected <T> T findValue(T[] rValues, String sName) {
+		for (T rValue : rValues) {
+			if (rValue.toString().equals(sName)) {
 				return rValue;
 			}
 		}
@@ -316,8 +285,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return The property map or NULL for none
 	 */
-	protected final Map<PropertyName<?>, String> getPropertyMap()
-	{
+	protected final Map<PropertyName<?>, String> getPropertyMap() {
 		return aPropertyMap;
 	}
 
@@ -334,22 +302,17 @@ public abstract class AbstractStringProperties implements HasProperties,
 	protected <T, C extends Collection<T>> C parseCollection(
 		Class<C> rCollectionType,
 		String   sRawElements,
-		Class<T> rElementType)
-	{
+		Class<T> rElementType) {
 		String[] rElements   = sRawElements.split(DEFAULT_COLLECTION_SEPARATOR);
 		C		 rCollection;
 
-		if (rCollectionType == (Class<?>) List.class)
-		{
+		if (rCollectionType == (Class<?>) List.class) {
 			rCollection = (C) new ArrayList<T>();
-		}
-		else
-		{
+		} else {
 			rCollection = (C) new HashSet<T>();
 		}
 
-		for (int i = 0; i < rElements.length; i++)
-		{
+		for (int i = 0; i < rElements.length; i++) {
 			String sValue =
 				unicodeDecode(rElements[i], DEFAULT_COLLECTION_SEPARATOR);
 
@@ -370,17 +333,14 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 */
 	protected <K, V> Map<K, V> parseMap(String   sRawEntries,
 										Class<K> rKeyType,
-										Class<V> rValueType)
-	{
+										Class<V> rValueType) {
 		Map<K, V> aMap     = new HashMap<>();
 		String[]  rEntries = sRawEntries.split(DEFAULT_COLLECTION_SEPARATOR);
 
-		for (String sEntry : rEntries)
-		{
+		for (String sEntry : rEntries) {
 			int nKeyEnd = sEntry.indexOf(DEFAULT_KEY_VALUE_SEPARATOR);
 
-			if (nKeyEnd > 0)
-			{
+			if (nKeyEnd > 0) {
 				String sKey = sEntry.substring(0, nKeyEnd);
 
 				String sValue =
@@ -411,40 +371,24 @@ public abstract class AbstractStringProperties implements HasProperties,
 	@SuppressWarnings("unchecked")
 	protected <T, E> T parseValue(String	 sRawValue,
 								  Class<T>   rDatatype,
-								  Class<?>[] rElementTypes)
-	{
+								  Class<?>[] rElementTypes) {
 		T rValue = null;
 
-		if (rDatatype == String.class)
-		{
+		if (rDatatype == String.class) {
 			rValue = (T) sRawValue;
-		}
-		else if (rDatatype.isEnum())
-		{
+		} else if (rDatatype.isEnum()) {
 			rValue = findValue(rDatatype.getEnumConstants(), sRawValue);
-		}
-		else if (rDatatype == Date.class)
-		{
+		} else if (rDatatype == Date.class) {
 			rValue = (T) new Date(Long.parseLong(sRawValue));
-		}
-		else if (rDatatype == Long.class)
-		{
+		} else if (rDatatype == Long.class) {
 			rValue = (T) Long.valueOf(sRawValue);
-		}
-		else if (rDatatype == Integer.class)
-		{
+		} else if (rDatatype == Integer.class) {
 			rValue = (T) Integer.valueOf(sRawValue);
-		}
-		else if (rDatatype == Boolean.class)
-		{
+		} else if (rDatatype == Boolean.class) {
 			rValue = (T) Boolean.valueOf(sRawValue);
-		}
-		else if (rDatatype == Color.class)
-		{
+		} else if (rDatatype == Color.class) {
 			rValue = (T) Color.valueOf(sRawValue);
-		}
-		else if (rDatatype == List.class || rDatatype == Set.class)
-		{
+		} else if (rDatatype == List.class || rDatatype == Set.class) {
 			Class<E> rElementType = (Class<E>) rElementTypes[0];
 
 			rValue =
@@ -452,9 +396,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 					(Class<? extends Collection<E>>) rDatatype,
 					sRawValue,
 					rElementType);
-		}
-		else if (rDatatype == Map.class)
-		{
+		} else if (rDatatype == Map.class) {
 			rValue =
 				(T) parseMap(sRawValue, rElementTypes[0], rElementTypes[1]);
 		}
@@ -468,16 +410,13 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @param rName The property to remove
 	 */
-	protected void removeProperty(PropertyName<?> rName)
-	{
+	protected void removeProperty(PropertyName<?> rName) {
 		Map<PropertyName<?>, String> rPropertyMap = getPropertyMap();
 
-		if (rPropertyMap != null)
-		{
+		if (rPropertyMap != null) {
 			rPropertyMap.remove(rName);
 
-			if (rPropertyMap.isEmpty())
-			{
+			if (rPropertyMap.isEmpty()) {
 				setPropertyMap(null);
 			}
 		}
@@ -491,15 +430,11 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @param rName  The property to set or remove
 	 * @param rValue The property value or NULL to remove
 	 */
-	protected <T> void setProperty(PropertyName<T> rName, T rValue)
-	{
-		if (rValue != null)
-		{
+	protected <T> void setProperty(PropertyName<T> rName, T rValue) {
+		if (rValue != null) {
 			ensurePropertyMapExists();
 			getPropertyMap().put(rName, convertValue(rValue));
-		}
-		else
-		{
+		} else {
 			removeProperty(rName);
 		}
 	}
@@ -510,8 +445,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 * @param rProperties The new property map
 	 */
 	protected final void setPropertyMap(
-		Map<PropertyName<?>, String> rProperties)
-	{
+		Map<PropertyName<?>, String> rProperties) {
 		aPropertyMap = rProperties;
 	}
 
@@ -522,8 +456,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	 *
 	 * @return The string property value or the default value
 	 */
-	private final String getRawProperty(PropertyName<?> rName)
-	{
+	private final String getRawProperty(PropertyName<?> rName) {
 		return aPropertyMap != null ? aPropertyMap.get(rName) : null;
 	}
 }

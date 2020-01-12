@@ -1,6 +1,6 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // This file is a part of the 'esoco-common' project.
-// Copyright 2016 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
+// Copyright 2020 Elmar Sonnenschein, esoco GmbH, Flensburg, Germany
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -31,8 +31,8 @@ import java.util.Set;
  * signatures of generic methods. Instances are created through the static
  * factory methods.
  */
-public class PropertyName<T> implements Serializable
-{
+public class PropertyName<T> implements Serializable {
+
 	//~ Static fields/initializers ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
@@ -62,16 +62,15 @@ public class PropertyName<T> implements Serializable
 	 */
 	PropertyName(String		 sName,
 				 Class<?>    rDatatype,
-				 Class<?>... rElementDatatypes)
-	{
+				 Class<?>... rElementDatatypes) {
 		this.sName			   = sName;
 		this.rDatatype		   = rDatatype;
 		this.rElementDatatypes = rElementDatatypes;
 
-		if (aNameRegistry.containsKey(sName))
-		{
-			throw new IllegalArgumentException("Property name already exists: " +
-											   sName);
+		if (aNameRegistry.containsKey(sName)) {
+			throw new IllegalArgumentException(
+				"Property name already exists: " +
+				sName);
 		}
 
 		aNameRegistry.put(sName, this);
@@ -86,8 +85,7 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<Boolean> newBooleanName(String sName)
-	{
+	public static PropertyName<Boolean> newBooleanName(String sName) {
 		return newName(sName, Boolean.class);
 	}
 
@@ -98,8 +96,7 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<Date> newDateName(String sName)
-	{
+	public static PropertyName<Date> newDateName(String sName) {
 		return newName(sName, Date.class);
 	}
 
@@ -113,8 +110,7 @@ public class PropertyName<T> implements Serializable
 	 */
 	public static <E extends Enum<E>> PropertyName<E> newEnumName(
 		String   sName,
-		Class<E> rEnumClass)
-	{
+		Class<E> rEnumClass) {
 		return newName(sName, rEnumClass);
 	}
 
@@ -125,8 +121,7 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<Integer> newIntegerName(String sName)
-	{
+	public static PropertyName<Integer> newIntegerName(String sName) {
 		return newName(sName, Integer.class);
 	}
 
@@ -140,8 +135,7 @@ public class PropertyName<T> implements Serializable
 	 */
 	public static <E> PropertyName<List<E>> newListName(
 		String   sName,
-		Class<E> rElementType)
-	{
+		Class<E> rElementType) {
 		return new PropertyName<List<E>>(sName, List.class, rElementType);
 	}
 
@@ -154,14 +148,15 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return A new instance with the given name
 	 */
-	public static <K, V> PropertyName<Map<K, V>> newMapName(String   sName,
-															Class<K> rKeyType,
-															Class<V> rValueType)
-	{
-		return new PropertyName<Map<K, V>>(sName,
-										   Map.class,
-										   rKeyType,
-										   rValueType);
+	public static <K, V> PropertyName<Map<K, V>> newMapName(
+		String   sName,
+		Class<K> rKeyType,
+		Class<V> rValueType) {
+		return new PropertyName<Map<K, V>>(
+			sName,
+			Map.class,
+			rKeyType,
+			rValueType);
 	}
 
 	/***************************************
@@ -172,8 +167,9 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return A new instance with the given name and datatype
 	 */
-	public static <T> PropertyName<T> newName(String sName, Class<T> rDatatype)
-	{
+	public static <T> PropertyName<T> newName(
+		String   sName,
+		Class<T> rDatatype) {
 		return new PropertyName<T>(sName, rDatatype);
 	}
 
@@ -187,8 +183,7 @@ public class PropertyName<T> implements Serializable
 	 */
 	public static <E> PropertyName<Set<E>> newSetName(
 		String   sName,
-		Class<E> rElementType)
-	{
+		Class<E> rElementType) {
 		return new PropertyName<Set<E>>(sName, Set.class, rElementType);
 	}
 
@@ -199,8 +194,7 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<String> newStringName(String sName)
-	{
+	public static PropertyName<String> newStringName(String sName) {
 		return newName(sName, String.class);
 	}
 
@@ -212,8 +206,7 @@ public class PropertyName<T> implements Serializable
 	 * @return The instance with the given name or NULL if no such name has been
 	 *         registered
 	 */
-	public static PropertyName<?> valueOf(String sName)
-	{
+	public static PropertyName<?> valueOf(String sName) {
 		return aNameRegistry.get(sName);
 	}
 
@@ -225,8 +218,7 @@ public class PropertyName<T> implements Serializable
 	 * @return The datatype class
 	 */
 	@SuppressWarnings("unchecked")
-	public final Class<T> getDatatype()
-	{
+	public final Class<T> getDatatype() {
 		return (Class<T>) rDatatype;
 	}
 
@@ -236,8 +228,7 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return The element datatype class or classes
 	 */
-	public final Class<?>[] getElementDatatypes()
-	{
+	public final Class<?>[] getElementDatatypes() {
 		return rElementDatatypes;
 	}
 
@@ -246,8 +237,7 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return The name
 	 */
-	public final String getName()
-	{
+	public final String getName() {
 		return sName;
 	}
 
@@ -257,8 +247,7 @@ public class PropertyName<T> implements Serializable
 	 * @see Object#toString()
 	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return sName;
 	}
 
@@ -267,14 +256,13 @@ public class PropertyName<T> implements Serializable
 	 *
 	 * @return The resolved property name instance
 	 */
-	Object readResolve()
-	{
+	Object readResolve() {
 		PropertyName<?> rKey = aNameRegistry.get(sName);
 
-		if (rKey == null)
-		{
-			throw new IllegalStateException("Undefined property name: " +
-											sName);
+		if (rKey == null) {
+			throw new IllegalStateException(
+				"Undefined property name: " +
+				sName);
 		}
 
 		return rKey;
