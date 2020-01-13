@@ -54,12 +54,10 @@ public interface ThrowingRunnable extends Runnable {
 	default public void run() {
 		try {
 			tryRun();
-		} catch (Throwable e) {
-			if (e instanceof RuntimeException) {
-				throw (RuntimeException) e;
-			} else {
-				throw new FunctionException(this, e);
-			}
+		} catch (RuntimeException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new FunctionException(this, e);
 		}
 	}
 
@@ -67,7 +65,7 @@ public interface ThrowingRunnable extends Runnable {
 	 * An alternative to {@link #run()} that is allowed to throw any kind of
 	 * exception.
 	 *
-	 * @throws Throwable If the invocation fails
+	 * @throws Exception If the invocation fails
 	 */
-	public void tryRun() throws Throwable;
+	public void tryRun() throws Exception;
 }
