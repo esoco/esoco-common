@@ -12,6 +12,8 @@ project.description = 'Common functionality for SDACK'
 sourceCompatibility = 1.8
 
 dependencies {
+    implementation "javax.validation:validation-api:2.0.1.Final"
+    
 	testImplementation platform('org.junit:junit-bom:5.5.2')	
 	testImplementation 'org.junit.jupiter:junit-jupiter'
 }
