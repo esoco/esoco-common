@@ -23,8 +23,6 @@ public class Regex implements CharSequence {
         }
     }
 
-    public static final Regex ANY_CHAR = regex().anyChar();
-
     private final String pattern;
 
     private Pattern compiledPattern;
@@ -33,26 +31,26 @@ public class Regex implements CharSequence {
         this.pattern = pattern;
     }
 
-    public Regex then() {
-        return this;
-    }
-
     public static void main(String[] args) {
-        Regex matchUrl = rx().text("http").then().onceOrNot("s")
-                .then().text("://")
-                .then().zeroOrMore(rx().group(rx().onceOrMore(rx().charRange('a', 'z').charRange('A', 'Z')).dot()))
-                .then().atLeast(2, ANY_CHAR).dot()
-                .group(rx().anyOf("de", "com", "net", "org", "eu"));
+        Regex matchUrl = regex().text("http")
+            .text("s")
+            .onceOrNot()
+            .text("://")
+            .group(regex().charRange('a', 'z')
+                .charRange('A', 'Z')
+                .onceOrMore()
+                .dot())
+            .zeroOrMore()
+            .anyChar()
+            .atLeast(2)
+            .dot()
+            .group(regex().anyOf("de", "com", "net", "org", "eu"));
 
         String url1 = "https://example.com";
         String url2 = "https://test.example.com";
         System.out.printf("REGEX: %s%n", matchUrl);
         System.out.printf("Matches %s: %s%n", url1, matchUrl.matches(url1));
         System.out.printf("Matches %s: %s%n", url2, matchUrl.matches(url2));
-    }
-
-    public static Regex rx() {
-        return regex();
     }
 
     public static Regex regex() {
@@ -77,16 +75,15 @@ public class Regex implements CharSequence {
 
     public Regex anyOf(@NotNull Collection<CharSequence> patterns) {
         return extendWith(
-                patterns.stream().reduce((p1, p2) -> p1 + "|" + p2).orElse(""));
+            patterns.stream().reduce((p1, p2) -> p1 + "|" + p2).orElse(""));
     }
 
-    public Regex atLeast(@PositiveOrZero int n, @NotNull CharSequence pattern) {
-        return extendWith(pattern + "{" + n + ",}");
+    public Regex atLeast(@PositiveOrZero int n) {
+        return extendWith("{" + n + ",}");
     }
 
-    public Regex between(@PositiveOrZero int min, @PositiveOrZero int max,
-            @NotNull CharSequence pattern) {
-        return extendWith(pattern + "{" + min + "," + max + "}");
+    public Regex between(@PositiveOrZero int min, @PositiveOrZero int max) {
+        return extendWith("{" + min + "," + max + "}");
     }
 
     @Override
@@ -132,8 +129,8 @@ public class Regex implements CharSequence {
 
     public Regex flags(@NotEmpty Collection<RegexFlag> flags) {
         return extendWith("(?" + flags.stream()
-                .map(RegexFlag::getFlag)
-                .reduce("", (f1, f2) -> f1 + f2) + ')');
+            .map(RegexFlag::getFlag)
+            .reduce("", (f1, f2) -> f1 + f2) + ')');
     }
 
     public Regex formFeed() {
@@ -141,7 +138,7 @@ public class Regex implements CharSequence {
     }
 
     public Regex group(@NotEmpty String name,
-            @NotNull CharSequence groupPattern) {
+        @NotNull CharSequence groupPattern) {
         return extendWith("(?<" + name + '>' + groupPattern + ')');
     }
 
@@ -162,7 +159,7 @@ public class Regex implements CharSequence {
     }
 
     public Regex groupNonCapturingIndependent(
-            @NotNull CharSequence groupPattern) {
+        @NotNull CharSequence groupPattern) {
         return extendWith("(?>" + groupPattern + ')');
     }
 
@@ -235,6 +232,13 @@ public class Regex implements CharSequence {
         return extendWith("(?<!" + groupPattern + ')');
     }
 
+    public boolean matches(String input) {
+        if (compiledPattern == null) {
+            compiledPattern = Pattern.compile(pattern);
+        }
+        return compiledPattern.matcher(input).matches();
+    }
+
     public Regex noDigit() {
         return extendWith("\\D");
     }
@@ -273,16 +277,20 @@ public class Regex implements CharSequence {
 
     public Regex notFlags(@NotEmpty Collection<RegexFlag> flags) {
         return extendWith("(?-" + flags.stream()
-                .map(RegexFlag::getFlag)
-                .reduce("", (f1, f2) -> f1 + f2) + ')');
+            .map(RegexFlag::getFlag)
+            .reduce("", (f1, f2) -> f1 + f2) + ')');
     }
 
-    public Regex onceOrMore(@NotNull CharSequence pattern) {
-        return extendWith(pattern + "+");
+    public Regex onceOrMore() {
+        return extendWith("+");
     }
 
-    public Regex onceOrNot(@NotNull CharSequence pattern) {
-        return extendWith(pattern + "?");
+    public Regex onceOrNot() {
+        return extendWith("?");
+    }
+
+    public Regex or() {
+        return extendWith("|");
     }
 
     public Regex possessive() {
@@ -350,13 +358,6 @@ public class Regex implements CharSequence {
         return pattern.subSequence(start, end);
     }
 
-    public boolean matches(String input) {
-        if (compiledPattern == null) {
-            compiledPattern = Pattern.compile(pattern);
-        }
-        return compiledPattern.matcher(input).matches();
-    }
-
     public Regex tab() {
         return extendWith("\\t");
     }
@@ -421,8 +422,8 @@ public class Regex implements CharSequence {
         return extendWith("\\b");
     }
 
-    public Regex zeroOrMore(@NotNull CharSequence pattern) {
-        return extendWith(pattern + "*");
+    public Regex zeroOrMore() {
+        return extendWith("*");
     }
 
     private Regex checkExtendCharClass(@NotNull String charClass) {
@@ -430,7 +431,7 @@ public class Regex implements CharSequence {
 
         if (lastChar > 0 && pattern.charAt(lastChar) == ']') {
             return regex(pattern.substring(0, lastChar)).extendWith(
-                    charClass.substring(1));
+                charClass.substring(1));
         } else {
             return extendWith(charClass);
         }
