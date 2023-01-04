@@ -34,12 +34,12 @@ public interface ObservableDataModel<T> extends DataModel<T> {
 	 *
 	 * @param rListener The listener to register
 	 */
-	public void addModelListener(DataModelListener rListener);
+	void addModelListener(DataModelListener rListener);
 
 	/***************************************
 	 * Unregisters a data model listener from this model.
 	 *
 	 * @param rListener The listener to register
 	 */
-	public void removeModelListener(DataModelListener rListener);
+	void removeModelListener(DataModelListener rListener);
 }

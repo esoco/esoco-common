@@ -30,5 +30,5 @@ public interface DataModelListener {
 	 *
 	 * @param rEvent The data model event
 	 */
-	public void modelChanged(DataModelEvent rEvent);
+	void modelChanged(DataModelEvent rEvent);
 }

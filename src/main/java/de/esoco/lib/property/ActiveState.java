@@ -30,12 +30,12 @@ public interface ActiveState {
 	 *
 	 * @return TRUE if this instance is active, FALSE if it is inactive
 	 */
-	public boolean isActive();
+	boolean isActive();
 
 	/***************************************
 	 * Sets the active state of this instance.
 	 *
 	 * @param bActive The new active state
 	 */
-	public void setActive(boolean bActive);
+	void setActive(boolean bActive);
 }

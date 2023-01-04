@@ -36,7 +36,7 @@ public interface DataProvider<T> {
 	 *
 	 * @return The new data provider
 	 */
-	public static <T> DataProvider<T> of(Collection<T> rData) {
+	static <T> DataProvider<T> of(Collection<T> rData) {
 		return new ListDataProvider<>(rData);
 	}
 
@@ -53,12 +53,12 @@ public interface DataProvider<T> {
 	 * @return A collection of data objects (may be empty but will never be
 	 *         NULL)
 	 */
-	public Collection<T> getData(int nStart, int nCount);
+	Collection<T> getData(int nStart, int nCount);
 
 	/***************************************
 	 * Returns the number of data objects that are available from this provider.
 	 *
 	 * @return The count of available data objects
 	 */
-	public int size();
+	int size();
 }

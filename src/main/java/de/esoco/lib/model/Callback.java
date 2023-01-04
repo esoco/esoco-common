@@ -34,12 +34,12 @@ public interface Callback<T> {
 	 *
 	 * @param eError The exception that signaled the error
 	 */
-	public void onError(Throwable eError);
+	void onError(Throwable eError);
 
 	/***************************************
 	 * Will be invoked if the asynchronous execution was successful.
 	 *
 	 * @param rResult The result of the execution
 	 */
-	public void onSuccess(T rResult);
+	void onSuccess(T rResult);
 }

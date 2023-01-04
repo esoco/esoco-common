@@ -31,5 +31,5 @@ public interface Gettable<T> {
 	 *
 	 * @return The value
 	 */
-	public T getValue();
+	T getValue();
 }

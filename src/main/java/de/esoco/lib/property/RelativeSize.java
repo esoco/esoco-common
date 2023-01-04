@@ -26,15 +26,15 @@ public enum RelativeSize {
 
 	//~ Instance fields --------------------------------------------------------
 
-	private int nMultiplier;
-	private int nDivider;
+	private final int nMultiplier;
+	private final int nDivider;
 
 	//~ Constructors -----------------------------------------------------------
 
 	/***************************************
 	 * Creates a new instance.
 	 */
-	private RelativeSize() {
+	RelativeSize() {
 		nMultiplier = 1;
 		nDivider    = ordinal() + 1;
 	}
@@ -45,7 +45,7 @@ public enum RelativeSize {
 	 * @param nMultiplier The multiplier for size calculations
 	 * @param nDivider    The divider for size calculations
 	 */
-	private RelativeSize(int nMultiplier, int nDivider) {
+	RelativeSize(int nMultiplier, int nDivider) {
 		this.nMultiplier = nMultiplier;
 		this.nDivider    = nDivider;
 	}

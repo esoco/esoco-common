@@ -30,12 +30,12 @@ public interface TitleAttribute {
 	 *
 	 * @return The title string
 	 */
-	public String getTitle();
+	String getTitle();
 
 	/***************************************
 	 * Sets the element's title.
 	 *
 	 * @param sTitle The new title
 	 */
-	public void setTitle(String sTitle);
+	void setTitle(String sTitle);
 }

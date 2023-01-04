@@ -33,12 +33,12 @@ public interface DateAttribute {
 	 *
 	 * @return The date
 	 */
-	public Date getDate();
+	Date getDate();
 
 	/***************************************
 	 * Sets the element's date.
 	 *
 	 * @param rDate The new date
 	 */
-	public void setDate(Date rDate);
+	void setDate(Date rDate);
 }

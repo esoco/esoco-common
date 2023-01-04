@@ -38,7 +38,7 @@ public interface HasAttributeFilter<T> {
 	 * @param pCriteria  A predicate containing the filter criteria or NULL to
 	 *                   remove a filter
 	 */
-	public <V> void applyFilter(
+	<V> void applyFilter(
 		Function<? super T, V> rAttribute,
 		Predicate<? super V>   pCriteria);
 
@@ -50,7 +50,7 @@ public interface HasAttributeFilter<T> {
 	 *
 	 * @return The attribute filter predicate or NULL for none
 	 */
-	public <V> Predicate<? super V> getFilter(
+	<V> Predicate<? super V> getFilter(
 		Function<? super T, V> rAttribute);
 
 	/***************************************
@@ -58,5 +58,5 @@ public interface HasAttributeFilter<T> {
 	 *
 	 * @return TRUE if at least one filter criterion has been set
 	 */
-	public boolean hasActiveFilter();
+	boolean hasActiveFilter();
 }

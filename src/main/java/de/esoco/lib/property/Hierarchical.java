@@ -33,5 +33,5 @@ public interface Hierarchical<T> extends Iterable<T> {
 	 *
 	 * @return The parent element or NULL for the root
 	 */
-	public T getParent();
+	T getParent();
 }

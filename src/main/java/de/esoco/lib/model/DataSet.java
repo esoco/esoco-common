@@ -76,14 +76,14 @@ public interface DataSet<T> extends HasProperties {
 	 *
 	 * @return The column axis label
 	 */
-	public String getColumnAxisLabel();
+	String getColumnAxisLabel();
 
 	/***************************************
 	 * Returns the number of columns in this set.
 	 *
 	 * @return The column count
 	 */
-	public int getColumnCount();
+	int getColumnCount();
 
 	/***************************************
 	 * Returns the label for a certain data column or NULL if no label is
@@ -95,7 +95,7 @@ public interface DataSet<T> extends HasProperties {
 	 *
 	 * @throws IndexOutOfBoundsException If the given column doesn't exist
 	 */
-	public String getColumnLabel(int nColumn);
+	String getColumnLabel(int nColumn);
 
 	/***************************************
 	 * Returns the label for the row (z) axis of this data set. If no label is
@@ -103,14 +103,14 @@ public interface DataSet<T> extends HasProperties {
 	 *
 	 * @return The row axis label
 	 */
-	public String getRowAxisLabel();
+	String getRowAxisLabel();
 
 	/***************************************
 	 * Returns the number of data rows in this set.
 	 *
 	 * @return The row count
 	 */
-	public int getRowCount();
+	int getRowCount();
 
 	/***************************************
 	 * Returns the label for a certain data row or NULL if no label is
@@ -122,7 +122,7 @@ public interface DataSet<T> extends HasProperties {
 	 *
 	 * @throws IndexOutOfBoundsException If the given row doesn't exist
 	 */
-	public String getRowLabel(int nRow);
+	String getRowLabel(int nRow);
 
 	/***************************************
 	 * Returns the value.
@@ -135,7 +135,7 @@ public interface DataSet<T> extends HasProperties {
 	 * @throws IndexOutOfBoundsException If the either given row or column
 	 *                                   doesn't exist
 	 */
-	public T getValue(int nRow, int nColumn);
+	T getValue(int nRow, int nColumn);
 
 	/***************************************
 	 * Returns the label for the value (y) axis of this data set. If no label is
@@ -143,5 +143,5 @@ public interface DataSet<T> extends HasProperties {
 	 *
 	 * @return The value axis label
 	 */
-	public String getValueAxisLabel();
+	String getValueAxisLabel();
 }

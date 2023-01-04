@@ -30,12 +30,12 @@ public interface TextAttribute {
 	 *
 	 * @return The text
 	 */
-	public String getText();
+	String getText();
 
 	/***************************************
 	 * Sets the element's text.
 	 *
 	 * @param sText The new text
 	 */
-	public void setText(String sText);
+	void setText(String sText);
 }

@@ -18,8 +18,7 @@ package de.esoco.lib.datatype;
 
 import de.esoco.lib.property.HasOrder;
 
-
-/********************************************************************
+/**
  * An enumeration of standard priorities.
  */
-public enum Priority implements HasOrder { LOWEST, LOW, NORMAL, HIGH, HIGHEST }
+public enum Priority implements HasOrder {LOWEST, LOW, NORMAL, HIGH, HIGHEST}

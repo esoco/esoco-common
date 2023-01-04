@@ -30,5 +30,5 @@ public interface Editable {
 	 *
 	 * @return TRUE if the object can be edited, FALSE if it is readonly
 	 */
-	public boolean isEditable();
+	boolean isEditable();
 }

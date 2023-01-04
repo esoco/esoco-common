@@ -31,5 +31,5 @@ public interface HasId<T> {
 	 *
 	 * @return The instance identifier
 	 */
-	public T getId();
+	T getId();
 }

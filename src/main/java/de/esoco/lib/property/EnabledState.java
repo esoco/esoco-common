@@ -28,14 +28,14 @@ public interface EnabledState {
 	/***************************************
 	 * Sets the state of this object to disabled.
 	 */
-	default public void disable() {
+	default void disable() {
 		setEnabled(false);
 	}
 
 	/***************************************
 	 * Sets the state of this object to enabled.
 	 */
-	default public void enable() {
+	default void enable() {
 		setEnabled(true);
 	}
 
@@ -44,7 +44,7 @@ public interface EnabledState {
 	 *
 	 * @return TRUE if the element is enabled, FALSE if disabled
 	 */
-	public boolean isEnabled();
+	boolean isEnabled();
 
 	/***************************************
 	 * Sets the enabled state of the element. This state controls whether the
@@ -52,5 +52,5 @@ public interface EnabledState {
 	 *
 	 * @param bEnabled TRUE to enable the element, FALSE to disable it
 	 */
-	public void setEnabled(boolean bEnabled);
+	void setEnabled(boolean bEnabled);
 }

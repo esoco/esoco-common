@@ -37,7 +37,7 @@ public interface HasAttributeSorting<T> {
 	 * @param rAttribute The binding describing the attribute
 	 * @param eDirection The sort direction or NULL to remove sorting
 	 */
-	public <V extends Comparable<V>> void applySorting(
+	<V extends Comparable<V>> void applySorting(
 		Function<? super T, V> rAttribute,
 		SortDirection		   eDirection);
 
@@ -49,12 +49,12 @@ public interface HasAttributeSorting<T> {
 	 *
 	 * @return The attribute sort direction or NULL for none
 	 */
-	public SortDirection getSortDirection(Function<? super T, ?> rAttribute);
+	SortDirection getSortDirection(Function<? super T, ?> rAttribute);
 
 	/***************************************
 	 * Checks if one or more attribute sort orders are active.
 	 *
 	 * @return TRUE if at least one attribute is sorted
 	 */
-	public boolean hasActiveSorting();
+	boolean hasActiveSorting();
 }

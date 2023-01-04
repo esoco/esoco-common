@@ -43,7 +43,7 @@ public interface HasProperties {
 	 *
 	 * @return The int property value or the default value
 	 */
-	public int getIntProperty(PropertyName<Integer> rName, int nDefault);
+	int getIntProperty(PropertyName<Integer> rName, int nDefault);
 
 	/***************************************
 	 * Returns the value of a particular property.
@@ -53,14 +53,14 @@ public interface HasProperties {
 	 *
 	 * @return The property value or the default value
 	 */
-	public <T> T getProperty(PropertyName<T> rName, T rDefault);
+	<T> T getProperty(PropertyName<T> rName, T rDefault);
 
 	/***************************************
 	 * Returns the number of properties stored in this instance.
 	 *
 	 * @return The number of properties
 	 */
-	public int getPropertyCount();
+	int getPropertyCount();
 
 	/***************************************
 	 * Returns a collection containing the names of the properties that are set
@@ -68,7 +68,7 @@ public interface HasProperties {
 	 *
 	 * @return A collection of the property names
 	 */
-	public Collection<PropertyName<?>> getPropertyNames();
+	Collection<PropertyName<?>> getPropertyNames();
 
 	/***************************************
 	 * A convenience method to query a boolean property with a default value of
@@ -78,7 +78,7 @@ public interface HasProperties {
 	 *
 	 * @return TRUE if the property exists and is set to TRUE
 	 */
-	public boolean hasFlag(PropertyName<Boolean> rName);
+	boolean hasFlag(PropertyName<Boolean> rName);
 
 	/***************************************
 	 * Checks whether this instance contains a certain property.
@@ -87,5 +87,5 @@ public interface HasProperties {
 	 *
 	 * @return TRUE if the property exists
 	 */
-	public boolean hasProperty(PropertyName<?> rName);
+	boolean hasProperty(PropertyName<?> rName);
 }

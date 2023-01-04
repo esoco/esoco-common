@@ -30,5 +30,5 @@ public interface Indexed {
 	 *
 	 * @return The object's index
 	 */
-	public int getIndex();
+	int getIndex();
 }

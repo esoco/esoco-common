@@ -38,12 +38,12 @@ public interface DataModel<T> extends Iterable<T> {
 	 *
 	 * @throws IndexOutOfBoundsException If the given index is invalid
 	 */
-	public T getElement(int nIndex);
+	T getElement(int nIndex);
 
 	/***************************************
 	 * Returns the size of this data model.
 	 *
 	 * @return The number of data elements this model contains
 	 */
-	public int getElementCount();
+	int getElementCount();
 }

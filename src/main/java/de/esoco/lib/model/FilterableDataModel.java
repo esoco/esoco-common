@@ -30,7 +30,7 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** A constant to allow searching for NULL values. */
-	public static final String NULL_CONSTRAINT_VALUE = "NULL!";
+	String NULL_CONSTRAINT_VALUE = "NULL!";
 
 	/**
 	 * The possible comparison characters for constraints (\u2260,\u2264,\u2265:
@@ -38,26 +38,26 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 * means "element of' and can be followed by a comma-separated list of
 	 * values.
 	 */
-	public static final String CONSTRAINT_COMPARISON_CHARS =
+	String CONSTRAINT_COMPARISON_CHARS =
 		"=\u2260~#<>\u2264\u2265";
 
 	/**
 	 * The prefix character for constraints that should be combined with a
 	 * logical AND.
 	 */
-	public static final char CONSTRAINT_AND_PREFIX = '&';
+	char CONSTRAINT_AND_PREFIX = '&';
 
 	/**
 	 * The prefix character for constraints that should be combined with a
 	 * logical OR.
 	 */
-	public static final char CONSTRAINT_OR_PREFIX = '|';
+	char CONSTRAINT_OR_PREFIX = '|';
 
 	/**
 	 * The separator string to concatenate multiple constraints for a certain
 	 * field with.
 	 */
-	public static final String CONSTRAINT_SEPARATOR = "¶";
+	String CONSTRAINT_SEPARATOR = "¶";
 
 	/**
 	 * An escape string that must be used to replace all natural occurrences of
@@ -65,10 +65,10 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 * therefore not occur in constraints or else it will be replaced with the
 	 * separator.
 	 */
-	public static final String CONSTRAINT_SEPARATOR_ESCAPE = "<°>";
+	String CONSTRAINT_SEPARATOR_ESCAPE = "<°>";
 
 	/** The date format pattern string for date values in search constraints. */
-	public static final String CONSTRAINT_DATE_FORMAT_PATTERN = "yyyy-MM-dd";
+	String CONSTRAINT_DATE_FORMAT_PATTERN = "yyyy-MM-dd";
 
 	//~ Methods ----------------------------------------------------------------
 
@@ -79,7 +79,7 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 *
 	 * @return The filter string for the given field or NULL for none
 	 */
-	public String getFilter(String sFieldId);
+	String getFilter(String sFieldId);
 
 	/***************************************
 	 * Returns all filters that are set in this data model as a mapping from
@@ -89,12 +89,12 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 *
 	 * @return A mapping from field ID strings to filter strings
 	 */
-	public Map<String, String> getFilters();
+	Map<String, String> getFilters();
 
 	/***************************************
 	 * Removes all filters from this model.
 	 */
-	public void removeAllFilters();
+	void removeAllFilters();
 
 	/***************************************
 	 * Sets the filter for a certain field. If the filter value is NULL an
@@ -137,12 +137,12 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 * @param sFieldId The ID of the data field to set the filter for
 	 * @param sFilter  The filter value or NULL to remove a filter
 	 */
-	public void setFilter(String sFieldId, String sFilter);
+	void setFilter(String sFieldId, String sFilter);
 
 	/***************************************
 	 * Sets the filters of this model. This will remove any existing filters.
 	 *
 	 * @param rFilters A mapping from field ID strings to filter strings
 	 */
-	public void setFilters(Map<String, String> rFilters);
+	void setFilters(Map<String, String> rFilters);
 }

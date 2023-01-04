@@ -61,7 +61,7 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 *
 	 * @return The number of prepared data elements
 	 */
-	public int getAvailableElementCount();
+	int getAvailableElementCount();
 
 	/***************************************
 	 * Returns the size of the window to the remote data that is read by a call
@@ -69,7 +69,7 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 *
 	 * @return The size of the remote data window
 	 */
-	public int getWindowSize();
+	int getWindowSize();
 
 	/***************************************
 	 * Returns the starting index of the window to the remote data that is read
@@ -77,7 +77,7 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 *
 	 * @return The starting index of the remote data window
 	 */
-	public int getWindowStart();
+	int getWindowStart();
 
 	/***************************************
 	 * Sets the window into remote data for retrieval through the methods of the
@@ -92,7 +92,7 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 * @param nSize     nStart The number of elements to be retrieved
 	 * @param rCallback The callback to be notified if the data is available
 	 */
-	public void setWindow(int						   nStart,
+	void setWindow(int						   nStart,
 						  int						   nSize,
 						  Callback<RemoteDataModel<T>> rCallback);
 }

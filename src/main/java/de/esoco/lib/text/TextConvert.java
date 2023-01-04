@@ -701,7 +701,7 @@ public class TextConvert {
 				(nPos - nStart) > 0 &&
 				(!bSkip ||
 				 (nPos < nMax && Character.isLowerCase(s.charAt(nPos + 1))))) {
-				sb.append(s.substring(nStart, nPos));
+				sb.append(s, nStart, nPos);
 
 				if (sb.charAt(sb.length() - 1) != '_') {
 					sb.append('_');

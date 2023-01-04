@@ -51,7 +51,7 @@ public class MathUtil {
 		 *
 		 * @param nExponent the value of the exponent
 		 */
-		private MetricPrefix(int nExponent) {
+		MetricPrefix(int nExponent) {
 			this.nExponent = nExponent;
 
 			if (nExponent > 0) {

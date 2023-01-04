@@ -33,29 +33,29 @@ public interface StorageProperties {
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: the starting index of a storage query. */
-	public static final PropertyName<Integer> QUERY_START =
+	PropertyName<Integer> QUERY_START =
 		newIntegerName("QUERY_START");
 
 	/** Integer: the maximum result size of a storage query. */
-	public static final PropertyName<Integer> QUERY_LIMIT =
+	PropertyName<Integer> QUERY_LIMIT =
 		newIntegerName("QUERY_LIMIT");
 
 	/** Integer: the maximum depth of a hierarchical storage query. */
-	public static final PropertyName<Integer> QUERY_DEPTH =
+	PropertyName<Integer> QUERY_DEPTH =
 		newIntegerName("QUERY_DEPTH");
 
 	/**
 	 * Map&lt;String, String&gt;: a mapping from storage fields to filter
 	 * criteria.
 	 */
-	public static final PropertyName<Map<String, String>> QUERY_SEARCH =
+	PropertyName<Map<String, String>> QUERY_SEARCH =
 		newMapName("QUERY_SEARCH", String.class, String.class);
 
 	/**
 	 * Map&lt;String, String&gt;: a mapping from storage fields to sort
 	 * directions.
 	 */
-	public static final PropertyName<Map<String, SortDirection>> QUERY_SORT =
+	PropertyName<Map<String, SortDirection>> QUERY_SORT =
 		newMapName("QUERY_SORT", String.class, SortDirection.class);
 
 	//~ Static methods ---------------------------------------------------------
@@ -64,6 +64,6 @@ public interface StorageProperties {
 	 * This method should be invoked to initialize the property name constants
 	 * for de-serialization.
 	 */
-	public static void init() {
+	static void init() {
 	}
 }

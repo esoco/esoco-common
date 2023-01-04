@@ -37,10 +37,10 @@ public abstract class AbstractDataProvider<T>
 
 	//~ Instance fields --------------------------------------------------------
 
-	private Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
+	private final Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
 		new LinkedHashMap<>();
 
-	private Map<Function<? super T, ? extends Comparable<?>>, SortDirection> aAttributeSortings =
+	private final Map<Function<? super T, ? extends Comparable<?>>, SortDirection> aAttributeSortings =
 		new LinkedHashMap<>();
 
 	//~ Methods ----------------------------------------------------------------

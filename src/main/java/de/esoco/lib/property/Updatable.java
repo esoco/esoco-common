@@ -31,5 +31,5 @@ public interface Updatable {
 	 * Updates the state and if applicable the visual representation of an
 	 * object.
 	 */
-	public void update();
+	void update();
 }

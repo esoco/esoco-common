@@ -33,7 +33,7 @@ public interface SingleSelection {
 	 *
 	 * @return The index of the current selection or -1 for none
 	 */
-	public int getSelectionIndex();
+	int getSelectionIndex();
 
 	/***************************************
 	 * Sets the index of the currently selected element. For implementations
@@ -42,5 +42,5 @@ public interface SingleSelection {
 	 *
 	 * @param nIndex The index of the new selected element or -1 for none
 	 */
-	public void setSelection(int nIndex);
+	void setSelection(int nIndex);
 }

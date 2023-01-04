@@ -34,5 +34,5 @@ public interface Immutability {
 	 * Sets this object to be immutable. Afterwards, the object must not allow
 	 * further modification of it's internal state.
 	 */
-	public void setImmutable();
+	void setImmutable();
 }

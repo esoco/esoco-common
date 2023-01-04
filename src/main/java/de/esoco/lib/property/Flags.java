@@ -36,7 +36,7 @@ public interface Flags<F> {
 	 *
 	 * @return A collection containing the flags
 	 */
-	public Collection<F> getFlags();
+	Collection<F> getFlags();
 
 	/***************************************
 	 * Checks whether a certain flag is set in this object.
@@ -45,5 +45,5 @@ public interface Flags<F> {
 	 *
 	 * @return TRUE if the flag is set
 	 */
-	public boolean hasFlag(F rFlag);
+	boolean hasFlag(F rFlag);
 }

@@ -37,7 +37,7 @@ public interface ThrowingRunnable extends Runnable {
 	 *
 	 * @return The resulting function
 	 */
-	public static Runnable of(ThrowingRunnable fThrowing) {
+	static Runnable of(ThrowingRunnable fThrowing) {
 		return fThrowing;
 	}
 
@@ -51,7 +51,7 @@ public interface ThrowingRunnable extends Runnable {
 	 * @see Runnable#run()
 	 */
 	@Override
-	default public void run() {
+	default void run() {
 		try {
 			tryRun();
 		} catch (RuntimeException e) {
@@ -67,5 +67,5 @@ public interface ThrowingRunnable extends Runnable {
 	 *
 	 * @throws Exception If the invocation fails
 	 */
-	public void tryRun() throws Exception;
+	void tryRun() throws Exception;
 }

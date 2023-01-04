@@ -19,7 +19,6 @@ package de.esoco.lib.expression;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-
 /********************************************************************
  * A {@link Supplier} extension that maps any occurring exception to a runtime
  * {@link FunctionException}.
@@ -41,7 +40,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 *
 	 * @return The resulting function
 	 */
-	public static <T> Consumer<T> of(ThrowingConsumer<T> fThrowing) {
+	static <T> Consumer<T> of(ThrowingConsumer<T> fThrowing) {
 		return fThrowing;
 	}
 
@@ -55,7 +54,7 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * @see Consumer#accept(Object)
 	 */
 	@Override
-	default public void accept(T rValue) {
+	default void accept(T rValue) {
 		try {
 			tryAccept(rValue);
 		} catch (RuntimeException e) {
@@ -73,5 +72,5 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 *
 	 * @throws Exception If the invocation fails
 	 */
-	public void tryAccept(T rValue) throws Exception;
+	void tryAccept(T rValue) throws Exception;
 }

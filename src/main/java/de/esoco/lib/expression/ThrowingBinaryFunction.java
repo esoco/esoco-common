@@ -41,7 +41,7 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 	 *
 	 * @return The resulting function
 	 */
-	public static <L, R, O> BiFunction<L, R, O> of(
+	static <L, R, O> BiFunction<L, R, O> of(
 		ThrowingBinaryFunction<L, R, O> fThrowing) {
 		return fThrowing;
 	}
@@ -59,7 +59,7 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 	 *
 	 * @throws Exception Any kind of exception may be thrown
 	 */
-	public O tryApply(L rLeft, R rRight) throws Exception;
+	O tryApply(L rLeft, R rRight) throws Exception;
 
 	// ~ Methods ------------------------------------------------------------
 

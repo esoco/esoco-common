@@ -30,5 +30,5 @@ public interface EditableState extends Editable {
 	 *
 	 * @param bEditable TRUE to make the object editable, FALSE for readonly
 	 */
-	public void setEditable(boolean bEditable);
+	void setEditable(boolean bEditable);
 }

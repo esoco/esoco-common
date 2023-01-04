@@ -66,7 +66,7 @@ public enum Alignment implements HasCssName {
 	 *
 	 * @param sCssName The CSS name of this instance
 	 */
-	private Alignment(String sCssName) {
+	Alignment(String sCssName) {
 		this.sCssName = sCssName;
 	}
 

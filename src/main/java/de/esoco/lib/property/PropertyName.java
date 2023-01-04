@@ -37,7 +37,7 @@ public class PropertyName<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Map<String, PropertyName<?>> aNameRegistry =
+	private static final Map<String, PropertyName<?>> aNameRegistry =
 		new HashMap<String, PropertyName<?>>();
 
 	//~ Instance fields --------------------------------------------------------

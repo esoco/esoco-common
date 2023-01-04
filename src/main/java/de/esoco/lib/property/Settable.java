@@ -31,5 +31,5 @@ public interface Settable<T> {
 	 *
 	 * @param rValue The new value
 	 */
-	public void setValue(T rValue);
+	void setValue(T rValue);
 }

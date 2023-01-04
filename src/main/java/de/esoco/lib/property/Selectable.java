@@ -31,12 +31,12 @@ public interface Selectable {
 	 *
 	 * @return TRUE if this instance is selected
 	 */
-	public boolean isSelected();
+	boolean isSelected();
 
 	/***************************************
 	 * Sets the selection state of this instance.
 	 *
 	 * @param bSelected The new selected state of this instance
 	 */
-	public void setSelected(boolean bSelected);
+	void setSelected(boolean bSelected);
 }

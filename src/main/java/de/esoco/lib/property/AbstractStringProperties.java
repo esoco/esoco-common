@@ -119,7 +119,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	@Override
 	public Collection<PropertyName<?>> getPropertyNames() {
 		return aPropertyMap != null ? aPropertyMap.keySet()
-									: Collections.<PropertyName<?>>emptySet();
+									: Collections.emptySet();
 	}
 
 	/***************************************
@@ -140,7 +140,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 	public boolean hasFlag(PropertyName<Boolean> rName) {
 		String sProperty = getRawProperty(rName);
 
-		return sProperty != null ? Boolean.parseBoolean(sProperty) : false;
+		return sProperty != null && Boolean.parseBoolean(sProperty);
 	}
 
 	/***************************************
@@ -306,7 +306,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 		String[] rElements   = sRawElements.split(DEFAULT_COLLECTION_SEPARATOR);
 		C		 rCollection;
 
-		if (rCollectionType == (Class<?>) List.class) {
+		if (rCollectionType == List.class) {
 			rCollection = (C) new ArrayList<T>();
 		} else {
 			rCollection = (C) new HashSet<T>();

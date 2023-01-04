@@ -33,5 +33,5 @@ public interface HasOrder {
 	 *
 	 * @return The ordinal number
 	 */
-	public int ordinal();
+	int ordinal();
 }

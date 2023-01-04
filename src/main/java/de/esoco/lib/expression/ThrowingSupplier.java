@@ -18,7 +18,6 @@ package de.esoco.lib.expression;
 
 import java.util.function.Supplier;
 
-
 /********************************************************************
  * A {@link Supplier} extension that maps any occurring exception to a runtime
  * {@link FunctionException}.
@@ -40,20 +39,11 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 *
 	 * @return The resulting function
 	 */
-	public static <T> Supplier<T> of(ThrowingSupplier<T> fThrowing) {
+	static <T> Supplier<T> of(ThrowingSupplier<T> fThrowing) {
 		return fThrowing;
 	}
 
 	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
-	 * Replaces {@link #get()} and allows implementations to throw an exception.
-	 *
-	 * @return The function result
-	 *
-	 * @throws Exception If the invocation fails
-	 */
-	public T tryGet() throws Exception;
 
 	/***************************************
 	 * Overridden to forward the invocation to the actual function
@@ -72,4 +62,13 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 			throw new FunctionException(this, e);
 		}
 	}
+
+	/***************************************
+	 * Replaces {@link #get()} and allows implementations to throw an exception.
+	 *
+	 * @return The function result
+	 *
+	 * @throws Exception If the invocation fails
+	 */
+	T tryGet() throws Exception;
 }

@@ -32,26 +32,26 @@ public interface MutableProperties extends HasProperties {
 	 *
 	 * @param rName The name of the boolean property
 	 */
-	public void clearFlag(PropertyName<Boolean> rName);
+	void clearFlag(PropertyName<Boolean> rName);
 
 	/***************************************
 	 * Removes all properties from this instance.
 	 */
-	public void clearProperties();
+	void clearProperties();
 
 	/***************************************
 	 * Removes a certain property.
 	 *
 	 * @param rName The name of the property to remove
 	 */
-	public void removeProperty(PropertyName<?> rName);
+	void removeProperty(PropertyName<?> rName);
 
 	/***************************************
 	 * Convenience method to set a boolean property to TRUE.
 	 *
 	 * @param rName The name of the boolean property
 	 */
-	public void setFlag(PropertyName<Boolean> rName);
+	void setFlag(PropertyName<Boolean> rName);
 
 	/***************************************
 	 * Sets all properties from another properties object in this instance. The
@@ -68,7 +68,7 @@ public interface MutableProperties extends HasProperties {
 	 * @param bReplace TRUE to replace existing value, FALSE to only add
 	 *                 non-existing values
 	 */
-	public void setProperties(HasProperties rOther, boolean bReplace);
+	void setProperties(HasProperties rOther, boolean bReplace);
 
 	/***************************************
 	 * Sets a particular property. Setting a value of NULL will remove the
@@ -77,19 +77,19 @@ public interface MutableProperties extends HasProperties {
 	 * @param rName  The name of the property
 	 * @param rValue The value of the property (NULL removes the property)
 	 */
-	public <T> void setProperty(PropertyName<T> rName, T rValue);
+	<T> void setProperty(PropertyName<T> rName, T rValue);
 
 	/***************************************
 	 * Convenience method to set boolean properties.
 	 *
 	 * @see #setProperty(PropertyName, boolean)
 	 */
-	public void setProperty(PropertyName<Boolean> rName, boolean bValue);
+	void setProperty(PropertyName<Boolean> rName, boolean bValue);
 
 	/***************************************
 	 * Convenience method to set integer properties.
 	 *
 	 * @see #setProperty(PropertyName, int)
 	 */
-	public void setProperty(PropertyName<Integer> rName, int nValue);
+	void setProperty(PropertyName<Integer> rName, int nValue);
 }

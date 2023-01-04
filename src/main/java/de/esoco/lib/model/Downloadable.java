@@ -38,7 +38,7 @@ public interface Downloadable {
 	 * @param nMaxSize  The maximum download size
 	 * @param rCallback The callback to be notified of the download reference
 	 */
-	public void prepareDownload(String			 sFileName,
+	void prepareDownload(String			 sFileName,
 								int				 nMaxSize,
 								Callback<String> rCallback);
 }

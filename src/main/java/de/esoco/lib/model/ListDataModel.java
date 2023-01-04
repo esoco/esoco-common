@@ -116,14 +116,9 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		}
 
 		if (rData == null) {
-			if (rOther.rData != null) {
-				return false;
-			}
-		} else if (!rData.equals(rOther.rData)) {
-			return false;
-		}
-
-		return true;
+			return rOther.rData == null;
+		} else
+			return rData.equals(rOther.rData);
 	}
 
 	/***************************************

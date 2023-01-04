@@ -18,7 +18,6 @@ package de.esoco.lib.expression;
 
 import java.util.function.Function;
 
-
 /********************************************************************
  * A sub-interface that allows implementations to throw checked exceptions. If
  * an exception occurs it will be converted into a runtime exception of the type
@@ -41,7 +40,7 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 	 *
 	 * @return The resulting function
 	 */
-	public static <I, O> Function<I, O> of(ThrowingFunction<I, O> fThrowing) {
+	static <I, O> Function<I, O> of(ThrowingFunction<I, O> fThrowing) {
 		return fThrowing;
 	}
 
@@ -55,7 +54,7 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 	 * @see Function#apply(Object)
 	 */
 	@Override
-	default public O apply(I rInput) {
+	default O apply(I rInput) {
 		try {
 			return tryApply(rInput);
 		} catch (RuntimeException e) {
@@ -75,5 +74,5 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 	 *
 	 * @throws Exception An exception in the case of errors
 	 */
-	public O tryApply(I rInput) throws Exception;
+	O tryApply(I rInput) throws Exception;
 }

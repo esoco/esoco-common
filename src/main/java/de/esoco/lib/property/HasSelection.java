@@ -35,12 +35,12 @@ public interface HasSelection<T> {
 	 *
 	 * @return The selection (will be NULL for no selection)
 	 */
-	public T getSelection();
+	T getSelection();
 
 	/***************************************
 	 * Sets the selection.
 	 *
 	 * @param rNewSelection The new selection or NULL for none
 	 */
-	public void setSelection(T rNewSelection);
+	void setSelection(T rNewSelection);
 }

@@ -32,14 +32,14 @@ public interface MultiSelection {
 	 *
 	 * @return The selection indices
 	 */
-	public int[] getSelectionIndices();
+	int[] getSelectionIndices();
 
 	/***************************************
 	 * Selects the elements with the indices contained in the argument array.
 	 *
 	 * @param rIndices An array with the indices of the elements to select
 	 */
-	public void setSelection(int[] rIndices);
+	void setSelection(int[] rIndices);
 
 	/***************************************
 	 * Selects all elements within the given range.
@@ -47,5 +47,5 @@ public interface MultiSelection {
 	 * @param nStart The start index (inclusive)
 	 * @param nEnd   The end index (inclusive)
 	 */
-	public void setSelection(int nStart, int nEnd);
+	void setSelection(int nStart, int nEnd);
 }

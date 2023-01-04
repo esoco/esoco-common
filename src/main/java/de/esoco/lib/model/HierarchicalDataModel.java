@@ -32,5 +32,5 @@ public interface HierarchicalDataModel<T> extends DataModel<T> {
 	 * @return A list of this model's children (may be NULL or empty if no
 	 *         children exists)
 	 */
-	public DataModel<? extends DataModel<T>> getChildModels();
+	DataModel<? extends DataModel<T>> getChildModels();
 }

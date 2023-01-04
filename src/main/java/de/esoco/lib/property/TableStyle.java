@@ -29,5 +29,5 @@ public enum TableStyle {
 	PAGED,
 
 	/** Automatically loads and displays table data as needed. */
-	AUTO_LOAD;
+	AUTO_LOAD
 }

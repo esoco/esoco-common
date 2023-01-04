@@ -16,61 +16,51 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.datatype;
 
-/********************************************************************
+/**
  * A {@link Tuple} subclass that holds a pair of two generically typed values.
  *
  * @author eso
  */
 public class Pair<F, S> extends Tuple {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 *
-	 * @param rFirst  The first object
-	 * @param rSecond The second object
+	 * @param first  The first object
+	 * @param second The second object
 	 */
-	public Pair(F rFirst, S rSecond) {
-		super(rFirst, rSecond);
+	public Pair(F first, S second) {
+		super(first, second);
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Factory method to creates a new instance. This method provides a semantic
 	 * alternative to the constructor or the {@link #t(Object, Object)} method.
 	 *
-	 * @param  rFirst  The first value
-	 * @param  rSecond The second value
-	 *
+	 * @param first  The first value
+	 * @param second The second value
 	 * @return A new pair instance
 	 */
-	public static <F, S> Pair<F, S> of(F rFirst, S rSecond) {
-		return new Pair<>(rFirst, rSecond);
+	public static <F, S> Pair<F, S> of(F first, S second) {
+		return new Pair<>(first, second);
 	}
 
-	/***************************************
+	/**
 	 * Factory method to creates a new instance. This method is intended to be
 	 * used with static imports to provide a short syntax for defining
 	 * dual-value tuples, especially in varargs lists.
 	 *
-	 * @param  rFirst  The first value
-	 * @param  rSecond The second value
-	 *
+	 * @param first  The first value
+	 * @param second The second value
 	 * @return A new pair instance
 	 */
-	public static <F, S> Pair<F, S> t(F rFirst, S rSecond) {
-		return Pair.of(rFirst, rSecond);
+	public static <F, S> Pair<F, S> t(F first, S second) {
+		return Pair.of(first, second);
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the first value.
 	 *
 	 * @return The first value
@@ -80,7 +70,7 @@ public class Pair<F, S> extends Tuple {
 		return (F) get(0);
 	}
 
-	/***************************************
+	/**
 	 * Returns the second value.
 	 *
 	 * @return The second value

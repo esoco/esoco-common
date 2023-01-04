@@ -36,12 +36,12 @@ public interface SortableDataModel<T> extends DataModel<T> {
 	 *
 	 * @return The sort mode for the given field or NULL for none
 	 */
-	public SortDirection getSortDirection(String sFieldId);
+	SortDirection getSortDirection(String sFieldId);
 
 	/***************************************
 	 * Removes all sort criteria from this model.
 	 */
-	public void removeSorting();
+	void removeSorting();
 
 	/***************************************
 	 * Sets the sort direction for a certain field of the data in this model.
@@ -50,5 +50,5 @@ public interface SortableDataModel<T> extends DataModel<T> {
 	 * @param rMode    The sort mode or NULL to disable the sort criterion for
 	 *                 the given field
 	 */
-	public void setSortDirection(String sFieldId, SortDirection rMode);
+	void setSortDirection(String sFieldId, SortDirection rMode);
 }

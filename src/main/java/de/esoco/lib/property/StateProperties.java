@@ -37,55 +37,55 @@ public interface StateProperties {
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** Integer: The increment for an automatic update of a value. */
-	public static final PropertyName<Integer> AUTO_UPDATE_INCREMENT =
+	PropertyName<Integer> AUTO_UPDATE_INCREMENT =
 		newIntegerName("AUTO_UPDATE_INCREMENT");
 
 	/**
 	 * Integer: The interval in milliseconds for an automatic update of a value.
 	 */
-	public static final PropertyName<Integer> AUTO_UPDATE_INTERVAL =
+	PropertyName<Integer> AUTO_UPDATE_INTERVAL =
 		newIntegerName("AUTO_UPDATE_INTERVAL");
 
 	/** Integer: The (initial) position of the text input caret. */
-	public static final PropertyName<Integer> CARET_POSITION =
+	PropertyName<Integer> CARET_POSITION =
 		newIntegerName("CARET_POSITION");
 
 	/** Boolean: TRUE to explicitly disable an element. */
-	public static final PropertyName<Boolean> DISABLED =
+	PropertyName<Boolean> DISABLED =
 		newBooleanName("DISABLED");
 
 	/**
 	 * Boolean: TRUE to hide an element from rendering completely. To only make
 	 * it invisible use {@link #INVISIBLE}.
 	 */
-	public static final PropertyName<Boolean> HIDDEN = newBooleanName("HIDDEN");
+	PropertyName<Boolean> HIDDEN = newBooleanName("HIDDEN");
 
 	/**
 	 * Boolean: TRUE to make an element invisible but keep it in the layout. To
 	 * hide it completely use {@link #HIDDEN}.
 	 */
-	public static final PropertyName<Boolean> INVISIBLE =
+	PropertyName<Boolean> INVISIBLE =
 		newBooleanName("INVISIBLE");
 
 	/**
 	 * Boolean: TRUE to prevent the locking of an element during interactions
 	 * with a server.
 	 */
-	public static final PropertyName<Boolean> NO_INTERACTION_LOCK =
+	PropertyName<Boolean> NO_INTERACTION_LOCK =
 		newBooleanName("NO_INTERACTION_LOCK");
 
 	/**
 	 * Boolean: TRUE to prevent the propagation of component events to it's
 	 * parent hierarchy.
 	 */
-	public static final PropertyName<Boolean> NO_EVENT_PROPAGATION =
+	PropertyName<Boolean> NO_EVENT_PROPAGATION =
 		newBooleanName("NO_EVENT_PROPAGATION");
 
 	/**
 	 * Boolean: fire action events only if a component that implements {@link
 	 * ActiveState} has been activated, but not if deactivated.
 	 */
-	public static final PropertyName<Boolean> ACTION_EVENT_ON_ACTIVATION_ONLY =
+	PropertyName<Boolean> ACTION_EVENT_ON_ACTIVATION_ONLY =
 		newBooleanName("ACTION_EVENT_ON_ACTIVATION_ONLY");
 
 	/**
@@ -94,62 +94,62 @@ public interface StateProperties {
 	 * behavior for occurrences on multiple elements depends on the underlying
 	 * platform.
 	 */
-	public static final PropertyName<Boolean> FOCUSED =
+	PropertyName<Boolean> FOCUSED =
 		newBooleanName("FOCUSED");
 
 	/** Integer: the current selection index of a multiple-data element. */
-	public static final PropertyName<Integer> CURRENT_SELECTION =
+	PropertyName<Integer> CURRENT_SELECTION =
 		newIntegerName("CURRENT_SELECTION");
 
 	/**
 	 * String map: filter criteria of an element (e.g. a table). The key denotes
 	 * the filtered attribute and the value the criterion.
 	 */
-	public static final PropertyName<Map<String, String>> FILTER_CRITERIA =
+	PropertyName<Map<String, String>> FILTER_CRITERIA =
 		newMapName("FILTER_CRITERIA", String.class, String.class);
 
 	/** Enum: if present, defines the sort direction for ordered data. */
-	public static final PropertyName<SortDirection> SORT_DIRECTION =
+	PropertyName<SortDirection> SORT_DIRECTION =
 		newEnumName("SORT_DIRECTION", SortDirection.class);
 
 	/** Boolean: indicates that the value of an element has changed. */
-	public static final PropertyName<Boolean> VALUE_CHANGED =
+	PropertyName<Boolean> VALUE_CHANGED =
 		newBooleanName("VALUE_CHANGED");
 
 	/**
 	 * Boolean: indicates that one or more properties of an element have
 	 * changed.
 	 */
-	public static final PropertyName<Boolean> PROPERTIES_CHANGED =
+	PropertyName<Boolean> PROPERTIES_CHANGED =
 		newBooleanName("PROPERTIES_CHANGED");
 
 	/** Boolean: indicates that the structure of an element has changed. */
-	public static final PropertyName<Boolean> STRUCTURE_CHANGED =
+	PropertyName<Boolean> STRUCTURE_CHANGED =
 		newBooleanName("STRUCTURE_CHANGED");
 
 	/** Enum: the input mode for interactive input elements. */
-	public static final PropertyName<InteractiveInputMode> INTERACTIVE_INPUT_MODE =
+	PropertyName<InteractiveInputMode> INTERACTIVE_INPUT_MODE =
 		newEnumName("INTERACTIVE_INPUT_MODE", InteractiveInputMode.class);
 
 	/**
 	 * Boolean: whether an element should be explicitly disabled if it causes an
 	 * interaction.
 	 */
-	public static final PropertyName<Boolean> DISABLE_ON_INTERACTION =
+	PropertyName<Boolean> DISABLE_ON_INTERACTION =
 		newBooleanName("DISABLE_ON_INTERACTION");
 
 	/**
 	 * Integer: a delay in milliseconds to postpone the event handling for an
 	 * element with.
 	 */
-	public static final PropertyName<Integer> EVENT_HANDLING_DELAY =
+	PropertyName<Integer> EVENT_HANDLING_DELAY =
 		newIntegerName("EVENT_HANDLING_DELAY");
 
 	/**
 	 * Set of enums: the event types to be listened to in interactive user
 	 * interfaces.
 	 */
-	public static final PropertyName<Set<InteractionEventType>> INTERACTION_EVENT_TYPES =
+	PropertyName<Set<InteractionEventType>> INTERACTION_EVENT_TYPES =
 		newSetName("INTERACTION_EVENT_TYPES", InteractionEventType.class);
 
 	/**
@@ -157,14 +157,14 @@ public interface StateProperties {
 	 * available in an event it's string representation will be transferred to
 	 * the server in this property.
 	 */
-	public static final PropertyName<String> INTERACTION_EVENT_DATA =
+	PropertyName<String> INTERACTION_EVENT_DATA =
 		newStringName("INTERACTION_EVENT_DATA");
 
 	/**
 	 * String: the identifier of a target element to be activated or modified by
 	 * the element it is set upon.
 	 */
-	public static final PropertyName<String> TARGET_ID =
+	PropertyName<String> TARGET_ID =
 		newStringName("TARGET_ID");
 
 	/**
@@ -186,12 +186,12 @@ public interface StateProperties {
 	 *     selected.</li>
 	 * </ul>
 	 */
-	public static final PropertyName<String> SELECTION_DEPENDENCY =
+	PropertyName<String> SELECTION_DEPENDENCY =
 		newStringName("SELECTION_DEPENDENCY");
 
 	/**
 	 * A prefix to be added to reverse the effect of the user interface property
 	 * {@link #SELECTION_DEPENDENCY} for toggle buttons.
 	 */
-	public static final String SELECTION_DEPENDENCY_REVERSE_PREFIX = "!";
+	String SELECTION_DEPENDENCY_REVERSE_PREFIX = "!";
 }

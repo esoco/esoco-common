@@ -31,12 +31,12 @@ public interface Flaggable<F> extends Flags<F> {
 	 *
 	 * @param rFlag The flag to clear
 	 */
-	public void clearFlag(F rFlag);
+	void clearFlag(F rFlag);
 
 	/***************************************
 	 * Sets a certain flag.
 	 *
 	 * @param rFlag The flag to set
 	 */
-	public void setFlag(F rFlag);
+	void setFlag(F rFlag);
 }

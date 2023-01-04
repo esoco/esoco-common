@@ -31,7 +31,7 @@ public interface ColumnDefinition extends MutableProperties, Serializable {
 	//~ Static fields/initializers ---------------------------------------------
 
 	/** The standard prefix for column resource keys */
-	public static final String STD_COLUMN_PREFIX = "$col";
+	String STD_COLUMN_PREFIX = "$col";
 
 	//~ Methods ----------------------------------------------------------------
 
@@ -42,7 +42,7 @@ public interface ColumnDefinition extends MutableProperties, Serializable {
 	 *
 	 * @return The column datatype
 	 */
-	public String getDatatype();
+	String getDatatype();
 
 	/***************************************
 	 * Returns the column identifier. This value is application-dependent. It
@@ -52,12 +52,12 @@ public interface ColumnDefinition extends MutableProperties, Serializable {
 	 *
 	 * @return The column identifier
 	 */
-	public String getId();
+	String getId();
 
 	/***************************************
 	 * Returns the column title.
 	 *
 	 * @return The column title
 	 */
-	public String getTitle();
+	String getTitle();
 }

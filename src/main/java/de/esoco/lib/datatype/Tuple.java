@@ -17,14 +17,12 @@
 package de.esoco.lib.datatype;
 
 import java.io.Serializable;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-
-/********************************************************************
+/**
  * A class that contains value tuples. Tuples are immutable and cannot be
  * changed after creation.
  *
@@ -32,122 +30,100 @@ import java.util.stream.Stream;
  */
 public class Tuple implements Iterable<Object>, Serializable {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
 
-	//~ Instance fields --------------------------------------------------------
+	private final List<Object> values;
 
-	private final List<Object> aValues;
-
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 *
-	 * @param rValues The tuple values
+	 * @param values The tuple values
 	 */
-	protected Tuple(Object... rValues) {
-		aValues = Arrays.asList(rValues);
+	protected Tuple(Object... values) {
+		this.values = Arrays.asList(values);
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new {@link Tuple}. This factory method is intended to be used
 	 * with static imports to provide a short syntax for defining value tuples.
 	 * If more specific value datatypes are needed a corresponding subclass
 	 * should be used (or created if necessary).
 	 *
-	 * @param  rValues The tuple values
-	 *
+	 * @param values The tuple values
 	 * @return A new tuple instance
 	 */
-	public static Tuple t(Object... rValues) {
-		return new Tuple(rValues);
+	public static Tuple t(Object... values) {
+		return new Tuple(values);
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
-	 * {@inheritDoc}
-	 */
 	@Override
-	public boolean equals(Object rObj) {
-		if (rObj == this) {
+	public boolean equals(Object obj) {
+		if (obj == this) {
 			return true;
 		}
 
-		if (!(rObj instanceof Tuple)) {
+		if (!(obj instanceof Tuple)) {
 			return false;
 		}
 
-		Tuple rOther = (Tuple) rObj;
+		Tuple other = (Tuple) obj;
 
-		if (rOther.size() != size()) {
+		if (other.size() != size()) {
 			return false;
 		}
 
-		return aValues.equals(rOther.aValues);
+		return values.equals(other.values);
 	}
 
-	/***************************************
+	/**
 	 * Returns a certain value from this tuple.
 	 *
-	 * @param  i The index of the value (0 &lt;= i &lt; {@link #size()})
-	 *
+	 * @param i The index of the value (0 &lt;= i &lt; {@link #size()})
 	 * @return The value at the given index
 	 */
 	public Object get(int i) {
-		return aValues.get(i);
+		return values.get(i);
 	}
 
-	/***************************************
-	 * {@inheritDoc}
-	 */
 	@Override
 	public int hashCode() {
 		int nHashCode = 37;
 
-		for (Object rValue : aValues) {
-			nHashCode =
-				nHashCode * (rValue != null ? rValue.hashCode() : 0) + 17;
+		for (Object value : values) {
+			nHashCode = nHashCode * (value != null ? value.hashCode() : 0) + 17;
 		}
 
 		return nHashCode;
 	}
 
-	/***************************************
-	 * {@inheritDoc}
-	 */
 	@Override
 	public Iterator<Object> iterator() {
-		return aValues.iterator();
+		return values.iterator();
 	}
 
-	/***************************************
+	/**
 	 * Returns the size of this tuple.
 	 *
 	 * @return The tuple size
 	 */
 	public int size() {
-		return aValues.size();
+		return values.size();
 	}
 
-	/***************************************
+	/**
 	 * Returns a {@link Stream} of the values in this tuple.
 	 *
 	 * @return The value stream
 	 */
 	public Stream<Object> stream() {
-		return aValues.stream();
+		return values.stream();
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public String toString() {
-		return aValues.toString();
+		return values.toString();
 	}
 }
