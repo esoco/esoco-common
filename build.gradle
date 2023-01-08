@@ -1,20 +1,28 @@
-apply plugin: 'java-library'
-apply plugin: 'eclipse'
+plugins {
+    id "java-library"
+    id "maven-publish"
+    id "pl.allegro.tech.build.axion-release" version "$axionReleaseVersion"
+    id "io.github.gradle-nexus.publish-plugin" version "$nexusPublishVersion"
+}
 
 repositories {
 	mavenLocal()
-	jcenter()
+	mavenCentral()
 }
 
+scmVersion { tag { prefix.set("") }}
+
+project.version = scmVersion.version
 project.group = 'de.esoco'
-project.description = 'Common functionality for SDACK'
+project.description = 'Common ty for the esoco framework stack'
+
 
 sourceCompatibility = 1.8
 
 dependencies {
-    implementation "javax.validation:validation-api:2.0.1.Final"
+    implementation "jakarta.validation:jakarta.validation-api:$jakartaValidationVersion"
     
-	testImplementation platform('org.junit:junit-bom:5.5.2')	
+	testImplementation platform("org.junit:junit-bom:$junitVersion")
 	testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
@@ -45,8 +53,19 @@ tasks.withType(Javadoc) {
     }
 }
 
-buildscript {
-    repositories { jcenter() }
-    dependencies { classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+' }
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
-apply from: 'publish.gradle'
+
+nexusPublishing {
+    repositories {
+        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
+    }
+}

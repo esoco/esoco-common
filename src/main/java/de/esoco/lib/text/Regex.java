@@ -1,11 +1,12 @@
 package de.esoco.lib.text;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.regex.Pattern;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 public class Regex implements CharSequence {
     public enum RegexFlag {
@@ -33,18 +34,18 @@ public class Regex implements CharSequence {
 
     public static void main(String[] args) {
         Regex matchUrl = regex().text("http")
-            .text("s")
-            .onceOrNot()
-            .text("://")
-            .group(regex().charRange('a', 'z')
-                .charRange('A', 'Z')
-                .onceOrMore()
-                .dot())
-            .zeroOrMore()
-            .anyChar()
-            .atLeast(2)
-            .dot()
-            .group(regex().anyOf("de", "com", "net", "org", "eu"));
+                .text("s")
+                .onceOrNot()
+                .text("://")
+                .group(regex().charRange('a', 'z')
+                        .charRange('A', 'Z')
+                        .onceOrMore()
+                        .dot())
+                .zeroOrMore()
+                .anyChar()
+                .atLeast(2)
+                .dot()
+                .group(regex().anyOf("de", "com", "net", "org", "eu"));
 
         String url1 = "https://example.com";
         String url2 = "https://test.example.com";
@@ -75,7 +76,7 @@ public class Regex implements CharSequence {
 
     public Regex anyOf(@NotNull Collection<CharSequence> patterns) {
         return extendWith(
-            patterns.stream().reduce((p1, p2) -> p1 + "|" + p2).orElse(""));
+                patterns.stream().reduce((p1, p2) -> p1 + "|" + p2).orElse(""));
     }
 
     public Regex atLeast(@PositiveOrZero int n) {
@@ -129,8 +130,8 @@ public class Regex implements CharSequence {
 
     public Regex flags(@NotEmpty Collection<RegexFlag> flags) {
         return extendWith("(?" + flags.stream()
-            .map(RegexFlag::getFlag)
-            .reduce("", (f1, f2) -> f1 + f2) + ')');
+                .map(RegexFlag::getFlag)
+                .reduce("", (f1, f2) -> f1 + f2) + ')');
     }
 
     public Regex formFeed() {
@@ -138,7 +139,7 @@ public class Regex implements CharSequence {
     }
 
     public Regex group(@NotEmpty String name,
-        @NotNull CharSequence groupPattern) {
+            @NotNull CharSequence groupPattern) {
         return extendWith("(?<" + name + '>' + groupPattern + ')');
     }
 
@@ -159,7 +160,7 @@ public class Regex implements CharSequence {
     }
 
     public Regex groupNonCapturingIndependent(
-        @NotNull CharSequence groupPattern) {
+            @NotNull CharSequence groupPattern) {
         return extendWith("(?>" + groupPattern + ')');
     }
 
@@ -277,8 +278,8 @@ public class Regex implements CharSequence {
 
     public Regex notFlags(@NotEmpty Collection<RegexFlag> flags) {
         return extendWith("(?-" + flags.stream()
-            .map(RegexFlag::getFlag)
-            .reduce("", (f1, f2) -> f1 + f2) + ')');
+                .map(RegexFlag::getFlag)
+                .reduce("", (f1, f2) -> f1 + f2) + ')');
     }
 
     public Regex onceOrMore() {
@@ -431,7 +432,7 @@ public class Regex implements CharSequence {
 
         if (lastChar > 0 && pattern.charAt(lastChar) == ']') {
             return regex(pattern.substring(0, lastChar)).extendWith(
-                charClass.substring(1));
+                    charClass.substring(1));
         } else {
             return extendWith(charClass);
         }
