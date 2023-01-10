@@ -1,8 +1,7 @@
 plugins {
     id "java-library"
-    id "maven-publish"
     id "pl.allegro.tech.build.axion-release" version "$axionReleaseVersion"
-    id "io.github.gradle-nexus.publish-plugin" version "$nexusPublishVersion"
+    id "com.vanniktech.maven.publish" version "$mavenPublishVersion"
 }
 
 repositories {
@@ -61,11 +60,32 @@ publishing {
     }
 }
 
-nexusPublishing {
-    repositories {
-        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-        }
+mavenPublishing {
+  coordinates("$project.group", "$project.name", "$project.version")
+
+  pom {
+    name = "$project.name"
+    description = "$project.description"
+    inceptionYear = "2016"
+    url = "https://github.com/esoco/esoco-common"
+    licenses {
+      license {
+        name = "The Apache License, Version 2.0"
+        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+      }
     }
+    developers {
+      developer {
+        id = "esoco"
+        name = "esoco GmbH"
+        url = "https://esoco.de/"
+      }
+    }
+    scm {
+      url = "https://github.com/esoco/esoco-common/"
+      connection = "scm:git:git://github.com/esoco/esoco-common.git"
+      developerConnection = "scm:git:ssh://git@github.com/esoco/esoco-common.git"
+    }
+  }
 }
