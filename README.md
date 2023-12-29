@@ -1,6 +1,6 @@
 # The esoco-common project
 
-[![Build Status](https://github.com/esoco/esoco-common/actions/workflows/Build/badge.svg)](https://github.com/esoco/esoco-common/actions)
+![](https://github.com/esoco/esoco-common/workflows/Build/badge.svg)
 
 This project contains some base code that is used by multiple projects in the
 esoco framework stack. The main property of the code in this project is that it
