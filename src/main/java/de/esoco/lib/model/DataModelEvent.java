@@ -36,25 +36,24 @@ public class DataModelEvent {
 	 */
 	public enum Type {ELEMENT_MODIFIED, ELEMENT_ADDED, ELEMENT_REMOVED}
 
-	private final Type eType;
+	private final Type type;
 
-	private final int nElementIndex;
+	private final int elementIndex;
 
-	private final DataModel<?> rSource;
+	private final DataModel<?> source;
 
 	/**
 	 * Creates and initializes a new instance.
 	 *
-	 * @param rSource       The data model that caused the event
-	 * @param eType         The event type
-	 * @param nElementIndex The index of the changed model element or -1 if it
-	 *                      could not be detected
+	 * @param source       The data model that caused the event
+	 * @param type         The event type
+	 * @param elementIndex The index of the changed model element or -1 if it
+	 *                     could not be detected
 	 */
-	public DataModelEvent(DataModel<?> rSource, Type eType,
-		int nElementIndex) {
-		this.rSource = rSource;
-		this.eType = eType;
-		this.nElementIndex = nElementIndex;
+	public DataModelEvent(DataModel<?> source, Type type, int elementIndex) {
+		this.source = source;
+		this.type = type;
+		this.elementIndex = elementIndex;
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class DataModelEvent {
 	 * @return The element index
 	 */
 	public final int getElementIndex() {
-		return nElementIndex;
+		return elementIndex;
 	}
 
 	/**
@@ -72,7 +71,7 @@ public class DataModelEvent {
 	 * @return The event type
 	 */
 	public final Type getType() {
-		return eType;
+		return type;
 	}
 
 	/**
@@ -81,6 +80,6 @@ public class DataModelEvent {
 	 * @return The source data model
 	 */
 	final DataModel<?> getSource() {
-		return rSource;
+		return source;
 	}
 }

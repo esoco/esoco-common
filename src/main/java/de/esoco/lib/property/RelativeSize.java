@@ -25,36 +25,36 @@ public enum RelativeSize {
 		5),
 	FOUR_FIFTH(4, 5), FIVE_SIXTH(5, 6);
 
-	private final int nMultiplier;
+	private final int multiplier;
 
-	private final int nDivider;
+	private final int divider;
 
 	/**
 	 * Creates a new instance.
 	 */
 	RelativeSize() {
-		nMultiplier = 1;
-		nDivider = ordinal() + 1;
+		multiplier = 1;
+		divider = ordinal() + 1;
 	}
 
 	/**
 	 * Creates a new instance.
 	 *
-	 * @param nMultiplier The multiplier for size calculations
-	 * @param nDivider    The divider for size calculations
+	 * @param multiplier The multiplier for size calculations
+	 * @param divider    The divider for size calculations
 	 */
-	RelativeSize(int nMultiplier, int nDivider) {
-		this.nMultiplier = nMultiplier;
-		this.nDivider = nDivider;
+	RelativeSize(int multiplier, int divider) {
+		this.multiplier = multiplier;
+		this.divider = divider;
 	}
 
 	/**
 	 * Calculates an absolute size value from a full size for this instance.
 	 *
-	 * @param nFullSize The full size to calculate the size from
+	 * @param fullSize The full size to calculate the size from
 	 * @return The calculated absolute size value
 	 */
-	public int calcSize(int nFullSize) {
-		return nFullSize * nMultiplier / nDivider;
+	public int calcSize(int fullSize) {
+		return fullSize * multiplier / divider;
 	}
 }

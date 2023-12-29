@@ -31,64 +31,63 @@ public class SimpleColumnDefinition extends StringProperties
 
 	private static final long serialVersionUID = 1L;
 
-	private String sId;
+	private String id;
 
-	private String sTitle;
+	private String title;
 
-	private String sDatatype;
+	private String datatype;
 
 	/**
 	 * Creates a new instance with a certain ID, datatype, default title,
 	 * unlimited length, and all flags set to TRUE. The default title will be
 	 * created from the ID by prefixing it with {@link #STD_COLUMN_PREFIX}.
 	 *
-	 * @param sId       The column identifier
-	 * @param sDatatype The column datatype
+	 * @param id       The column identifier
+	 * @param datatype The column datatype
 	 */
-	public SimpleColumnDefinition(String sId, String sDatatype) {
-		this(sId, null, sDatatype);
+	public SimpleColumnDefinition(String id, String datatype) {
+		this(id, null, datatype);
 	}
 
 	/**
 	 * Creates a new instance with a certain ID, title, datatype, unlimited
 	 * length and all flags set to TRUE.
 	 *
-	 * @param sId       The column identifier
-	 * @param sTitle    The column title
-	 * @param sDatatype The column datatype
+	 * @param id       The column identifier
+	 * @param title    The column title
+	 * @param datatype The column datatype
 	 */
-	public SimpleColumnDefinition(String sId, String sTitle,
-		String sDatatype) {
-		this(sId, sTitle, sDatatype, true, true, true);
+	public SimpleColumnDefinition(String id, String title, String datatype) {
+		this(id, title, datatype, true, true, true);
 	}
 
 	/**
 	 * Creates a new instance.
 	 *
-	 * @param sId         The column identifier
-	 * @param sTitle      The column title or NULL for the ID prefixed with
-	 *                    {@link #STD_COLUMN_PREFIX}
-	 * @param sDatatype   The column datatype
-	 * @param bSortable   The sortable state
-	 * @param bSearchable The searchable state
-	 * @param bEditable   The editable state
+	 * @param id         The column identifier
+	 * @param title      The column title or NULL for the ID prefixed with
+	 *                   {@link #STD_COLUMN_PREFIX}
+	 * @param datatype   The column datatype
+	 * @param sortable   The sortable state
+	 * @param searchable The searchable state
+	 * @param editable   The editable state
 	 */
-	public SimpleColumnDefinition(String sId, String sTitle, String sDatatype,
-		boolean bSortable, boolean bSearchable, boolean bEditable) {
-		this.sId = sId;
-		this.sTitle = sTitle != null ? sTitle : STD_COLUMN_PREFIX + sId;
-		this.sDatatype = sDatatype;
+	public SimpleColumnDefinition(String id, String title, String datatype,
+		boolean sortable, boolean searchable, boolean editable) {
+		this.id = id;
+		this.title = title != null ? title : STD_COLUMN_PREFIX + id;
+		this.datatype = datatype;
 
-		if (bSearchable) {
-			setProperty(UserInterfaceProperties.SEARCHABLE, bSearchable);
+		if (searchable) {
+			setProperty(UserInterfaceProperties.SEARCHABLE, searchable);
 		}
 
-		if (bSortable) {
-			setProperty(UserInterfaceProperties.SORTABLE, bSortable);
+		if (sortable) {
+			setProperty(UserInterfaceProperties.SORTABLE, sortable);
 		}
 
-		if (bEditable) {
-			setProperty(UserInterfaceProperties.EDITABLE, bEditable);
+		if (editable) {
+			setProperty(UserInterfaceProperties.EDITABLE, editable);
 		}
 	}
 
@@ -101,25 +100,24 @@ public class SimpleColumnDefinition extends StringProperties
 	/**
 	 * TODO: DOCUMENT ME!
 	 *
-	 * @param rObj TODO: DOCUMENT ME!
+	 * @param obj TODO: DOCUMENT ME!
 	 * @return TODO: DOCUMENT ME!
-	 * @inheritDoc }
 	 */
 	@Override
-	public boolean equals(Object rObj) {
-		if (this == rObj) {
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
 
-		if (getClass() != rObj.getClass()) {
+		if (getClass() != obj.getClass()) {
 			return false;
 		}
 
-		SimpleColumnDefinition rOther = (SimpleColumnDefinition) rObj;
+		SimpleColumnDefinition other = (SimpleColumnDefinition) obj;
 
-		return hasEqualProperties(rOther) && Objects.equals(sId,
-			rOther.sId) && Objects.equals(sTitle,
-			rOther.sTitle) && Objects.equals(sDatatype, rOther.sDatatype);
+		return hasEqualProperties(other) && Objects.equals(id, other.id) &&
+			Objects.equals(title, other.title) &&
+			Objects.equals(datatype, other.datatype);
 	}
 
 	/**
@@ -127,7 +125,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 */
 	@Override
 	public String getDatatype() {
-		return sDatatype;
+		return datatype;
 	}
 
 	/**
@@ -135,7 +133,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 */
 	@Override
 	public String getId() {
-		return sId;
+		return id;
 	}
 
 	/**
@@ -143,7 +141,7 @@ public class SimpleColumnDefinition extends StringProperties
 	 */
 	@Override
 	public String getTitle() {
-		return sTitle;
+		return title;
 	}
 
 	/**
@@ -151,15 +149,14 @@ public class SimpleColumnDefinition extends StringProperties
 	 */
 	@Override
 	public int hashCode() {
-		int nHashCode = super.hashCode();
+		int hashCode = super.hashCode();
 
-		nHashCode =
-			37 * nHashCode + ((sDatatype == null) ? 0 : sDatatype.hashCode());
-		nHashCode = 37 * nHashCode + ((sId == null) ? 0 : sId.hashCode());
-		nHashCode = 37 * nHashCode + ((sTitle == null) ? 0 :
-		                              sTitle.hashCode());
+		hashCode =
+			37 * hashCode + ((datatype == null) ? 0 : datatype.hashCode());
+		hashCode = 37 * hashCode + ((id == null) ? 0 : id.hashCode());
+		hashCode = 37 * hashCode + ((title == null) ? 0 : title.hashCode());
 
-		return nHashCode;
+		return hashCode;
 	}
 
 	/**
@@ -169,6 +166,6 @@ public class SimpleColumnDefinition extends StringProperties
 	 */
 	@Override
 	public String toString() {
-		return sTitle;
+		return title;
 	}
 }

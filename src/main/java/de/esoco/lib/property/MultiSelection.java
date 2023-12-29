@@ -35,15 +35,15 @@ public interface MultiSelection {
 	/**
 	 * Selects the elements with the indices contained in the argument array.
 	 *
-	 * @param rIndices An array with the indices of the elements to select
+	 * @param indices An array with the indices of the elements to select
 	 */
-	void setSelection(int[] rIndices);
+	void setSelection(int[] indices);
 
 	/**
 	 * Selects all elements within the given range.
 	 *
-	 * @param nStart The start index (inclusive)
-	 * @param nEnd   The end index (inclusive)
+	 * @param start The start index (inclusive)
+	 * @param end   The end index (inclusive)
 	 */
-	void setSelection(int nStart, int nEnd);
+	void setSelection(int start, int end);
 }

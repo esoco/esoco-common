@@ -34,11 +34,11 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * inner class expression would be needed because of the similar signatures
 	 * of throwing and non-throwing consumers.
 	 *
-	 * @param fThrowing The throwing consumer expression
+	 * @param throwing The throwing consumer expression
 	 * @return The resulting function
 	 */
-	static <T> Consumer<T> of(ThrowingConsumer<T> fThrowing) {
-		return fThrowing;
+	static <T> Consumer<T> of(ThrowingConsumer<T> throwing) {
+		return throwing;
 	}
 
 	/**
@@ -49,9 +49,9 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * @see Consumer#accept(Object)
 	 */
 	@Override
-	default void accept(T rValue) {
+	default void accept(T value) {
 		try {
-			tryAccept(rValue);
+			tryAccept(value);
 		} catch (RuntimeException e) {
 			throw e;
 		} catch (Exception e) {
@@ -63,8 +63,8 @@ public interface ThrowingConsumer<T> extends Consumer<T> {
 	 * Replaces {@link #accept(Object)} and allows implementations to throw any
 	 * kind of exception.
 	 *
-	 * @param rValue The value to consume
+	 * @param value The value to consume
 	 * @throws Exception If the invocation fails
 	 */
-	void tryAccept(T rValue) throws Exception;
+	void tryAccept(T value) throws Exception;
 }

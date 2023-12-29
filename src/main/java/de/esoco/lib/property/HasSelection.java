@@ -39,7 +39,7 @@ public interface HasSelection<T> {
 	/**
 	 * Sets the selection.
 	 *
-	 * @param rNewSelection The new selection or NULL for none
+	 * @param newSelection The new selection or NULL for none
 	 */
-	void setSelection(T rNewSelection);
+	void setSelection(T newSelection);
 }

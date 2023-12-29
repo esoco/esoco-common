@@ -38,7 +38,7 @@ public interface SingleSelection {
 	 * that allow complete deselection an index value of -1 will deselect all
 	 * elements.
 	 *
-	 * @param nIndex The index of the new selected element or -1 for none
+	 * @param index The index of the new selected element or -1 for none
 	 */
-	void setSelection(int nIndex);
+	void setSelection(int index);
 }

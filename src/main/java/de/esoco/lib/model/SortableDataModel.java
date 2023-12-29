@@ -30,10 +30,10 @@ public interface SortableDataModel<T> extends DataModel<T> {
 	 * Returns the sort direction for a certain field of the data in this
 	 * model.
 	 *
-	 * @param sFieldId The ID of the field to return the sort mode for
+	 * @param fieldId The ID of the field to return the sort mode for
 	 * @return The sort mode for the given field or NULL for none
 	 */
-	SortDirection getSortDirection(String sFieldId);
+	SortDirection getSortDirection(String fieldId);
 
 	/**
 	 * Removes all sort criteria from this model.
@@ -43,9 +43,9 @@ public interface SortableDataModel<T> extends DataModel<T> {
 	/**
 	 * Sets the sort direction for a certain field of the data in this model.
 	 *
-	 * @param sFieldId The ID of the field to set the sort mode for
-	 * @param rMode    The sort mode or NULL to disable the sort criterion for
-	 *                 the given field
+	 * @param fieldId The ID of the field to set the sort mode for
+	 * @param mode    The sort mode or NULL to disable the sort criterion for
+	 *                the given field
 	 */
-	void setSortDirection(String sFieldId, SortDirection rMode);
+	void setSortDirection(String fieldId, SortDirection mode);
 }

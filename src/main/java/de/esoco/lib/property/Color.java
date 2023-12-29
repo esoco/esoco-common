@@ -166,23 +166,23 @@ public class Color {
 	 */
 	public static final Color DARK_MAGENTA = valueOf(0x0800080);
 
-	private final int nRed;
+	private final int red;
 
-	private final int nGreen;
+	private final int green;
 
-	private final int nBlue;
+	private final int blue;
 
 	/**
 	 * Internal constructor to create a new instance with certain RGB parts.
 	 *
-	 * @param nRed   The red part
-	 * @param nGreen The green part
-	 * @param nBlue  The blue part
+	 * @param red   The red part
+	 * @param green The green part
+	 * @param blue  The blue part
 	 */
-	private Color(int nRed, int nGreen, int nBlue) {
-		this.nRed = nRed;
-		this.nGreen = nGreen;
-		this.nBlue = nBlue;
+	private Color(int red, int green, int blue) {
+		this.red = red;
+		this.green = green;
+		this.blue = blue;
 	}
 
 	/**
@@ -190,13 +190,13 @@ public class Color {
 	 * color components are considered to be in the range of (0 - 255), i.e. a
 	 * byte for each.
 	 *
-	 * @param nRgbColor The integer value containing the RGB value bytes
+	 * @param rgbColor The integer value containing the RGB value bytes
 	 * @return The color instance
 	 */
-	public static Color valueOf(int nRgbColor) {
-		int r = (nRgbColor & 0x00FF0000) >> 16;
-		int g = (nRgbColor & 0x0000FF00) >> 8;
-		int b = (nRgbColor & 0x000000FF);
+	public static Color valueOf(int rgbColor) {
+		int r = (rgbColor & 0x00FF0000) >> 16;
+		int g = (rgbColor & 0x0000FF00) >> 8;
+		int b = (rgbColor & 0x000000FF);
 
 		return valueOf(r, g, b);
 	}
@@ -204,27 +204,27 @@ public class Color {
 	/**
 	 * Converts an HTML color string into a color object.
 	 *
-	 * @param sHtmlColor The HTML color string (a leading '#' will be ignored)
+	 * @param htmlColor The HTML color string (a leading '#' will be ignored)
 	 * @return The color instance
 	 */
-	public static Color valueOf(String sHtmlColor) {
-		if (sHtmlColor.charAt(0) == '#') {
-			sHtmlColor = sHtmlColor.substring(1);
+	public static Color valueOf(String htmlColor) {
+		if (htmlColor.charAt(0) == '#') {
+			htmlColor = htmlColor.substring(1);
 		}
 
-		return valueOf(Integer.parseInt(sHtmlColor, 16));
+		return valueOf(Integer.parseInt(htmlColor, 16));
 	}
 
 	/**
 	 * Returns a color instance from RGB integer values.
 	 *
-	 * @param nRed   The red component
-	 * @param nGreen The green component
-	 * @param nBlue  The blue component
+	 * @param red   The red component
+	 * @param green The green component
+	 * @param blue  The blue component
 	 * @return A new color instance
 	 */
-	public static Color valueOf(int nRed, int nGreen, int nBlue) {
-		return new Color(nRed, nGreen, nBlue);
+	public static Color valueOf(int red, int green, int blue) {
+		return new Color(red, green, blue);
 	}
 
 	/**
@@ -248,16 +248,16 @@ public class Color {
 	public Color brightest() {
 		// normalize components to color value * 256 and add 256 to get the
 		// range 1 to 256 to prevent division by zero
-		int r = (nRed << 8) + 256;
-		int g = (nGreen << 8) + 256;
-		int b = (nBlue << 8) + 256;
+		int r = (red << 8) + 256;
+		int g = (green << 8) + 256;
+		int b = (blue << 8) + 256;
 
-		int nMax = Math.max(r, Math.max(g, b)) >> 8;
+		int max = Math.max(r, Math.max(g, b)) >> 8;
 
 		// scale values and reset to range 0 to 255
-		r = r / nMax - 1;
-		g = g / nMax - 1;
-		b = b / nMax - 1;
+		r = r / max - 1;
+		g = g / max - 1;
+		b = b / max - 1;
 
 		return valueOf(r, g, b);
 	}
@@ -266,16 +266,16 @@ public class Color {
 	 * Returns a derived color with a brightness that has been changed by the
 	 * given percentage. Negative values decrease the brightness.
 	 *
-	 * @param nPercent The brightness change factor in percent (positive for a
-	 *                 lighter, negative for a darker color)
+	 * @param percent The brightness change factor in percent (positive for a
+	 *                lighter, negative for a darker color)
 	 * @return The resulting color
 	 */
-	public Color changeBrightness(int nPercent) {
-		int nChange = 255 * nPercent / 100;
+	public Color changeBrightness(int percent) {
+		int change = 255 * percent / 100;
 
-		int r = nRed + nChange;
-		int g = nGreen + nChange;
-		int b = nBlue + nChange;
+		int r = red + change;
+		int g = green + change;
+		int b = blue + change;
 
 		r = r < 0 ? 0 : (r <= 255 ? r : 255);
 		g = g < 0 ? 0 : (g <= 255 ? g : 255);
@@ -300,7 +300,7 @@ public class Color {
 	 * @return The blue part
 	 */
 	public final int getBlue() {
-		return nBlue;
+		return blue;
 	}
 
 	/**
@@ -309,7 +309,7 @@ public class Color {
 	 * @return The green part
 	 */
 	public final int getGreen() {
-		return nGreen;
+		return green;
 	}
 
 	/**
@@ -318,7 +318,7 @@ public class Color {
 	 * @return The red part
 	 */
 	public final int getRed() {
-		return nRed;
+		return red;
 	}
 
 	/**
@@ -337,7 +337,7 @@ public class Color {
 	 * @return An RGB integer value
 	 */
 	public int toRGB() {
-		return (nRed << 16) + (nGreen << 8) + nBlue;
+		return (red << 16) + (green << 8) + blue;
 	}
 
 	/**

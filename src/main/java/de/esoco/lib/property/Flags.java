@@ -38,8 +38,8 @@ public interface Flags<F> {
 	/**
 	 * Checks whether a certain flag is set in this object.
 	 *
-	 * @param rFlag The flag to check
+	 * @param flag The flag to check
 	 * @return TRUE if the flag is set
 	 */
-	boolean hasFlag(F rFlag);
+	boolean hasFlag(F flag);
 }

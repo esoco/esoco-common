@@ -37,12 +37,12 @@ public interface Fluent<T extends Fluent<T>> {
 	 * captures it). Using this method for other purposes is therefore
 	 * discouraged as it may harm code readability.</p>
 	 *
-	 * @param fUpdate The function that performs the fluent action
+	 * @param update The function that performs the fluent action
 	 * @return This instance for fluent invocation
 	 */
 	@SuppressWarnings("unchecked")
-	default T _with(Runnable fUpdate) {
-		fUpdate.run();
+	default T _with(Runnable update) {
+		update.run();
 
 		return (T) this;
 	}

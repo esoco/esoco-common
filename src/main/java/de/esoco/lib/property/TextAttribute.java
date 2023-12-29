@@ -33,7 +33,7 @@ public interface TextAttribute {
 	/**
 	 * Sets the element's text.
 	 *
-	 * @param sText The new text
+	 * @param text The new text
 	 */
-	void setText(String sText);
+	void setText(String text);
 }

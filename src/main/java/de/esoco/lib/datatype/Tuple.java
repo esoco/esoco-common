@@ -87,13 +87,13 @@ public class Tuple implements Iterable<Object>, Serializable {
 
 	@Override
 	public int hashCode() {
-		int nHashCode = 37;
+		int hashCode = 37;
 
 		for (Object value : values) {
-			nHashCode = nHashCode * (value != null ? value.hashCode() : 0) + 17;
+			hashCode = hashCode * (value != null ? value.hashCode() : 0) + 17;
 		}
 
-		return nHashCode;
+		return hashCode;
 	}
 
 	@Override

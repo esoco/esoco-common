@@ -73,10 +73,10 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	/**
 	 * Returns the filter for a certain field of the data in this model.
 	 *
-	 * @param sFieldId The ID of the field to get the filter for
+	 * @param fieldId The ID of the field to get the filter for
 	 * @return The filter string for the given field or NULL for none
 	 */
-	String getFilter(String sFieldId);
+	String getFilter(String fieldId);
 
 	/**
 	 * Returns all filters that are set in this data model as a mapping from
@@ -132,15 +132,15 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 *     The value may contain wildcard characters.</li>
 	 * </ul>
 	 *
-	 * @param sFieldId The ID of the data field to set the filter for
-	 * @param sFilter  The filter value or NULL to remove a filter
+	 * @param fieldId The ID of the data field to set the filter for
+	 * @param filter  The filter value or NULL to remove a filter
 	 */
-	void setFilter(String sFieldId, String sFilter);
+	void setFilter(String fieldId, String filter);
 
 	/**
 	 * Sets the filters of this model. This will remove any existing filters.
 	 *
-	 * @param rFilters A mapping from field ID strings to filter strings
+	 * @param filters A mapping from field ID strings to filter strings
 	 */
-	void setFilters(Map<String, String> rFilters);
+	void setFilters(Map<String, String> filters);
 }

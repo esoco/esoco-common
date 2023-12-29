@@ -17,7 +17,6 @@
 package de.esoco.lib.property;
 
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -62,7 +61,7 @@ public abstract class AbstractStringProperties
 	// ~ Instance fields
 	// --------------------------------------------------------
 
-	private Map<PropertyName<?>, String> aPropertyMap = null;
+	private Map<PropertyName<?>, String> propertyMap = null;
 
 	// ~ Methods
 	// ----------------------------------------------------------------
@@ -71,39 +70,39 @@ public abstract class AbstractStringProperties
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean equals(Object rObj) {
-		if (this == rObj) {
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
 
-		return rObj != null && getClass() == rObj.getClass() && hasEqualProperties(
-			(AbstractStringProperties) rObj);
+		return obj != null && getClass() == obj.getClass() &&
+			hasEqualProperties((AbstractStringProperties) obj);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getIntProperty(PropertyName<Integer> rName, int nDefault) {
-		String sProperty = getRawProperty(rName);
+	public int getIntProperty(PropertyName<Integer> name, int defaultValue) {
+		String property = getRawProperty(name);
 
-		return sProperty != null ? Integer.parseInt(sProperty) : nDefault;
+		return property != null ? Integer.parseInt(property) : defaultValue;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> T getProperty(PropertyName<T> rName, T rDefault) {
-		String sRawValue = getRawProperty(rName);
-		T rValue = rDefault;
+	public <T> T getProperty(PropertyName<T> name, T defaultValue) {
+		String rawValue = getRawProperty(name);
+		T value = defaultValue;
 
-		if (sRawValue != null) {
-			rValue = parseValue(sRawValue, rName.getDatatype(),
-				rName.getElementDatatypes());
+		if (rawValue != null) {
+			value = parseValue(rawValue, name.getDatatype(),
+				name.getElementDatatypes());
 		}
 
-		return rValue;
+		return value;
 	}
 
 	/**
@@ -111,7 +110,7 @@ public abstract class AbstractStringProperties
 	 */
 	@Override
 	public int getPropertyCount() {
-		return aPropertyMap != null ? aPropertyMap.size() : 0;
+		return propertyMap != null ? propertyMap.size() : 0;
 	}
 
 	/**
@@ -119,37 +118,37 @@ public abstract class AbstractStringProperties
 	 */
 	@Override
 	public Collection<PropertyName<?>> getPropertyNames() {
-		return aPropertyMap != null ?
-		       aPropertyMap.keySet() :
+		return propertyMap != null ?
+		       propertyMap.keySet() :
 		       Collections.emptySet();
 	}
 
 	/**
 	 * Checks whether this instance has equal properties as another instance.
 	 *
-	 * @param rOther The other properties object
+	 * @param other The other properties object
 	 * @return TRUE if the properties are equal
 	 */
-	public boolean hasEqualProperties(AbstractStringProperties rOther) {
-		return Objects.equals(aPropertyMap, rOther.aPropertyMap);
+	public boolean hasEqualProperties(AbstractStringProperties other) {
+		return Objects.equals(propertyMap, other.propertyMap);
 	}
 
 	/**
 	 * @see MutableProperties#hasFlag(PropertyName)
 	 */
 	@Override
-	public boolean hasFlag(PropertyName<Boolean> rName) {
-		String sProperty = getRawProperty(rName);
+	public boolean hasFlag(PropertyName<Boolean> name) {
+		String property = getRawProperty(name);
 
-		return sProperty != null && Boolean.parseBoolean(sProperty);
+		return Boolean.parseBoolean(property);
 	}
 
 	/**
 	 * @see MutableProperties#hasProperty(PropertyName)
 	 */
 	@Override
-	public boolean hasProperty(PropertyName<?> rName) {
-		return aPropertyMap != null && aPropertyMap.containsKey(rName);
+	public boolean hasProperty(PropertyName<?> name) {
+		return propertyMap != null && propertyMap.containsKey(name);
 	}
 
 	/**
@@ -157,7 +156,7 @@ public abstract class AbstractStringProperties
 	 */
 	@Override
 	public int hashCode() {
-		return 37 + ((aPropertyMap == null) ? 0 : aPropertyMap.hashCode());
+		return 37 + ((propertyMap == null) ? 0 : propertyMap.hashCode());
 	}
 
 	/**
@@ -165,112 +164,107 @@ public abstract class AbstractStringProperties
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + (aPropertyMap != null ?
-		                                     aPropertyMap :
-		                                     "[]");
+		return getClass().getSimpleName() +
+			(propertyMap != null ? propertyMap : "[]");
 	}
 
 	/**
 	 * Converts a collection into a string to be stored in this instance.
 	 *
-	 * @param rCollection The collection to convert
+	 * @param collection The collection to convert
 	 * @return The resulting string
 	 */
-	protected String convertCollection(Collection<?> rCollection) {
-		StringBuilder aResult = new StringBuilder();
+	protected String convertCollection(Collection<?> collection) {
+		StringBuilder result = new StringBuilder();
 
-		for (Object rElement : rCollection) {
-			String sElement = convertValue(rElement);
+		for (Object value : collection) {
+			String element = convertValue(value);
 
-			aResult.append(
-				unicodeEncode(sElement, DEFAULT_COLLECTION_SEPARATOR));
-			aResult.append(DEFAULT_COLLECTION_SEPARATOR);
+			result.append(unicodeEncode(element,
+				DEFAULT_COLLECTION_SEPARATOR));
+			result.append(DEFAULT_COLLECTION_SEPARATOR);
 		}
 
-		int nResultLength = aResult.length();
+		int resultLength = result.length();
 
-		if (nResultLength > 0) {
-			aResult.setLength(nResultLength - 1);
+		if (resultLength > 0) {
+			result.setLength(resultLength - 1);
 		}
 
-		return aResult.toString();
+		return result.toString();
 	}
 
 	/**
 	 * Converts a map into a string to be stored in this instance.
 	 *
-	 * @param rMap The map to convert
+	 * @param map The map to convert
 	 * @return The resulting string
 	 */
-	protected String convertMap(Map<?, ?> rMap) {
-		StringBuilder aResult = new StringBuilder();
+	protected String convertMap(Map<?, ?> map) {
+		StringBuilder result = new StringBuilder();
 
-		if (rMap.size() > 0) {
-			for (Entry<?, ?> rEntry : rMap.entrySet()) {
-				String sKey = convertValue(rEntry.getKey());
-				String sValue = convertValue(rEntry.getValue());
+		if (map.size() > 0) {
+			for (Entry<?, ?> entry : map.entrySet()) {
+				String key = convertValue(entry.getKey());
+				String value = convertValue(entry.getValue());
 
-				assert sKey.indexOf(
-					DEFAULT_COLLECTION_SEPARATOR) < 0 && sKey.indexOf(
-					DEFAULT_KEY_VALUE_SEPARATOR) < 0;
+				assert key.indexOf(DEFAULT_COLLECTION_SEPARATOR) < 0 &&
+					key.indexOf(DEFAULT_KEY_VALUE_SEPARATOR) < 0;
 
-				aResult.append(sKey);
-				aResult.append(DEFAULT_KEY_VALUE_SEPARATOR);
-				aResult.append(
-					unicodeEncode(sValue, DEFAULT_COLLECTION_SEPARATOR));
-				aResult.append(DEFAULT_COLLECTION_SEPARATOR);
+				result.append(key);
+				result.append(DEFAULT_KEY_VALUE_SEPARATOR);
+				result.append(
+					unicodeEncode(value, DEFAULT_COLLECTION_SEPARATOR));
+				result.append(DEFAULT_COLLECTION_SEPARATOR);
 			}
 
-			aResult.setLength(
-				aResult.length() - DEFAULT_COLLECTION_SEPARATOR.length());
+			result.setLength(
+				result.length() - DEFAULT_COLLECTION_SEPARATOR.length());
 		}
 
-		return aResult.toString();
+		return result.toString();
 	}
 
 	/**
 	 * Converts a value into a string to be stored in this instance.
 	 *
-	 * @param rValue The value to convert
+	 * @param value The value to convert
 	 * @return The resulting string
 	 */
-	protected String convertValue(Object rValue) {
-		String sValue;
-
-		if (rValue instanceof Date) {
-			sValue = Long.toString(((Date) rValue).getTime());
-		} else if (rValue instanceof Collection) {
-			sValue = convertCollection(((Collection<?>) rValue));
-		} else if (rValue instanceof Map) {
-			sValue = convertMap(((Map<?, ?>) rValue));
+	protected String convertValue(Object value) {
+		if (value instanceof Date) {
+			return Long.toString(((Date) value).getTime());
+		} else if (value instanceof Collection) {
+			return convertCollection(((Collection<?>) value));
+		} else if (value instanceof Map) {
+			return convertMap(((Map<?, ?>) value));
 		} else {
-			sValue = rValue.toString();
+			return value.toString();
 		}
-
-		return sValue;
 	}
 
 	/**
 	 * Creates the property map if it doesn't exist yet.
 	 */
 	protected final void ensurePropertyMapExists() {
-		if (aPropertyMap == null) {
-			aPropertyMap = new HashMap<PropertyName<?>, String>();
+		if (propertyMap == null) {
+			propertyMap = new HashMap<PropertyName<?>, String>();
 		}
 	}
 
 	/**
 	 * Finds a certain value by it's string representation.
 	 *
-	 * @param rValues The values to search
-	 * @param sName   The value's name (i.e. Object{@link #toString()} result)
-	 *                to search for
+	 * @param values The values to search
+	 * @param name   The value's name (i.e. Object{@link #toString()}
+	 *                 result) to
+	 *               search for
 	 * @return The matching value or NULL if not found
 	 */
-	protected <T> T findValue(T[] rValues, String sName) {
-		for (T rValue : rValues) {
-			if (rValue.toString().equals(sName)) {
-				return rValue;
+	protected <T> T findValue(T[] values, String name) {
+		for (T value : values) {
+			if (value.toString().equals(name)) {
+				return value;
 			}
 		}
 
@@ -286,127 +280,125 @@ public abstract class AbstractStringProperties
 	 * @return The property map or NULL for none
 	 */
 	protected final Map<PropertyName<?>, String> getPropertyMap() {
-		return aPropertyMap;
+		return propertyMap;
 	}
 
 	/**
 	 * Parses the elements of a collection from the raw property string.
 	 *
-	 * @param rCollectionType The type of collection to parse
-	 * @param sRawElements    The raw string containing all list elements
-	 * @param rElementType    The datatype of the collection elements
+	 * @param collectionType The type of collection to parse
+	 * @param rawElements    The raw string containing all list elements
+	 * @param elementType    The datatype of the collection elements
 	 * @return A new collection of the given type containing the parsed entries
 	 */
 	@SuppressWarnings("unchecked")
 	protected <T, C extends Collection<T>> C parseCollection(
-		Class<C> rCollectionType, String sRawElements, Class<T> rElementType) {
-		String[] rElements = sRawElements.split(DEFAULT_COLLECTION_SEPARATOR);
-		C rCollection;
+		Class<C> collectionType, String rawElements, Class<T> elementType) {
+		String[] elements = rawElements.split(DEFAULT_COLLECTION_SEPARATOR);
+		C collection;
 
-		if (List.class.isAssignableFrom(rCollectionType)) {
-			rCollection = (C) new ArrayList<T>();
+		if (List.class.isAssignableFrom(collectionType)) {
+			collection = (C) new ArrayList<T>();
 		} else {
-			rCollection = (C) new HashSet<T>();
+			collection = (C) new HashSet<T>();
 		}
 
-		for (int i = 0; i < rElements.length; i++) {
-			String sValue =
-				unicodeDecode(rElements[i], DEFAULT_COLLECTION_SEPARATOR);
+		for (int i = 0; i < elements.length; i++) {
+			String value =
+				unicodeDecode(elements[i], DEFAULT_COLLECTION_SEPARATOR);
 
-			rCollection.add(parseValue(sValue, rElementType, null));
+			collection.add(parseValue(value, elementType, null));
 		}
 
-		return rCollection;
+		return collection;
 	}
 
 	/**
 	 * Parses the entries of a map from a raw string.
 	 *
-	 * @param sRawEntries The raw string containing all map entries
-	 * @param rKeyType    The key datatype
-	 * @param rValueType  The value datatype
+	 * @param rawEntries The raw string containing all map entries
+	 * @param keyType    The key datatype
+	 * @param valueType  The value datatype
 	 * @return A new map containing the parsed entries
 	 */
-	protected <K, V> Map<K, V> parseMap(String sRawEntries, Class<K> rKeyType,
-		Class<V> rValueType) {
-		Map<K, V> aMap = new HashMap<>();
-		String[] rEntries = sRawEntries.split(DEFAULT_COLLECTION_SEPARATOR);
+	protected <K, V> Map<K, V> parseMap(String rawEntries, Class<K> keyType,
+		Class<V> valueType) {
+		Map<K, V> map = new HashMap<>();
+		String[] entries = rawEntries.split(DEFAULT_COLLECTION_SEPARATOR);
 
-		for (String sEntry : rEntries) {
-			int nKeyEnd = sEntry.indexOf(DEFAULT_KEY_VALUE_SEPARATOR);
+		for (String entry : entries) {
+			int keyEnd = entry.indexOf(DEFAULT_KEY_VALUE_SEPARATOR);
 
-			if (nKeyEnd > 0) {
-				String sKey = sEntry.substring(0, nKeyEnd);
+			if (keyEnd > 0) {
+				String key = entry.substring(0, keyEnd);
 
-				String sValue = sEntry.substring(
-					nKeyEnd + DEFAULT_KEY_VALUE_SEPARATOR.length());
+				String value = entry.substring(
+					keyEnd + DEFAULT_KEY_VALUE_SEPARATOR.length());
 
-				sValue = unicodeDecode(sValue, DEFAULT_COLLECTION_SEPARATOR);
+				value = unicodeDecode(value, DEFAULT_COLLECTION_SEPARATOR);
 
-				aMap.put(parseValue(sKey, rKeyType, null),
-					parseValue(sValue, rValueType, null));
+				map.put(parseValue(key, keyType, null),
+					parseValue(value, valueType, null));
 			}
 		}
 
-		return aMap;
+		return map;
 	}
 
 	/**
 	 * Parses a raw string value into a certain datatype if possible.
 	 *
-	 * @param sRawValue     The raw string value
-	 * @param rDatatype     The target datatype
-	 * @param rElementTypes The element datatype(s) for collection
-	 *                         properties or
-	 *                      NULL for none
+	 * @param rawValue     The raw string value
+	 * @param datatype     The target datatype
+	 * @param elementTypes The element datatype(s) for collection properties or
+	 *                     NULL for none
 	 * @return The parsed valued object
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T, E> T parseValue(String sRawValue, Class<T> rDatatype,
-		Class<?>[] rElementTypes) {
-		T rValue = null;
+	protected <T, E> T parseValue(String rawValue, Class<T> datatype,
+		Class<?>[] elementTypes) {
+		T value = null;
 
-		if (rDatatype == String.class) {
-			rValue = (T) sRawValue;
-		} else if (rDatatype.isEnum()) {
-			rValue = findValue(rDatatype.getEnumConstants(), sRawValue);
-		} else if (rDatatype == Date.class) {
-			rValue = (T) new Date(Long.parseLong(sRawValue));
-		} else if (rDatatype == Long.class) {
-			rValue = (T) Long.valueOf(sRawValue);
-		} else if (rDatatype == Integer.class) {
-			rValue = (T) Integer.valueOf(sRawValue);
-		} else if (rDatatype == Boolean.class) {
-			rValue = (T) Boolean.valueOf(sRawValue);
-		} else if (rDatatype == Color.class) {
-			rValue = (T) Color.valueOf(sRawValue);
-		} else if (rDatatype == List.class || rDatatype == Set.class) {
-			Class<E> rElementType = (Class<E>) rElementTypes[0];
+		if (datatype == String.class) {
+			value = (T) rawValue;
+		} else if (datatype.isEnum()) {
+			value = findValue(datatype.getEnumConstants(), rawValue);
+		} else if (datatype == Date.class) {
+			value = (T) new Date(Long.parseLong(rawValue));
+		} else if (datatype == Long.class) {
+			value = (T) Long.valueOf(rawValue);
+		} else if (datatype == Integer.class) {
+			value = (T) Integer.valueOf(rawValue);
+		} else if (datatype == Boolean.class) {
+			value = (T) Boolean.valueOf(rawValue);
+		} else if (datatype == Color.class) {
+			value = (T) Color.valueOf(rawValue);
+		} else if (datatype == List.class || datatype == Set.class) {
+			Class<E> elementType = (Class<E>) elementTypes[0];
 
-			rValue =
-				(T) parseCollection((Class<? extends Collection<E>>) rDatatype,
-					sRawValue, rElementType);
-		} else if (rDatatype == Map.class) {
-			rValue =
-				(T) parseMap(sRawValue, rElementTypes[0], rElementTypes[1]);
+			value =
+				(T) parseCollection((Class<? extends Collection<E>>) datatype,
+					rawValue, elementType);
+		} else if (datatype == Map.class) {
+			value = (T) parseMap(rawValue, elementTypes[0], elementTypes[1]);
 		}
 
-		return rValue;
+		return value;
 	}
 
 	/**
 	 * Default implementation of
 	 * {@link MutableProperties#removeProperty(PropertyName)}.
 	 *
-	 * @param rName The property to remove
+	 * @param name The property to remove
 	 */
-	protected void removeProperty(PropertyName<?> rName) {
-		Map<PropertyName<?>, String> rPropertyMap = getPropertyMap();
+	protected void removeProperty(PropertyName<?> name) {
+		Map<PropertyName<?>, String> propertyMap = getPropertyMap();
 
-		if (rPropertyMap != null) {
-			rPropertyMap.remove(rName);
+		if (propertyMap != null) {
+			propertyMap.remove(name);
 
-			if (rPropertyMap.isEmpty()) {
+			if (propertyMap.isEmpty()) {
 				setPropertyMap(null);
 			}
 		}
@@ -417,35 +409,35 @@ public abstract class AbstractStringProperties
 	 * {@link MutableProperties#setProperty(PropertyName, Object)}. Creates the
 	 * property map if necessary and removes properties if the value is NULL.
 	 *
-	 * @param rName  The property to set or remove
-	 * @param rValue The property value or NULL to remove
+	 * @param name  The property to set or remove
+	 * @param value The property value or NULL to remove
 	 */
-	protected <T> void setProperty(PropertyName<T> rName, T rValue) {
-		if (rValue != null) {
+	protected <T> void setProperty(PropertyName<T> name, T value) {
+		if (value != null) {
 			ensurePropertyMapExists();
-			getPropertyMap().put(rName, convertValue(rValue));
+			getPropertyMap().put(name, convertValue(value));
 		} else {
-			removeProperty(rName);
+			removeProperty(name);
 		}
 	}
 
 	/**
 	 * Sets the property map of this instance.
 	 *
-	 * @param rProperties The new property map
+	 * @param properties The new property map
 	 */
 	protected final void setPropertyMap(
-		Map<PropertyName<?>, String> rProperties) {
-		aPropertyMap = rProperties;
+		Map<PropertyName<?>, String> properties) {
+		propertyMap = properties;
 	}
 
 	/**
 	 * Returns the unparsed (raw) value of a property as a string.
 	 *
-	 * @param rName The name of the property
-	 * @return The string property value or the default value
+	 * @param name The name of the property
+	 * @return The string property value or the defaultValue value
 	 */
-	private final String getRawProperty(PropertyName<?> rName) {
-		return aPropertyMap != null ? aPropertyMap.get(rName) : null;
+	private final String getRawProperty(PropertyName<?> name) {
+		return propertyMap != null ? propertyMap.get(name) : null;
 	}
 }

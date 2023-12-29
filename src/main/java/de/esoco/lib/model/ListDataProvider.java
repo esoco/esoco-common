@@ -36,17 +36,17 @@ import java.util.stream.Stream;
  */
 public class ListDataProvider<T> extends AbstractDataProvider<T> {
 
-	private final List<T> aOriginalData;
+	private final List<T> originalData;
 
-	private List<T> aVisibleData;
+	private List<T> visibleData;
 
 	/**
 	 * Creates a new instance with a copy of a collection of data objects.
 	 *
-	 * @param rData A collection containing the data objects
+	 * @param data A collection containing the data objects
 	 */
-	public ListDataProvider(Collection<T> rData) {
-		aOriginalData = new ArrayList<>(rData);
+	public ListDataProvider(Collection<T> data) {
+		originalData = new ArrayList<>(data);
 
 		updateVisibleData();
 	}
@@ -55,18 +55,18 @@ public class ListDataProvider<T> extends AbstractDataProvider<T> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Collection<T> getData(int nStart, int nCount) {
-		if (nStart > aVisibleData.size()) {
-			nStart = aVisibleData.size();
+	public Collection<T> getData(int start, int count) {
+		if (start > visibleData.size()) {
+			start = visibleData.size();
 		}
 
-		int nEnd = nStart + nCount;
+		int end = start + count;
 
-		if (nEnd > aVisibleData.size()) {
-			nEnd = aVisibleData.size();
+		if (end > visibleData.size()) {
+			end = visibleData.size();
 		}
 
-		return aVisibleData.subList(nStart, nEnd);
+		return visibleData.subList(start, end);
 	}
 
 	/**
@@ -74,36 +74,36 @@ public class ListDataProvider<T> extends AbstractDataProvider<T> {
 	 */
 	@Override
 	public int size() {
-		return aVisibleData.size();
+		return visibleData.size();
 	}
 
 	/**
 	 * Compares the values of an attribute in two data objects according to the
 	 * specification of the {@link Comparable} interface.
 	 *
-	 * @param t1         The first data object
-	 * @param t2         The second data object
-	 * @param rAttribute The attribute to compare
-	 * @param eDirection The order direction
+	 * @param t1        The first data object
+	 * @param t2        The second data object
+	 * @param attribute The attribute to compare
+	 * @param direction The order direction
 	 * @return The comparison value as defined by {@link Comparable}
 	 */
 	protected <V extends Comparable<V>> int compareAttributeValues(T t1, T t2,
-		Function<? super T, V> rAttribute, SortDirection eDirection) {
-		V v1 = rAttribute.apply(t1);
-		V v2 = rAttribute.apply(t2);
+		Function<? super T, V> attribute, SortDirection direction) {
+		V v1 = attribute.apply(t1);
+		V v2 = attribute.apply(t2);
 
-		int nComparison;
+		int comparison;
 
 		if (v1 == null || v2 == null) {
-			nComparison =
+			comparison =
 				(v1 == null ? (v2 == null ? 0 : 1) : (v2 == null ? 0 : -1));
 		} else {
-			nComparison = (eDirection == SortDirection.ASCENDING ?
-			               v1.compareTo(v2) :
-			               v2.compareTo(v1));
+			comparison = (direction == SortDirection.ASCENDING ?
+			              v1.compareTo(v2) :
+			              v2.compareTo(v1));
 		}
 
-		return nComparison;
+		return comparison;
 	}
 
 	/**
@@ -117,24 +117,23 @@ public class ListDataProvider<T> extends AbstractDataProvider<T> {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected int compareDataObjects(T t1, T t2) {
-		int nComparison = -1;
+		int comparison = -1;
 
 		for (Entry<Function<? super T, ? extends Comparable<?>>,
-			SortDirection> rOrdering : getAttributeSortings().entrySet()) {
-			Function<? super T, ? extends Comparable> rAttribute =
-				rOrdering.getKey();
+			SortDirection> ordering : getAttributeSortings().entrySet()) {
+			Function<? super T, ? extends Comparable> attribute =
+				ordering.getKey();
 
-			SortDirection eDirection = rOrdering.getValue();
+			SortDirection direction = ordering.getValue();
 
-			nComparison =
-				compareAttributeValues(t1, t2, rAttribute, eDirection);
+			comparison = compareAttributeValues(t1, t2, attribute, direction);
 
-			if (nComparison != 0) {
+			if (comparison != 0) {
 				break;
 			}
 		}
 
-		return nComparison;
+		return comparison;
 	}
 
 	/**
@@ -142,7 +141,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T> {
 	 */
 	@Override
 	protected void updateFilter(
-		Map<Function<? super T, ?>, Predicate<?>> rFilters) {
+		Map<Function<? super T, ?>, Predicate<?>> filters) {
 		updateVisibleData();
 	}
 
@@ -151,7 +150,7 @@ public class ListDataProvider<T> extends AbstractDataProvider<T> {
 	 */
 	@Override
 	protected void updateSorting(
-		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> rSortings) {
+		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> sortings) {
 		updateVisibleData();
 	}
 
@@ -159,24 +158,25 @@ public class ListDataProvider<T> extends AbstractDataProvider<T> {
 	 * Resets the visible data to the original (full) data set.
 	 */
 	protected void updateVisibleData() {
-		Stream<T> aDataStream = aOriginalData.stream();
+		Stream<T> dataStream = originalData.stream();
 
-		for (Entry<Function<? super T, ?>, Predicate<?>> rFilter :
+		for (Entry<Function<? super T, ?>, Predicate<?>> filter :
 			getAttributeFilters().entrySet()) {
-			Function<? super T, ?> rAttribute = rFilter.getKey();
+			Function<? super T, ?> attribute = filter.getKey();
 
 			@SuppressWarnings("unchecked")
-			Predicate<Object> pFilter = (Predicate<Object>) rFilter.getValue();
+			Predicate<Object> filterPredicate =
+				(Predicate<Object>) filter.getValue();
 
-			aDataStream = aDataStream.filter(t -> {
-				return pFilter.test(rAttribute.apply(t));
+			dataStream = dataStream.filter(t -> {
+				return filterPredicate.test(attribute.apply(t));
 			});
 		}
 
 		if (!getAttributeSortings().isEmpty()) {
-			aDataStream = aDataStream.sorted(this::compareDataObjects);
+			dataStream = dataStream.sorted(this::compareDataObjects);
 		}
 
-		aVisibleData = aDataStream.collect(Collectors.toList());
+		visibleData = dataStream.collect(Collectors.toList());
 	}
 }

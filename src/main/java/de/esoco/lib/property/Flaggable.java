@@ -27,14 +27,14 @@ public interface Flaggable<F> extends Flags<F> {
 	/**
 	 * Clears a certain flag.
 	 *
-	 * @param rFlag The flag to clear
+	 * @param flag The flag to clear
 	 */
-	void clearFlag(F rFlag);
+	void clearFlag(F flag);
 
 	/**
 	 * Sets a certain flag.
 	 *
-	 * @param rFlag The flag to set
+	 * @param flag The flag to set
 	 */
-	void setFlag(F rFlag);
+	void setFlag(F flag);
 }

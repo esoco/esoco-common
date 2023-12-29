@@ -30,14 +30,14 @@ public interface Callback<T> {
 	/**
 	 * Will be invoked if the asynchronous execution caused an error.
 	 *
-	 * @param eError The exception that signaled the error
+	 * @param error The exception that signaled the error
 	 */
-	void onError(Throwable eError);
+	void onError(Throwable error);
 
 	/**
 	 * Will be invoked if the asynchronous execution was successful.
 	 *
-	 * @param rResult The result of the execution
+	 * @param result The result of the execution
 	 */
-	void onSuccess(T rResult);
+	void onSuccess(T result);
 }

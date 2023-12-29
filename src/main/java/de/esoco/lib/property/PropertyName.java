@@ -34,152 +34,151 @@ public class PropertyName<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Map<String, PropertyName<?>> aNameRegistry =
+	private static final Map<String, PropertyName<?>> nameRegistry =
 		new HashMap<String, PropertyName<?>>();
 
-	private final String sName;
+	private final String name;
 
-	private final Class<?> rDatatype;
+	private final Class<?> datatype;
 
-	private final Class<?>[] rElementDatatypes;
+	private final Class<?>[] elementDatatypes;
 
 	/**
 	 * Internal constructor to creates a new instance with a certain name and
 	 * datatype. Instances must always be created through one of the public
 	 * factory methods.
 	 *
-	 * @param sName             The name of this instance
-	 * @param rDatatype         The class of the name's datatype
-	 * @param rElementDatatypes The optional datatypes for collection
-	 *                          properties
+	 * @param name             The name of this instance
+	 * @param datatype         The class of the name's datatype
+	 * @param elementDatatypes The optional datatypes for collection
+	 *                         properties
 	 * @throws IllegalArgumentException If the given name has already been used
 	 */
-	PropertyName(String sName, Class<?> rDatatype,
-		Class<?>... rElementDatatypes) {
-		this.sName = sName;
-		this.rDatatype = rDatatype;
-		this.rElementDatatypes = rElementDatatypes;
+	PropertyName(String name, Class<?> datatype,
+		Class<?>... elementDatatypes) {
+		this.name = name;
+		this.datatype = datatype;
+		this.elementDatatypes = elementDatatypes;
 
-		if (aNameRegistry.containsKey(sName)) {
+		if (nameRegistry.containsKey(name)) {
 			throw new IllegalArgumentException(
-				"Property name already exists: " + sName);
+				"Property name already exists: " + name);
 		}
 
-		aNameRegistry.put(sName, this);
+		nameRegistry.put(name, this);
 	}
 
 	/**
 	 * Factory method to create a new property name with a boolean datatype.
 	 *
-	 * @param sName The name
+	 * @param name The name
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<Boolean> newBooleanName(String sName) {
-		return newName(sName, Boolean.class);
+	public static PropertyName<Boolean> newBooleanName(String name) {
+		return newName(name, Boolean.class);
 	}
 
 	/**
 	 * Factory method to create a new property name with a boolean datatype.
 	 *
-	 * @param sName The name
+	 * @param name The name
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<Date> newDateName(String sName) {
-		return newName(sName, Date.class);
+	public static PropertyName<Date> newDateName(String name) {
+		return newName(name, Date.class);
 	}
 
 	/**
 	 * Factory method to create a new property name with an enum datatype.
 	 *
-	 * @param sName      The name
-	 * @param rEnumClass The enum class of the property
+	 * @param name      The name
+	 * @param enumClass The enum class of the property
 	 * @return A new instance with the given name
 	 */
-	public static <E extends Enum<E>> PropertyName<E> newEnumName(String sName,
-		Class<E> rEnumClass) {
-		return newName(sName, rEnumClass);
+	public static <E extends Enum<E>> PropertyName<E> newEnumName(String name,
+		Class<E> enumClass) {
+		return newName(name, enumClass);
 	}
 
 	/**
 	 * Factory method to create a new name with an integer datatype.
 	 *
-	 * @param sName The name
+	 * @param name The name
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<Integer> newIntegerName(String sName) {
-		return newName(sName, Integer.class);
+	public static PropertyName<Integer> newIntegerName(String name) {
+		return newName(name, Integer.class);
 	}
 
 	/**
 	 * Factory method to create a new property name with a list datatype.
 	 *
-	 * @param sName        The name
-	 * @param rElementType The datatype of the list elements
+	 * @param name        The name
+	 * @param elementType The datatype of the list elements
 	 * @return A new instance with the given name
 	 */
-	public static <E> PropertyName<List<E>> newListName(String sName,
-		Class<E> rElementType) {
-		return new PropertyName<List<E>>(sName, List.class, rElementType);
+	public static <E> PropertyName<List<E>> newListName(String name,
+		Class<E> elementType) {
+		return new PropertyName<List<E>>(name, List.class, elementType);
 	}
 
 	/**
 	 * Factory method to create a new property name with a map datatype.
 	 *
-	 * @param sName      The name
-	 * @param rKeyType   The datatype of the map keys
-	 * @param rValueType The datatype of the map values
+	 * @param name      The name
+	 * @param keyType   The datatype of the map keys
+	 * @param valueType The datatype of the map values
 	 * @return A new instance with the given name
 	 */
-	public static <K, V> PropertyName<Map<K, V>> newMapName(String sName,
-		Class<K> rKeyType, Class<V> rValueType) {
-		return new PropertyName<Map<K, V>>(sName, Map.class, rKeyType,
-			rValueType);
+	public static <K, V> PropertyName<Map<K, V>> newMapName(String name,
+		Class<K> keyType, Class<V> valueType) {
+		return new PropertyName<Map<K, V>>(name, Map.class, keyType,
+			valueType);
 	}
 
 	/**
 	 * Factory method to create a new property name with a certain datatype.
 	 *
-	 * @param sName     The name
-	 * @param rDatatype The class of the datatype
+	 * @param name     The name
+	 * @param datatype The class of the datatype
 	 * @return A new instance with the given name and datatype
 	 */
-	public static <T> PropertyName<T> newName(String sName,
-		Class<T> rDatatype) {
-		return new PropertyName<T>(sName, rDatatype);
+	public static <T> PropertyName<T> newName(String name, Class<T> datatype) {
+		return new PropertyName<T>(name, datatype);
 	}
 
 	/**
 	 * Factory method to create a new property name with a list datatype.
 	 *
-	 * @param sName        The name
-	 * @param rElementType The datatype of the list elements
+	 * @param name        The name
+	 * @param elementType The datatype of the list elements
 	 * @return A new instance with the given name
 	 */
-	public static <E> PropertyName<Set<E>> newSetName(String sName,
-		Class<E> rElementType) {
-		return new PropertyName<Set<E>>(sName, Set.class, rElementType);
+	public static <E> PropertyName<Set<E>> newSetName(String name,
+		Class<E> elementType) {
+		return new PropertyName<Set<E>>(name, Set.class, elementType);
 	}
 
 	/**
 	 * Factory method to create a new property name with a string datatype.
 	 *
-	 * @param sName The name
+	 * @param name The name
 	 * @return A new instance with the given name
 	 */
-	public static PropertyName<String> newStringName(String sName) {
-		return newName(sName, String.class);
+	public static PropertyName<String> newStringName(String name) {
+		return newName(name, String.class);
 	}
 
 	/**
 	 * Returns the instance that has been registered with a certain name.
 	 *
-	 * @param sName The name of the instance
+	 * @param name The name of the instance
 	 * @return The instance with the given name or NULL if no such name has
 	 * been
 	 * registered
 	 */
-	public static PropertyName<?> valueOf(String sName) {
-		return aNameRegistry.get(sName);
+	public static PropertyName<?> valueOf(String name) {
+		return nameRegistry.get(name);
 	}
 
 	/**
@@ -189,7 +188,7 @@ public class PropertyName<T> implements Serializable {
 	 */
 	@SuppressWarnings("unchecked")
 	public final Class<T> getDatatype() {
-		return (Class<T>) rDatatype;
+		return (Class<T>) datatype;
 	}
 
 	/**
@@ -200,7 +199,7 @@ public class PropertyName<T> implements Serializable {
 	 * @return The element datatype class or classes
 	 */
 	public final Class<?>[] getElementDatatypes() {
-		return rElementDatatypes;
+		return elementDatatypes;
 	}
 
 	/**
@@ -209,7 +208,7 @@ public class PropertyName<T> implements Serializable {
 	 * @return The name
 	 */
 	public final String getName() {
-		return sName;
+		return name;
 	}
 
 	/**
@@ -219,7 +218,7 @@ public class PropertyName<T> implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return sName;
+		return name;
 	}
 
 	/**
@@ -228,13 +227,12 @@ public class PropertyName<T> implements Serializable {
 	 * @return The resolved property name instance
 	 */
 	Object readResolve() {
-		PropertyName<?> rKey = aNameRegistry.get(sName);
+		PropertyName<?> key = nameRegistry.get(name);
 
-		if (rKey == null) {
-			throw new IllegalStateException(
-				"Undefined property name: " + sName);
+		if (key == null) {
+			throw new IllegalStateException("Undefined property name: " + name);
 		}
 
-		return rKey;
+		return key;
 	}
 }

@@ -48,7 +48,7 @@ public interface EnabledState {
 	 * Sets the enabled state of the element. This state controls whether the
 	 * element will allow and react to user input.
 	 *
-	 * @param bEnabled TRUE to enable the element, FALSE to disable it
+	 * @param enabled TRUE to enable the element, FALSE to disable it
 	 */
-	void setEnabled(boolean bEnabled);
+	void setEnabled(boolean enabled);
 }

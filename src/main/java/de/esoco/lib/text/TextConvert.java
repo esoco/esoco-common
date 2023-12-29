@@ -62,12 +62,12 @@ public class TextConvert {
 	 * concatenating the resulting words capitalized and separated by the given
 	 * separator string.
 	 *
-	 * @param sText      The input string
-	 * @param sSeparator The separator string or NULL for none
+	 * @param text      The input string
+	 * @param separator The separator string or NULL for none
 	 * @return The capitalized identifier string
 	 */
-	public static String capitalize(String sText, String sSeparator) {
-		return capitalize(sText, sSeparator, false);
+	public static String capitalize(String text, String separator) {
+		return capitalize(text, separator, false);
 	}
 
 	/**
@@ -76,37 +76,37 @@ public class TextConvert {
 	 * concatenating the resulting words capitalized and separated by the given
 	 * separator string.
 	 *
-	 * @param sText               The input string
-	 * @param sSeparator          The separator string or NULL for none
-	 * @param bFirstWordLowerCase TRUE to keep the first word in lower case
+	 * @param text               The input string
+	 * @param separator          The separator string or NULL for none
+	 * @param firstWordLowerCase TRUE to keep the first word in lower case
 	 * @return The capitalized identifier string
 	 */
-	public static String capitalize(String sText, String sSeparator,
-		boolean bFirstWordLowerCase) {
-		if (sText != null) {
-			StringBuilder aResult = new StringBuilder(sText.length());
+	public static String capitalize(String text, String separator,
+		boolean firstWordLowerCase) {
+		if (text != null) {
+			StringBuilder result = new StringBuilder(text.length());
 
-			String[] aWords = sText.split("[\\s_.]");
-			int nLast = aWords.length - 1;
+			String[] words = text.split("[\\s_.]");
+			int last = words.length - 1;
 
-			for (int i = 0; i <= nLast; i++) {
-				String sWord = aWords[i];
+			for (int i = 0; i <= last; i++) {
+				String word = words[i];
 
-				if (i > 0 || !bFirstWordLowerCase) {
-					aResult.append(capitalizedWord(sWord));
+				if (i > 0 || !firstWordLowerCase) {
+					result.append(capitalizedWord(word));
 				} else {
-					aResult.append(sWord.toLowerCase());
+					result.append(word.toLowerCase());
 				}
 
-				if (sSeparator != null && i < nLast) {
-					aResult.append(sSeparator);
+				if (separator != null && i < last) {
+					result.append(separator);
 				}
 			}
 
-			sText = aResult.toString();
+			text = result.toString();
 		}
 
-		return sText;
+		return text;
 	}
 
 	/**
@@ -122,68 +122,66 @@ public class TextConvert {
 	 *   <li>FOO_BAZ_BAR becomes FooBazBar</li>
 	 * </ul>
 	 *
-	 * @param sIdentifier The string to create the identifier from
+	 * @param identifier The string to create the identifier from
 	 * @return The capitalized identifier string
 	 */
-	public static String capitalizedIdentifier(String sIdentifier) {
-		if (sIdentifier != null && !sIdentifier.matches("([A-Z][a-z0-9]+)*")) {
-			sIdentifier = capitalize(sIdentifier, null);
+	public static String capitalizedIdentifier(String identifier) {
+		if (identifier != null && !identifier.matches("([A-Z][a-z0-9]+)*")) {
+			identifier = capitalize(identifier, null);
 		}
 
-		return sIdentifier;
+		return identifier;
 	}
 
 	/**
 	 * Shortcut method that returns the {@link #capitalizedIdentifier(String)}
 	 * after applying {@link #lastElementOf(String)} to an input string.
 	 *
-	 * @param sInput The input string
+	 * @param input The input string
 	 * @return The resulting identifier
 	 */
-	public static String capitalizedLastElementOf(String sInput) {
-		return capitalizedIdentifier(lastElementOf(sInput));
+	public static String capitalizedLastElementOf(String input) {
+		return capitalizedIdentifier(lastElementOf(input));
 	}
 
 	/**
 	 * Capitalizes a word.
 	 *
-	 * @param sWord The word to capitalize
-	 * @return sWord[0].toUpperCase + sWord[1..length-1].toLowerCase
+	 * @param word The word to capitalize
+	 * @return word[0].toUpperCase + word[1..length-1].toLowerCase
 	 */
-	public static String capitalizedWord(String sWord) {
-		if (sWord.length() > 0) {
-			sWord = sWord.substring(0, 1).toUpperCase() + sWord
-				.substring(1)
-				.toLowerCase();
+	public static String capitalizedWord(String word) {
+		if (!word.isEmpty()) {
+			word = word.substring(0, 1).toUpperCase() +
+				word.substring(1).toLowerCase();
 		}
 
-		return sWord;
+		return word;
 	}
 
 	/**
 	 * Converts an identifier into a different naming style.
 	 *
-	 * @param eStyle      The style to convert to
-	 * @param sIdentifier The identifier to convert
+	 * @param style      The style to convert to
+	 * @param identifier The identifier to convert
 	 * @return The converted identifier
 	 */
-	public static String convertTo(IdentifierStyle eStyle,
-		String sIdentifier) {
-		switch (eStyle) {
+	public static String convertTo(IdentifierStyle style, String identifier) {
+		switch (style) {
 			case CAMELCASE:
-				return capitalizedIdentifier(sIdentifier);
+				return capitalizedIdentifier(identifier);
 
 			case LOWER_CAMELCASE:
-				sIdentifier = capitalizedIdentifier(sIdentifier);
+				identifier = capitalizedIdentifier(identifier);
 
-				return Character.toLowerCase(
-					sIdentifier.charAt(0)) + sIdentifier.substring(1);
+				return Character.toLowerCase(identifier.charAt(0)) +
+					identifier.substring(1);
 
 			case UPPERCASE:
-				return uppercaseIdentifier(sIdentifier);
+				return uppercaseIdentifier(identifier);
 
 			default:
-				return sIdentifier;
+				return identifier;
 		}
 	}
 
@@ -192,8 +190,8 @@ public class TextConvert {
 	 *
 	 * @see #format(String, Collection)
 	 */
-	public static String format(String sFormat, Object... rArgs) {
-		return format(sFormat, Arrays.asList(rArgs));
+	public static String format(String format, Object... args) {
+		return format(format, Arrays.asList(args));
 	}
 
 	/**
@@ -205,25 +203,25 @@ public class TextConvert {
 	 * not enough placeholders occur in the text string any surplus values will
 	 * be ignored.
 	 *
-	 * @param sFormat The format string
-	 * @param rArgs   The values to place in the format string
+	 * @param format The format string
+	 * @param args   The values to place in the format string
 	 * @return The formatted result string
 	 */
-	public static String format(String sFormat, Collection<Object> rArgs) {
-		int nIndex = 0;
+	public static String format(String format, Collection<Object> args) {
+		int index = 0;
 
-		for (Object rArg : rArgs) {
-			String sIndexedPlaceholder = "%" + nIndex++ + "$s";
-			String sValue = (rArg != null ? rArg.toString() : "null");
+		for (Object arg : args) {
+			String indexedPlaceholder = "%" + index++ + "$s";
+			String value = (arg != null ? arg.toString() : "null");
 
-			if (sFormat.contains(sIndexedPlaceholder)) {
-				sFormat = sFormat.replace(sIndexedPlaceholder, sValue);
+			if (format.contains(indexedPlaceholder)) {
+				format = format.replace(indexedPlaceholder, value);
 			} else {
-				sFormat = sFormat.replaceFirst("%s", sValue);
+				format = format.replaceFirst("%s", value);
 			}
 		}
 
-		return sFormat;
+		return format;
 	}
 
 	/**
@@ -232,63 +230,61 @@ public class TextConvert {
 	 * very simple and does no validation so that using values outside the
 	 * allowed range will yield no reasonable result.
 	 *
-	 * @param nValue The value to convert, in the range 0 to 15
+	 * @param value The value to convert, in the range 0 to 15
 	 * @return The corresponding hex character (letters are upper case)
 	 */
-	public static char hexChar(int nValue) {
-		return (char) ((nValue < 10) ? (48 + nValue) : (55 + nValue));
+	public static char hexChar(int value) {
+		return (char) ((value < 10) ? (48 + value) : (55 + value));
 	}
 
 	/**
 	 * To create a hexadecimal string representation of a byte array. Each byte
 	 * will be displayed as a two-character upper case hexadecimal value. The
 	 * two-char values will be separated by the given fill string. The size of
-	 * the resulting string will be <code>(rBytes.length x (2 + sFill.length())
-	 * - sFill.length()</code> .
+	 * the resulting string will be <code>(bytes.length x (2 + fill.length()) -
+	 * fill.length()</code> .
 	 *
-	 * @param rBytes The byte array to display (the values will not be changed)
-	 * @param sFill  A String to be inserted between the two-char hex values
+	 * @param bytes The byte array to display (the values will not be changed)
+	 * @param fill  A String to be inserted between the two-char hex values
 	 * @return The resulting hexadecimal string
 	 */
-	public static String hexString(byte[] rBytes, String sFill) {
-		return hexString(rBytes, 0, rBytes.length, sFill);
+	public static String hexString(byte[] bytes, String fill) {
+		return hexString(bytes, 0, bytes.length, fill);
 	}
 
 	/**
 	 * To create a hexadecimal string representation of a byte array. Each byte
 	 * will be displayed as a two-character upper case hexadecimal value. The
 	 * two-char values will be separated by the given fill string. The size of
-	 * the resulting string will be <code>(rBytes.length x (2 + sFill.length())
-	 * - sFill.length()</code> .
+	 * the resulting string will be <code>(bytes.length x (2 + fill.length()) -
+	 * fill.length()</code> .
 	 *
-	 * <p>The method will always read a maximum of (rBytes.length - nOffset)
-	 * bytes from the array even if the value of nOffset + nCount is larger
-	 * .</p>
+	 * <p>The method will always read a maximum of (bytes.length - offset)
+	 * bytes from the array even if the value of offset + count is larger .</p>
 	 *
-	 * @param rBytes  The byte array to display (the values will not be
-	 *                changed)
-	 * @param nOffset The position to start reading bytes from
-	 * @param nCount  The number of bytes to display
-	 * @param sFill   A String to be inserted between the two-char hex values
+	 * @param bytes  The byte array to display (the values will not be changed)
+	 * @param offset The position to start reading bytes from
+	 * @param count  The number of bytes to display
+	 * @param fill   A String to be inserted between the two-char hex values
 	 * @return The resulting hexadecimal string
 	 */
-	public static String hexString(byte[] rBytes, int nOffset, int nCount,
-		String sFill) {
-		nCount = Math.min(nCount, rBytes.length - nOffset);
+	public static String hexString(byte[] bytes, int offset, int count,
+		String fill) {
+		count = Math.min(count, bytes.length - offset);
 
-		int max = nOffset + nCount;
-		int length = (sFill.length() + 2) * nCount;
+		int max = offset + count;
+		int length = (fill.length() + 2) * count;
 		StringBuilder buf = new StringBuilder(length);
 
-		for (int i = nOffset; i < max; i++) {
-			byte b = rBytes[i];
+		for (int i = offset; i < max; i++) {
+			byte b = bytes[i];
 
 			buf.append(hexChar((b >> 4) & 0x0F));
 			buf.append(hexChar(b & 0x0F));
-			buf.append(sFill);
+			buf.append(fill);
 		}
 
-		buf.setLength(length - sFill.length());
+		buf.setLength(length - fill.length());
 
 		return buf.toString();
 	}
@@ -296,43 +292,41 @@ public class TextConvert {
 	/**
 	 * Interleaves a string with a fill string in certain intervals.
 	 *
-	 * @param sValue     The value to interleave with the fill string
-	 * @param sFill      The string to insert between the value chunks
-	 * @param nChunkSize The size of the chunks between the fill string
-	 *                      shall be
-	 *                   inserted (negative to start from the string end)
+	 * @param value     The value to interleave with the fill string
+	 * @param fill      The string to insert between the value chunks
+	 * @param chunkSize The size of the chunks between the fill string shall be
+	 *                  inserted (negative to start from the string end)
 	 * @return The resulting string
 	 */
-	public static String interleave(String sValue, String sFill,
-		int nChunkSize) {
-		if (sValue.length() > nChunkSize) {
-			StringBuilder aResult = new StringBuilder(sValue);
-			int nLength = sValue.length();
+	public static String interleave(String value, String fill, int chunkSize) {
+		if (value.length() > chunkSize) {
+			StringBuilder result = new StringBuilder(value);
+			int length = value.length();
 
-			if (nChunkSize > 0) {
-				nLength += nChunkSize - (nLength % nChunkSize);
-				nChunkSize = -nChunkSize;
+			if (chunkSize > 0) {
+				length += chunkSize - (length % chunkSize);
+				chunkSize = -chunkSize;
 			}
 
-			for (int i = nLength + nChunkSize; i > 0; i += nChunkSize) {
-				aResult.insert(i, sFill);
+			for (int i = length + chunkSize; i > 0; i += chunkSize) {
+				result.insert(i, fill);
 			}
 
-			sValue = aResult.toString();
+			value = result.toString();
 		}
 
-		return sValue;
+		return value;
 	}
 
 	/**
 	 * Extracts the last element of a string that is separated by dots ('.') .
 	 * If the input string does not contain dots it is returned unchanged.
 	 *
-	 * @param sInput The input string
+	 * @param input The input string
 	 * @return The resulting string
 	 */
-	public static String lastElementOf(String sInput) {
-		return sInput.substring(sInput.lastIndexOf('.') + 1);
+	public static String lastElementOf(String input) {
+		return input.substring(input.lastIndexOf('.') + 1);
 	}
 
 	/**
@@ -343,103 +337,56 @@ public class TextConvert {
 	 * current implementation only supports the numbers from 0 (zero) to 20
 	 * (twenty).
 	 *
-	 * @param nNumber The number to convert
+	 * @param number The number to convert
 	 * @return The resulting string or NULL if no conversion was possible
 	 */
-	public static String numberString(int nNumber) {
-		String sNumber;
-
-		switch (nNumber) {
+	public static String numberString(int number) {
+		switch (number) {
 			case 0:
-				sNumber = "zero";
-				break;
-
+				return "zero";
 			case 1:
-				sNumber = "one";
-				break;
-
+				return "one";
 			case 2:
-				sNumber = "two";
-				break;
-
+				return "two";
 			case 3:
-				sNumber = "three";
-				break;
-
+				return "three";
 			case 4:
-				sNumber = "four";
-				break;
-
+				return "four";
 			case 5:
-				sNumber = "five";
-				break;
-
+				return "five";
 			case 6:
-				sNumber = "six";
-				break;
-
+				return "six";
 			case 7:
-				sNumber = "seven";
-				break;
-
+				return "seven";
 			case 8:
-				sNumber = "eight";
-				break;
-
+				return "eight";
 			case 9:
-				sNumber = "nine";
-				break;
-
+				return "nine";
 			case 10:
-				sNumber = "ten";
-				break;
-
+				return "ten";
 			case 11:
-				sNumber = "eleven";
-				break;
-
+				return "eleven";
 			case 12:
-				sNumber = "twelve";
-				break;
-
+				return "twelve";
 			case 13:
-				sNumber = "thirteen";
-				break;
-
+				return "thirteen";
 			case 14:
-				sNumber = "fourteen";
-				break;
-
+				return "fourteen";
 			case 15:
-				sNumber = "fifteen";
-				break;
-
+				return "fifteen";
 			case 16:
-				sNumber = "sixteen";
-				break;
-
+				return "sixteen";
 			case 17:
-				sNumber = "seventeen";
-				break;
-
+				return "seventeen";
 			case 18:
-				sNumber = "eighteen";
-				break;
-
+				return "eighteen";
 			case 19:
-				sNumber = "nineteen";
-				break;
-
+				return "nineteen";
 			case 20:
-				sNumber = "twenty";
-				break;
-
+				return "twenty";
 			default:
-				sNumber = null;
-				break;
+				return null;
 		}
-
-		return sNumber;
 	}
 
 	/**
@@ -451,27 +398,27 @@ public class TextConvert {
 	 * is uneven padding on the right side takes precedence so that the string
 	 * will be aligned one character farther to the left.
 	 *
-	 * @param sString The string to be padded
-	 * @param nWidth  The length of the result string
-	 * @param cFill   The fill character
+	 * @param string The string to be padded
+	 * @param width  The length of the result string
+	 * @param fill   The fill character
 	 * @return The resulting string
 	 */
-	public static String padCenter(String sString, int nWidth, char cFill) {
-		if (nWidth > sString.length()) {
-			StringBuilder sb = new StringBuilder(sString);
+	public static String padCenter(String string, int width, char fill) {
+		if (width > string.length()) {
+			StringBuilder sb = new StringBuilder(string);
 
-			for (int i = sString.length(); i < nWidth; i += 2) {
-				sb.append(cFill);
+			for (int i = string.length(); i < width; i += 2) {
+				sb.append(fill);
 
-				if (sb.length() < nWidth) {
-					sb.insert(0, cFill);
+				if (sb.length() < width) {
+					sb.insert(0, fill);
 				}
 			}
 
-			sString = sb.toString();
+			string = sb.toString();
 		}
 
-		return sString;
+		return string;
 	}
 
 	/**
@@ -481,26 +428,26 @@ public class TextConvert {
 	 * the
 	 * given fill character.
 	 *
-	 * @param sString The string to be padded
-	 * @param nWidth  The length of the result string
-	 * @param cFill   The fill character
+	 * @param string The string to be padded
+	 * @param width  The length of the result string
+	 * @param fill   The fill character
 	 * @return The resulting string
 	 */
-	public static String padLeft(String sString, int nWidth, char cFill) {
-		if (nWidth > sString.length()) {
-			StringBuilder sb = new StringBuilder(nWidth);
+	public static String padLeft(String string, int width, char fill) {
+		if (width > string.length()) {
+			StringBuilder sb = new StringBuilder(width);
 
-			for (int i = sString.length(); i < nWidth; i++) {
-				sb.append(cFill);
+			for (int i = string.length(); i < width; i++) {
+				sb.append(fill);
 			}
 
-			sb.append(sString);
-			sb.setLength(nWidth);
+			sb.append(string);
+			sb.setLength(width);
 
-			sString = sb.toString();
+			string = sb.toString();
 		}
 
-		return sString;
+		return string;
 	}
 
 	/**
@@ -510,32 +457,32 @@ public class TextConvert {
 	 * left of the resulting string and the right will be filled with the given
 	 * fill character.
 	 *
-	 * @param sString The string to be padded
-	 * @param nWidth  The length of the result string
-	 * @param cFill   The fill character
+	 * @param string The string to be padded
+	 * @param width  The length of the result string
+	 * @param fill   The fill character
 	 * @return The resulting string
 	 */
-	public static String padRight(String sString, int nWidth, char cFill) {
-		if (nWidth > sString.length()) {
-			StringBuilder sb = new StringBuilder(nWidth);
+	public static String padRight(String string, int width, char fill) {
+		if (width > string.length()) {
+			StringBuilder sb = new StringBuilder(width);
 
-			sb.append(sString);
+			sb.append(string);
 
-			for (int i = sString.length(); i < nWidth; i++) {
-				sb.append(cFill);
+			for (int i = string.length(); i < width; i++) {
+				sb.append(fill);
 			}
 
-			sString = sb.toString();
+			string = sb.toString();
 		}
 
-		return sString;
+		return string;
 	}
 
 	/**
 	 * Converts a string of hexadecimal digits into a byte array of half the
 	 * length.
 	 *
-	 * @param sHexValue The hexadecimal string to convert
+	 * @param hexValue The hexadecimal string to convert
 	 * @return The resulting byte array
 	 * @throws IllegalArgumentException If the argument string is NULL or
 	 * has an
@@ -543,102 +490,102 @@ public class TextConvert {
 	 * @throws NumberFormatException    If the string contains characters that
 	 *                                  cannot be parsed into bytes
 	 */
-	public static byte[] toBytes(String sHexValue) {
-		int nLength = sHexValue.length();
+	public static byte[] toBytes(String hexValue) {
+		int length = hexValue.length();
 
-		if (sHexValue == null || (nLength & 0x1) == 1) {
+		if ((length & 0x1) == 1) {
 			throw new IllegalArgumentException(
-				"Even number of hex digits required: " + sHexValue);
+				"Even number of hex digits required: " + hexValue);
 		}
 
-		byte[] aResult = new byte[nLength / 2];
+		byte[] result = new byte[length / 2];
 
-		for (int i = 0; i < nLength; i += 2) {
-			int nUpper = Character.digit(sHexValue.charAt(i), 16);
-			int nLower = Character.digit(sHexValue.charAt(i + 1), 16);
+		for (int i = 0; i < length; i += 2) {
+			int upper = Character.digit(hexValue.charAt(i), 16);
+			int lower = Character.digit(hexValue.charAt(i + 1), 16);
 
-			if (nUpper >= 0 && nLower >= 0) {
-				aResult[i / 2] = (byte) ((nUpper << 4) + nLower);
+			if (upper >= 0 && lower >= 0) {
+				result[i / 2] = (byte) ((upper << 4) + lower);
 			}
 		}
 
-		return aResult;
+		return result;
 	}
 
 	/**
 	 * Returns the English plural of a certain name.
 	 *
-	 * @param sName The name to convert
+	 * @param name The name to convert
 	 * @return The resulting plural name
 	 */
-	public static String toPlural(String sName) {
-		sName = sName.substring(sName.lastIndexOf('.') + 1);
+	public static String toPlural(String name) {
+		name = name.substring(name.lastIndexOf('.') + 1);
 
-		if (sName.endsWith("s")) {
-			sName += "es";
-		} else if (sName.endsWith("y") && !(sName.endsWith(
-			"ay") || sName.endsWith("ey") || sName.endsWith(
-			"oy") || sName.endsWith("uy"))) {
-			sName = sName.substring(0, sName.length() - 1);
-			sName += "ies";
+		if (name.endsWith("s")) {
+			name += "es";
+		} else if (name.endsWith("y") &&
+			!(name.endsWith("ay") || name.endsWith("ey") ||
+				name.endsWith("oy") || name.endsWith("uy"))) {
+			name = name.substring(0, name.length() - 1);
+			name += "ies";
 		} else {
-			sName += "s";
+			name += "s";
 		}
 
-		return sName;
+		return name;
 	}
 
 	/**
 	 * Decodes all occurrences of the Java and JavaScript unicode escape
 	 * representation with the un-escaped token.
 	 *
-	 * @param sValue The value string to escape the occurrences of
-	 * @param sToken The separator string to escape
+	 * @param value The value string to escape the occurrences of
+	 * @param token The separator string to escape
 	 * @return The escaped string
 	 */
-	public static String unicodeDecode(String sValue, String sToken) {
-		return sValue.replaceAll(unicodeEncode(sToken), sToken);
+	public static String unicodeDecode(String value, String token) {
+		return value.replaceAll(unicodeEncode(token), token);
 	}
 
 	/**
 	 * Encodes each character of a string with it's unicode escape sequence.
 	 *
-	 * @param sValue The value to encode
+	 * @param value The value to encode
 	 * @return The encoded value
 	 */
-	public static String unicodeEncode(String sValue) {
-		StringBuilder aEncodedValue = new StringBuilder();
-		int nLength = sValue.length();
+	public static String unicodeEncode(String value) {
+		StringBuilder encodedValue = new StringBuilder();
+		int length = value.length();
 
-		for (int i = 0; i < nLength; i++) {
-			int nTokenChar = sValue.charAt(i);
+		for (int i = 0; i < length; i++) {
+			int tokenChar = value.charAt(i);
 
-			aEncodedValue.append("\\\\u");
-			aEncodedValue.append(hexChar(nTokenChar >> 12 & 0x0F));
-			aEncodedValue.append(hexChar(nTokenChar >> 8 & 0x0F));
-			aEncodedValue.append(hexChar(nTokenChar >> 4 & 0x0F));
-			aEncodedValue.append(hexChar(nTokenChar & 0x0F));
+			encodedValue.append("\\\\u");
+			encodedValue.append(hexChar(tokenChar >> 12 & 0x0F));
+			encodedValue.append(hexChar(tokenChar >> 8 & 0x0F));
+			encodedValue.append(hexChar(tokenChar >> 4 & 0x0F));
+			encodedValue.append(hexChar(tokenChar & 0x0F));
 		}
 
-		return aEncodedValue.toString();
+		return encodedValue.toString();
 	}
 
 	/**
 	 * Encodes all occurrences of a token string in a value string with their
 	 * Java and JavaScript unicode escape representation.
 	 *
-	 * @param sValue The value string to escape the occurrences of
-	 * @param sToken The separator string to escape
+	 * @param value The value string to escape the occurrences of
+	 * @param token The separator string to escape
 	 * @return The escaped string
 	 */
-	public static Object unicodeEncode(String sValue, String sToken) {
-		int nPos = sValue.indexOf(sToken);
+	public static Object unicodeEncode(String value, String token) {
+		int pos = value.indexOf(token);
 
-		if (nPos >= 0) {
-			sValue = sValue.replaceAll(sToken, unicodeEncode(sToken));
+		if (pos >= 0) {
+			value = value.replaceAll(token, unicodeEncode(token));
 		}
 
-		return sValue;
+		return value;
 	}
 
 	/**
@@ -661,37 +608,37 @@ public class TextConvert {
 	 *   <li>Foo Bar becomes FOO_BAR</li>
 	 * </ul>
 	 *
-	 * @param sIdentifier The string to create the upper case identifier from
+	 * @param identifier The string to create the upper case identifier from
 	 * @return The upper case identifier string
 	 */
-	public static String uppercaseIdentifier(String sIdentifier) {
-		String s = sIdentifier.replaceAll("\\s", "_");
+	public static String uppercaseIdentifier(String identifier) {
+		String s = identifier.replaceAll("\\s", "_");
 		StringBuilder sb = new StringBuilder(s.length() + 5);
-		int nMax = s.length() - 1;
-		int nStart = 0;
-		boolean bSkip = false;
+		int max = s.length() - 1;
+		int start = 0;
+		boolean skip = false;
 
-		for (int nPos = 0; nPos <= nMax; nPos++) {
-			char c = s.charAt(nPos);
-			boolean bUpper = Character.isUpperCase(c);
+		for (int pos = 0; pos <= max; pos++) {
+			char c = s.charAt(pos);
+			boolean upper = Character.isUpperCase(c);
 
-			if (bUpper && (nPos - nStart) > 0 && (!bSkip || (nPos < nMax && Character.isLowerCase(
-				s.charAt(nPos + 1))))) {
-				sb.append(s, nStart, nPos);
+			if (upper && (pos - start) > 0 && (!skip ||
+				(pos < max && Character.isLowerCase(s.charAt(pos + 1))))) {
+				sb.append(s, start, pos);
 
 				if (sb.charAt(sb.length() - 1) != '_') {
 					sb.append('_');
 				}
 
-				nStart = nPos;
+				start = pos;
 			}
 
 			// do not split at sequences of uppercase letters and also skip
 			// underscores or digits in such sequences
-			bSkip = (bUpper || (bSkip && (c == '_' || Character.isDigit(c))));
+			skip = (upper || (skip && (c == '_' || Character.isDigit(c))));
 		}
 
-		sb.append(s.substring(nStart));
+		sb.append(s.substring(start));
 
 		return sb.toString().toUpperCase();
 	}

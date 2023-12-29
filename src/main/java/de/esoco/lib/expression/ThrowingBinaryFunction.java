@@ -34,12 +34,12 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 	 * inner class expression would be needed because of the similar signatures
 	 * of throwing and non-throwing functions.
 	 *
-	 * @param fThrowing The throwing function expression
+	 * @param throwing The throwing function expression
 	 * @return The resulting function
 	 */
 	static <L, R, O> BiFunction<L, R, O> of(
-		ThrowingBinaryFunction<L, R, O> fThrowing) {
-		return fThrowing;
+		ThrowingBinaryFunction<L, R, O> throwing) {
+		return throwing;
 	}
 
 	/**
@@ -50,9 +50,9 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 	 * @see BiFunction#apply(Object, Object)
 	 */
 	@Override
-	default O apply(L rLeft, R rRight) {
+	default O apply(L left, R right) {
 		try {
-			return tryApply(rLeft, rRight);
+			return tryApply(left, right);
 		} catch (RuntimeException e) {
 			throw e;
 		} catch (Exception e) {
@@ -67,10 +67,10 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 	 * implementations
 	 * to throw an exception.
 	 *
-	 * @param rLeft  The left argument
-	 * @param rRight The right argument
+	 * @param left  The left argument
+	 * @param right The right argument
 	 * @return The function result
 	 * @throws Exception Any kind of exception may be thrown
 	 */
-	O tryApply(L rLeft, R rRight) throws Exception;
+	O tryApply(L left, R right) throws Exception;
 }

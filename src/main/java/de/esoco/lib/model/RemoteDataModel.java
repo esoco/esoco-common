@@ -88,10 +88,9 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 * returned by {@link DataModel#getElementCount()} or else an error will
 	 * occur.
 	 *
-	 * @param nStart    The starting index of the first element to retrieve
-	 * @param nSize     nStart The number of elements to be retrieved
-	 * @param rCallback The callback to be notified if the data is available
+	 * @param start    The starting index of the first element to retrieve
+	 * @param size     start The number of elements to be retrieved
+	 * @param callback The callback to be notified if the data is available
 	 */
-	void setWindow(int nStart, int nSize,
-		Callback<RemoteDataModel<T>> rCallback);
+	void setWindow(int start, int size, Callback<RemoteDataModel<T>> callback);
 }

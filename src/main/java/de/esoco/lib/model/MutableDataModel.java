@@ -26,8 +26,8 @@ public interface MutableDataModel<T> extends DataModel<T> {
 	/**
 	 * Sets the element at a certain index in the model.
 	 *
-	 * @param nIndex      The position index of the element to set
-	 * @param rNewElement The new element value
+	 * @param index      The position index of the element to set
+	 * @param newElement The new element value
 	 */
-	void setElement(int nIndex, T rNewElement);
+	void setElement(int index, T newElement);
 }

@@ -42,7 +42,7 @@ public class UserInterfaceProperties
 		// correctly; the exact values seems to be of no importance but it must
 		// be one from each implemented interface
 		@SuppressWarnings("unused")
-		PropertyName<?>[] rInitDummy =
+		PropertyName<?>[] initDummy =
 			new PropertyName<?>[] { ContentProperties.RESOURCE,
 				LayoutProperties.WIDTH, StateProperties.DISABLED,
 				StyleProperties.WRAP };

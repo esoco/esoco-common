@@ -34,7 +34,7 @@ public interface Selectable {
 	/**
 	 * Sets the selection state of this instance.
 	 *
-	 * @param bSelected The new selected state of this instance
+	 * @param selected The new selected state of this instance
 	 */
-	void setSelected(boolean bSelected);
+	void setSelected(boolean selected);
 }

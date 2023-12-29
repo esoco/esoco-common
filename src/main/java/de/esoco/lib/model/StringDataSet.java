@@ -28,7 +28,7 @@ public class StringDataSet extends AbstractDataSet<String> {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<String[]> aData;
+	private List<String[]> data;
 
 	/**
 	 * Creates a new instance without data. Data can then be added through the
@@ -38,10 +38,10 @@ public class StringDataSet extends AbstractDataSet<String> {
 	 * @see StringDataSet#StringDataSet(List, List, List, String, String,
 	 * String)
 	 */
-	public StringDataSet(List<String> rColumnLabels, String sRowAxisLabel,
-		String sValueAxisLabel, String sColumnAxisLabel) {
-		this(new ArrayList<String[]>(), new ArrayList<String>(), rColumnLabels,
-			sRowAxisLabel, sValueAxisLabel, sColumnAxisLabel);
+	public StringDataSet(List<String> columnLabels, String rowAxisLabel,
+		String valueAxisLabel, String columnAxisLabel) {
+		this(new ArrayList<String[]>(), new ArrayList<String>(), columnLabels,
+			rowAxisLabel, valueAxisLabel, columnAxisLabel);
 	}
 
 	/**
@@ -51,16 +51,16 @@ public class StringDataSet extends AbstractDataSet<String> {
 	 * which
 	 * in turn contain the single values, indexed by row.
 	 *
-	 * @param rData The data table
+	 * @param data The data table
 	 * @see AbstractDataSet#AbstractDataSet(List, List, String, String, String)
 	 */
-	public StringDataSet(List<String[]> rData, List<String> rRowLabels,
-		List<String> rColumnLabels, String sRowAxisLabel,
-		String sValueAxisLabel, String sColumnAxisLabel) {
-		super(rRowLabels, rColumnLabels, sRowAxisLabel, sValueAxisLabel,
-			sColumnAxisLabel);
+	public StringDataSet(List<String[]> data, List<String> rowLabels,
+		List<String> columnLabels, String rowAxisLabel, String valueAxisLabel,
+		String columnAxisLabel) {
+		super(rowLabels, columnLabels, rowAxisLabel, valueAxisLabel,
+			columnAxisLabel);
 
-		aData = rData;
+		data = data;
 	}
 
 	/**
@@ -74,23 +74,23 @@ public class StringDataSet extends AbstractDataSet<String> {
 	 */
 	@Override
 	public final int getColumnCount() {
-		return aData.size() > 0 ? aData.get(0).length : 0;
+		return !data.isEmpty() ? data.get(0).length : 0;
 	}
 
 	/**
 	 * @see DataSet#getValue(int, int)
 	 */
 	@Override
-	public final String getValue(int nRow, int nColumn) {
-		return aData.get(nRow)[nColumn];
+	public final String getValue(int row, int column) {
+		return data.get(row)[column];
 	}
 
 	/**
 	 * @see AbstractDataSet#add(int, Object[])
 	 */
 	@Override
-	protected void add(int nBeforeRow, String[] rRowData) {
-		aData.add(nBeforeRow, rRowData);
+	protected void add(int beforeRow, String[] rowData) {
+		data.add(beforeRow, rowData);
 	}
 
 	/**
@@ -98,6 +98,6 @@ public class StringDataSet extends AbstractDataSet<String> {
 	 */
 	@Override
 	protected List<?> getDataRows() {
-		return aData;
+		return data;
 	}
 }

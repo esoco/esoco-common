@@ -24,39 +24,39 @@ package de.esoco.lib.property;
 public enum Alignment implements HasCssName {
 	BEGIN("start") {
 		@Override
-		public int calcAlignedPosition(int nStart, int nFreeSpace,
-			boolean bLeftToRight) {
-			return nStart + (bLeftToRight ? 0 : nFreeSpace);
+		public int calcAlignedPosition(int start, int freeSpace,
+			boolean leftToRight) {
+			return start + (leftToRight ? 0 : freeSpace);
 		}
 	}, CENTER("center") {
 		@Override
-		public int calcAlignedPosition(int nStart, int nFreeSpace,
-			boolean bLeftToRight) {
-			return nStart + nFreeSpace / 2;
+		public int calcAlignedPosition(int start, int freeSpace,
+			boolean leftToRight) {
+			return start + freeSpace / 2;
 		}
 	}, END("end") {
 		@Override
-		public int calcAlignedPosition(int nStart, int nFreeSpace,
-			boolean bLeftToRight) {
-			return nStart + (bLeftToRight ? nFreeSpace : 0);
+		public int calcAlignedPosition(int start, int freeSpace,
+			boolean leftToRight) {
+			return start + (leftToRight ? freeSpace : 0);
 		}
 	}, FILL("stretch") {
 		@Override
-		public int calcAlignedPosition(int nStart, int nFreeSpace,
-			boolean bLeftToRight) {
-			return nStart + (bLeftToRight ? 0 : nFreeSpace);
+		public int calcAlignedPosition(int start, int freeSpace,
+			boolean leftToRight) {
+			return start + (leftToRight ? 0 : freeSpace);
 		}
 	};
 
-	private final String sCssName;
+	private final String cssName;
 
 	/**
 	 * Creates a new instance.
 	 *
-	 * @param sCssName The CSS name of this instance
+	 * @param cssName The CSS name of this instance
 	 */
-	Alignment(String sCssName) {
-		this.sCssName = sCssName;
+	Alignment(String cssName) {
+		this.cssName = cssName;
 	}
 
 	/**
@@ -84,13 +84,13 @@ public enum Alignment implements HasCssName {
 	 * based on the starting position and the remaining free space of the area
 	 * to align in.
 	 *
-	 * @param nStart       The starting coordinate of the area to align in
-	 * @param nFreeSpace   The free space available for alignment
-	 * @param bLeftToRight TRUE for left-to-right display
+	 * @param start       The starting coordinate of the area to align in
+	 * @param freeSpace   The free space available for alignment
+	 * @param leftToRight TRUE for left-to-right display
 	 * @return The calculated aligned coordinate
 	 */
-	public abstract int calcAlignedPosition(int nStart, int nFreeSpace,
-		boolean bLeftToRight);
+	public abstract int calcAlignedPosition(int start, int freeSpace,
+		boolean leftToRight);
 
 	/**
 	 * Calculates and returns a coordinate aligned according to this alignment
@@ -98,13 +98,13 @@ public enum Alignment implements HasCssName {
 	 * the
 	 * full size of the are to align the element in.
 	 *
-	 * @param nStart     The starting coordinate of the area to align in
-	 * @param nFullSize  The full size (i.e. width or height) of the area
-	 * @param nAlignSize The size of the element to align
+	 * @param start     The starting coordinate of the area to align in
+	 * @param fullSize  The full size (i.e. width or height) of the area
+	 * @param alignSize The size of the element to align
 	 * @return The calculated aligned coordinate
 	 */
-	public int calcAlignedPosition(int nStart, int nFullSize, int nAlignSize) {
-		return calcAlignedPosition(nStart, nFullSize - nAlignSize, true);
+	public int calcAlignedPosition(int start, int fullSize, int alignSize) {
+		return calcAlignedPosition(start, fullSize - alignSize, true);
 	}
 
 	/**
@@ -126,6 +126,6 @@ public enum Alignment implements HasCssName {
 	 */
 	@Override
 	public String getCssName() {
-		return sCssName;
+		return cssName;
 	}
 }

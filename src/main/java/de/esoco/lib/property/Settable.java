@@ -27,7 +27,7 @@ public interface Settable<T> {
 	/**
 	 * Sets the value of this object.
 	 *
-	 * @param rValue The new value
+	 * @param value The new value
 	 */
-	void setValue(T rValue);
+	void setValue(T value);
 }

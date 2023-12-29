@@ -29,24 +29,24 @@ public interface DataProvider<T> {
 	 * Returns a new data provider that contains a certain collection of data
 	 * objects.
 	 *
-	 * @param rData The collection of data objects
+	 * @param data The collection of data objects
 	 * @return The new data provider
 	 */
-	static <T> DataProvider<T> of(Collection<T> rData) {
-		return new ListDataProvider<>(rData);
+	static <T> DataProvider<T> of(Collection<T> data) {
+		return new ListDataProvider<>(data);
 	}
 
 	/**
 	 * Returns a subset of data objects from this provider. If less data then
 	 * requested is available the returned collection may contain less elements
-	 * then nCount. It may even be empty but it will never be NULL.
+	 * then count. It may even be empty but it will never be NULL.
 	 *
-	 * @param nStart The starting index of the first data object to return
-	 * @param nCount The number of data objects to return
+	 * @param start The starting index of the first data object to return
+	 * @param count The number of data objects to return
 	 * @return A collection of data objects (may be empty but will never be
 	 * NULL)
 	 */
-	Collection<T> getData(int nStart, int nCount);
+	Collection<T> getData(int start, int count);
 
 	/**
 	 * Returns the number of data objects that are available from this

@@ -33,11 +33,11 @@ public interface ThrowingSupplier<T> extends Supplier<T> {
 	 * inner class expression would be needed because of the similar signatures
 	 * of throwing and non-throwing suppliers.
 	 *
-	 * @param fThrowing The throwing supplier expression
+	 * @param throwing The throwing supplier expression
 	 * @return The resulting function
 	 */
-	static <T> Supplier<T> of(ThrowingSupplier<T> fThrowing) {
-		return fThrowing;
+	static <T> Supplier<T> of(ThrowingSupplier<T> throwing) {
+		return throwing;
 	}
 
 	/**

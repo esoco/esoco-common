@@ -26,7 +26,7 @@ public interface DataModelListener {
 	/**
 	 * Will be invoked after a model has been changed.
 	 *
-	 * @param rEvent The data model event
+	 * @param event The data model event
 	 */
-	void modelChanged(DataModelEvent rEvent);
+	void modelChanged(DataModelEvent event);
 }

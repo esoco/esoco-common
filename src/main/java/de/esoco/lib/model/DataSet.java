@@ -87,11 +87,11 @@ public interface DataSet<T> extends HasProperties {
 	 * Returns the label for a certain data column or NULL if no label is
 	 * available.
 	 *
-	 * @param nColumn The column
+	 * @param column The column
 	 * @return The label
 	 * @throws IndexOutOfBoundsException If the given column doesn't exist
 	 */
-	String getColumnLabel(int nColumn);
+	String getColumnLabel(int column);
 
 	/**
 	 * Returns the label for the row (z) axis of this data set. If no label is
@@ -112,22 +112,22 @@ public interface DataSet<T> extends HasProperties {
 	 * Returns the label for a certain data row or NULL if no label is
 	 * available.
 	 *
-	 * @param nRow The row
+	 * @param row The row
 	 * @return The label
 	 * @throws IndexOutOfBoundsException If the given row doesn't exist
 	 */
-	String getRowLabel(int nRow);
+	String getRowLabel(int row);
 
 	/**
 	 * Returns the value.
 	 *
-	 * @param nRow    The value
-	 * @param nColumn The value
+	 * @param row    The value
+	 * @param column The value
 	 * @return The value
 	 * @throws IndexOutOfBoundsException If the either given row or column
 	 *                                   doesn't exist
 	 */
-	T getValue(int nRow, int nColumn);
+	T getValue(int row, int column);
 
 	/**
 	 * Returns the label for the value (y) axis of this data set. If no

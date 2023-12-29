@@ -20,8 +20,8 @@ import java.util.Collection;
 
 /**
  * An interface that defines the read access to named properties. The property
- * access methods have a default value parameter that is returned if an instance
- * doesn't contain a property value for a particular property name.
+ * access methods have a defaultValue value parameter that is returned if an
+ * instance doesn't contain a property value for a particular property name.
  *
  * <p>It is up to subclasses to implement the storing of properties. This means
  * that it depends on the implementation, which datatypes are supported to be
@@ -35,20 +35,20 @@ public interface HasProperties {
 	/**
 	 * A convenience method that returns the value of a property as an int.
 	 *
-	 * @param rName    The name of the property
-	 * @param nDefault The default value if no such property exists
-	 * @return The int property value or the default value
+	 * @param name         The name of the property
+	 * @param defaultValue The defaultValue value if no such property exists
+	 * @return The int property value or the defaultValue value
 	 */
-	int getIntProperty(PropertyName<Integer> rName, int nDefault);
+	int getIntProperty(PropertyName<Integer> name, int defaultValue);
 
 	/**
 	 * Returns the value of a particular property.
 	 *
-	 * @param rName    The name of the property
-	 * @param rDefault The default value if no such property exists
-	 * @return The property value or the default value
+	 * @param name         The name of the property
+	 * @param defaultValue The defaultValue value if no such property exists
+	 * @return The property value or the defaultValue value
 	 */
-	<T> T getProperty(PropertyName<T> rName, T rDefault);
+	<T> T getProperty(PropertyName<T> name, T defaultValue);
 
 	/**
 	 * Returns the number of properties stored in this instance.
@@ -66,19 +66,19 @@ public interface HasProperties {
 	Collection<PropertyName<?>> getPropertyNames();
 
 	/**
-	 * A convenience method to query a boolean property with a default value of
-	 * FALSE.
+	 * A convenience method to query a boolean property with a defaultValue
+	 * value of FALSE.
 	 *
-	 * @param rName The name of the boolean property
+	 * @param name The name of the boolean property
 	 * @return TRUE if the property exists and is set to TRUE
 	 */
-	boolean hasFlag(PropertyName<Boolean> rName);
+	boolean hasFlag(PropertyName<Boolean> name);
 
 	/**
 	 * Checks whether this instance contains a certain property.
 	 *
-	 * @param rName The name of the property to check
+	 * @param name The name of the property to check
 	 * @return TRUE if the property exists
 	 */
-	boolean hasProperty(PropertyName<?> rName);
+	boolean hasProperty(PropertyName<?> name);
 }

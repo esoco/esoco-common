@@ -35,7 +35,7 @@ public interface DateAttribute {
 	/**
 	 * Sets the element's date.
 	 *
-	 * @param rDate The new date
+	 * @param date The new date
 	 */
-	void setDate(Date rDate);
+	void setDate(Date date);
 }

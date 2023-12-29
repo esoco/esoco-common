@@ -34,11 +34,11 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 	 * inner class expression would be needed because of the similar signatures
 	 * of throwing and non-throwing functions.
 	 *
-	 * @param fThrowing The throwing function expression
+	 * @param throwing The throwing function expression
 	 * @return The resulting function
 	 */
-	static <I, O> Function<I, O> of(ThrowingFunction<I, O> fThrowing) {
-		return fThrowing;
+	static <I, O> Function<I, O> of(ThrowingFunction<I, O> throwing) {
+		return throwing;
 	}
 
 	/**
@@ -49,9 +49,9 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 	 * @see Function#apply(Object)
 	 */
 	@Override
-	default O apply(I rInput) {
+	default O apply(I input) {
 		try {
-			return tryApply(rInput);
+			return tryApply(input);
 		} catch (RuntimeException e) {
 			throw e;
 		} catch (Exception e) {
@@ -63,9 +63,9 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 	 * Replaces {@link #apply(Object)} and allows implementations to throw an
 	 * exception.
 	 *
-	 * @param rInput The input value
+	 * @param input The input value
 	 * @return The function result
 	 * @throws Exception An exception in the case of errors
 	 */
-	O tryApply(I rInput) throws Exception;
+	O tryApply(I input) throws Exception;
 }

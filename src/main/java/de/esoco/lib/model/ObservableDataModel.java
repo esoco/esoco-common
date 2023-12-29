@@ -30,14 +30,14 @@ public interface ObservableDataModel<T> extends DataModel<T> {
 	 * Registers a data model listener that must be notified of data and
 	 * structure changes by the model implementation.
 	 *
-	 * @param rListener The listener to register
+	 * @param listener The listener to register
 	 */
-	void addModelListener(DataModelListener rListener);
+	void addModelListener(DataModelListener listener);
 
 	/**
 	 * Unregisters a data model listener from this model.
 	 *
-	 * @param rListener The listener to register
+	 * @param listener The listener to register
 	 */
-	void removeModelListener(DataModelListener rListener);
+	void removeModelListener(DataModelListener listener);
 }

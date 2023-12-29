@@ -26,7 +26,7 @@ public interface EditableState extends Editable {
 	/**
 	 * Sets the editable state of this object.
 	 *
-	 * @param bEditable TRUE to make the object editable, FALSE for readonly
+	 * @param editable TRUE to make the object editable, FALSE for readonly
 	 */
-	void setEditable(boolean bEditable);
+	void setEditable(boolean editable);
 }

@@ -28,9 +28,9 @@ public interface MutableProperties extends HasProperties {
 	/**
 	 * Convenience method to set a boolean property to FALSE.
 	 *
-	 * @param rName The name of the boolean property
+	 * @param name The name of the boolean property
 	 */
-	void clearFlag(PropertyName<Boolean> rName);
+	void clearFlag(PropertyName<Boolean> name);
 
 	/**
 	 * Removes all properties from this instance.
@@ -40,16 +40,16 @@ public interface MutableProperties extends HasProperties {
 	/**
 	 * Removes a certain property.
 	 *
-	 * @param rName The name of the property to remove
+	 * @param name The name of the property to remove
 	 */
-	void removeProperty(PropertyName<?> rName);
+	void removeProperty(PropertyName<?> name);
 
 	/**
 	 * Convenience method to set a boolean property to TRUE.
 	 *
-	 * @param rName The name of the boolean property
+	 * @param name The name of the boolean property
 	 */
-	void setFlag(PropertyName<Boolean> rName);
+	void setFlag(PropertyName<Boolean> name);
 
 	/**
 	 * Sets all properties from another properties object in this instance. The
@@ -62,32 +62,32 @@ public interface MutableProperties extends HasProperties {
 	 * of the same or a compatible type. Implementations should indicate
 	 * incompatible data formats by throwing a runtime exception.</p>
 	 *
-	 * @param rOther   The instance to copy the properties from
-	 * @param bReplace TRUE to replace existing value, FALSE to only add
-	 *                 non-existing values
+	 * @param other   The instance to copy the properties from
+	 * @param replace TRUE to replace existing value, FALSE to only add
+	 *                non-existing values
 	 */
-	void setProperties(HasProperties rOther, boolean bReplace);
+	void setProperties(HasProperties other, boolean replace);
 
 	/**
 	 * Sets a particular property. Setting a value of NULL will remove the
 	 * property from this instance.
 	 *
-	 * @param rName  The name of the property
-	 * @param rValue The value of the property (NULL removes the property)
+	 * @param name  The name of the property
+	 * @param value The value of the property (NULL removes the property)
 	 */
-	<T> void setProperty(PropertyName<T> rName, T rValue);
+	<T> void setProperty(PropertyName<T> name, T value);
 
 	/**
 	 * Convenience method to set boolean properties.
 	 *
 	 * @see #setProperty(PropertyName, boolean)
 	 */
-	void setProperty(PropertyName<Boolean> rName, boolean bValue);
+	void setProperty(PropertyName<Boolean> name, boolean value);
 
 	/**
 	 * Convenience method to set integer properties.
 	 *
 	 * @see #setProperty(PropertyName, int)
 	 */
-	void setProperty(PropertyName<Integer> rName, int nValue);
+	void setProperty(PropertyName<Integer> name, int value);
 }

@@ -25,15 +25,15 @@ public enum ContentAlignment implements HasCssName {
 	SPACE_AROUND("space-around"), SPACE_BETWEEN("space-between"),
 	SPACE_EVENLY("space-evenly");
 
-	private final String sCssName;
+	private final String cssName;
 
 	/**
 	 * Creates a new instance.
 	 *
-	 * @param sCssName The CSS name of this instance
+	 * @param cssName The CSS name of this instance
 	 */
-	ContentAlignment(String sCssName) {
-		this.sCssName = sCssName;
+	ContentAlignment(String cssName) {
+		this.cssName = cssName;
 	}
 
 	/**
@@ -41,6 +41,6 @@ public enum ContentAlignment implements HasCssName {
 	 */
 	@Override
 	public String getCssName() {
-		return sCssName;
+		return cssName;
 	}
 }

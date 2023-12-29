@@ -37,9 +37,9 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	private static final ListDataModel<?> EMPTY_MODEL =
 		new ListDataModel<Object>("EMPTY", new ArrayList<Object>());
 
-	private String sName;
+	private String name;
 
-	private List<T> rData;
+	private List<T> data;
 
 	/**
 	 * Creates a new instance from a list of data. The list will be used
@@ -48,23 +48,23 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 * the
 	 * original list should be used as the argument instead.
 	 *
-	 * @param sName The name of this model
-	 * @param rData The model's data
+	 * @param name The name of this model
+	 * @param data The model's data
 	 */
-	public ListDataModel(String sName, List<T> rData) {
-		this.sName = sName;
-		this.rData = rData;
+	public ListDataModel(String name, List<T> data) {
+		this.name = name;
+		this.data = data;
 	}
 
 	/**
 	 * Creates a new instance that contains the given elements.
 	 *
-	 * @param sName     The name of this model
-	 * @param rElements The elements this data model shall contain
+	 * @param name     The name of this model
+	 * @param elements The elements this data model shall contain
 	 */
 	@SafeVarargs
-	public ListDataModel(String sName, T... rElements) {
-		this(sName, Arrays.asList(rElements));
+	public ListDataModel(String name, T... elements) {
+		this(name, Arrays.asList(elements));
 	}
 
 	/**
@@ -87,37 +87,37 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 * @see Object#equals(Object)
 	 */
 	@Override
-	public boolean equals(Object rObj) {
-		if (this == rObj) {
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
 
-		if (rObj == null || getClass() != rObj.getClass()) {
+		if (obj == null || getClass() != obj.getClass()) {
 			return false;
 		}
 
-		ListDataModel<?> rOther = (ListDataModel<?>) rObj;
+		ListDataModel<?> other = (ListDataModel<?>) obj;
 
-		if (sName == null) {
-			if (rOther.sName != null) {
+		if (name == null) {
+			if (other.name != null) {
 				return false;
 			}
-		} else if (!sName.equals(rOther.sName)) {
+		} else if (!name.equals(other.name)) {
 			return false;
 		}
 
-		if (rData == null) {
-			return rOther.rData == null;
+		if (data == null) {
+			return other.data == null;
 		} else
-			return rData.equals(rOther.rData);
+			return data.equals(other.data);
 	}
 
 	/**
 	 * @see DataModel#getElement(int)
 	 */
 	@Override
-	public T getElement(int nIndex) {
-		return rData.get(nIndex);
+	public T getElement(int index) {
+		return data.get(index);
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 */
 	@Override
 	public int getElementCount() {
-		return rData.size();
+		return data.size();
 	}
 
 	/**
@@ -133,12 +133,12 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 */
 	@Override
 	public int hashCode() {
-		int nHashCode = 1;
+		int hashCode = 1;
 
-		nHashCode = 37 * nHashCode + ((rData == null) ? 0 : rData.hashCode());
-		nHashCode = 37 * nHashCode + ((sName == null) ? 0 : sName.hashCode());
+		hashCode = 37 * hashCode + ((data == null) ? 0 : data.hashCode());
+		hashCode = 37 * hashCode + ((name == null) ? 0 : name.hashCode());
 
-		return nHashCode;
+		return hashCode;
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 */
 	@Override
 	public Iterator<T> iterator() {
-		return rData.iterator();
+		return data.iterator();
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 */
 	@Override
 	public String toString() {
-		return sName;
+		return name;
 	}
 
 	/**
@@ -165,9 +165,9 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 	 * be used by subclasses that need to initialize the model data after the
 	 * model instance has been created.
 	 *
-	 * @param rData The model data
+	 * @param data The model data
 	 */
-	protected void setData(List<T> rData) {
-		this.rData = rData;
+	protected void setData(List<T> data) {
+		this.data = data;
 	}
 }

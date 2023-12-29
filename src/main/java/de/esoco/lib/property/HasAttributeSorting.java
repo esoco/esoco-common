@@ -32,20 +32,20 @@ public interface HasAttributeSorting<T> {
 	 * this instance. The order in which sortings are applied defines their
 	 * precedence, with the first sorting having the highest.
 	 *
-	 * @param rAttribute The binding describing the attribute
-	 * @param eDirection The sort direction or NULL to remove sorting
+	 * @param attribute The binding describing the attribute
+	 * @param direction The sort direction or NULL to remove sorting
 	 */
 	<V extends Comparable<V>> void applySorting(
-		Function<? super T, V> rAttribute, SortDirection eDirection);
+		Function<? super T, V> attribute, SortDirection direction);
 
 	/**
 	 * Returns the sort direction for a particular attribute. If no sorting has
 	 * been set for the given attribute NULL will be returned.
 	 *
-	 * @param rAttribute The attribute to query the order of
+	 * @param attribute The attribute to query the order of
 	 * @return The attribute sort direction or NULL for none
 	 */
-	SortDirection getSortDirection(Function<? super T, ?> rAttribute);
+	SortDirection getSortDirection(Function<? super T, ?> attribute);
 
 	/**
 	 * Checks if one or more attribute sort orders are active.

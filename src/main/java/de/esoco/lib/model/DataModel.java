@@ -30,11 +30,11 @@ public interface DataModel<T> extends Iterable<T> {
 	 * be in the range from 0 (zero) to {@link #getElementCount()} - 1, else an
 	 * {@link IndexOutOfBoundsException} will be thrown.
 	 *
-	 * @param nIndex The position of the element to return
+	 * @param index The position of the element to return
 	 * @return The data element at the given position
 	 * @throws IndexOutOfBoundsException If the given index is invalid
 	 */
-	T getElement(int nIndex);
+	T getElement(int index);
 
 	/**
 	 * Returns the size of this data model.

@@ -41,19 +41,19 @@ public class StringProperties extends AbstractStringProperties
 	 * object. Invokes the {@link #setProperties(HasProperties, boolean)}
 	 * method.
 	 *
-	 * @param rOther The instance to copy the properties from
+	 * @param other The instance to copy the properties from
 	 */
-	public StringProperties(HasProperties rOther) {
-		setProperties(rOther, true);
+	public StringProperties(HasProperties other) {
+		setProperties(other, true);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final void clearFlag(PropertyName<Boolean> rName) {
-		if (hasProperty(rName)) {
-			removeProperty(rName);
+	public final void clearFlag(PropertyName<Boolean> name) {
+		if (hasProperty(name)) {
+			removeProperty(name);
 		}
 	}
 
@@ -71,8 +71,8 @@ public class StringProperties extends AbstractStringProperties
 	 * @see MutableProperties#removeProperty(PropertyName)
 	 */
 	@Override
-	public void removeProperty(PropertyName<?> rName) {
-		super.removeProperty(rName);
+	public void removeProperty(PropertyName<?> name) {
+		super.removeProperty(name);
 	}
 
 	/**
@@ -81,24 +81,24 @@ public class StringProperties extends AbstractStringProperties
 	 * @see MutableProperties#setFlag(PropertyName)
 	 */
 	@Override
-	public final void setFlag(PropertyName<Boolean> rName) {
-		setProperty(rName, true);
+	public final void setFlag(PropertyName<Boolean> name) {
+		setProperty(name, true);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setProperties(HasProperties rOther, boolean bReplace) {
-		if (rOther.getPropertyCount() > 0) {
+	public void setProperties(HasProperties other, boolean replace) {
+		if (other.getPropertyCount() > 0) {
 			ensurePropertyMapExists();
 
-			for (PropertyName<?> rName : rOther.getPropertyNames()) {
-				if (bReplace || !hasProperty(rName)) {
-					Object rValue = rOther.getProperty(rName, null);
+			for (PropertyName<?> name : other.getPropertyNames()) {
+				if (replace || !hasProperty(name)) {
+					Object value = other.getProperty(name, null);
 
-					if (rValue != null) {
-						getPropertyMap().put(rName, convertValue(rValue));
+					if (value != null) {
+						getPropertyMap().put(name, convertValue(value));
 					}
 				}
 			}
@@ -109,24 +109,23 @@ public class StringProperties extends AbstractStringProperties
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> void setProperty(PropertyName<T> rName, T rValue) {
-		super.setProperty(rName, rValue);
+	public <T> void setProperty(PropertyName<T> name, T value) {
+		super.setProperty(name, value);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final void setProperty(PropertyName<Boolean> rName,
-		boolean bValue) {
-		setProperty(rName, Boolean.valueOf(bValue));
+	public final void setProperty(PropertyName<Boolean> name, boolean value) {
+		setProperty(name, Boolean.valueOf(value));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final void setProperty(PropertyName<Integer> rName, int nValue) {
-		setProperty(rName, Integer.valueOf(nValue));
+	public final void setProperty(PropertyName<Integer> name, int value) {
+		setProperty(name, Integer.valueOf(value));
 	}
 }

@@ -18,7 +18,6 @@ package de.esoco.lib.math;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
 import java.util.Objects;
 
 /**
@@ -36,23 +35,23 @@ public class MathUtil {
 		KILO(3), HECTO(2), DECA(1), DECI(-1), CENTI(-2), MILLI(-3), MICRO(-6),
 		NANO(-9), PICO(-12), FEMTO(-15), ATTO(-18), ZEPTO(-21), YOCTO(-24);
 
-		private final int nExponent;
+		private final int exponent;
 
-		private final BigDecimal aDecimalValue;
+		private final BigDecimal decimalValue;
 
 		/**
 		 * Creates a new instance.
 		 *
-		 * @param nExponent the value of the exponent
+		 * @param exponent the value of the exponent
 		 */
-		MetricPrefix(int nExponent) {
-			this.nExponent = nExponent;
+		MetricPrefix(int exponent) {
+			this.exponent = exponent;
 
-			if (nExponent > 0) {
-				aDecimalValue = BigDecimal.TEN.pow(nExponent);
+			if (exponent > 0) {
+				decimalValue = BigDecimal.TEN.pow(exponent);
 			} else {
-				aDecimalValue =
-					BigDecimal.ONE.divide(BigDecimal.TEN.pow(-nExponent));
+				decimalValue =
+					BigDecimal.ONE.divide(BigDecimal.TEN.pow(-exponent));
 			}
 		}
 
@@ -63,7 +62,7 @@ public class MathUtil {
 		 * @return The decimal value of this prefix
 		 */
 		public BigDecimal decimal() {
-			return aDecimalValue;
+			return decimalValue;
 		}
 
 		/**
@@ -72,7 +71,7 @@ public class MathUtil {
 		 * @return The decimal exponent
 		 */
 		public int exponent() {
-			return nExponent;
+			return exponent;
 		}
 	}
 
@@ -101,11 +100,11 @@ public class MathUtil {
 	 * Calculates the square root of a {@link BigDecimal} value with a maximum
 	 * scale of 16 digits.
 	 *
-	 * @param dValue The value to calculate the square root of
+	 * @param value The value to calculate the square root of
 	 * @return A big decimal containing the square root value
 	 */
-	public static BigDecimal sqrt(BigDecimal dValue) {
-		return sqrt(dValue, 16);
+	public static BigDecimal sqrt(BigDecimal value) {
+		return sqrt(value, 16);
 	}
 
 	/**
@@ -116,30 +115,30 @@ public class MathUtil {
 	 * .com/questions/13649703/square-root-of-bigdecimal-in-java"> this
 	 * StackOverflow question</a> for additional infos.
 	 *
-	 * @param dValue The value to calculate the square root of
-	 * @param nScale The maximum scale of the result
+	 * @param value The value to calculate the square root of
+	 * @param scale The maximum scale of the result
 	 * @return A big decimal containing the square root value
 	 */
-	public static BigDecimal sqrt(BigDecimal dValue, int nScale) {
-		Objects.requireNonNull(dValue);
+	public static BigDecimal sqrt(BigDecimal value, int scale) {
+		Objects.requireNonNull(value);
 
-		if (dValue.signum() == -1) {
+		if (value.signum() == -1) {
 			throw new IllegalArgumentException("Value must not be negative");
 		}
 
 		// increase scale by 1 for better rounding precision in last digit
-		nScale++;
+		scale++;
 
 		BigDecimal x0 = BigDecimal.ZERO;
-		BigDecimal x1 = dValue.divide(TWO, nScale, RoundingMode.FLOOR);
+		BigDecimal x1 = value.divide(TWO, scale, RoundingMode.FLOOR);
 
 		while (x0.compareTo(x1) != 0) {
 			x0 = x1;
-			x1 = dValue.divide(x0, nScale, RoundingMode.HALF_UP);
+			x1 = value.divide(x0, scale, RoundingMode.HALF_UP);
 			x1 = x1.add(x0);
-			x1 = x1.divide(TWO, nScale, RoundingMode.HALF_UP);
+			x1 = x1.divide(TWO, scale, RoundingMode.HALF_UP);
 		}
 
-		return x1.setScale(nScale - 1, RoundingMode.HALF_UP);
+		return x1.setScale(scale - 1, RoundingMode.HALF_UP);
 	}
 }

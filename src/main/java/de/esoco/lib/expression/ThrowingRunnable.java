@@ -31,11 +31,11 @@ public interface ThrowingRunnable extends Runnable {
 	 * inner class expression would be needed because of the similar signatures
 	 * of the throwing and non-throwing runnable interfaces
 	 *
-	 * @param fThrowing The throwing runnable expression
+	 * @param throwing The throwing runnable expression
 	 * @return The resulting function
 	 */
-	static Runnable of(ThrowingRunnable fThrowing) {
-		return fThrowing;
+	static Runnable of(ThrowingRunnable throwing) {
+		return throwing;
 	}
 
 	/**

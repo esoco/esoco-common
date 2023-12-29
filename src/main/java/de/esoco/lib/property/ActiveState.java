@@ -33,7 +33,7 @@ public interface ActiveState {
 	/**
 	 * Sets the active state of this instance.
 	 *
-	 * @param bActive The new active state
+	 * @param active The new active state
 	 */
-	void setActive(boolean bActive);
+	void setActive(boolean active);
 }

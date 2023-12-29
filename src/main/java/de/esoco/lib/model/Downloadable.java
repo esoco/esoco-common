@@ -33,10 +33,10 @@ public interface Downloadable {
 	 * be the number of bytes of a binary download or the number of rows of
 	 * table data.
 	 *
-	 * @param sFileName The file name to assign to the download
-	 * @param nMaxSize  The maximum download size
-	 * @param rCallback The callback to be notified of the download reference
+	 * @param fileName The file name to assign to the download
+	 * @param maxSize  The maximum download size
+	 * @param callback The callback to be notified of the download reference
 	 */
-	void prepareDownload(String sFileName, int nMaxSize,
-		Callback<String> rCallback);
+	void prepareDownload(String fileName, int maxSize,
+		Callback<String> callback);
 }

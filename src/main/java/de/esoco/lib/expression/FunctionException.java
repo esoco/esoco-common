@@ -32,20 +32,20 @@ public class FunctionException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	private final Object fCausingFunction;
+	private final Object causingFunction;
 
 	/**
 	 * Creates a new instance. The function argument is of type object so that
 	 * it can contain the different function types of Java 8.
 	 *
-	 * @param fCausingFunction The function that caused this exception
-	 * @param eCause           The checked exception that caused this function
-	 *                         exception
+	 * @param causingFunction The function that caused this exception
+	 * @param cause           The checked exception that caused this function
+	 *                        exception
 	 */
-	public FunctionException(Object fCausingFunction, Throwable eCause) {
-		super(eCause.getMessage(), eCause);
+	public FunctionException(Object causingFunction, Throwable cause) {
+		super(cause.getMessage(), cause);
 
-		this.fCausingFunction = fCausingFunction;
+		this.causingFunction = causingFunction;
 	}
 
 	/**
@@ -54,6 +54,6 @@ public class FunctionException extends RuntimeException {
 	 * @return The causing function
 	 */
 	public final Object getCausingFunction() {
-		return fCausingFunction;
+		return causingFunction;
 	}
 }

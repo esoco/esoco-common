@@ -33,7 +33,7 @@ public interface TitleAttribute {
 	/**
 	 * Sets the element's title.
 	 *
-	 * @param sTitle The new title
+	 * @param title The new title
 	 */
-	void setTitle(String sTitle);
+	void setTitle(String title);
 }

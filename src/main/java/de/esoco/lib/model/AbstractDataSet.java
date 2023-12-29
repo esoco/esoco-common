@@ -33,15 +33,15 @@ public abstract class AbstractDataSet<T> extends StringProperties
 
 	private static final long serialVersionUID = 1L;
 
-	private List<String> aRowLabels;
+	private List<String> rowLabels;
 
-	private List<String> aColumnLabels;
+	private List<String> columnLabels;
 
-	private String sRowAxisLabel;
+	private String rowAxisLabel;
 
-	private String sValueAxisLabel;
+	private String valueAxisLabel;
 
-	private String sColumnAxisLabel;
+	private String columnAxisLabel;
 
 	/**
 	 * Default constructor for GWT serialization.
@@ -53,46 +53,46 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * Creates a new instance with certain data. The list arguments will be
 	 * stored directly and will not be copied.
 	 *
-	 * @param rRowLabels       A list of row labels
-	 * @param rColumnLabels    A list of column labels
-	 * @param sRowAxisLabel    The label for the row (x) axis or NULL
-	 * @param sValueAxisLabel  The label for the value (y) axis or NULL
-	 * @param sColumnAxisLabel The label for the column (z) axis or NULL
+	 * @param rowLabels       A list of row labels
+	 * @param columnLabels    A list of column labels
+	 * @param rowAxisLabel    The label for the row (x) axis or NULL
+	 * @param valueAxisLabel  The label for the value (y) axis or NULL
+	 * @param columnAxisLabel The label for the column (z) axis or NULL
 	 */
-	protected AbstractDataSet(List<String> rRowLabels,
-		List<String> rColumnLabels, String sRowAxisLabel,
-		String sValueAxisLabel, String sColumnAxisLabel) {
-		this.aRowLabels = rRowLabels;
-		this.aColumnLabels = rColumnLabels;
-		this.sRowAxisLabel = sRowAxisLabel;
-		this.sValueAxisLabel = sValueAxisLabel;
-		this.sColumnAxisLabel = sColumnAxisLabel;
+	protected AbstractDataSet(List<String> rowLabels,
+		List<String> columnLabels,
+		String rowAxisLabel, String valueAxisLabel, String columnAxisLabel) {
+		this.rowLabels = rowLabels;
+		this.columnLabels = columnLabels;
+		this.rowAxisLabel = rowAxisLabel;
+		this.valueAxisLabel = valueAxisLabel;
+		this.columnAxisLabel = columnAxisLabel;
 	}
 
 	/**
 	 * Adds a new row to this data set.
 	 *
-	 * @param sLabel   The label for the row or NULL for none
-	 * @param rRowData The row data values
+	 * @param label   The label for the row or NULL for none
+	 * @param rowData The row data values
 	 */
 	@SuppressWarnings("unchecked")
-	public void addRow(String sLabel, T... rRowData) {
-		addRow(getRowCount(), sLabel, rRowData);
+	public void addRow(String label, T... rowData) {
+		addRow(getRowCount(), label, rowData);
 	}
 
 	/**
 	 * Inserts a new column into this data set.
 	 *
-	 * @param nBeforeRow The index of the column before which to insert the new
-	 *                   one
-	 * @param sLabel     The label for the row or NULL for none
-	 * @param rRowData   The row data values
+	 * @param beforeRow The index of the column before which to insert the new
+	 *                  one
+	 * @param label     The label for the row or NULL for none
+	 * @param rowData   The row data values
 	 * @throws IndexOutOfBoundsException If the given column doesn't exist
 	 */
 	@SuppressWarnings("unchecked")
-	public void addRow(int nBeforeRow, String sLabel, T... rRowData) {
-		aRowLabels.add(nBeforeRow, sLabel);
-		add(nBeforeRow, rRowData);
+	public void addRow(int beforeRow, String label, T... rowData) {
+		rowLabels.add(beforeRow, label);
+		add(beforeRow, rowData);
 	}
 
 	/**
@@ -100,15 +100,15 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 */
 	@Override
 	public final String getColumnAxisLabel() {
-		return sColumnAxisLabel;
+		return columnAxisLabel;
 	}
 
 	/**
 	 * @see DataSet#getColumnLabel(int)
 	 */
 	@Override
-	public final String getColumnLabel(int nColumn) {
-		return getLabel(nColumn, getColumnCount(), aColumnLabels);
+	public final String getColumnLabel(int column) {
+		return getLabel(column, getColumnCount(), columnLabels);
 	}
 
 	/**
@@ -116,7 +116,7 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 */
 	@Override
 	public final String getRowAxisLabel() {
-		return sRowAxisLabel;
+		return rowAxisLabel;
 	}
 
 	/**
@@ -131,8 +131,8 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * @see DataSet#getRowLabel(int)
 	 */
 	@Override
-	public final String getRowLabel(int nRow) {
-		return getLabel(nRow, getRowCount(), aRowLabels);
+	public final String getRowLabel(int row) {
+		return getLabel(row, getRowCount(), rowLabels);
 	}
 
 	/**
@@ -140,18 +140,18 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 */
 	@Override
 	public final String getValueAxisLabel() {
-		return sValueAxisLabel;
+		return valueAxisLabel;
 	}
 
 	/**
 	 * Removes a certain column from this data set.
 	 *
-	 * @param nColumn The column to remove
+	 * @param column The column to remove
 	 * @throws IndexOutOfBoundsException If the given column doesn't exist
 	 */
-	public void removeRow(int nColumn) {
-		aColumnLabels.remove(nColumn);
-		getDataRows().remove(nColumn);
+	public void removeRow(int column) {
+		columnLabels.remove(column);
+		getDataRows().remove(column);
 	}
 
 	/**
@@ -159,17 +159,17 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + aRowLabels;
+		return getClass().getSimpleName() + rowLabels;
 	}
 
 	/**
 	 * Must be implemented by subclasses to support the dynamic addition of
 	 * data.
 	 *
-	 * @param nBeforeRow The row before which to insert the data
-	 * @param rRowData   The new row data
+	 * @param beforeRow The row before which to insert the data
+	 * @param rowData   The new row data
 	 */
-	protected abstract void add(int nBeforeRow, T[] rRowData);
+	protected abstract void add(int beforeRow, T[] rowData);
 
 	/**
 	 * Must be implemented by subclasses to return list of data rows.
@@ -183,24 +183,24 @@ public abstract class AbstractDataSet<T> extends StringProperties
 	 * Returns
 	 * NULL if an index is used that for which no label is stored.
 	 *
-	 * @param nIndex  The label index
-	 * @param nMax    The maximum value for the index
-	 * @param rLabels The list of label strings
+	 * @param index  The label index
+	 * @param max    The maximum value for the index
+	 * @param labels The list of label strings
 	 * @return The label string or NULL for none
 	 * @throws IndexOutOfBoundsException If the index is invalid
 	 */
-	private final String getLabel(int nIndex, int nMax, List<String> rLabels) {
-		String sLabel = null;
+	private final String getLabel(int index, int max, List<String> labels) {
+		String label = null;
 
-		if (nIndex > nMax) {
+		if (index > max) {
 			throw new IndexOutOfBoundsException(
-				"Invalid index: " + nIndex + " > " + nMax);
+				"Invalid index: " + index + " > " + max);
 		}
 
-		if (rLabels != null && nIndex < rLabels.size()) {
-			sLabel = rLabels.get(nIndex);
+		if (labels != null && index < labels.size()) {
+			label = labels.get(index);
 		}
 
-		return sLabel;
+		return label;
 	}
 }
