@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * The possible input modes for interactive input elements. If set and supported
  * by the data element UI input will be sent to the server based on the input
  * mode value. If it is {@link #ACTION} the input will be sent each time a
@@ -26,4 +26,4 @@ package de.esoco.lib.property;
  * each input event (e.g. the change of a selection) will be sent back to the
  * server. The mode {@link #BOTH} combines action and continuous events.
  */
-public enum InteractiveInputMode { ACTION, CONTINUOUS, BOTH }
+public enum InteractiveInputMode {ACTION, CONTINUOUS, BOTH}

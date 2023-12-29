@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Enumeration of the layout types for UI element containers. The layout defines
  * how elements will be arranged in the generated user interface. Not all
  * layouts may be supported by an implementation but in that case it should fall

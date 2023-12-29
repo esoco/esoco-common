@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of the possible styles for displaying UI check boxes. Not all
  * styles may be supported by an UI implementation in which case it should
  * revert to a reasonable default if possible.
@@ -27,4 +27,4 @@ package de.esoco.lib.property;
  *   <li>{@link #SWITCH}: Display as a on/off switch.</li>
  * </ul>
  */
-public enum CheckBoxStyle { DEFAULT, SOLID, SWITCH }
+public enum CheckBoxStyle {DEFAULT, SOLID, SWITCH}

@@ -16,9 +16,10 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface for objects that provide the possibility to select values.
- * Multi-selection can be represented by using a collection as the generic type.
+ * Multi-selection can be represented by using a collection as the generic
+ * type.
  *
  * <p>Other than {@link SingleSelection} and {@link MultiSelection} this
  * interface is based on the value datatype, not on selection indexes. If
@@ -28,16 +29,14 @@ package de.esoco.lib.property;
  */
 public interface HasSelection<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the selection.
 	 *
 	 * @return The selection (will be NULL for no selection)
 	 */
 	T getSelection();
 
-	/***************************************
+	/**
 	 * Sets the selection.
 	 *
 	 * @param rNewSelection The new selection or NULL for none

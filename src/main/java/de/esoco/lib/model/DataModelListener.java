@@ -16,16 +16,14 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * Listener interface for changes in data models.
  *
  * @author eso
  */
 public interface DataModelListener {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Will be invoked after a model has been changed.
 	 *
 	 * @param rEvent The data model event

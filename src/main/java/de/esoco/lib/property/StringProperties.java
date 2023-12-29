@@ -18,29 +18,25 @@ package de.esoco.lib.property;
 
 import java.io.Serializable;
 
-
-/********************************************************************
+/**
  * This class implements a property mapping that encodes all property values as
- * strings. See the implemented interface {@link MutableProperties} for details.
+ * strings. See the implemented interface {@link MutableProperties} for
+ * details.
  *
  * @author eso
  */
 public class StringProperties extends AbstractStringProperties
 	implements MutableProperties, Serializable {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 */
 	public StringProperties() {
 	}
 
-	/***************************************
+	/**
 	 * Copy constructor that creates a new instance from another properties
 	 * object. Invokes the {@link #setProperties(HasProperties, boolean)}
 	 * method.
@@ -51,9 +47,7 @@ public class StringProperties extends AbstractStringProperties
 		setProperties(rOther, true);
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -63,7 +57,7 @@ public class StringProperties extends AbstractStringProperties
 		}
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -71,7 +65,7 @@ public class StringProperties extends AbstractStringProperties
 		setPropertyMap(null);
 	}
 
-	/***************************************
+	/**
 	 * Overridden as public.
 	 *
 	 * @see MutableProperties#removeProperty(PropertyName)
@@ -81,7 +75,7 @@ public class StringProperties extends AbstractStringProperties
 		super.removeProperty(rName);
 	}
 
-	/***************************************
+	/**
 	 * Overridden as public.
 	 *
 	 * @see MutableProperties#setFlag(PropertyName)
@@ -91,7 +85,7 @@ public class StringProperties extends AbstractStringProperties
 		setProperty(rName, true);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -111,7 +105,7 @@ public class StringProperties extends AbstractStringProperties
 		}
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -119,15 +113,16 @@ public class StringProperties extends AbstractStringProperties
 		super.setProperty(rName, rValue);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final void setProperty(PropertyName<Boolean> rName, boolean bValue) {
+	public final void setProperty(PropertyName<Boolean> rName,
+		boolean bValue) {
 		setProperty(rName, Boolean.valueOf(bValue));
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override

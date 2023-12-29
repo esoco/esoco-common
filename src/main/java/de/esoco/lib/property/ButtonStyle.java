@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of the possible styles for displaying UI buttons. Not all
  * styles may be supported by an UI implementation in which case it should
  * revert to a reasonable default if possible.
@@ -30,4 +30,4 @@ package de.esoco.lib.property;
  *   <li>{@link #OUTLINE}: A button outline without fill.</li>
  * </ul>
  */
-public enum ButtonStyle { DEFAULT, FLAT, FLOAT, LINK, ICON, OUTLINE }
+public enum ButtonStyle {DEFAULT, FLAT, FLOAT, LINK, ICON, OUTLINE}

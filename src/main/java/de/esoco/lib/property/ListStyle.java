@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * The style in which list elements should be displayed. The following values
  * are available:
  *
@@ -32,4 +32,4 @@ package de.esoco.lib.property;
  *     cause an action when selected (e.g. buttons or hyperlinks).</li>
  * </ul>
  */
-public enum ListStyle { LIST, DROP_DOWN, EDITABLE, DISCRETE, IMMEDIATE }
+public enum ListStyle {LIST, DROP_DOWN, EDITABLE, DISCRETE, IMMEDIATE}

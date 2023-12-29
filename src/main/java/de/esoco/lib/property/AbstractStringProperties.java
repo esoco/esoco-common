@@ -35,36 +35,39 @@ import static de.esoco.lib.text.TextConvert.DEFAULT_KEY_VALUE_SEPARATOR;
 import static de.esoco.lib.text.TextConvert.unicodeDecode;
 import static de.esoco.lib.text.TextConvert.unicodeEncode;
 
-/********************************************************************
+/**
  * A base class for classes that provide access to string-based properties. A
  * directly usable implementation that provides mutable properties can be found
  * in the class {@link StringProperties}.
  *
  * <p>
- * The internal property map of the base implementation will initially be
- * NULL to save space for empty property objects. Subclasses must handle the
- * case of a NULL map returned by {@link #getPropertyMap()} appropriately and
- * may explicitly set the map to NULL (through {@link #setPropertyMap(Map)} to
+ * The internal property map of the base implementation will initially be NULL
+ * to save space for empty property objects. Subclasses must handle the case of
+ * a NULL map returned by {@link #getPropertyMap()} appropriately and may
+ * explicitly set the map to NULL (through {@link #setPropertyMap(Map)} to
  * indicate an empty map. The method {@link #ensurePropertyMapExists()} can be
  * invoked to force the creation of a property map before accessing it.
  * </p>
  *
  * @author eso
  */
-public abstract class AbstractStringProperties implements HasProperties,
-		Serializable {
+public abstract class AbstractStringProperties
+	implements HasProperties, Serializable {
 
-	// ~ Static fields/initializers ---------------------------------------------
+	// ~ Static fields/initializers
+	// ---------------------------------------------
 
 	private static final long serialVersionUID = 1L;
 
-	// ~ Instance fields --------------------------------------------------------
+	// ~ Instance fields
+	// --------------------------------------------------------
 
 	private Map<PropertyName<?>, String> aPropertyMap = null;
 
-	// ~ Methods ----------------------------------------------------------------
+	// ~ Methods
+	// ----------------------------------------------------------------
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -73,11 +76,11 @@ public abstract class AbstractStringProperties implements HasProperties,
 			return true;
 		}
 
-		return rObj != null && getClass() == rObj.getClass() &&
-				hasEqualProperties((AbstractStringProperties) rObj);
+		return rObj != null && getClass() == rObj.getClass() && hasEqualProperties(
+			(AbstractStringProperties) rObj);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -87,7 +90,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return sProperty != null ? Integer.parseInt(sProperty) : nDefault;
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -96,16 +99,14 @@ public abstract class AbstractStringProperties implements HasProperties,
 		T rValue = rDefault;
 
 		if (sRawValue != null) {
-			rValue = parseValue(
-					sRawValue,
-					rName.getDatatype(),
-					rName.getElementDatatypes());
+			rValue = parseValue(sRawValue, rName.getDatatype(),
+				rName.getElementDatatypes());
 		}
 
 		return rValue;
 	}
 
-	/***************************************
+	/**
 	 * @see MutableProperties#getPropertyCount()
 	 */
 	@Override
@@ -113,27 +114,27 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return aPropertyMap != null ? aPropertyMap.size() : 0;
 	}
 
-	/***************************************
+	/**
 	 * @see MutableProperties#getPropertyNames()
 	 */
 	@Override
 	public Collection<PropertyName<?>> getPropertyNames() {
-		return aPropertyMap != null ? aPropertyMap.keySet()
-				: Collections.emptySet();
+		return aPropertyMap != null ?
+		       aPropertyMap.keySet() :
+		       Collections.emptySet();
 	}
 
-	/***************************************
+	/**
 	 * Checks whether this instance has equal properties as another instance.
 	 *
 	 * @param rOther The other properties object
-	 *
 	 * @return TRUE if the properties are equal
 	 */
 	public boolean hasEqualProperties(AbstractStringProperties rOther) {
 		return Objects.equals(aPropertyMap, rOther.aPropertyMap);
 	}
 
-	/***************************************
+	/**
 	 * @see MutableProperties#hasFlag(PropertyName)
 	 */
 	@Override
@@ -143,15 +144,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return sProperty != null && Boolean.parseBoolean(sProperty);
 	}
 
-	/***************************************
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		return 37 + ((aPropertyMap == null) ? 0 : aPropertyMap.hashCode());
-	}
-
-	/***************************************
+	/**
 	 * @see MutableProperties#hasProperty(PropertyName)
 	 */
 	@Override
@@ -159,20 +152,28 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return aPropertyMap != null && aPropertyMap.containsKey(rName);
 	}
 
-	/***************************************
+	/**
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return 37 + ((aPropertyMap == null) ? 0 : aPropertyMap.hashCode());
+	}
+
+	/**
 	 * @see Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() +
-				(aPropertyMap != null ? aPropertyMap : "[]");
+		return getClass().getSimpleName() + (aPropertyMap != null ?
+		                                     aPropertyMap :
+		                                     "[]");
 	}
 
-	/***************************************
+	/**
 	 * Converts a collection into a string to be stored in this instance.
 	 *
 	 * @param rCollection The collection to convert
-	 *
 	 * @return The resulting string
 	 */
 	protected String convertCollection(Collection<?> rCollection) {
@@ -182,7 +183,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 			String sElement = convertValue(rElement);
 
 			aResult.append(
-					unicodeEncode(sElement, DEFAULT_COLLECTION_SEPARATOR));
+				unicodeEncode(sElement, DEFAULT_COLLECTION_SEPARATOR));
 			aResult.append(DEFAULT_COLLECTION_SEPARATOR);
 		}
 
@@ -195,11 +196,10 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return aResult.toString();
 	}
 
-	/***************************************
+	/**
 	 * Converts a map into a string to be stored in this instance.
 	 *
 	 * @param rMap The map to convert
-	 *
 	 * @return The resulting string
 	 */
 	protected String convertMap(Map<?, ?> rMap) {
@@ -210,28 +210,28 @@ public abstract class AbstractStringProperties implements HasProperties,
 				String sKey = convertValue(rEntry.getKey());
 				String sValue = convertValue(rEntry.getValue());
 
-				assert sKey.indexOf(DEFAULT_COLLECTION_SEPARATOR) < 0 &&
-						sKey.indexOf(DEFAULT_KEY_VALUE_SEPARATOR) < 0;
+				assert sKey.indexOf(
+					DEFAULT_COLLECTION_SEPARATOR) < 0 && sKey.indexOf(
+					DEFAULT_KEY_VALUE_SEPARATOR) < 0;
 
 				aResult.append(sKey);
 				aResult.append(DEFAULT_KEY_VALUE_SEPARATOR);
 				aResult.append(
-						unicodeEncode(sValue, DEFAULT_COLLECTION_SEPARATOR));
+					unicodeEncode(sValue, DEFAULT_COLLECTION_SEPARATOR));
 				aResult.append(DEFAULT_COLLECTION_SEPARATOR);
 			}
 
 			aResult.setLength(
-					aResult.length() - DEFAULT_COLLECTION_SEPARATOR.length());
+				aResult.length() - DEFAULT_COLLECTION_SEPARATOR.length());
 		}
 
 		return aResult.toString();
 	}
 
-	/***************************************
+	/**
 	 * Converts a value into a string to be stored in this instance.
 	 *
 	 * @param rValue The value to convert
-	 *
 	 * @return The resulting string
 	 */
 	protected String convertValue(Object rValue) {
@@ -250,7 +250,7 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return sValue;
 	}
 
-	/***************************************
+	/**
 	 * Creates the property map if it doesn't exist yet.
 	 */
 	protected final void ensurePropertyMapExists() {
@@ -259,13 +259,12 @@ public abstract class AbstractStringProperties implements HasProperties,
 		}
 	}
 
-	/***************************************
+	/**
 	 * Finds a certain value by it's string representation.
 	 *
 	 * @param rValues The values to search
 	 * @param sName   The value's name (i.e. Object{@link #toString()} result)
 	 *                to search for
-	 *
 	 * @return The matching value or NULL if not found
 	 */
 	protected <T> T findValue(T[] rValues, String sName) {
@@ -278,8 +277,9 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return null;
 	}
 
-	/***************************************
-	 * Returns the property map of this instance. The returned value may be NULL
+	/**
+	 * Returns the property map of this instance. The returned value may be
+	 * NULL
 	 * if no properties have been set in this instance. Invoking method must
 	 * handle this case accordingly.
 	 *
@@ -289,20 +289,17 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return aPropertyMap;
 	}
 
-	/***************************************
+	/**
 	 * Parses the elements of a collection from the raw property string.
 	 *
 	 * @param rCollectionType The type of collection to parse
 	 * @param sRawElements    The raw string containing all list elements
 	 * @param rElementType    The datatype of the collection elements
-	 *
 	 * @return A new collection of the given type containing the parsed entries
 	 */
 	@SuppressWarnings("unchecked")
 	protected <T, C extends Collection<T>> C parseCollection(
-			Class<C> rCollectionType,
-			String sRawElements,
-			Class<T> rElementType) {
+		Class<C> rCollectionType, String sRawElements, Class<T> rElementType) {
 		String[] rElements = sRawElements.split(DEFAULT_COLLECTION_SEPARATOR);
 		C rCollection;
 
@@ -313,7 +310,8 @@ public abstract class AbstractStringProperties implements HasProperties,
 		}
 
 		for (int i = 0; i < rElements.length; i++) {
-			String sValue = unicodeDecode(rElements[i], DEFAULT_COLLECTION_SEPARATOR);
+			String sValue =
+				unicodeDecode(rElements[i], DEFAULT_COLLECTION_SEPARATOR);
 
 			rCollection.add(parseValue(sValue, rElementType, null));
 		}
@@ -321,18 +319,16 @@ public abstract class AbstractStringProperties implements HasProperties,
 		return rCollection;
 	}
 
-	/***************************************
+	/**
 	 * Parses the entries of a map from a raw string.
 	 *
 	 * @param sRawEntries The raw string containing all map entries
 	 * @param rKeyType    The key datatype
 	 * @param rValueType  The value datatype
-	 *
 	 * @return A new map containing the parsed entries
 	 */
-	protected <K, V> Map<K, V> parseMap(String sRawEntries,
-			Class<K> rKeyType,
-			Class<V> rValueType) {
+	protected <K, V> Map<K, V> parseMap(String sRawEntries, Class<K> rKeyType,
+		Class<V> rValueType) {
 		Map<K, V> aMap = new HashMap<>();
 		String[] rEntries = sRawEntries.split(DEFAULT_COLLECTION_SEPARATOR);
 
@@ -343,33 +339,31 @@ public abstract class AbstractStringProperties implements HasProperties,
 				String sKey = sEntry.substring(0, nKeyEnd);
 
 				String sValue = sEntry.substring(
-						nKeyEnd + DEFAULT_KEY_VALUE_SEPARATOR.length());
+					nKeyEnd + DEFAULT_KEY_VALUE_SEPARATOR.length());
 
 				sValue = unicodeDecode(sValue, DEFAULT_COLLECTION_SEPARATOR);
 
-				aMap.put(
-						parseValue(sKey, rKeyType, null),
-						parseValue(sValue, rValueType, null));
+				aMap.put(parseValue(sKey, rKeyType, null),
+					parseValue(sValue, rValueType, null));
 			}
 		}
 
 		return aMap;
 	}
 
-	/***************************************
+	/**
 	 * Parses a raw string value into a certain datatype if possible.
 	 *
 	 * @param sRawValue     The raw string value
 	 * @param rDatatype     The target datatype
-	 * @param rElementTypes The element datatype(s) for collection properties
-	 *                      or NULL for none
-	 *
+	 * @param rElementTypes The element datatype(s) for collection
+	 *                         properties or
+	 *                      NULL for none
 	 * @return The parsed valued object
 	 */
 	@SuppressWarnings("unchecked")
-	protected <T, E> T parseValue(String sRawValue,
-			Class<T> rDatatype,
-			Class<?>[] rElementTypes) {
+	protected <T, E> T parseValue(String sRawValue, Class<T> rDatatype,
+		Class<?>[] rElementTypes) {
 		T rValue = null;
 
 		if (rDatatype == String.class) {
@@ -389,20 +383,20 @@ public abstract class AbstractStringProperties implements HasProperties,
 		} else if (rDatatype == List.class || rDatatype == Set.class) {
 			Class<E> rElementType = (Class<E>) rElementTypes[0];
 
-			rValue = (T) parseCollection(
-					(Class<? extends Collection<E>>) rDatatype,
-					sRawValue,
-					rElementType);
+			rValue =
+				(T) parseCollection((Class<? extends Collection<E>>) rDatatype,
+					sRawValue, rElementType);
 		} else if (rDatatype == Map.class) {
-			rValue = (T) parseMap(sRawValue, rElementTypes[0], rElementTypes[1]);
+			rValue =
+				(T) parseMap(sRawValue, rElementTypes[0], rElementTypes[1]);
 		}
 
 		return rValue;
 	}
 
-	/***************************************
-	 * Default implementation of {@link
-	 * MutableProperties#removeProperty(PropertyName)}.
+	/**
+	 * Default implementation of
+	 * {@link MutableProperties#removeProperty(PropertyName)}.
 	 *
 	 * @param rName The property to remove
 	 */
@@ -418,9 +412,9 @@ public abstract class AbstractStringProperties implements HasProperties,
 		}
 	}
 
-	/***************************************
-	 * Default implementation of {@link
-	 * MutableProperties#setProperty(PropertyName, Object)}. Creates the
+	/**
+	 * Default implementation of
+	 * {@link MutableProperties#setProperty(PropertyName, Object)}. Creates the
 	 * property map if necessary and removes properties if the value is NULL.
 	 *
 	 * @param rName  The property to set or remove
@@ -435,21 +429,20 @@ public abstract class AbstractStringProperties implements HasProperties,
 		}
 	}
 
-	/***************************************
+	/**
 	 * Sets the property map of this instance.
 	 *
 	 * @param rProperties The new property map
 	 */
 	protected final void setPropertyMap(
-			Map<PropertyName<?>, String> rProperties) {
+		Map<PropertyName<?>, String> rProperties) {
 		aPropertyMap = rProperties;
 	}
 
-	/***************************************
+	/**
 	 * Returns the unparsed (raw) value of a property as a string.
 	 *
 	 * @param rName The name of the property
-	 *
 	 * @return The string property value or the default value
 	 */
 	private final String getRawProperty(PropertyName<?> rName) {

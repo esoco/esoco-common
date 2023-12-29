@@ -18,24 +18,21 @@ package de.esoco.lib.property;
 
 import java.util.Date;
 
-
-/********************************************************************
+/**
  * Property interface for elements that implement a {@link Date} attribute.
  *
  * @author eso
  */
 public interface DateAttribute {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the element's date.
 	 *
 	 * @return The date
 	 */
 	Date getDate();
 
-	/***************************************
+	/**
 	 * Sets the element's date.
 	 *
 	 * @param rDate The new date

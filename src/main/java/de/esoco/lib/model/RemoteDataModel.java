@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * An extended data model interface that is optimized for remote access. Because
  * the communication with remote systems can be affected by delays or
  * interruptions a remote data model provides additional methods to support
@@ -51,9 +51,7 @@ package de.esoco.lib.model;
  */
 public interface RemoteDataModel<T> extends DataModel<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the number of elements that are effectively available after a
 	 * previous call to the method {@link #setWindow(int, int, Callback)}. The
 	 * number returned may be lower than the window size of this model if the
@@ -63,7 +61,7 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 */
 	int getAvailableElementCount();
 
-	/***************************************
+	/**
 	 * Returns the size of the window to the remote data that is read by a call
 	 * to {@link #setWindow(int, int, Callback)}.
 	 *
@@ -71,7 +69,7 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 */
 	int getWindowSize();
 
-	/***************************************
+	/**
 	 * Returns the starting index of the window to the remote data that is read
 	 * by a call to {@link #setWindow(int, int, Callback)}.
 	 *
@@ -79,10 +77,12 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 */
 	int getWindowStart();
 
-	/***************************************
-	 * Sets the window into remote data for retrieval through the methods of the
+	/**
+	 * Sets the window into remote data for retrieval through the methods of
+	 * the
 	 * base interface {@link DataModel}. This call is performed asynchronously
-	 * and will notify the given {@link Callback} object when the preparation of
+	 * and will notify the given {@link Callback} object when the
+	 * preparation of
 	 * the data window has finished (either successful or with an error). The
 	 * given starting index must be inside the full size of the data model as
 	 * returned by {@link DataModel#getElementCount()} or else an error will
@@ -92,7 +92,6 @@ public interface RemoteDataModel<T> extends DataModel<T> {
 	 * @param nSize     nStart The number of elements to be retrieved
 	 * @param rCallback The callback to be notified if the data is available
 	 */
-	void setWindow(int						   nStart,
-						  int						   nSize,
-						  Callback<RemoteDataModel<T>> rCallback);
+	void setWindow(int nStart, int nSize,
+		Callback<RemoteDataModel<T>> rCallback);
 }

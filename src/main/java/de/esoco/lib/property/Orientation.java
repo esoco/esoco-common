@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of vertical and horizontal orientations.
  */
-public enum Orientation { HORIZONTAL, VERTICAL }
+public enum Orientation {HORIZONTAL, VERTICAL}

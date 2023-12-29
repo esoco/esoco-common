@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface for objects that have a unique identifier of type T that can be
  * queried with the method {@link #getId()}.
  *
@@ -24,9 +24,7 @@ package de.esoco.lib.property;
  */
 public interface HasId<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the identifier of this instance.
 	 *
 	 * @return The instance identifier

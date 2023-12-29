@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Enumeration of the possible directions for the sorting of multiple elements.
  */
-public enum SortDirection { ASCENDING, DESCENDING }
+public enum SortDirection {ASCENDING, DESCENDING}

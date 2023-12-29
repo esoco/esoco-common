@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * A callback interface for asynchronous (remote) method executions. It provides
  * two methods: {@link #onSuccess(Object)} will be called if the execution was
  * successful while {@link #onError(Throwable)} will be invoked if an exception
@@ -27,16 +27,14 @@ package de.esoco.lib.model;
  */
 public interface Callback<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Will be invoked if the asynchronous execution caused an error.
 	 *
 	 * @param eError The exception that signaled the error
 	 */
 	void onError(Throwable eError);
 
-	/***************************************
+	/**
 	 * Will be invoked if the asynchronous execution was successful.
 	 *
 	 * @param rResult The result of the execution

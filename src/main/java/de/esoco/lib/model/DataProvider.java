@@ -18,45 +18,39 @@ package de.esoco.lib.model;
 
 import java.util.Collection;
 
-
-/********************************************************************
+/**
  * An interface for objects that provide access to indexed data.
  *
  * @author eso
  */
 public interface DataProvider<T> {
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns a new data provider that contains a certain collection of data
 	 * objects.
 	 *
-	 * @param  rData The collection of data objects
-	 *
+	 * @param rData The collection of data objects
 	 * @return The new data provider
 	 */
 	static <T> DataProvider<T> of(Collection<T> rData) {
 		return new ListDataProvider<>(rData);
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns a subset of data objects from this provider. If less data then
 	 * requested is available the returned collection may contain less elements
 	 * then nCount. It may even be empty but it will never be NULL.
 	 *
-	 * @param  nStart The starting index of the first data object to return
-	 * @param  nCount The number of data objects to return
-	 *
+	 * @param nStart The starting index of the first data object to return
+	 * @param nCount The number of data objects to return
 	 * @return A collection of data objects (may be empty but will never be
-	 *         NULL)
+	 * NULL)
 	 */
 	Collection<T> getData(int nStart, int nCount);
 
-	/***************************************
-	 * Returns the number of data objects that are available from this provider.
+	/**
+	 * Returns the number of data objects that are available from this
+	 * provider.
 	 *
 	 * @return The count of available data objects
 	 */

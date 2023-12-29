@@ -21,8 +21,7 @@ import java.util.Map;
 import static de.esoco.lib.property.PropertyName.newIntegerName;
 import static de.esoco.lib.property.PropertyName.newMapName;
 
-
-/********************************************************************
+/**
  * Contains property name declarations for the access of persistent data
  * storages.
  *
@@ -30,19 +29,20 @@ import static de.esoco.lib.property.PropertyName.newMapName;
  */
 public interface StorageProperties {
 
-	//~ Static fields/initializers ---------------------------------------------
+	/**
+	 * Integer: the starting index of a storage query.
+	 */
+	PropertyName<Integer> QUERY_START = newIntegerName("QUERY_START");
 
-	/** Integer: the starting index of a storage query. */
-	PropertyName<Integer> QUERY_START =
-		newIntegerName("QUERY_START");
+	/**
+	 * Integer: the maximum result size of a storage query.
+	 */
+	PropertyName<Integer> QUERY_LIMIT = newIntegerName("QUERY_LIMIT");
 
-	/** Integer: the maximum result size of a storage query. */
-	PropertyName<Integer> QUERY_LIMIT =
-		newIntegerName("QUERY_LIMIT");
-
-	/** Integer: the maximum depth of a hierarchical storage query. */
-	PropertyName<Integer> QUERY_DEPTH =
-		newIntegerName("QUERY_DEPTH");
+	/**
+	 * Integer: the maximum depth of a hierarchical storage query.
+	 */
+	PropertyName<Integer> QUERY_DEPTH = newIntegerName("QUERY_DEPTH");
 
 	/**
 	 * Map&lt;String, String&gt;: a mapping from storage fields to filter
@@ -58,9 +58,7 @@ public interface StorageProperties {
 	PropertyName<Map<String, SortDirection>> QUERY_SORT =
 		newMapName("QUERY_SORT", String.class, SortDirection.class);
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * This method should be invoked to initialize the property name constants
 	 * for de-serialization.
 	 */

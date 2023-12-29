@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * A property interface for objects that provide a text representation for use
  * in CSS.
  *
@@ -24,9 +24,7 @@ package de.esoco.lib.property;
  */
 public interface HasCssName {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Gets the CSS name of this object.
 	 *
 	 * @return The CSS name string

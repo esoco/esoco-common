@@ -18,8 +18,7 @@ package de.esoco.lib.model;
 
 import java.util.Map;
 
-
-/********************************************************************
+/**
  * An extended data model that allows to filter the contained data elements by
  * setting filter constraints for element fields.
  *
@@ -27,19 +26,18 @@ import java.util.Map;
  */
 public interface FilterableDataModel<T> extends DataModel<T> {
 
-	//~ Static fields/initializers ---------------------------------------------
-
-	/** A constant to allow searching for NULL values. */
+	/**
+	 * A constant to allow searching for NULL values.
+	 */
 	String NULL_CONSTRAINT_VALUE = "NULL!";
 
 	/**
-	 * The possible comparison characters for constraints (\u2260,\u2264,\u2265:
-	 * ≠,≤,≥). '~' means "almost equal" and is used for fuzzy searches. '#'
-	 * means "element of' and can be followed by a comma-separated list of
+	 * The possible comparison characters for constraints (\u2260,\u2264,
+	 * \u2265: ≠,≤,≥). '~' means "almost equal" and is used for fuzzy searches.
+	 * '#' means "element of' and can be followed by a comma-separated list of
 	 * values.
 	 */
-	String CONSTRAINT_COMPARISON_CHARS =
-		"=\u2260~#<>\u2264\u2265";
+	String CONSTRAINT_COMPARISON_CHARS = "=\u2260~#<>\u2264\u2265";
 
 	/**
 	 * The prefix character for constraints that should be combined with a
@@ -67,21 +65,20 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 */
 	String CONSTRAINT_SEPARATOR_ESCAPE = "<°>";
 
-	/** The date format pattern string for date values in search constraints. */
+	/**
+	 * The date format pattern string for date values in search constraints.
+	 */
 	String CONSTRAINT_DATE_FORMAT_PATTERN = "yyyy-MM-dd";
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the filter for a certain field of the data in this model.
 	 *
-	 * @param  sFieldId The ID of the field to get the filter for
-	 *
+	 * @param sFieldId The ID of the field to get the filter for
 	 * @return The filter string for the given field or NULL for none
 	 */
 	String getFilter(String sFieldId);
 
-	/***************************************
+	/**
 	 * Returns all filters that are set in this data model as a mapping from
 	 * field IDs to filter strings. A caller should assume that it is not
 	 * allowed to modify the returned map unless stated otherwise by the
@@ -91,23 +88,23 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 */
 	Map<String, String> getFilters();
 
-	/***************************************
+	/**
 	 * Removes all filters from this model.
 	 */
 	void removeAllFilters();
 
-	/***************************************
+	/**
 	 * Sets the filter for a certain field. If the filter value is NULL an
 	 * existing constraint for the given field will be removed. The filter will
 	 * be concatenated with a logical AND expression if the first character is
-	 * {@link #CONSTRAINT_AND_PREFIX} and with a logical OR if it is {@link
-	 * #CONSTRAINT_OR_PREFIX}.
+	 * {@link #CONSTRAINT_AND_PREFIX} and with a logical OR if it is
+	 * {@link #CONSTRAINT_OR_PREFIX}.
 	 *
 	 * <p>It is possible to set multiple filter constraints on a field by
 	 * concatenating them with a {@link #CONSTRAINT_SEPARATOR} in between. Any
 	 * occurrences of the separator string in a constraint must therefore be
-	 * escaped by replacing them with the {@link
-	 * #CONSTRAINT_SEPARATOR_ESCAPE}.</p>
+	 * escaped by replacing them with the
+	 * {@link #CONSTRAINT_SEPARATOR_ESCAPE}.</p>
 	 *
 	 * <p>If the first character of the filter is one of the characters in the
 	 * constant {@link #CONSTRAINT_COMPARISON_CHARS} the corresponding
@@ -125,7 +122,8 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 *     value</li>
 	 *   <li>&gt;[Value]: Matches all values that are greater than the given
 	 *     value</li>
-	 *   <li>[Value]*: Matches any string that starts with the given value.</li>
+	 *   <li>[Value]*: Matches any string that starts with the given value
+	 *   .</li>
 	 *   <li>*[Value]: Matches any string that ends with the given value.</li>
 	 *   <li>*[Value]*: Matches any string that contains the given value.</li>
 	 *   <li>[Va]?[ue]: The question mark is a wildcard for an arbitrary
@@ -139,7 +137,7 @@ public interface FilterableDataModel<T> extends DataModel<T> {
 	 */
 	void setFilter(String sFieldId, String sFilter);
 
-	/***************************************
+	/**
 	 * Sets the filters of this model. This will remove any existing filters.
 	 *
 	 * @param rFilters A mapping from field ID strings to filter strings

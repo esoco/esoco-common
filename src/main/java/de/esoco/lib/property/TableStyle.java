@@ -16,11 +16,13 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Styles for the rendering of tabular data.
  */
 public enum TableStyle {
-	/** Displays all data rows at once. */
+	/**
+	 * Displays all data rows at once.
+	 */
 	FIXED,
 
 	/**
@@ -28,6 +30,8 @@ public enum TableStyle {
 	 */
 	PAGED,
 
-	/** Automatically loads and displays table data as needed. */
+	/**
+	 * Automatically loads and displays table data as needed.
+	 */
 	AUTO_LOAD
 }

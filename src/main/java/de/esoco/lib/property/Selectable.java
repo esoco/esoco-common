@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Interface for objects that can be selected and allow to query the actual
  * selection state.
  *
@@ -24,16 +24,14 @@ package de.esoco.lib.property;
  */
 public interface Selectable {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the selection state of this instance.
 	 *
 	 * @return TRUE if this instance is selected
 	 */
 	boolean isSelected();
 
-	/***************************************
+	/**
 	 * Sets the selection state of this instance.
 	 *
 	 * @param bSelected The new selected state of this instance

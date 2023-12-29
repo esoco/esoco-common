@@ -25,8 +25,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-
-/********************************************************************
+/**
  * A base class for {@link DataProvider} implementations that handles the
  * management of filter and sort constraints.
  *
@@ -35,23 +34,19 @@ import java.util.function.Predicate;
 public abstract class AbstractDataProvider<T>
 	implements DataProvider<T>, HasAttributeFilter<T>, HasAttributeSorting<T> {
 
-	//~ Instance fields --------------------------------------------------------
-
 	private final Map<Function<? super T, ?>, Predicate<?>> aAttributeFilters =
 		new LinkedHashMap<>();
 
-	private final Map<Function<? super T, ? extends Comparable<?>>, SortDirection> aAttributeSortings =
-		new LinkedHashMap<>();
+	private final Map<Function<? super T, ? extends Comparable<?>>,
+		SortDirection>
+		aAttributeSortings = new LinkedHashMap<>();
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <V> void applyFilter(
-		Function<? super T, V> rAttribute,
-		Predicate<? super V>   pCriteria) {
+	public <V> void applyFilter(Function<? super T, V> rAttribute,
+		Predicate<? super V> pCriteria) {
 		if (pCriteria == null) {
 			aAttributeFilters.remove(rAttribute);
 		} else {
@@ -61,13 +56,12 @@ public abstract class AbstractDataProvider<T>
 		updateFilter(aAttributeFilters);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public <V extends Comparable<V>> void applySorting(
-		Function<? super T, V> rAttribute,
-		SortDirection		   eDirection) {
+		Function<? super T, V> rAttribute, SortDirection eDirection) {
 		if (eDirection == null) {
 			aAttributeSortings.remove(rAttribute);
 		} else {
@@ -77,7 +71,7 @@ public abstract class AbstractDataProvider<T>
 		updateSorting(aAttributeSortings);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -87,7 +81,7 @@ public abstract class AbstractDataProvider<T>
 		return (Predicate<? super V>) aAttributeFilters.get(rAttribute);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -95,7 +89,7 @@ public abstract class AbstractDataProvider<T>
 		return aAttributeSortings.get(rAttribute);
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -103,7 +97,7 @@ public abstract class AbstractDataProvider<T>
 		return !aAttributeFilters.isEmpty();
 	}
 
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -111,7 +105,7 @@ public abstract class AbstractDataProvider<T>
 		return !aAttributeSortings.isEmpty();
 	}
 
-	/***************************************
+	/**
 	 * Removes all attribute filters.
 	 */
 	public void removeAllFilters() {
@@ -119,7 +113,7 @@ public abstract class AbstractDataProvider<T>
 		updateFilter(aAttributeFilters);
 	}
 
-	/***************************************
+	/**
 	 * Removes all attribute sortings.
 	 */
 	public void removeAllSortings() {
@@ -127,8 +121,28 @@ public abstract class AbstractDataProvider<T>
 		updateSorting(aAttributeSortings);
 	}
 
-	/***************************************
-	 * Will be called when the filter has changed and needs to be updated by the
+	/**
+	 * Returns the attribute filters.
+	 *
+	 * @return A mapping from attributes to filter predicates
+	 */
+	protected final Map<Function<? super T, ?>, Predicate<?>> getAttributeFilters() {
+		return aAttributeFilters;
+	}
+
+	/**
+	 * Returns the attribute order criteria.
+	 *
+	 * @return A mapping from attributes to order directions
+	 */
+	protected final Map<Function<? super T, ? extends Comparable<?>>,
+		SortDirection> getAttributeSortings() {
+		return aAttributeSortings;
+	}
+
+	/**
+	 * Will be called when the filter has changed and needs to be updated by
+	 * the
 	 * implementation.
 	 *
 	 * @param rFilters The updated filters
@@ -136,7 +150,7 @@ public abstract class AbstractDataProvider<T>
 	protected abstract void updateFilter(
 		Map<Function<? super T, ?>, Predicate<?>> rFilters);
 
-	/***************************************
+	/**
 	 * Will be called when the sorting has changed and needs to be updated by
 	 * the implementation.
 	 *
@@ -144,24 +158,4 @@ public abstract class AbstractDataProvider<T>
 	 */
 	protected abstract void updateSorting(
 		Map<Function<? super T, ? extends Comparable<?>>, SortDirection> rSortings);
-
-	/***************************************
-	 * Returns the attribute filters.
-	 *
-	 * @return A mapping from attributes to filter predicates
-	 */
-	protected final Map<Function<? super T, ?>, Predicate<?>>
-	getAttributeFilters() {
-		return aAttributeFilters;
-	}
-
-	/***************************************
-	 * Returns the attribute order criteria.
-	 *
-	 * @return A mapping from attributes to order directions
-	 */
-	protected final Map<Function<? super T, ? extends Comparable<?>>,
-						SortDirection> getAttributeSortings() {
-		return aAttributeSortings;
-	}
 }

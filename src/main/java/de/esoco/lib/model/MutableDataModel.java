@@ -16,16 +16,14 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * A data model extension that allows the modification of data elements.
  *
  * @author eso
  */
 public interface MutableDataModel<T> extends DataModel<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Sets the element at a certain index in the model.
 	 *
 	 * @param nIndex      The position index of the element to set

@@ -18,8 +18,7 @@ package de.esoco.lib.property;
 
 import java.util.Collection;
 
-
-/********************************************************************
+/**
  * An interface for objects that can have an arbitrary number of flags set on
  * them. The flags can be of arbitrary types (typically strings or enums) and
  * their existence can be queries with {@link #hasFlag(Object)}.
@@ -28,9 +27,7 @@ import java.util.Collection;
  */
 public interface Flags<F> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the flags of this object. The returned collection may be empty
 	 * but will never be NULL.
 	 *
@@ -38,11 +35,10 @@ public interface Flags<F> {
 	 */
 	Collection<F> getFlags();
 
-	/***************************************
+	/**
 	 * Checks whether a certain flag is set in this object.
 	 *
-	 * @param  rFlag The flag to check
-	 *
+	 * @param rFlag The flag to check
 	 * @return TRUE if the flag is set
 	 */
 	boolean hasFlag(F rFlag);

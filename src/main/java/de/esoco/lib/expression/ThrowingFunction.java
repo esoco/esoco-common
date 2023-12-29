@@ -18,7 +18,7 @@ package de.esoco.lib.expression;
 
 import java.util.function.Function;
 
-/********************************************************************
+/**
  * A sub-interface that allows implementations to throw checked exceptions. If
  * an exception occurs it will be converted into a runtime exception of the type
  * {@link FunctionException}.
@@ -28,25 +28,20 @@ import java.util.function.Function;
 @FunctionalInterface
 public interface ThrowingFunction<I, O> extends Function<I, O> {
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Factory method that allows to declare a throwing function from a lambda
 	 * expression that is mapped to a regular function. Otherwise an anonymous
 	 * inner class expression would be needed because of the similar signatures
 	 * of throwing and non-throwing functions.
 	 *
-	 * @param  fThrowing The throwing function expression
-	 *
+	 * @param fThrowing The throwing function expression
 	 * @return The resulting function
 	 */
 	static <I, O> Function<I, O> of(ThrowingFunction<I, O> fThrowing) {
 		return fThrowing;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Overridden to forward the invocation to the actual function
 	 * implementation in {@link #tryApply(Object)} and to convert occurring
 	 * exceptions into {@link FunctionException}.
@@ -64,14 +59,12 @@ public interface ThrowingFunction<I, O> extends Function<I, O> {
 		}
 	}
 
-	/***************************************
+	/**
 	 * Replaces {@link #apply(Object)} and allows implementations to throw an
 	 * exception.
 	 *
-	 * @param  rInput The input value
-	 *
+	 * @param rInput The input value
 	 * @return The function result
-	 *
 	 * @throws Exception An exception in the case of errors
 	 */
 	O tryApply(I rInput) throws Exception;

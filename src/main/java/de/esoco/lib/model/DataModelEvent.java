@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * An event class that describes change events in a data model. There are
  * different types of events that are defined by the Type enumeration. For each
  * type, the element index of an event defines the data element that is affected
@@ -27,26 +27,22 @@ package de.esoco.lib.model;
  * elements are affected.
  *
  * @author eso
- * @see    de.esoco.lib.model.DataModelListener
+ * @see de.esoco.lib.model.DataModelListener
  */
 public class DataModelEvent {
 
-	//~ Enums ------------------------------------------------------------------
-
-	/********************************************************************
+	/**
 	 * The possible event types.
 	 */
-	public enum Type { ELEMENT_MODIFIED, ELEMENT_ADDED, ELEMENT_REMOVED }
+	public enum Type {ELEMENT_MODIFIED, ELEMENT_ADDED, ELEMENT_REMOVED}
 
-	//~ Instance fields --------------------------------------------------------
+	private final Type eType;
 
-	private final Type		   eType;
-	private final int		   nElementIndex;
+	private final int nElementIndex;
+
 	private final DataModel<?> rSource;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates and initializes a new instance.
 	 *
 	 * @param rSource       The data model that caused the event
@@ -54,15 +50,14 @@ public class DataModelEvent {
 	 * @param nElementIndex The index of the changed model element or -1 if it
 	 *                      could not be detected
 	 */
-	public DataModelEvent(DataModel<?> rSource, Type eType, int nElementIndex) {
-		this.rSource	   = rSource;
-		this.eType		   = eType;
+	public DataModelEvent(DataModel<?> rSource, Type eType,
+		int nElementIndex) {
+		this.rSource = rSource;
+		this.eType = eType;
 		this.nElementIndex = nElementIndex;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the index of the changed element.
 	 *
 	 * @return The element index
@@ -71,7 +66,7 @@ public class DataModelEvent {
 		return nElementIndex;
 	}
 
-	/***************************************
+	/**
 	 * Returns the event type.
 	 *
 	 * @return The event type
@@ -80,7 +75,7 @@ public class DataModelEvent {
 		return eType;
 	}
 
-	/***************************************
+	/**
 	 * Returns the data element from which the event originates.
 	 *
 	 * @return The source data model

@@ -16,16 +16,14 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for elements that can either be editable or readonly.
  *
  * @author eso
  */
 public interface Editable {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the editable state of this object.
 	 *
 	 * @return TRUE if the object can be edited, FALSE if it is readonly

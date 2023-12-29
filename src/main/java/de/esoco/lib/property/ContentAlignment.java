@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An extended enumeration of alignment constants (see also {@link Alignment})
  * as used in layout mechanisms like CSS grid.
  */
@@ -25,13 +25,9 @@ public enum ContentAlignment implements HasCssName {
 	SPACE_AROUND("space-around"), SPACE_BETWEEN("space-between"),
 	SPACE_EVENLY("space-evenly");
 
-	//~ Instance fields --------------------------------------------------------
-
 	private final String sCssName;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 *
 	 * @param sCssName The CSS name of this instance
@@ -40,9 +36,7 @@ public enum ContentAlignment implements HasCssName {
 		this.sCssName = sCssName;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override

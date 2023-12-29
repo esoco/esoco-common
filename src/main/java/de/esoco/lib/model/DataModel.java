@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * Interface for data models that represent an indexed set of data elements. The
  * base type of the contained data elements is defined by the generic parameter
  * T.
@@ -25,22 +25,18 @@ package de.esoco.lib.model;
  */
 public interface DataModel<T> extends Iterable<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the data element at a certain position. The position index must
 	 * be in the range from 0 (zero) to {@link #getElementCount()} - 1, else an
 	 * {@link IndexOutOfBoundsException} will be thrown.
 	 *
-	 * @param  nIndex The position of the element to return
-	 *
+	 * @param nIndex The position of the element to return
 	 * @return The data element at the given position
-	 *
 	 * @throws IndexOutOfBoundsException If the given index is invalid
 	 */
 	T getElement(int nIndex);
 
-	/***************************************
+	/**
 	 * Returns the size of this data model.
 	 *
 	 * @return The number of data elements this model contains

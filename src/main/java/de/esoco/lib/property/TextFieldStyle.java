@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of the possible styles for UI text input boxes. Not all styles
  * may be supported by an UI implementation in which case it should revert to a
  * reasonable default if possible.
@@ -28,4 +28,4 @@ package de.esoco.lib.property;
  *     the search.</li>
  * </ul>
  */
-public enum TextFieldStyle { DEFAULT, PASSWORD, SEARCH }
+public enum TextFieldStyle {DEFAULT, PASSWORD, SEARCH}

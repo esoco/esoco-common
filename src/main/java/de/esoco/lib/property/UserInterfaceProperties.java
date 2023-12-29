@@ -16,40 +16,35 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * A collection of {@link PropertyName} constants for typical user interface
  * properties.
  *
  * @author eso
  */
-public class UserInterfaceProperties implements ContentProperties,
-												LayoutProperties,
-												StateProperties,
-												StyleProperties {
+public class UserInterfaceProperties
+	implements ContentProperties, LayoutProperties, StateProperties,
+	StyleProperties {
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Private, only static use.
 	 */
 	private UserInterfaceProperties() {
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * This method should be invoked to initialize the property name constants
 	 * for de-serialization.
 	 */
 	public static void init() {
-		// necessary for GWT because otherwise the constants are not initialized
+		// necessary for GWT because otherwise the constants are not
+		// initialized
 		// correctly; the exact values seems to be of no importance but it must
 		// be one from each implemented interface
 		@SuppressWarnings("unused")
 		PropertyName<?>[] rInitDummy =
-			new PropertyName<?>[] {
-				ContentProperties.RESOURCE, LayoutProperties.WIDTH,
-				StateProperties.DISABLED, StyleProperties.WRAP
-			};
+			new PropertyName<?>[] { ContentProperties.RESOURCE,
+				LayoutProperties.WIDTH, StateProperties.DISABLED,
+				StyleProperties.WRAP };
 	}
 }

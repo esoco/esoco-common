@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * an interface that defines hierarchical data structures with a parent-child
  * relationship. It is an extension of the {@link Iterable} interface which
  * provides access to the children of a hierarchical element.
@@ -25,9 +25,7 @@ package de.esoco.lib.property;
  */
 public interface Hierarchical<T> extends Iterable<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the parent element of this item or NULL if this is the root
 	 * element.
 	 *

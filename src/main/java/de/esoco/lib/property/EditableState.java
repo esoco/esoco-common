@@ -16,16 +16,14 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for elements that have a modifiable enabled state.
  *
  * @author eso
  */
 public interface EditableState extends Editable {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Sets the editable state of this object.
 	 *
 	 * @param bEditable TRUE to make the object editable, FALSE for readonly

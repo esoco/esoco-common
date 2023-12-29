@@ -23,8 +23,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-
-/********************************************************************
+/**
  * A simple data model implementation that is based on a list. A name can be
  * assigned to instances so that they can be rendered directly in certain user
  * interface elements.
@@ -33,24 +32,20 @@ import java.util.List;
  */
 public class ListDataModel<T> implements DataModel<T>, Serializable {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
 
 	private static final ListDataModel<?> EMPTY_MODEL =
 		new ListDataModel<Object>("EMPTY", new ArrayList<Object>());
 
-	//~ Instance fields --------------------------------------------------------
+	private String sName;
 
-	private String  sName;
 	private List<T> rData;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance from a list of data. The list will be used
 	 * directly (i.e. without copying their contents) so that changes to the
-	 * list data will modify the model too. If this is not desired a copy of the
+	 * list data will modify the model too. If this is not desired a copy of
+	 * the
 	 * original list should be used as the argument instead.
 	 *
 	 * @param sName The name of this model
@@ -61,7 +56,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		this.rData = rData;
 	}
 
-	/***************************************
+	/**
 	 * Creates a new instance that contains the given elements.
 	 *
 	 * @param sName     The name of this model
@@ -72,15 +67,13 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		this(sName, Arrays.asList(rElements));
 	}
 
-	/***************************************
+	/**
 	 * Default constructor for serialization.
 	 */
 	ListDataModel() {
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns a singleton instance of an empty model.
 	 *
 	 * @return An empty singleton instance
@@ -90,9 +83,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		return (ListDataModel<T>) EMPTY_MODEL;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * @see Object#equals(Object)
 	 */
 	@Override
@@ -121,7 +112,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 			return rData.equals(rOther.rData);
 	}
 
-	/***************************************
+	/**
 	 * @see DataModel#getElement(int)
 	 */
 	@Override
@@ -129,7 +120,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		return rData.get(nIndex);
 	}
 
-	/***************************************
+	/**
 	 * @see DataModel#getElementCount()
 	 */
 	@Override
@@ -137,7 +128,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		return rData.size();
 	}
 
-	/***************************************
+	/**
 	 * @see Object#hashCode()
 	 */
 	@Override
@@ -150,7 +141,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		return nHashCode;
 	}
 
-	/***************************************
+	/**
 	 * @see Iterable#iterator()
 	 */
 	@Override
@@ -158,7 +149,7 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		return rData.iterator();
 	}
 
-	/***************************************
+	/**
 	 * Returns the name of this model instance.
 	 *
 	 * @return The model name
@@ -168,8 +159,9 @@ public class ListDataModel<T> implements DataModel<T>, Serializable {
 		return sName;
 	}
 
-	/***************************************
-	 * A method for subclasses to set the data of this model. This method should
+	/**
+	 * A method for subclasses to set the data of this model. This method
+	 * should
 	 * be used by subclasses that need to initialize the model data after the
 	 * model instance has been created.
 	 *

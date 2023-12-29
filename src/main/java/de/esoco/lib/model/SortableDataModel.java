@@ -18,8 +18,7 @@ package de.esoco.lib.model;
 
 import de.esoco.lib.property.SortDirection;
 
-
-/********************************************************************
+/**
  * An extended data model that allows to sort the contained data elements by
  * their fields.
  *
@@ -27,23 +26,21 @@ import de.esoco.lib.property.SortDirection;
  */
 public interface SortableDataModel<T> extends DataModel<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
-	 * Returns the sort direction for a certain field of the data in this model.
+	/**
+	 * Returns the sort direction for a certain field of the data in this
+	 * model.
 	 *
-	 * @param  sFieldId The ID of the field to return the sort mode for
-	 *
+	 * @param sFieldId The ID of the field to return the sort mode for
 	 * @return The sort mode for the given field or NULL for none
 	 */
 	SortDirection getSortDirection(String sFieldId);
 
-	/***************************************
+	/**
 	 * Removes all sort criteria from this model.
 	 */
 	void removeSorting();
 
-	/***************************************
+	/**
 	 * Sets the sort direction for a certain field of the data in this model.
 	 *
 	 * @param sFieldId The ID of the field to set the sort mode for

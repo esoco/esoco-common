@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for indexed composite objects that provide a way to select
  * a single element in their structure.
  *
@@ -24,9 +24,7 @@ package de.esoco.lib.property;
  */
 public interface SingleSelection {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the index of the currently selected element. If the object also
 	 * supports multiple selections (see {@link MultiSelection}) this method
 	 * returns the index of the first selected item.
@@ -35,7 +33,7 @@ public interface SingleSelection {
 	 */
 	int getSelectionIndex();
 
-	/***************************************
+	/**
 	 * Sets the index of the currently selected element. For implementations
 	 * that allow complete deselection an index value of -1 will deselect all
 	 * elements.

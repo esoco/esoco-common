@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of the possible styles for displaying UI navigation menus. Not
  * all styles may be supported by an UI implementation in which case it should
  * revert to a reasonable default if possible. Typically for the types other

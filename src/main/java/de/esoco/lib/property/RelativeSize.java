@@ -16,30 +16,28 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of relative sizes that can be applied to UI elements.
  */
 public enum RelativeSize {
 	FULL, HALF, THIRD, QUARTER, FIFTH, SIXTH, SEVENTH, EIGHTH, NINETH, TENTH,
-	TWO_THIRDS(2, 3), THREE_QUARTERS(3, 4), TWO_FIFTH(2, 5), THREE_FIFTHS(3, 5),
+	TWO_THIRDS(2, 3), THREE_QUARTERS(3, 4), TWO_FIFTH(2, 5), THREE_FIFTHS(3,
+		5),
 	FOUR_FIFTH(4, 5), FIVE_SIXTH(5, 6);
 
-	//~ Instance fields --------------------------------------------------------
-
 	private final int nMultiplier;
+
 	private final int nDivider;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 */
 	RelativeSize() {
 		nMultiplier = 1;
-		nDivider    = ordinal() + 1;
+		nDivider = ordinal() + 1;
 	}
 
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 *
 	 * @param nMultiplier The multiplier for size calculations
@@ -47,16 +45,13 @@ public enum RelativeSize {
 	 */
 	RelativeSize(int nMultiplier, int nDivider) {
 		this.nMultiplier = nMultiplier;
-		this.nDivider    = nDivider;
+		this.nDivider = nDivider;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Calculates an absolute size value from a full size for this instance.
 	 *
-	 * @param  nFullSize The full size to calculate the size from
-	 *
+	 * @param nFullSize The full size to calculate the size from
 	 * @return The calculated absolute size value
 	 */
 	public int calcSize(int nFullSize) {

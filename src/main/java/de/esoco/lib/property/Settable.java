@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * A function interface for objects that can receive a value of a certain type.
  *
  * @author eso
@@ -24,9 +24,7 @@ package de.esoco.lib.property;
 @FunctionalInterface
 public interface Settable<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Sets the value of this object.
 	 *
 	 * @param rValue The new value

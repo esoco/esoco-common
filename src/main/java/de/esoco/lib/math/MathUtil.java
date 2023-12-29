@@ -21,17 +21,14 @@ import java.math.RoundingMode;
 
 import java.util.Objects;
 
-
-/********************************************************************
+/**
  * Contains additional mathematical functions.
  *
  * @author eso
  */
 public class MathUtil {
 
-	//~ Enums ------------------------------------------------------------------
-
-	/********************************************************************
+	/**
 	 * Enumeration of metric prefixes.
 	 */
 	public enum MetricPrefix {
@@ -39,14 +36,11 @@ public class MathUtil {
 		KILO(3), HECTO(2), DECA(1), DECI(-1), CENTI(-2), MILLI(-3), MICRO(-6),
 		NANO(-9), PICO(-12), FEMTO(-15), ATTO(-18), ZEPTO(-21), YOCTO(-24);
 
-		//~ Instance fields ----------------------------------------------------
+		private final int nExponent;
 
-		private final int		 nExponent;
 		private final BigDecimal aDecimalValue;
 
-		//~ Constructors -------------------------------------------------------
-
-		/***************************************
+		/**
 		 * Creates a new instance.
 		 *
 		 * @param nExponent the value of the exponent
@@ -62,9 +56,7 @@ public class MathUtil {
 			}
 		}
 
-		//~ Methods ------------------------------------------------------------
-
-		/***************************************
+		/**
 		 * Returns the decimal representation of this prefix, i.e. the value
 		 * 10<sup>exponent</sup>.
 		 *
@@ -74,7 +66,7 @@ public class MathUtil {
 			return aDecimalValue;
 		}
 
-		/***************************************
+		/**
 		 * Returns the decimal exponent of this prefix.
 		 *
 		 * @return The decimal exponent
@@ -84,49 +76,48 @@ public class MathUtil {
 		}
 	}
 
-	//~ Static fields/initializers ---------------------------------------------
-
-	/** {@link BigDecimal} constant for the value 2 without scale. */
+	/**
+	 * {@link BigDecimal} constant for the value 2 without scale.
+	 */
 	public static final BigDecimal TWO = new BigDecimal(2);
 
-	/** {@link BigDecimal} constant for the value 100 without scale. */
+	/**
+	 * {@link BigDecimal} constant for the value 100 without scale.
+	 */
 	public static final BigDecimal HUNDRED = new BigDecimal(100);
 
-	/** {@link BigDecimal} constant for the value 1000 without scale. */
+	/**
+	 * {@link BigDecimal} constant for the value 1000 without scale.
+	 */
 	public static final BigDecimal THOUSAND = new BigDecimal(1_000);
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Private, only static use.
 	 */
 	private MathUtil() {
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Calculates the square root of a {@link BigDecimal} value with a maximum
 	 * scale of 16 digits.
 	 *
-	 * @param  dValue The value to calculate the square root of
-	 *
+	 * @param dValue The value to calculate the square root of
 	 * @return A big decimal containing the square root value
 	 */
 	public static BigDecimal sqrt(BigDecimal dValue) {
 		return sqrt(dValue, 16);
 	}
 
-	/***************************************
+	/**
 	 * Calculate the square root of a {@link BigDecimal} with the <a
-	 * href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Babylonian_method">
-	 * Babylonian method</a>. See <a
-	 * href="https://stackoverflow.com/questions/13649703/square-root-of-bigdecimal-in-java">
-	 * this StackOverflow question</a> for additional infos.
+	 * href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+	 * #Babylonian_method"> Babylonian method</a>. See <a
+	 * href="https://stackoverflow
+	 * .com/questions/13649703/square-root-of-bigdecimal-in-java"> this
+	 * StackOverflow question</a> for additional infos.
 	 *
-	 * @param  dValue The value to calculate the square root of
-	 * @param  nScale The maximum scale of the result
-	 *
+	 * @param dValue The value to calculate the square root of
+	 * @param nScale The maximum scale of the result
 	 * @return A big decimal containing the square root value
 	 */
 	public static BigDecimal sqrt(BigDecimal dValue, int nScale) {

@@ -16,23 +16,21 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for elements that implement a title attribute.
  *
  * @author eso
  */
 public interface TitleAttribute {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the element's title.
 	 *
 	 * @return The title string
 	 */
 	String getTitle();
 
-	/***************************************
+	/**
 	 * Sets the element's title.
 	 *
 	 * @param sTitle The new title

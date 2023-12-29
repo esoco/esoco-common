@@ -18,110 +18,161 @@ package de.esoco.lib.property;
 
 import de.esoco.lib.text.TextConvert;
 
-
-/********************************************************************
+/**
  * An immutable datatype that encapsulates RGB color data and provides
  * conversions to other color data formats like HTML strings. Instances of this
- * classes are created through the different {@link #valueOf(int, int, int)
- * valueOf()} methods.
+ * classes are created through the different
+ * {@link #valueOf(int, int, int) valueOf()} methods.
  */
 public class Color {
 
-	//~ Static fields/initializers ---------------------------------------------
-
-	/** black */
+	/**
+	 * black
+	 */
 	public static final Color BLACK = valueOf(0x0);
 
-	/** dark gray */
+	/**
+	 * dark gray
+	 */
 	public static final Color DARK_GRAY = valueOf(0x0404040);
 
-	/** medium gray */
+	/**
+	 * medium gray
+	 */
 	public static final Color MEDIUM_GRAY = valueOf(0x0808080);
 
-	/** light gray */
+	/**
+	 * light gray
+	 */
 	public static final Color LIGHT_GRAY = valueOf(0x0C0C0C0);
 
-	/** 10 percent gray */
+	/**
+	 * 10 percent gray
+	 */
 	public static final Color GRAY_10 = valueOf(0x01A1A1A);
 
-	/** 20 percent gray */
+	/**
+	 * 20 percent gray
+	 */
 	public static final Color GRAY_20 = valueOf(0x0333333);
 
-	/** 30 percent gray */
+	/**
+	 * 30 percent gray
+	 */
 	public static final Color GRAY_30 = valueOf(0x04D4D4D);
 
-	/** 33 percent gray */
+	/**
+	 * 33 percent gray
+	 */
 	public static final Color GRAY_33 = valueOf(0x0555555);
 
-	/** 40 percent gray */
+	/**
+	 * 40 percent gray
+	 */
 	public static final Color GRAY_40 = valueOf(0x0666666);
 
-	/** 50 percent gray */
+	/**
+	 * 50 percent gray
+	 */
 	public static final Color GRAY_50 = MEDIUM_GRAY;
 
-	/** 60 percent gray */
+	/**
+	 * 60 percent gray
+	 */
 	public static final Color GRAY_60 = valueOf(0x0999999);
 
-	/** 66 percent gray */
+	/**
+	 * 66 percent gray
+	 */
 	public static final Color GRAY_66 = valueOf(0x0AAAAAA);
 
-	/** 70 percent gray */
+	/**
+	 * 70 percent gray
+	 */
 	public static final Color GRAY_70 = valueOf(0x0B3B3B3);
 
-	/** 80 percent gray */
+	/**
+	 * 80 percent gray
+	 */
 	public static final Color GRAY_80 = valueOf(0x0CCCCCC);
 
-	/** 90 percent gray */
+	/**
+	 * 90 percent gray
+	 */
 	public static final Color GRAY_90 = valueOf(0x0E6E6E6);
 
-	/** Color white */
+	/**
+	 * Color white
+	 */
 	public static final Color WHITE = valueOf(0x0FFFFFF);
 
-	/** blue */
+	/**
+	 * blue
+	 */
 	public static final Color BLUE = valueOf(0x0000FF);
 
-	/** dark blue */
+	/**
+	 * dark blue
+	 */
 	public static final Color DARK_BLUE = valueOf(0x000080);
 
-	/** red */
+	/**
+	 * red
+	 */
 	public static final Color RED = valueOf(0x0FF0000);
 
-	/** dark red */
+	/**
+	 * dark red
+	 */
 	public static final Color DARK_RED = valueOf(0x0800000);
 
-	/** green */
+	/**
+	 * green
+	 */
 	public static final Color GREEN = valueOf(0x00FF00);
 
-	/** dark green */
+	/**
+	 * dark green
+	 */
 	public static final Color DARK_GREEN = valueOf(0x008000);
 
-	/** cyan */
+	/**
+	 * cyan
+	 */
 	public static final Color CYAN = valueOf(0x00FFFF);
 
-	/** dark cyan */
+	/**
+	 * dark cyan
+	 */
 	public static final Color DARK_CYAN = valueOf(0x008080);
 
-	/** yellow */
+	/**
+	 * yellow
+	 */
 	public static final Color YELLOW = valueOf(0x0FFFF00);
 
-	/** dark yellow */
+	/**
+	 * dark yellow
+	 */
 	public static final Color DARK_YELLOW = valueOf(0x0808000);
 
-	/** magenta */
+	/**
+	 * magenta
+	 */
 	public static final Color MAGENTA = valueOf(0x0FF00FF);
 
-	/** dark magenta */
+	/**
+	 * dark magenta
+	 */
 	public static final Color DARK_MAGENTA = valueOf(0x0800080);
 
-	//~ Instance fields --------------------------------------------------------
-
 	private final int nRed;
+
 	private final int nGreen;
+
 	private final int nBlue;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Internal constructor to create a new instance with certain RGB parts.
 	 *
 	 * @param nRed   The red part
@@ -129,20 +180,17 @@ public class Color {
 	 * @param nBlue  The blue part
 	 */
 	private Color(int nRed, int nGreen, int nBlue) {
-		this.nRed   = nRed;
+		this.nRed = nRed;
 		this.nGreen = nGreen;
-		this.nBlue  = nBlue;
+		this.nBlue = nBlue;
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns a color instance for a combined RGB integer value. The single
 	 * color components are considered to be in the range of (0 - 255), i.e. a
 	 * byte for each.
 	 *
-	 * @param  nRgbColor The integer value containing the RGB value bytes
-	 *
+	 * @param nRgbColor The integer value containing the RGB value bytes
 	 * @return The color instance
 	 */
 	public static Color valueOf(int nRgbColor) {
@@ -153,11 +201,10 @@ public class Color {
 		return valueOf(r, g, b);
 	}
 
-	/***************************************
+	/**
 	 * Converts an HTML color string into a color object.
 	 *
-	 * @param  sHtmlColor The HTML color string (a leading '#' will be ignored)
-	 *
+	 * @param sHtmlColor The HTML color string (a leading '#' will be ignored)
 	 * @return The color instance
 	 */
 	public static Color valueOf(String sHtmlColor) {
@@ -168,22 +215,19 @@ public class Color {
 		return valueOf(Integer.parseInt(sHtmlColor, 16));
 	}
 
-	/***************************************
+	/**
 	 * Returns a color instance from RGB integer values.
 	 *
-	 * @param  nRed   The red component
-	 * @param  nGreen The green component
-	 * @param  nBlue  The blue component
-	 *
+	 * @param nRed   The red component
+	 * @param nGreen The green component
+	 * @param nBlue  The blue component
 	 * @return A new color instance
 	 */
 	public static Color valueOf(int nRed, int nGreen, int nBlue) {
 		return new Color(nRed, nGreen, nBlue);
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns a color value that is 10 percent brighter than this instance by
 	 * invoking the {@link #changeBrightness(int)} method.
 	 *
@@ -193,7 +237,7 @@ public class Color {
 		return changeBrightness(10);
 	}
 
-	/***************************************
+	/**
 	 * Calculates the brightest RGB value that can be created from this
 	 * instance. That will be the color where all color components have been
 	 * multiplied with the factor that converts the brightest component to the
@@ -218,13 +262,12 @@ public class Color {
 		return valueOf(r, g, b);
 	}
 
-	/***************************************
+	/**
 	 * Returns a derived color with a brightness that has been changed by the
 	 * given percentage. Negative values decrease the brightness.
 	 *
-	 * @param  nPercent The brightness change factor in percent (positive for a
-	 *                  lighter, negative for a darker color)
-	 *
+	 * @param nPercent The brightness change factor in percent (positive for a
+	 *                 lighter, negative for a darker color)
 	 * @return The resulting color
 	 */
 	public Color changeBrightness(int nPercent) {
@@ -241,7 +284,7 @@ public class Color {
 		return valueOf(r, g, b);
 	}
 
-	/***************************************
+	/**
 	 * Returns a color value that is 10 percent darker than this instance by
 	 * invoking the {@link #changeBrightness(int)} method.
 	 *
@@ -251,7 +294,7 @@ public class Color {
 		return changeBrightness(-10);
 	}
 
-	/***************************************
+	/**
 	 * Returns the blue part of this color.
 	 *
 	 * @return The blue part
@@ -260,7 +303,7 @@ public class Color {
 		return nBlue;
 	}
 
-	/***************************************
+	/**
 	 * Returns the green part of this color.
 	 *
 	 * @return The green part
@@ -269,7 +312,7 @@ public class Color {
 		return nGreen;
 	}
 
-	/***************************************
+	/**
 	 * Returns the red part of this color.
 	 *
 	 * @return The red part
@@ -278,7 +321,7 @@ public class Color {
 		return nRed;
 	}
 
-	/***************************************
+	/**
 	 * Converts this color to a hexadecimal RGB string as used in HTML and CSS,
 	 * including the '#' prefix.
 	 *
@@ -288,7 +331,7 @@ public class Color {
 		return "#" + TextConvert.padLeft(Integer.toHexString(toRGB()), 6, '0');
 	}
 
-	/***************************************
+	/**
 	 * Converts this color into the corresponding RGB integer value.
 	 *
 	 * @return An RGB integer value
@@ -297,7 +340,7 @@ public class Color {
 		return (nRed << 16) + (nGreen << 8) + nBlue;
 	}
 
-	/***************************************
+	/**
 	 * Returns the same as {@link #toHtml()}.
 	 *
 	 * @return TODO: DOCUMENT ME!

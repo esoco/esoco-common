@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An indication of the type of content stored by an element that will influence
  * the rendering of the content. What exactly that means and which content types
  * are supported depends on the respective element implementation. The following

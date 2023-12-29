@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface for objects that provide write access to named properties.
  * Type-specific access methods allow to set and retrieve the properties. See
  * the base class for further information.
@@ -25,35 +25,33 @@ package de.esoco.lib.property;
  */
 public interface MutableProperties extends HasProperties {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Convenience method to set a boolean property to FALSE.
 	 *
 	 * @param rName The name of the boolean property
 	 */
 	void clearFlag(PropertyName<Boolean> rName);
 
-	/***************************************
+	/**
 	 * Removes all properties from this instance.
 	 */
 	void clearProperties();
 
-	/***************************************
+	/**
 	 * Removes a certain property.
 	 *
 	 * @param rName The name of the property to remove
 	 */
 	void removeProperty(PropertyName<?> rName);
 
-	/***************************************
+	/**
 	 * Convenience method to set a boolean property to TRUE.
 	 *
 	 * @param rName The name of the boolean property
 	 */
 	void setFlag(PropertyName<Boolean> rName);
 
-	/***************************************
+	/**
 	 * Sets all properties from another properties object in this instance. The
 	 * boolean parameter controls whether existing properties will be replaced
 	 * or ignored.
@@ -70,7 +68,7 @@ public interface MutableProperties extends HasProperties {
 	 */
 	void setProperties(HasProperties rOther, boolean bReplace);
 
-	/***************************************
+	/**
 	 * Sets a particular property. Setting a value of NULL will remove the
 	 * property from this instance.
 	 *
@@ -79,14 +77,14 @@ public interface MutableProperties extends HasProperties {
 	 */
 	<T> void setProperty(PropertyName<T> rName, T rValue);
 
-	/***************************************
+	/**
 	 * Convenience method to set boolean properties.
 	 *
 	 * @see #setProperty(PropertyName, boolean)
 	 */
 	void setProperty(PropertyName<Boolean> rName, boolean bValue);
 
-	/***************************************
+	/**
 	 * Convenience method to set integer properties.
 	 *
 	 * @see #setProperty(PropertyName, int)

@@ -18,8 +18,7 @@ package de.esoco.lib.property;
 
 import java.util.function.Function;
 
-
-/********************************************************************
+/**
  * Indicates that the implementing object allows to sort it's content by certain
  * attributes of the underlying data objects.
  *
@@ -27,10 +26,9 @@ import java.util.function.Function;
  */
 public interface HasAttributeSorting<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
-	 * Sets or removes the sorting of a certain attribute and then applies it to
+	/**
+	 * Sets or removes the sorting of a certain attribute and then applies
+	 * it to
 	 * this instance. The order in which sortings are applied defines their
 	 * precedence, with the first sorting having the highest.
 	 *
@@ -38,20 +36,18 @@ public interface HasAttributeSorting<T> {
 	 * @param eDirection The sort direction or NULL to remove sorting
 	 */
 	<V extends Comparable<V>> void applySorting(
-		Function<? super T, V> rAttribute,
-		SortDirection		   eDirection);
+		Function<? super T, V> rAttribute, SortDirection eDirection);
 
-	/***************************************
+	/**
 	 * Returns the sort direction for a particular attribute. If no sorting has
 	 * been set for the given attribute NULL will be returned.
 	 *
-	 * @param  rAttribute The attribute to query the order of
-	 *
+	 * @param rAttribute The attribute to query the order of
 	 * @return The attribute sort direction or NULL for none
 	 */
 	SortDirection getSortDirection(Function<? super T, ?> rAttribute);
 
-	/***************************************
+	/**
 	 * Checks if one or more attribute sort orders are active.
 	 *
 	 * @return TRUE if at least one attribute is sorted

@@ -18,8 +18,7 @@ package de.esoco.lib.expression;
 
 import java.util.function.BiFunction;
 
-
-/********************************************************************
+/**
  * A sub-interface that allows implementations to throw checked exceptions. If
  * an exception occurs it will be converted into a runtime exception of the type
  * {@link FunctionException}.
@@ -29,16 +28,13 @@ import java.util.function.BiFunction;
 @FunctionalInterface
 public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Factory method that allows to declare a throwing function from a lambda
 	 * expression that is mapped to a regular function. Otherwise an anonymous
 	 * inner class expression would be needed because of the similar signatures
 	 * of throwing and non-throwing functions.
 	 *
-	 * @param  fThrowing The throwing function expression
-	 *
+	 * @param fThrowing The throwing function expression
 	 * @return The resulting function
 	 */
 	static <L, R, O> BiFunction<L, R, O> of(
@@ -46,24 +42,7 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 		return fThrowing;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
-	 * The version of {@link #apply(Object, Object)} that allows implementations
-	 * to throw an exception.
-	 *
-	 * @param  rLeft  The left argument
-	 * @param  rRight The right argument
-	 *
-	 * @return The function result
-	 *
-	 * @throws Exception Any kind of exception may be thrown
-	 */
-	O tryApply(L rLeft, R rRight) throws Exception;
-
-	// ~ Methods ------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Overridden to forward the invocation to the actual function
 	 * implementation in {@link #tryApply(Object, Object)} and to convert
 	 * occurring exceptions into {@link FunctionException}.
@@ -80,4 +59,18 @@ public interface ThrowingBinaryFunction<L, R, O> extends BiFunction<L, R, O> {
 			throw new FunctionException(this, e);
 		}
 	}
+
+	// ~ Methods ------------------------------------------------------------
+
+	/**
+	 * The version of {@link #apply(Object, Object)} that allows
+	 * implementations
+	 * to throw an exception.
+	 *
+	 * @param rLeft  The left argument
+	 * @param rRight The right argument
+	 * @return The function result
+	 * @throws Exception Any kind of exception may be thrown
+	 */
+	O tryApply(L rLeft, R rRight) throws Exception;
 }

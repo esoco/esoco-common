@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * An interface for objects (typically {@link DataModel DataModels}) that allow
  * their content to be downloaded.
  *
@@ -24,13 +24,12 @@ package de.esoco.lib.model;
  */
 public interface Downloadable {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Prepares this object's content for download. The resulting value is a
 	 * reference to the downloadable document. This is typically a URI or URL
 	 * that must be resolved to initiate the download. The actual meaning
-	 * maximum download size value depends on the content. For example, it could
+	 * maximum download size value depends on the content. For example, it
+	 * could
 	 * be the number of bytes of a binary download or the number of rows of
 	 * table data.
 	 *
@@ -38,7 +37,6 @@ public interface Downloadable {
 	 * @param nMaxSize  The maximum download size
 	 * @param rCallback The callback to be notified of the download reference
 	 */
-	void prepareDownload(String			 sFileName,
-								int				 nMaxSize,
-								Callback<String> rCallback);
+	void prepareDownload(String sFileName, int nMaxSize,
+		Callback<String> rCallback);
 }

@@ -23,49 +23,53 @@ import static de.esoco.lib.property.PropertyName.newEnumName;
 import static de.esoco.lib.property.PropertyName.newListName;
 import static de.esoco.lib.property.PropertyName.newStringName;
 
-
-/********************************************************************
+/**
  * Defines typical content {@link PropertyName Properties}.
  *
  * @author eso
  */
 public interface ContentProperties {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	/**
 	 * String: an identifier for the target object (e.g. an HTML element ID).
 	 */
-	PropertyName<String> ELEMENT_ID =
-		newStringName("ELEMENT_ID");
+	PropertyName<String> ELEMENT_ID = newStringName("ELEMENT_ID");
 
 	/**
 	 * Boolean: TRUE to indicate that an element contains a resource. This
 	 * typically means that the element must expand text before displaying it.
 	 */
-	PropertyName<Boolean> RESOURCE =
-		newBooleanName("RESOURCE");
+	PropertyName<Boolean> RESOURCE = newBooleanName("RESOURCE");
 
-	/** String: a resource ID for the target object. */
-	PropertyName<String> RESOURCE_ID =
-		newStringName("RESOURCE_ID");
+	/**
+	 * String: a resource ID for the target object.
+	 */
+	PropertyName<String> RESOURCE_ID = newStringName("RESOURCE_ID");
 
-	/** String: a descriptive label string for the target object. */
+	/**
+	 * String: a descriptive label string for the target object.
+	 */
 	PropertyName<String> LABEL = newStringName("LABEL");
 
-	/** String: the tooltip to be displayed for the target object. */
+	/**
+	 * String: the tooltip to be displayed for the target object.
+	 */
 	PropertyName<String> TOOLTIP = newStringName("TOOLTIP");
 
-	/** String: a placeholder to be displayed for empty objects. */
-	PropertyName<String> PLACEHOLDER =
-		newStringName("PLACEHOLDER");
+	/**
+	 * String: a placeholder to be displayed for empty objects.
+	 */
+	PropertyName<String> PLACEHOLDER = newStringName("PLACEHOLDER");
 
-	/** String: a URL that affects the appearance or function of an element. */
+	/**
+	 * String: a URL that affects the appearance or function of an element.
+	 */
 	PropertyName<String> URL = newStringName("URL");
 
-	/** String: a file name. */
-	PropertyName<String> FILE_NAME =
-		newStringName("FILE_NAME");
+	/**
+	 * String: a file name.
+	 */
+	PropertyName<String> FILE_NAME = newStringName("FILE_NAME");
 
 	/**
 	 * String: an format definition. The value depends on the target value to
@@ -80,37 +84,49 @@ public interface ContentProperties {
 	PropertyName<List<String>> FORMAT_ARGUMENTS =
 		newListName("FORMAT_ARGUMENTS", String.class);
 
-	/** String: an input constraint, typically a regular expression. */
-	PropertyName<String> INPUT_CONSTRAINT =
-		newStringName("INPUT_CONSTRAINT");
+	/**
+	 * String: an input constraint, typically a regular expression.
+	 */
+	PropertyName<String> INPUT_CONSTRAINT = newStringName("INPUT_CONSTRAINT");
 
-	/** String: a descriptive string to be used to render NULL values. */
-	PropertyName<String> NULL_VALUE =
-		newStringName("NULL_VALUE");
+	/**
+	 * String: a descriptive string to be used to render NULL values.
+	 */
+	PropertyName<String> NULL_VALUE = newStringName("NULL_VALUE");
 
-	/** String: a comma-separated list of allowed values. */
-	PropertyName<String> ALLOWED_VALUES =
-		newStringName("ALLOWED_VALUES");
+	/**
+	 * String: a comma-separated list of allowed values.
+	 */
+	PropertyName<String> ALLOWED_VALUES = newStringName("ALLOWED_VALUES");
 
-	/** String: a resource prefix for values. */
+	/**
+	 * String: a resource prefix for values.
+	 */
 	PropertyName<String> VALUE_RESOURCE_PREFIX =
 		newStringName("VALUE_RESOURCE_PREFIX");
 
-	/** Boolean: TRUE to suppress an automatically generated resource prefix. */
+	/**
+	 * Boolean: TRUE to suppress an automatically generated resource prefix.
+	 */
 	PropertyName<Boolean> NO_RESOURCE_PREFIX =
 		newBooleanName("NO_RESOURCE_PREFIX");
 
-	/** Enum: defines the type of an event notification. */
+	/**
+	 * Enum: defines the type of an event notification.
+	 */
 	PropertyName<NotificationType> NOTIFICATION_TYPE =
 		newEnumName("NOTIFICATION_TYPE", NotificationType.class);
 
-	/** Enum: The type of content stored by an element. */
+	/**
+	 * Enum: The type of content stored by an element.
+	 */
 	PropertyName<ContentType> CONTENT_TYPE =
 		newEnumName("CONTENT_TYPE", ContentType.class);
 
-	/** String: The MIME type of the content stored by an element. */
-	PropertyName<String> MIME_TYPE =
-		newStringName("MIME_TYPE");
+	/**
+	 * String: The MIME type of the content stored by an element.
+	 */
+	PropertyName<String> MIME_TYPE = newStringName("MIME_TYPE");
 
 	/**
 	 * String: The URI of an image that should be displayed in the target

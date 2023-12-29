@@ -18,8 +18,7 @@ package de.esoco.lib.property;
 
 import java.util.Collection;
 
-
-/********************************************************************
+/**
  * An interface that defines the read access to named properties. The property
  * access methods have a default value parameter that is returned if an instance
  * doesn't contain a property value for a particular property name.
@@ -33,36 +32,32 @@ import java.util.Collection;
  */
 public interface HasProperties {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * A convenience method that returns the value of a property as an int.
 	 *
-	 * @param  rName    The name of the property
-	 * @param  nDefault The default value if no such property exists
-	 *
+	 * @param rName    The name of the property
+	 * @param nDefault The default value if no such property exists
 	 * @return The int property value or the default value
 	 */
 	int getIntProperty(PropertyName<Integer> rName, int nDefault);
 
-	/***************************************
+	/**
 	 * Returns the value of a particular property.
 	 *
-	 * @param  rName    The name of the property
-	 * @param  rDefault The default value if no such property exists
-	 *
+	 * @param rName    The name of the property
+	 * @param rDefault The default value if no such property exists
 	 * @return The property value or the default value
 	 */
 	<T> T getProperty(PropertyName<T> rName, T rDefault);
 
-	/***************************************
+	/**
 	 * Returns the number of properties stored in this instance.
 	 *
 	 * @return The number of properties
 	 */
 	int getPropertyCount();
 
-	/***************************************
+	/**
 	 * Returns a collection containing the names of the properties that are set
 	 * in this instance.
 	 *
@@ -70,21 +65,19 @@ public interface HasProperties {
 	 */
 	Collection<PropertyName<?>> getPropertyNames();
 
-	/***************************************
+	/**
 	 * A convenience method to query a boolean property with a default value of
 	 * FALSE.
 	 *
-	 * @param  rName The name of the boolean property
-	 *
+	 * @param rName The name of the boolean property
 	 * @return TRUE if the property exists and is set to TRUE
 	 */
 	boolean hasFlag(PropertyName<Boolean> rName);
 
-	/***************************************
+	/**
 	 * Checks whether this instance contains a certain property.
 	 *
-	 * @param  rName The name of the property to check
-	 *
+	 * @param rName The name of the property to check
 	 * @return TRUE if the property exists
 	 */
 	boolean hasProperty(PropertyName<?> rName);

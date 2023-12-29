@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.expression;
 
-/********************************************************************
+/**
  * A {@link Runnable} extension that maps any occurring exception to a runtime
  * {@link FunctionException}.
  *
@@ -25,25 +25,20 @@ package de.esoco.lib.expression;
 @FunctionalInterface
 public interface ThrowingRunnable extends Runnable {
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Factory method that allows to declare a throwing runnable from a lambda
 	 * expression that is mapped to a regular runnable. Otherwise an anonymous
 	 * inner class expression would be needed because of the similar signatures
 	 * of the throwing and non-throwing runnable interfaces
 	 *
-	 * @param  fThrowing The throwing runnable expression
-	 *
+	 * @param fThrowing The throwing runnable expression
 	 * @return The resulting function
 	 */
 	static Runnable of(ThrowingRunnable fThrowing) {
 		return fThrowing;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Overridden to forward the invocation to the actual function
 	 * implementation in {@link #tryRun()} and to convert occurring exceptions
 	 * into {@link FunctionException}.
@@ -61,7 +56,7 @@ public interface ThrowingRunnable extends Runnable {
 		}
 	}
 
-	/***************************************
+	/**
 	 * An alternative to {@link #run()} that is allowed to throw any kind of
 	 * exception.
 	 *

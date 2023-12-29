@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Enumeration of alignment constants.
  *
  * @author eso
@@ -24,44 +24,33 @@ package de.esoco.lib.property;
 public enum Alignment implements HasCssName {
 	BEGIN("start") {
 		@Override
-		public int calcAlignedPosition(int	   nStart,
-									   int	   nFreeSpace,
-									   boolean bLeftToRight) {
+		public int calcAlignedPosition(int nStart, int nFreeSpace,
+			boolean bLeftToRight) {
 			return nStart + (bLeftToRight ? 0 : nFreeSpace);
 		}
-	},
-	CENTER("center") {
+	}, CENTER("center") {
 		@Override
-		public int calcAlignedPosition(int	   nStart,
-									   int	   nFreeSpace,
-									   boolean bLeftToRight) {
+		public int calcAlignedPosition(int nStart, int nFreeSpace,
+			boolean bLeftToRight) {
 			return nStart + nFreeSpace / 2;
 		}
-	},
-	END("end") {
+	}, END("end") {
 		@Override
-		public int calcAlignedPosition(int	   nStart,
-									   int	   nFreeSpace,
-									   boolean bLeftToRight) {
+		public int calcAlignedPosition(int nStart, int nFreeSpace,
+			boolean bLeftToRight) {
 			return nStart + (bLeftToRight ? nFreeSpace : 0);
 		}
-	},
-	FILL("stretch") {
+	}, FILL("stretch") {
 		@Override
-		public int calcAlignedPosition(int	   nStart,
-									   int	   nFreeSpace,
-									   boolean bLeftToRight) {
+		public int calcAlignedPosition(int nStart, int nFreeSpace,
+			boolean bLeftToRight) {
 			return nStart + (bLeftToRight ? 0 : nFreeSpace);
 		}
 	};
 
-	//~ Instance fields --------------------------------------------------------
-
 	private final String sCssName;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance.
 	 *
 	 * @param sCssName The CSS name of this instance
@@ -70,16 +59,13 @@ public enum Alignment implements HasCssName {
 		this.sCssName = sCssName;
 	}
 
-	//~ Static methods ---------------------------------------------------------
-
-	/***************************************
-	 * Returns the alignment instance that is identified by a certain character.
+	/**
+	 * Returns the alignment instance that is identified by a certain
+	 * character.
 	 * The character must be the first letter of the instance name.
 	 *
-	 * @param  cChar The alignment character (case-sensitive)
-	 *
+	 * @param cChar The alignment character (case-sensitive)
 	 * @return The matching alignment instance
-	 *
 	 * @throws IllegalArgumentException If the character doesn't represent an
 	 *                                  alignment instance
 	 */
@@ -93,39 +79,35 @@ public enum Alignment implements HasCssName {
 		throw new IllegalArgumentException("No valid Alignment char: " + cChar);
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Calculates and returns a coordinate aligned according to this alignment
 	 * based on the starting position and the remaining free space of the area
 	 * to align in.
 	 *
-	 * @param  nStart       The starting coordinate of the area to align in
-	 * @param  nFreeSpace   The free space available for alignment
-	 * @param  bLeftToRight TRUE for left-to-right display
-	 *
+	 * @param nStart       The starting coordinate of the area to align in
+	 * @param nFreeSpace   The free space available for alignment
+	 * @param bLeftToRight TRUE for left-to-right display
 	 * @return The calculated aligned coordinate
 	 */
-	public abstract int calcAlignedPosition(int		nStart,
-											int		nFreeSpace,
-											boolean bLeftToRight);
+	public abstract int calcAlignedPosition(int nStart, int nFreeSpace,
+		boolean bLeftToRight);
 
-	/***************************************
+	/**
 	 * Calculates and returns a coordinate aligned according to this alignment
-	 * based on the starting position, the size of the element to align, and the
+	 * based on the starting position, the size of the element to align, and
+	 * the
 	 * full size of the are to align the element in.
 	 *
-	 * @param  nStart     The starting coordinate of the area to align in
-	 * @param  nFullSize  The full size (i.e. width or height) of the area
-	 * @param  nAlignSize The size of the element to align
-	 *
+	 * @param nStart     The starting coordinate of the area to align in
+	 * @param nFullSize  The full size (i.e. width or height) of the area
+	 * @param nAlignSize The size of the element to align
 	 * @return The calculated aligned coordinate
 	 */
 	public int calcAlignedPosition(int nStart, int nFullSize, int nAlignSize) {
 		return calcAlignedPosition(nStart, nFullSize - nAlignSize, true);
 	}
 
-	/***************************************
+	/**
 	 * Returns the character representation of this instance.
 	 *
 	 * @return The character describing this instance
@@ -134,8 +116,9 @@ public enum Alignment implements HasCssName {
 		return name().charAt(0);
 	}
 
-	/***************************************
-	 * Returns the CSS name of this alignment. This is the standard name that is
+	/**
+	 * Returns the CSS name of this alignment. This is the standard name
+	 * that is
 	 * used in modern CSS mechanisms like grid layout for alignment and
 	 * justification.
 	 *

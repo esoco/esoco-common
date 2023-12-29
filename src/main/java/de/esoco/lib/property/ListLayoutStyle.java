@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Enumeration of list layout styles.
  *
  * <ul>
@@ -27,4 +27,4 @@ package de.esoco.lib.property;
  *     effect upon selection of a list item.</li>
  * </ul>
  */
-public enum ListLayoutStyle { SIMPLE, EXPAND, POPOUT }
+public enum ListLayoutStyle {SIMPLE, EXPAND, POPOUT}

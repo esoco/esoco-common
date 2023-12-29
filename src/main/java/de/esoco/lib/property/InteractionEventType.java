@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Enumeration of abstract event types for user interface interactions. The
  * values are:
  *
@@ -26,4 +26,4 @@ package de.esoco.lib.property;
  *   <li>{@link #FOCUS_LOST}: An element has lost the input focus.</li>
  * </ul>
  */
-public enum InteractionEventType { UPDATE, ACTION, FOCUS_LOST }
+public enum InteractionEventType {UPDATE, ACTION, FOCUS_LOST}

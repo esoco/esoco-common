@@ -16,23 +16,21 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface for objects that have an 'active' state that can be toggled.
  *
  * @author eso
  */
 public interface ActiveState {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the current active state of this instance.
 	 *
 	 * @return TRUE if this instance is active, FALSE if it is inactive
 	 */
 	boolean isActive();
 
-	/***************************************
+	/**
 	 * Sets the active state of this instance.
 	 *
 	 * @param bActive The new active state

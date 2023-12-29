@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Implementing this interface declares an object to support immutability. This
  * is a special property as it can only be set once by invoking the method
  * {@link #setImmutable()} and cannot be reverted afterwards. Implementations
@@ -28,9 +28,7 @@ package de.esoco.lib.property;
  */
 public interface Immutability {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Sets this object to be immutable. Afterwards, the object must not allow
 	 * further modification of it's internal state.
 	 */

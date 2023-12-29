@@ -19,8 +19,7 @@ package de.esoco.lib.property;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-
-/********************************************************************
+/**
  * Indicates that the implementing object allows to filter it's content by
  * certain attributes of the underlying data objects.
  *
@@ -28,9 +27,7 @@ import java.util.function.Predicate;
  */
 public interface HasAttributeFilter<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Sets or removes a filter for a certain attribute and then applies the
 	 * resulting filter to this instance.
 	 *
@@ -38,22 +35,19 @@ public interface HasAttributeFilter<T> {
 	 * @param pCriteria  A predicate containing the filter criteria or NULL to
 	 *                   remove a filter
 	 */
-	<V> void applyFilter(
-		Function<? super T, V> rAttribute,
-		Predicate<? super V>   pCriteria);
+	<V> void applyFilter(Function<? super T, V> rAttribute,
+		Predicate<? super V> pCriteria);
 
-	/***************************************
+	/**
 	 * Returns the filter for a particular attribute. If no filter has been set
 	 * for the given attribute NULL will be returned.
 	 *
-	 * @param  rAttribute The attribute to query the filter predicate for
-	 *
+	 * @param rAttribute The attribute to query the filter predicate for
 	 * @return The attribute filter predicate or NULL for none
 	 */
-	<V> Predicate<? super V> getFilter(
-		Function<? super T, V> rAttribute);
+	<V> Predicate<? super V> getFilter(Function<? super T, V> rAttribute);
 
-	/***************************************
+	/**
 	 * Checks if one or more attribute filters are active.
 	 *
 	 * @return TRUE if at least one filter criterion has been set

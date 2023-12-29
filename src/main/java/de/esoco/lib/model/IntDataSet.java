@@ -19,8 +19,7 @@ package de.esoco.lib.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/********************************************************************
+/**
  * An implementation of the {@link DataSet} interface that contains integer
  * values.
  *
@@ -28,72 +27,49 @@ import java.util.List;
  */
 public class IntDataSet extends AbstractDataSet<Integer> {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
-
-	//~ Instance fields --------------------------------------------------------
 
 	private List<int[]> aData;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance without data. Data can then be added through the
 	 * addRow() methods. The row list instance will be stored directly and will
 	 * not be copied.
 	 *
 	 * @see IntDataSet#IntDataSet(List, List, List, String, String, String)
 	 */
-	public IntDataSet(List<String> rColumnLabels,
-					  String	   sRowAxisLabel,
-					  String	   sValueAxisLabel,
-					  String	   sColumnAxisLabel) {
-		this(
-			new ArrayList<int[]>(),
-			new ArrayList<String>(),
-			rColumnLabels,
-			sRowAxisLabel,
-			sValueAxisLabel,
-			sColumnAxisLabel);
+	public IntDataSet(List<String> rColumnLabels, String sRowAxisLabel,
+		String sValueAxisLabel, String sColumnAxisLabel) {
+		this(new ArrayList<int[]>(), new ArrayList<String>(), rColumnLabels,
+			sRowAxisLabel, sValueAxisLabel, sColumnAxisLabel);
 	}
 
-	/***************************************
+	/**
 	 * Creates a new instance from existing data. The data and list arguments
 	 * will be stored directly and will not be copied. The first array in the
-	 * two-dimensional data array must contain arrays with the column data which
+	 * two-dimensional data array must contain arrays with the column data
+	 * which
 	 * in turn contain the single values, indexed by row.
 	 *
 	 * @param rData The data matrix
-	 *
-	 * @see   AbstractDataSet#AbstractDataSet(List, List, String, String,
-	 *        String)
+	 * @see AbstractDataSet#AbstractDataSet(List, List, String, String, String)
 	 */
-	public IntDataSet(List<int[]>  rData,
-					  List<String> rRowLabels,
-					  List<String> rColumnLabels,
-					  String	   sRowAxisLabel,
-					  String	   sValueAxisLabel,
-					  String	   sColumnAxisLabel) {
-		super(
-			rRowLabels,
-			rColumnLabels,
-			sRowAxisLabel,
-			sValueAxisLabel,
+	public IntDataSet(List<int[]> rData, List<String> rRowLabels,
+		List<String> rColumnLabels, String sRowAxisLabel,
+		String sValueAxisLabel, String sColumnAxisLabel) {
+		super(rRowLabels, rColumnLabels, sRowAxisLabel, sValueAxisLabel,
 			sColumnAxisLabel);
 
 		aData = rData;
 	}
 
-	/***************************************
+	/**
 	 * Default constructor for GWT serialization.
 	 */
 	IntDataSet() {
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * @see DataSet#getColumnCount()
 	 */
 	@Override
@@ -101,7 +77,7 @@ public class IntDataSet extends AbstractDataSet<Integer> {
 		return aData.size() > 0 ? aData.get(0).length : 0;
 	}
 
-	/***************************************
+	/**
 	 * @see DataSet#getValue(int, int)
 	 */
 	@Override
@@ -110,13 +86,13 @@ public class IntDataSet extends AbstractDataSet<Integer> {
 		return aData.get(nRow)[nColumn];
 	}
 
-	/***************************************
+	/**
 	 * @see AbstractDataSet#add(int, Object[])
 	 */
 	@Override
 	protected void add(int nBeforeRow, Integer[] rRowData) {
 		int[] aNewRow = new int[rRowData.length];
-		int   nColumn = 0;
+		int nColumn = 0;
 
 		for (Integer rValue : rRowData) {
 			aNewRow[nColumn++] = rValue.intValue();
@@ -125,7 +101,7 @@ public class IntDataSet extends AbstractDataSet<Integer> {
 		aData.add(nBeforeRow, aNewRow);
 	}
 
-	/***************************************
+	/**
 	 * @see AbstractDataSet#getDataRows()
 	 */
 	@Override

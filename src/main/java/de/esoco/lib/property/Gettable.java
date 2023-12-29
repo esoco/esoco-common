@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * A function interface for objects that provide a value of a certain type.
  *
  * @author eso
@@ -24,9 +24,7 @@ package de.esoco.lib.property;
 @FunctionalInterface
 public interface Gettable<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the value of this object.
 	 *
 	 * @return The value

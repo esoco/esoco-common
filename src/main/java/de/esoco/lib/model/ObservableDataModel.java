@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * Extended data model interface that allows clients to be notified of changes
  * in the data structure by registering a {@link DataModelListener}. The base
  * type of the contained data elements can be constrained by providing the
@@ -26,9 +26,7 @@ package de.esoco.lib.model;
  */
 public interface ObservableDataModel<T> extends DataModel<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Registers a data model listener that must be notified of data and
 	 * structure changes by the model implementation.
 	 *
@@ -36,7 +34,7 @@ public interface ObservableDataModel<T> extends DataModel<T> {
 	 */
 	void addModelListener(DataModelListener rListener);
 
-	/***************************************
+	/**
 	 * Unregisters a data model listener from this model.
 	 *
 	 * @param rListener The listener to register

@@ -16,23 +16,21 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for elements that implement a text attribute.
  *
  * @author eso
  */
 public interface TextAttribute {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the element's text.
 	 *
 	 * @return The text
 	 */
 	String getText();
 
-	/***************************************
+	/**
 	 * Sets the element's text.
 	 *
 	 * @param sText The new text

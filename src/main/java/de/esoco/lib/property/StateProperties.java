@@ -26,33 +26,35 @@ import static de.esoco.lib.property.PropertyName.newMapName;
 import static de.esoco.lib.property.PropertyName.newSetName;
 import static de.esoco.lib.property.PropertyName.newStringName;
 
-
-/********************************************************************
+/**
  * Defines typical state {@link PropertyName Properties}.
  *
  * @author eso
  */
 public interface StateProperties {
 
-	//~ Static fields/initializers ---------------------------------------------
-
-	/** Integer: The increment for an automatic update of a value. */
+	/**
+	 * Integer: The increment for an automatic update of a value.
+	 */
 	PropertyName<Integer> AUTO_UPDATE_INCREMENT =
 		newIntegerName("AUTO_UPDATE_INCREMENT");
 
 	/**
-	 * Integer: The interval in milliseconds for an automatic update of a value.
+	 * Integer: The interval in milliseconds for an automatic update of a
+	 * value.
 	 */
 	PropertyName<Integer> AUTO_UPDATE_INTERVAL =
 		newIntegerName("AUTO_UPDATE_INTERVAL");
 
-	/** Integer: The (initial) position of the text input caret. */
-	PropertyName<Integer> CARET_POSITION =
-		newIntegerName("CARET_POSITION");
+	/**
+	 * Integer: The (initial) position of the text input caret.
+	 */
+	PropertyName<Integer> CARET_POSITION = newIntegerName("CARET_POSITION");
 
-	/** Boolean: TRUE to explicitly disable an element. */
-	PropertyName<Boolean> DISABLED =
-		newBooleanName("DISABLED");
+	/**
+	 * Boolean: TRUE to explicitly disable an element.
+	 */
+	PropertyName<Boolean> DISABLED = newBooleanName("DISABLED");
 
 	/**
 	 * Boolean: TRUE to hide an element from rendering completely. To only make
@@ -64,8 +66,7 @@ public interface StateProperties {
 	 * Boolean: TRUE to make an element invisible but keep it in the layout. To
 	 * hide it completely use {@link #HIDDEN}.
 	 */
-	PropertyName<Boolean> INVISIBLE =
-		newBooleanName("INVISIBLE");
+	PropertyName<Boolean> INVISIBLE = newBooleanName("INVISIBLE");
 
 	/**
 	 * Boolean: TRUE to prevent the locking of an element during interactions
@@ -82,8 +83,8 @@ public interface StateProperties {
 		newBooleanName("NO_EVENT_PROPAGATION");
 
 	/**
-	 * Boolean: fire action events only if a component that implements {@link
-	 * ActiveState} has been activated, but not if deactivated.
+	 * Boolean: fire action events only if a component that implements
+	 * {@link ActiveState} has been activated, but not if deactivated.
 	 */
 	PropertyName<Boolean> ACTION_EVENT_ON_ACTIVATION_ONLY =
 		newBooleanName("ACTION_EVENT_ON_ACTIVATION_ONLY");
@@ -94,27 +95,32 @@ public interface StateProperties {
 	 * behavior for occurrences on multiple elements depends on the underlying
 	 * platform.
 	 */
-	PropertyName<Boolean> FOCUSED =
-		newBooleanName("FOCUSED");
+	PropertyName<Boolean> FOCUSED = newBooleanName("FOCUSED");
 
-	/** Integer: the current selection index of a multiple-data element. */
+	/**
+	 * Integer: the current selection index of a multiple-data element.
+	 */
 	PropertyName<Integer> CURRENT_SELECTION =
 		newIntegerName("CURRENT_SELECTION");
 
 	/**
-	 * String map: filter criteria of an element (e.g. a table). The key denotes
+	 * String map: filter criteria of an element (e.g. a table). The key
+	 * denotes
 	 * the filtered attribute and the value the criterion.
 	 */
 	PropertyName<Map<String, String>> FILTER_CRITERIA =
 		newMapName("FILTER_CRITERIA", String.class, String.class);
 
-	/** Enum: if present, defines the sort direction for ordered data. */
+	/**
+	 * Enum: if present, defines the sort direction for ordered data.
+	 */
 	PropertyName<SortDirection> SORT_DIRECTION =
 		newEnumName("SORT_DIRECTION", SortDirection.class);
 
-	/** Boolean: indicates that the value of an element has changed. */
-	PropertyName<Boolean> VALUE_CHANGED =
-		newBooleanName("VALUE_CHANGED");
+	/**
+	 * Boolean: indicates that the value of an element has changed.
+	 */
+	PropertyName<Boolean> VALUE_CHANGED = newBooleanName("VALUE_CHANGED");
 
 	/**
 	 * Boolean: indicates that one or more properties of an element have
@@ -123,16 +129,21 @@ public interface StateProperties {
 	PropertyName<Boolean> PROPERTIES_CHANGED =
 		newBooleanName("PROPERTIES_CHANGED");
 
-	/** Boolean: indicates that the structure of an element has changed. */
+	/**
+	 * Boolean: indicates that the structure of an element has changed.
+	 */
 	PropertyName<Boolean> STRUCTURE_CHANGED =
 		newBooleanName("STRUCTURE_CHANGED");
 
-	/** Enum: the input mode for interactive input elements. */
+	/**
+	 * Enum: the input mode for interactive input elements.
+	 */
 	PropertyName<InteractiveInputMode> INTERACTIVE_INPUT_MODE =
 		newEnumName("INTERACTIVE_INPUT_MODE", InteractiveInputMode.class);
 
 	/**
-	 * Boolean: whether an element should be explicitly disabled if it causes an
+	 * Boolean: whether an element should be explicitly disabled if it
+	 * causes an
 	 * interaction.
 	 */
 	PropertyName<Boolean> DISABLE_ON_INTERACTION =
@@ -161,11 +172,11 @@ public interface StateProperties {
 		newStringName("INTERACTION_EVENT_DATA");
 
 	/**
-	 * String: the identifier of a target element to be activated or modified by
+	 * String: the identifier of a target element to be activated or
+	 * modified by
 	 * the element it is set upon.
 	 */
-	PropertyName<String> TARGET_ID =
-		newStringName("TARGET_ID");
+	PropertyName<String> TARGET_ID = newStringName("TARGET_ID");
 
 	/**
 	 * String: a comma-separated list of the names of user interface elements
@@ -177,7 +188,8 @@ public interface StateProperties {
 	 *   <li>Lists and similar selectable elements: their selection is mutually
 	 *     exclusive. If a selection occurs in one element, the others are
 	 *     unselected and vice versa.</li>
-	 *   <li>Other elements: if the target element is selected the enabled state
+	 *   <li>Other elements: if the target element is selected the enabled
+	 *   state
 	 *     of the dependent components is modified. Buttons and lists will
 	 *     toggle the state while checkboxes and radio buttons directly
 	 *     represent the selection state of the elements. If the element list
@@ -190,7 +202,8 @@ public interface StateProperties {
 		newStringName("SELECTION_DEPENDENCY");
 
 	/**
-	 * A prefix to be added to reverse the effect of the user interface property
+	 * A prefix to be added to reverse the effect of the user interface
+	 * property
 	 * {@link #SELECTION_DEPENDENCY} for toggle buttons.
 	 */
 	String SELECTION_DEPENDENCY_REVERSE_PREFIX = "!";

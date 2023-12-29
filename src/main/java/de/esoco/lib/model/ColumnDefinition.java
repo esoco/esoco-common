@@ -20,22 +20,19 @@ import de.esoco.lib.property.MutableProperties;
 
 import java.io.Serializable;
 
-
-/********************************************************************
+/**
  * The definition of a column in table or tree-table components.
  *
  * @author eso
  */
 public interface ColumnDefinition extends MutableProperties, Serializable {
 
-	//~ Static fields/initializers ---------------------------------------------
-
-	/** The standard prefix for column resource keys */
+	/**
+	 * The standard prefix for column resource keys
+	 */
 	String STD_COLUMN_PREFIX = "$col";
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the datatype of the column values. For wider serialization
 	 * support it is a string containing the simple name of the datatype class
 	 * (see {@link Class#getSimpleName()}).
@@ -44,7 +41,7 @@ public interface ColumnDefinition extends MutableProperties, Serializable {
 	 */
 	String getDatatype();
 
-	/***************************************
+	/**
 	 * Returns the column identifier. This value is application-dependent. It
 	 * can be something like an integer column index or a database column name,
 	 * for example. It must be unique so that it can be used to unambiguously
@@ -54,7 +51,7 @@ public interface ColumnDefinition extends MutableProperties, Serializable {
 	 */
 	String getId();
 
-	/***************************************
+	/**
 	 * Returns the column title.
 	 *
 	 * @return The column title

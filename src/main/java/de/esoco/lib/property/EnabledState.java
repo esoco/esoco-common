@@ -16,37 +16,35 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for elements that can be enabled or disabled.
  *
  * @author eso
  */
 public interface EnabledState {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Sets the state of this object to disabled.
 	 */
 	default void disable() {
 		setEnabled(false);
 	}
 
-	/***************************************
+	/**
 	 * Sets the state of this object to enabled.
 	 */
 	default void enable() {
 		setEnabled(true);
 	}
 
-	/***************************************
+	/**
 	 * Returns the enabled state of the element.
 	 *
 	 * @return TRUE if the element is enabled, FALSE if disabled
 	 */
 	boolean isEnabled();
 
-	/***************************************
+	/**
 	 * Sets the enabled state of the element. This state controls whether the
 	 * element will allow and react to user input.
 	 *

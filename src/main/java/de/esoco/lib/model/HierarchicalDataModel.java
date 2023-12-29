@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.model;
 
-/********************************************************************
+/**
  * A data model extension for hierarchical data structures. It provides methods
  * to access the parent and child models of the data model implementation.
  *
@@ -24,13 +24,11 @@ package de.esoco.lib.model;
  */
 public interface HierarchicalDataModel<T> extends DataModel<T> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns a data model of the children of this data model.
 	 *
 	 * @return A list of this model's children (may be NULL or empty if no
-	 *         children exists)
+	 * children exists)
 	 */
 	DataModel<? extends DataModel<T>> getChildModels();
 }

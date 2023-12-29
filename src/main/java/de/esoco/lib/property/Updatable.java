@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface that indicates that an object can perform an update of it's
  * state by invoking the {@link #update()} method.
  *
@@ -25,9 +25,7 @@ package de.esoco.lib.property;
 @FunctionalInterface
 public interface Updatable {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Updates the state and if applicable the visual representation of an
 	 * object.
 	 */

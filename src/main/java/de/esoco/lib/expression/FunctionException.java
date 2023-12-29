@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.expression;
 
-/********************************************************************
+/**
  * A special runtime exception subclass for function errors. As functions are
  * not allowed to throw checked exceptions this class provides a way to throw
  * exceptions from functions. It is intended to be used always as a wrapper
@@ -30,17 +30,11 @@ package de.esoco.lib.expression;
  */
 public class FunctionException extends RuntimeException {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
-
-	//~ Instance fields --------------------------------------------------------
 
 	private final Object fCausingFunction;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance. The function argument is of type object so that
 	 * it can contain the different function types of Java 8.
 	 *
@@ -54,9 +48,7 @@ public class FunctionException extends RuntimeException {
 		this.fCausingFunction = fCausingFunction;
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the function instance that caused this exception.
 	 *
 	 * @return The causing function

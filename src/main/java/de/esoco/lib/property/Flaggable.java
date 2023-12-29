@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An extension of the {@link Flags} interface that allows to set and clear
  * flags on the implementing object.
  *
@@ -24,16 +24,14 @@ package de.esoco.lib.property;
  */
 public interface Flaggable<F> extends Flags<F> {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Clears a certain flag.
 	 *
 	 * @param rFlag The flag to clear
 	 */
 	void clearFlag(F rFlag);
 
-	/***************************************
+	/**
 	 * Sets a certain flag.
 	 *
 	 * @param rFlag The flag to set

@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An enumeration of the styles for displaying UI labels. Not all styles may be
  * supported by an UI implementation in which case it should revert to a
  * reasonable default if possible.
@@ -35,4 +35,4 @@ package de.esoco.lib.property;
  *   <li>{@link #IMAGE}: The label text references an image file.</li>
  * </ul>
  */
-public enum LabelStyle { DEFAULT, INLINE, FORM, TITLE, BRAND, ICON, IMAGE }
+public enum LabelStyle {DEFAULT, INLINE, FORM, TITLE, BRAND, ICON, IMAGE}

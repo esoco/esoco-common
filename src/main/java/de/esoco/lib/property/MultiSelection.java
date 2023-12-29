@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * Property interface for indexed composite objects that provide a way to select
  * multiple of their elements in their structure. For objects that only support
  * the selection of single elements see {@link SingleSelection}.
@@ -25,23 +25,21 @@ package de.esoco.lib.property;
  */
 public interface MultiSelection {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the indices of the currently selected values.
 	 *
 	 * @return The selection indices
 	 */
 	int[] getSelectionIndices();
 
-	/***************************************
+	/**
 	 * Selects the elements with the indices contained in the argument array.
 	 *
 	 * @param rIndices An array with the indices of the elements to select
 	 */
 	void setSelection(int[] rIndices);
 
-	/***************************************
+	/**
 	 * Selects all elements within the given range.
 	 *
 	 * @param nStart The start index (inclusive)

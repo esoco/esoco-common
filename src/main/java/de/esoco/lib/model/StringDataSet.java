@@ -19,81 +19,57 @@ package de.esoco.lib.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/********************************************************************
+/**
  * An implementation of the {@link DataSet} interface for string values.
  *
  * @author eso
  */
 public class StringDataSet extends AbstractDataSet<String> {
 
-	//~ Static fields/initializers ---------------------------------------------
-
 	private static final long serialVersionUID = 1L;
-
-	//~ Instance fields --------------------------------------------------------
 
 	private List<String[]> aData;
 
-	//~ Constructors -----------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Creates a new instance without data. Data can then be added through the
 	 * addRow() methods. The row list instance will be stored directly and will
 	 * not be copied.
 	 *
 	 * @see StringDataSet#StringDataSet(List, List, List, String, String,
-	 *      String)
+	 * String)
 	 */
-	public StringDataSet(List<String> rColumnLabels,
-						 String		  sRowAxisLabel,
-						 String		  sValueAxisLabel,
-						 String		  sColumnAxisLabel) {
-		this(
-			new ArrayList<String[]>(),
-			new ArrayList<String>(),
-			rColumnLabels,
-			sRowAxisLabel,
-			sValueAxisLabel,
-			sColumnAxisLabel);
+	public StringDataSet(List<String> rColumnLabels, String sRowAxisLabel,
+		String sValueAxisLabel, String sColumnAxisLabel) {
+		this(new ArrayList<String[]>(), new ArrayList<String>(), rColumnLabels,
+			sRowAxisLabel, sValueAxisLabel, sColumnAxisLabel);
 	}
 
-	/***************************************
+	/**
 	 * Creates a new instance from existing data. The data and list arguments
 	 * will be stored directly and will not be copied. The first array in the
-	 * two-dimensional data array must contain arrays with the column data which
+	 * two-dimensional data array must contain arrays with the column data
+	 * which
 	 * in turn contain the single values, indexed by row.
 	 *
 	 * @param rData The data table
-	 *
-	 * @see   AbstractDataSet#AbstractDataSet(List, List, String, String,
-	 *        String)
+	 * @see AbstractDataSet#AbstractDataSet(List, List, String, String, String)
 	 */
-	public StringDataSet(List<String[]> rData,
-						 List<String>   rRowLabels,
-						 List<String>   rColumnLabels,
-						 String			sRowAxisLabel,
-						 String			sValueAxisLabel,
-						 String			sColumnAxisLabel) {
-		super(
-			rRowLabels,
-			rColumnLabels,
-			sRowAxisLabel,
-			sValueAxisLabel,
+	public StringDataSet(List<String[]> rData, List<String> rRowLabels,
+		List<String> rColumnLabels, String sRowAxisLabel,
+		String sValueAxisLabel, String sColumnAxisLabel) {
+		super(rRowLabels, rColumnLabels, sRowAxisLabel, sValueAxisLabel,
 			sColumnAxisLabel);
 
 		aData = rData;
 	}
 
-	/***************************************
+	/**
 	 * Default constructor for GWT serialization.
 	 */
 	StringDataSet() {
 	}
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * @see DataSet#getColumnCount()
 	 */
 	@Override
@@ -101,7 +77,7 @@ public class StringDataSet extends AbstractDataSet<String> {
 		return aData.size() > 0 ? aData.get(0).length : 0;
 	}
 
-	/***************************************
+	/**
 	 * @see DataSet#getValue(int, int)
 	 */
 	@Override
@@ -109,7 +85,7 @@ public class StringDataSet extends AbstractDataSet<String> {
 		return aData.get(nRow)[nColumn];
 	}
 
-	/***************************************
+	/**
 	 * @see AbstractDataSet#add(int, Object[])
 	 */
 	@Override
@@ -117,7 +93,7 @@ public class StringDataSet extends AbstractDataSet<String> {
 		aData.add(nBeforeRow, rRowData);
 	}
 
-	/***************************************
+	/**
 	 * @see AbstractDataSet#getDataRows()
 	 */
 	@Override

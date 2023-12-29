@@ -16,7 +16,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface for objects that are ordered in some way. This interface defines
  * the method {@link #ordinal()} from which the order of instances can be
  * determined. The method decalaration is identical to {@link Enum#ordinal()} so
@@ -26,9 +26,7 @@ package de.esoco.lib.property;
  */
 public interface HasOrder {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the ordinal number of this instance.
 	 *
 	 * @return The ordinal number

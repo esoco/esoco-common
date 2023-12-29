@@ -16,16 +16,14 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 package de.esoco.lib.property;
 
-/********************************************************************
+/**
  * An interface for objects that are enumerated with an integer index.
  *
  * @author eso
  */
 public interface Indexed {
 
-	//~ Methods ----------------------------------------------------------------
-
-	/***************************************
+	/**
 	 * Returns the index value for this object.
 	 *
 	 * @return The object's index
