@@ -64,19 +64,19 @@ public enum Alignment implements HasCssName {
 	 * character.
 	 * The character must be the first letter of the instance name.
 	 *
-	 * @param cChar The alignment character (case-sensitive)
+	 * @param c The alignment character (case-sensitive)
 	 * @return The matching alignment instance
 	 * @throws IllegalArgumentException If the character doesn't represent an
 	 *                                  alignment instance
 	 */
-	public static Alignment valueOf(char cChar) {
+	public static Alignment valueOf(char c) {
 		for (Alignment a : values()) {
-			if (a.getCharacter() == cChar) {
+			if (a.getCharacter() == c) {
 				return a;
 			}
 		}
 
-		throw new IllegalArgumentException("No valid Alignment char: " + cChar);
+		throw new IllegalArgumentException("No valid Alignment char: " + c);
 	}
 
 	/**
